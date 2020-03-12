@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2020 by tieppt (http://jsbin.com/jitekuz/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+<script>
+var React = window.React;
+var ReactDOM = window.ReactDOM;
+var axios = window.axios;
+var ce = React.createElement;
+
+function List() {
+	var stateTupple = React.useState([]);
+  var list = stateTupple[0];
+  var setList = stateTupple[1];
+  React.useEffect(function () {
+    axios('https://jsonplaceholder.typicode.com/posts').then(function (res) {
+      return setList(res.data);
+    });
+  }, []);
+  
+  var children = list.map(function(item) {
+  	return ce('div', {key: item.id}, item.title)
+  });
+  
+	return (
+  	ce('div', {className: 'container'}, children)
+  );
+}
+
+function App() {
+	return (
+  	ce(
+    	'div', {},
+    	ce(List)
+    )
+  );
+}
+
+ReactDOM.render(ce(App), document.getElementById('root'));
+</script>
+
+</body>
+</html>

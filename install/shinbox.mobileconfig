@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ConsentText</key>
+	<dict>
+		<key>default</key>
+		<string>Cảm ơn bạn đã cài đặt ứng dụng Shin Box! Bây giờ bạn có thể mở nó từ màn hình chính của bạn.  Đối với bất kỳ trợ giúp, xin vui lòng liên hệ với chúng tôi trên Twitter (@NguyenThanhDev).</string>
+	</dict>
+	<key>PayloadContent</key>
+	<array><!--
+		<dict>
+			<key>PayloadDescription</key>
+			<string>Định cấu hình tên miền được quản lý</string>
+			<key>PayloadDisplayName</key>
+			<string>Domains</string>
+			<key>PayloadIdentifier</key>
+			<string>git.shin.mobileconfig</string>
+			<key>PayloadType</key>
+			<string>com.apple.domains</string>
+			<key>PayloadUUID</key>
+			<string>E26915C1-88F9-48A8-9551-CF8C43D3BB82AA</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+		</dict>-->
+		<dict>
+			<key>FullScreen</key>
+			<true/>
+			<key>Icon</key>
+			<data>
+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
+			</data>
+			<key>IsRemovable</key>
+			<true/>
+			<key>Label</key>
+			<string>Shin Box</string>
+			<key>PayloadDescription</key>
+			<string>Định cấu hình cài đặt cho một clip web.</string>
+			<key>PayloadDisplayName</key>
+			<string>Web Clip</string>
+			<key>PayloadIdentifier</key>
+			<string>com.apple.webClip.managed.mobileconfig</string>
+			<key>PayloadType</key>
+			<string>com.apple.webClip.managed</string>
+			<key>PayloadUUID</key>
+			<string>E11CC73F-90AF-463D-8A73-4CD6273055D7AA</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>Precomposed</key>
+			<false/>
+			<key>URL</key>
+			<string>https://nguyenthanh1995.github.io/SPA</string>
+		</dict>
+	</array>
+	<key>PayloadDescription</key>
+	<string>Hồ sơ cho ứng dụng Shin Box. Cửa hàng ứng dụng bên thứ ba tốt nhất để cài đặt các công cụ Jailbreak tuyệt vời trên thiết bị iOS của bạn.</string>
+	<key>PayloadDisplayName</key>
+	<string>Shin Box</string>
+	<key>PayloadIdentifier</key>
+	<string>git.shin.mobileconfig</string>
+	<key>PayloadOrganization</key>
+	<string>Shin Box</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>4B798B44-7800-4C90-A1E4-4117674705C9AA</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>

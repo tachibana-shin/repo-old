@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MTermial Theme Manager</title>
+
+<meta property="og:title" content="MTerminal Themes MacOS">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/icons/terminal-noise.png">
+<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/mterminal-theme/theme.html">
+<meta property="og:site_name" content="MTerminal Theme Manager" />
+<meta property="og:description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) " />
+<meta property="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) " /> 
+<meta name="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev)" /> 
+<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker, mterminal theme manager" />
+<meta property="article:tag" content="MTerminal Theme Manager by Nguyen Thanh (shin-dev)" />
+<meta property="og:type" content="website">
+
+	<script src=https://nguyenthanh1995.github.io/lib/vue.min.js></script>
+	<script src=https://nguyenthanh1995.github.io/my.js></script>
+	<link rel=stylesheet href=https://nguyenthanh1995.github.io/lib/bootstrap.min.css></link>
+	<link rel=stylesheet href=/css/apply.css></link> 
+	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css></link>
+	<meta charset=utf-8 name=viewport content='width=device-width, user-scalable=no, initial-scale=1.0'/>
+<script src="https://nguyenthanh1995.github.io/lib/jscolor.js"></script>
+	</head>
+	<body>
+	<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#header-page").find("#tools").addClass("active")
+    my("#header-page").find("#mterminal-theme-manager").addClass("active") 
+})
+</script>
+
+	<section class=header>
+			<img class="img-thumbnail icon-terminal mx-3">
+			<span class="text-header h6 over-x-auto">MTermial Theme Manager</span>
+		</section>
+		<div class=container>
+			<div class=row>
+				<div class=col-12>
+					<span class="small text-secondary">Đây là các theme đã được viết sẵn cho MTerminal, tham khảo từ OSX.</span>
+				</div>
+				<div class=col-12>
+					<div class="input-group input-group-sm">
+						<input class="form-control" @input="search(600)" placeholder="Input search theme" v-model=keyword />
+						<div class=input-group-append>
+							<button class="btn btn-primary icon-search" @click="search(0)"><i class="fa fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<transition-group tag=div class=row name=render-theme>
+				<div class="col-sm-12 col-6 col-xl-4 col-lg-3 mt-3" v-for="(theme, key) in themes" v-if="theme.show !== false" :key="'_' + key + theme.name">
+					<table cellspacing=5 cellpadding=0 :style="{color: '#' + theme.fgDefault, background: '#' + theme.bgDefault}">
+						<tr>
+							<td :style="{background: '#' + theme.bgCursor, color: '#' + theme.fgCursor}">
+								#
+							</td>
+							<td>
+								Normal
+							</td>
+							<td v-for="i in 8" :style="{color: '#' + theme.palette[i - 1]}">
+								@
+							</td>
+						</tr>
+						<tr class=text-bold>
+							<td :style="{background: '#' + theme.bgCursor, color: '#' + theme.fgCursor}">
+								#
+							</td>
+							<td>
+								Bold
+							</td>
+							<td v-for="i in 8" :style="{color: '#' + theme.palette[i - 1 + 8]}">
+								@
+							</td>
+						</tr>
+					</table>
+					<a target=_blank class="text-center small d-block" :href=dataToURI(theme)>{{ theme.name }}</a>
+				</div>
+				<div class=col-12 v-if=isNothing()>
+					<h6 class="text-center text-secondary my-3">
+						Not thing
+					</h6>
+				</div>
+			</transition-group>
+		</div>
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+.icon-terminal {
+	width: 3em;;
+	height: 3em;
+	background-image: url(https://nguyenthanh1995.github.io/icons/terminal.png);
+	background-size: 100% 100%;
+}
+.text-header {
+	vertical-align: middle;
+	line-height: 1;
+}
+.header {
+	overflow: hidden;
+	height: 3em;
+}
+table {
+	font-family: monospace;
+	border: 1px solid black;
+	padding: .3rem;
+}
+.text-bold {
+	font-weight: bold;
+}
+.container {
+	overflow: hidden;/* muahahahaha */
+}
+a:active {
+	color: #000000;
+}
+
+/*
+ == nút xổ xuống
+
+.icon-search:before {
+  background-image: url('https://res.cloudinary.com/dt9b7pad3/image/upload/v1502810110/angle-down-dark_dkyopo.png');
+  background-size: 100% 100%;
+  width: 2em;
+  height: 2em;
+  con
+}
+*/
+
+.render-theme-enter-active,
+.render-theme-leave-active {
+	-webkit-transition: all .5s linear;
+	-o-transition: all .5s linear;
+	transition: all .5s linear;
+}
+.render-theme-enter,
+.render-theme-leave-to {
+	opacity: 0;
+	-webkit-transform: translateX(60%);
+		-ms-transform: translateX(60%);
+			transform: translateX(60%);
+}
+.render-theme-move {
+	-webkit-transition: all .3s linear;
+	-o-transition: all .3s linear;
+	transition: all .3s linear;
+}
+
+		</style>
+		<script>
+var themes = JSON.parse(my.getText("https://dl.dropboxusercontent.com/s/q10nclnknzz1udi/theme-terminal.json?dl=1"))
+.sort(function (a, b) {
+	return a.name.toUpperCase().charCodeAt(0) - b.name.toUpperCase().charCodeAt(0)
+})
+
+new Vue({
+	el: ".container",
+	data: {
+		themes: themes,
+		keyword: ""
+	},
+	methods: {
+		dataToURI: function (e) {
+			var param = {
+				palette: e.palette.join(','),
+				 bgColor: e.bgDefault,
+				fgColor: e.fgDefault,
+				fgBoldColor: e.fgBold,
+				bgCursorColor: e.bgCursor,
+				fgCursorColor: e.fgCursor
+			}
+			var data = []
+			for (var key in param)
+				data.push(
+					(key + "=" + param[key]).replace(/\s/g, "")
+				)
+				
+			return "mterminal://?" + data.join("&")
+		},
+		search: function (val) {
+			search(this.keyword, this, val)
+		},
+		isNothing: function () {
+			return !this
+			 .themes
+			 .some(function (e) {
+				 return e.show !== false
+			 })
+		}
+	}
+})
+
+!function (global) {
+	var to, rx
+	function noSpace (str) {
+		return str.replace(/ /g, "")
+	}
+	global.search = function search (val, vue, delay) {
+		global.clearTimeout(to)
+		to = setTimeout(function () {
+			rx = new RegExp(
+				noSpace(
+					my.strips(val)
+				), 'i'
+			)
+			vue.themes.map(function (e) {
+				Vue.set(e, "show", !!noSpace(e.name).match(rx))
+			})
+		}, delay)
+	}
+}(this)
+		</script>
+	</body>
+</html>

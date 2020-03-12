@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jailbreak Tools</title>
+<meta name="description" content="Tool Jailbreak install no PC by Nguyen Thanh." /> 
+<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, jailbreak, h3lix, hacker" />
+<meta property="og:title" content="Jailbreak Tools">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/icon-jb/chimera.png">
+<meta property="og:url" content="https://nguyenthanh1995.github.io/jailbreak-tool/">
+<meta property="og:site_name" content="Jailbreak Tools" />
+<meta property="og:description" content="Jailbreak Tools by Nguyen Thanh (shin-dev) " />
+<meta property="description" content="Jailbreak Tools by Nguyen Thanh (shin-dev) " /> 
+<meta property="article:tag" content="Jailbreak Tools by Nguyen Thanh (shin-dev)" />
+<meta property="og:type" content="website">
+	<script src=https://nguyenthanh1995.github.io/my.js></script>
+	<script src=https://nguyenthanh1995.github.io/lib/vue.min.js></script>
+	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css></link>
+	<link rel=stylesheet href=/css/apply.css></link> 
+	<link rel=stylesheet href=https://nguyenthanh1995.github.io/lib/bootstrap.min.css></link>
+	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1' charset=utf-8 />
+	</head>
+	<body>
+		
+<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#header-page").find("#jailbreak-tool").addClass("active")
+})
+</script>
+		
+		<div class="container">
+			<div class="row mb-3">
+				<div class=col-12>
+					<small class="text-secondary">Website tồng hợp các liên kết cài đặt trực tiếp các công cụ jailbreak. Bạn có thể thêm repo <a href=https://nguyenthanh1995.github.io>shin-dev</a> để nhận các tweak free.</small>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<div class=col-12>
+					<div class="input-group">
+						<input class="form-control" @input="search(600)" placeholder="Tìm kiếm" v-model=keyword />
+						<div class=input-group-append>
+							<button class="btn btn-primary icon-search" @click="search(0)"><i class="fa fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<transition-group tag=div name=jailbreak-tool class=row>
+				<jailbreak-tool v-for="(tool, key) in tools" :data=tool :key="Math.random()" :tool=key class="col-sm-12 col-6 col-lg-4 col-xl-3" @show="showInfoTool($event)" v-if="tool.isShow !== false">
+						Hmmm. This website not support for browser!
+				</jailbreak-tool>
+			</transition-group>
+		</div>
+		
+		<div id=hmmm class="container fixed-top w-100 text-light sidenav" :class="{'h-100': empty, 'h-0': !empty}">
+			<div class=row>
+				<div class=col-12>
+					<button class="close my-1 text-light" style="font-size: 2em;" @click="empty = false">&times;</button>
+				</div>
+			</div>
+			<div class=row>
+				<div class="col-4">
+					<img class="img-thumbnail icon icon-tool-jb" :src="'https://nguyenthanh1995.github.io/icon-jb/'+infoTool[0].icon" />
+				</div>
+				<div class="col-8 text-middle">
+					<span class=h5> {{ infoTool[1] }} </span><br>
+					<small class="text-secondary"> Phiên bản {{ infoTool[0].version }} </small>
+				</div>
+			</div>
+			<div class="row my-3">
+				<div class="col-12 mb-4">
+					Jailbreak support for iOS {{ infoTool[0].support }}
+					<div class="py-2 px-2 bg-success text-center" v-if=isSupport>
+						Phiên bản iOS được hỗ trợ
+					</div>
+					<div class="mt-3 py-2 px-2 bg-danger text-center" v-else>
+						Phiên bản iOS không được hỗ trợ
+					</div>
+					<div class="small text-secondary mt-1 text-center">
+						Current iOS: {{ iOS }}
+					</div>
+				</div>
+				<div class=col-12>
+					<ul class="list-group">
+						<li class="list-group-item bg-transparent border text-light download" v-for="(url, key) in infoTool[0].plist" @click=install(url)>
+							Liên kết {{ key + 1 }}
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id=sidenav class="container fixed-top w-100 h-0 text-light sidenav">
+			<div class=row>
+				<div class=col-12>
+					<button class="close my-1 text-light" style="font-size: 2em;" onclick=hide()>&times;</button>
+				</div>
+				<div class=col-12>
+					<img class="img-fluid" src=https://nguyenthanh1995.github.io/img/install.jpg />
+				</div>
+				<div class="col-12 text-center text-p mt-3">
+					<span>Nhấn vào <b>Cài đặt</b> khi cửa sổ bật lên và chờ đợi Ứng dụng tải về màn hình chính. Có thể sẽ hơi lâu!</span>
+
+<span>Sau khi tải về hoàn thành, bạn chỉ cần mở <b>Cài đặt ▸ Cài đặt chung ▸ Quản lý thiết bị</b> và <b>Tin cậy</b> cấu hình mới.</span>
+
+<span>Thêm <a href="https://nguyenthanh1995.github.io" target="_blank">kho lưu trữ của shin-dev</a> vào Cydia của bạn và liên hệ <a href="https://www.facebook.com/profile.php?id=100024588752208" target="_blank">Nguyễn Thành</a> khi bạn cần được hỗ trợ!</span>
+
+				</div>
+			</div>
+		</div>
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.icon-tool-jb {
+	width: 5em;
+	height: 5em;
+	border-radius: 20px !important;
+}
+
+.text-p span {
+	display: block;
+	margin-bottom: 1rem;
+}
+
+body {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	/*background: linear-gradient(270deg,#1e5799,#2ce0bf,#76dd2c,#dba62b,#ff1493,#1e5799);*/
+}
+
+.bg-color-green {
+	background-color: #4cd964!important;
+}
+.bg-color-blue {
+	background-color: #34aadc!important;
+}
+
+.sidenav {
+	background-color: #1d1d27;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch !important;
+	-moz-overflow-scrolling: touch !important;
+	-ms-overflow-scrolling: touch !important;
+	-o-overflow-scrolling: touch !important;
+	overflow-scrolling: touch !important;
+	-webkit-overflow-style: -webkit-autohiding-scrollbar !important;
+	-moz-overflow-style: -moz-autohiding-scrollbar !important;
+	-ms-overflow-style: -ms-autohiding-scrollbar !important;
+	-o-overflow-style: -o-autohiding-scrollbar !important;
+	bottom: 0 !important;
+	top: auto !important;
+}
+.h-0 {
+	height: 0 !important;
+}
+.text-middle {
+	vertical-align: middle;
+	line-height: 2.5em;
+}
+.text-light * {
+	color: inherit !important;
+}
+
+.download:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 1em;
+	height: 1em;
+	color: #fff;
+	-webkit-transform: translate(-150%, -50%);
+	    -ms-transform: translate(-150%, -50%);
+	        transform: translate(-150%, -50%);
+	background-size: 100% 100%;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='512px' height='512px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve' fill='%23fff' %3E%3Cg%3E%3Cpath d='M446.844,208.875C447.625,203.313,448,197.656,448,192c0-70.563-57.406-128-128-128 c-40.938,0-78.531,19.344-102.344,51.063C209.25,113.031,200.688,112,192,112c-61.75,0-112,50.25-112,112 c0,1.563,0.031,3.094,0.094,4.625C33.813,242.375,0,285.313,0,336c0,61.75,50.25,112,112,112h272c70.594,0,128-57.406,128-128 C512,273.344,486.344,231.188,446.844,208.875z M384,416H112c-44.188,0-80-35.813-80-80s35.813-80,80-80 c2.438,0,4.75,0.5,7.125,0.719c-4.5-10-7.125-21.031-7.125-32.719c0-44.188,35.813-80,80-80c14.438,0,27.813,4.125,39.5,10.813 C246,120.25,280.156,96,320,96c53.031,0,96,42.969,96,96c0,12.625-2.594,24.625-7.031,35.688C449.813,238.75,480,275.688,480,320 C480,373.031,437.031,416,384,416z'/%3E%3Cpolygon points='288,192 224,192 224,288 160,288 256,384 352,288 288,288 '/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+
+.jailbreak-tool-enter-active,
+.jailbreak-tool-leave-active {
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear;
+}
+.jailbreak-tool-enter,
+.jailbreak-tool-leave-to {
+	opacity: 0;
+	-webkit-transform: translateX(60%);
+		-ms-transform: translateX(60%);
+			transform: translateX(60%);
+}
+.jailbreak-tool-move {
+	-webkit-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+.title {
+    text-align: center;
+    padding: 1rem;
+    background-image: -webkit-gradient(linear,right top, left top,from(#1e5799),color-stop(#2ce0bf),color-stop(#76dd2c),color-stop(#dba62b),color-stop(#ff1493),to(#1e5799));
+    background-image: -o-linear-gradient(right,#1e5799,#2ce0bf,#76dd2c,#dba62b,#ff1493,#1e5799);
+    background-image: linear-gradient(270deg,#1e5799,#2ce0bf,#76dd2c,#dba62b,#ff1493,#1e5799);
+	background-size: 100% 100%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: #00000000;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
+	        box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
+}
+		</style>
+		<script>
+onerror = console.warn = console.error = function (e) {alert(e + "")} 
+var toolJailbreak = {
+	"Chimera Jailbreak": {
+		icon: "chimera.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/chimera.plist",
+			"https://ammaripa.com/files/Chimera.plist",
+			"https://dzmohaipa.com/Jb2017/chimera.plist",
+			"https://ipa.kenhtao.net/plists/chimera.plist",
+			"https://ignition.fun/install.php%3Fapp%3D1356",
+			"https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tu5bmRkZm0rJSjpMWp18SRVau8mceelMXynbeYj6Sqpsdhm8bb%2Ftitle%2FChimera%2520Jailbreak",
+			"https://app.app-valley.vip/plists/1589/install.plist",
+			"https://ipa-apps.me/plist/ChimeraJB.plist",
+			"https://achlhi.com/jailbreak/plist/chimera.plist",
+			"https://achlhi.com/jailbreak/plist111/chimera.plist",
+			"https://achlhi.com/jailbreak/plist112/chimera.plist",
+			"https://achlhi.com/jailbreak/plist113/chimera.plist",
+			"https://cydiaabdullah.com/App/plist/Ch.plist",
+			"https://ipa.nk8686.cn/ios/Chimera-1.3.9.plist"
+		],
+		version: "1.3.9",
+		support: "11 - 12.2 & 12.4"
+	},
+	"unc0ver 3 Jailbreak": {
+		icon: "unc0ver.png",
+		plist: [
+			"https://dzmohaipa.com/Jb2017/unc0ver.plist",
+			"https://ammaripa.com/files/unc0verOld.plist",
+			"https://app.app-valley.vip/plists/1574/install.plist",
+			"https://corejb.com/app/1.plist",
+			"https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tu5bmRkZm0rJSjpMWp18SRVau8mceelMXyncmeiaa7mdhhm8bb%2Ftitle%2Func0ver%2520Jailbreak",
+			"https://tbsq.pandahelp.vip/plist/zb/20191225/109099_10013922_190707.plist",
+			"https://iosninja.io/plist/in/a115/unc0ver2.plist",
+			"https://achlhi.com/jailbreak/plist/unc0verb3.plist",
+			"https://achlhi.com/jailbreak/plist111/unc0verb3.plist",
+			"https://achlhi.com/jailbreak/plist112/unc0verb3.plist",
+			"https://achlhi.com/jailbreak/plist113/unc0verb3.plist",
+			"https://cydiaabdullah.com/App/plist/un.plist" 
+		],
+		version: "3.8.0 b1",
+		support: "11 - 12.2 & 12.4"
+	},
+	"unc0ver 4 Jailbreak": {
+		icon: "unc0ver.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/unc0ver.plist",
+			"https://dzmohaipa.com/Jb2017/unc0verb4.plist",
+			"https://ammaripa.com/files/unc0ver.plist",
+			"https://ipa.kenhtao.net/plists/unc0ver.plist",
+			"https://ignition.fun/install.php%3Fapp%3D204",
+			"https://ipa-apps.me/plist/Unc0ver.plist",
+			"https://cydiaabdullah.com/App/plist/un13.plist",
+			"https://ipa.nk8686.cn/ios/12-un4.0.0.plist"
+		],
+		version: "4.2.1",
+		support: "11 - 12.2 & 12.4 & 13 - 13.3"
+	}, 
+	"doubleH3lix": {
+		icon: "dbh3lix.png",
+		plist: [
+			"https://dzmohaipa.com/Jb2017/doubleH3lix-RC6.plist",
+			"https://ammaripa.com/files/doubleH3lix.plist",
+			"https://iosninja.io/plist/in/a115/doubleh3lix.plist",
+			"https://ipa-apps.me/plist/DoubleH3lix.plist",
+			"https://achlhi.com/jailbreak/plist/doubleh3lix.plist",
+			"https://achlhi.com/jailbreak/plist111/doubleh3lix.plist",
+			"https://achlhi.com/jailbreak/plist112/doubleh3lix.plist",
+			"https://achlhi.com/jailbreak/plist113/doubleh3lix.plist",
+			"https://cydiaabdullah.com/App/plist/doubleh.plist" 
+		],
+		version: "1.0 RC8",
+		support: "10.0 - 10.3.3 (64-bit)"
+	},
+	"Electra Jailbreak": {
+		icon: "electra.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/electra.plist",
+			"https://ammaripa.com/files/Electra.plist",
+			"https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tu5bmRkZm0rJSjpMWp18SRVau8mceelMXynbmci5q5psdkY4qrnL2ghw,,%2Ftitle%2FElectra%2520iOS%252011.4.1%2520Jailbreak",
+			"https://ignition.fun/install.php%3Fapp%3D1356",
+			"https://app.app-valley.vip/plists/460/install.plist",
+			"https://ipa.kenhtao.net/plists/Electra1141.plist",
+			"https://ipa-apps.me/plist/ElectraJB.plist",
+			"https://achlhi.com/jailbreak/plist/electra.plist",
+			"https://achlhi.com/jailbreak/plist111/electra.plist",
+			"https://achlhi.com/jailbreak/plist112/electra.plist",
+			"https://achlhi.com/jailbreak/plist113/electra.plist",
+			"https://cydiaabdullah.com/App/plist/ele1141.plist",
+			"https://ipa.nk8686.cn/ios/11.0-11.41.plist"
+		 ],
+		version: "1.3.2",
+		support: "11 - 11.4.1"
+	},
+	"EtasonJB": {
+		icon: "etasonjb.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/etason.plist", 
+			"https://ipa.kenhtao.net/plists/etasonJB.plist",
+			"https://cydiaabdullah.com/App/plist/eta.plist" 
+		],
+		version: "1.0 RC5",
+		support: "8.x.x"
+	},
+	"g0blin Jailbreak": {
+		icon: "g0blin.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/g0blin.plist", 
+			"https://ammaripa.com/files/g0blin.plist",
+			"https://ipa-apps.me/plist/g0blin.plist",
+			"https://achlhi.com/jailbreak/plist/g0blin.plist",
+			"https://achlhi.com/jailbreak/plist111/g0blin.plist",
+			"https://achlhi.com/jailbreak/plist112/g0blin.plist",
+			"https://achlhi.com/jailbreak/plist113/g0blin.plist",
+			"https://cydiaabdullah.com/App/plist/g0blin.plist" 
+		],
+		version: "1.0 RC2",
+		support: "10.3.x (64-bit)"
+	},
+	"h3lix Jailbreak": {
+		icon: "h3lix.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/h3lix.plist",
+			"https://dzmohaipa.com/Jb2017/h3lix.plist",
+			"https://ammaripa.com/files/H3lix.plist",
+			"https://ipa-apps.me/plist/H3lix.plist",
+			"https://achlhi.com/jailbreak/plist/h3lix.plist",
+			"https://achlhi.com/jailbreak/plist111/h3lix.plist",
+			"https://achlhi.com/jailbreak/plist112/h3lix.plist",
+			"https://achlhi.com/jailbreak/plist114/h3lix.plist",
+			"https://cydiaabdullah.com/App/plist/H3lix.plist" 
+		],
+		version: "1.0 RC6",
+		support: "10.x.x (32-bit)"
+	},
+	"Pangu Jailbreak": {
+		icon: "pangu.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/pangu.plist",
+			"https://ammaripa.com/files/panGu.plist",
+			"https://ipa.kenhtao.net/plists/pangu.plist",
+			"https://ipa-apps.me/plist/pangu.plist",
+			"https://achlhi.com/jailbreak/plist/pangu.plist",
+			"https://achlhi.com/jailbreak/plist111/pangu.plist",
+			"https://achlhi.com/jailbreak/plist112/pangu.plist",
+			"https://achlhi.com/jailbreak/plist113/pangu.plist",
+			"https://cydiaabdullah.com/App/plist/Pangu.plist",
+			"https://ipa.nk8686.cn/ios/9.2.plist"
+		],
+		version: "1.1",
+		support: "9.3 - 9.3.3"
+	},
+	"Saigon Jailbreak": {
+		icon: "saigon.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/saigon.plist", 
+			"https://ammaripa.com/files/saigon.plist",
+			"https://ipa-apps.me/plist/Saigon.plist",
+			"https://achlhi.com/jailbreak/plist/saigon.plist",
+			"https://achlhi.com/jailbreak/plist111/saigon.plist",
+			"https://achlhi.com/jailbreak/plist112/saigon.plist",
+			"https://achlhi.com/jailbreak/plist113/saigon.plist",
+			"https://cydiaabdullah.com/App/plist/sai.plist"
+		],
+		version: "b2 RC1",
+		support: "10.2.1 (64-bit)"
+	},
+	"Yalu Jailbreak": {
+		icon: "yalu.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/yalu.plist", 
+			"https://ammaripa.com/files/Yalu102.plist",
+			"https://dzmohaipa.com/Jb2017/YaluArabic.plist",
+			"https://ipa.kenhtao.net/plists/yalu102.plist",
+			"https://ipa-apps.me/plist/Yalu102.plist",
+			"https://achlhi.com/jailbreak/plist/yalu.plist",
+			"https://achlhi.com/jailbreak/plist111/yalu.plist",
+			"https://achlhi.com/jailbreak/plist112/yalu.plist",
+			"https://achlhi.com/jailbreak/plist113/yalu.plist",
+			"https://cydiaabdullah.com/App/plist/yalu.plist",
+			"https://ipa.nk8686.cn/ios/10.2.plist"
+		],
+		version: "b7",
+		support: "10 - 10.2 (64-bit)"
+	},
+	"Phoenix Jailbreak": {
+		icon: "phoenix.png",
+		plist: [
+			"https://iosninja.io/plist/in/a115/phoenix.plist",
+			"https://ammaripa.com/files/Phoenix9.3.6.plist",
+			"https://dzmohaipa.com/Jb2017/Phoenix5.plist",
+			"https://achlhi.com/jailbreak/plist/phoenix.plist",
+			"https://achlhi.com/jailbreak/plist111/phoenix.plist",
+			"https://achlhi.com/jailbreak/plist112/phoenix.plist",
+			"https://achlhi.com/jailbreak/plist113/phoenix.plist",
+			"https://cydiaabdullah.com/App/plist/Phoenix.plist" 
+		],
+		version: "5.0 RC6",
+		support: "9.x (32-bit)"
+	},
+	"Meridian Jailbreak": {
+		icon: "meridian.png",
+		plist: [
+			"https://ipa.kenhtao.net/plists/Meridian.plist",
+			"https://ammaripa.com/files/Meridian.plist",
+			"https://dzmohaipa.com/Jb2017/Meridian-pb6.plist",
+			"https://ipa-apps.me/plist/Meridian.plist",
+			"https://achlhi.com/jailbreak/plist/meridian.plist",
+			"https://achlhi.com/jailbreak/plist111/meridian.plist",
+			"https://achlhi.com/jailbreak/plist112/meridian.plist",
+			"https://achlhi.com/jailbreak/plist113/meridian.plist",
+			"https://ipa.nk8686.cn/ios/10x.plist"
+		],
+		version: "1.0",
+		support: "10 (64-bit)"
+	},
+	"Th0r Jailbreak": {
+		icon: "th0r.png",
+		plist: [
+			"https://dzmohaipa.com/Snapchat/Th0rEn.plist",
+			"https://achlhi.com/jailbreak/plist/Th0r.plist",
+			"https://achlhi.com/jailbreak/plist111/Th0r.plist",
+			"https://achlhi.com/jailbreak/plist112/Th0r.plist",
+			"https://achlhi.com/jailbreak/plist113/Th0r.plist", 
+			"https://ammaripa.com/files/Th0r.plist",
+			"https://ipa-apps.me/plist/Th0r.plist",
+			"https://cydiaabdullah.com/App/plist/th0r2.plist",
+			"https://ipa.nk8686.cn/ios/Th0r.plist"
+		],
+		version: "2.9.3 b6",
+		support: "11 - 12"
+	}
+}
+// # fixed vuejs sort object in ti
+Object.keys = function (e) {
+	var arr = [], i;
+	for (i in e)
+		arr.push(i)
+	return arr.sort(function(a, b){
+		return a.toLowerCase().charCodeAt(0) - b.toLowerCase().charCodeAt(0)
+	})
+}
+// # done
+
+var infoTool = new Vue({
+	el: "div#hmmm",
+	data: {
+		empty: false,
+		infoTool: [toolJailbreak["Chimera Jailbreak"], 'Chimera Jailbreak'],
+		iOS: iOSVersion()
+	},
+	methods: {
+		showTip: function () {
+		   my("#sidenav")
+		   .addClass("h-100")
+			.removeClass("h-0")
+		},
+		install: function (e) {
+			this.showTip()
+			open("itms-services://?action=download-manifest&amp;url=" + e, "_self")
+		}
+	},
+	computed: {
+	    isSupport: function () {
+	        return checkingVers(this.infoTool[0].support)
+	    }
+	}
+})
+
+new Vue({
+	el: ".container",
+	data: {
+		tools: toolJailbreak,
+		keyword: ""
+	},
+	components: {
+		"jailbreak-tool": {
+			props: ["data", "tool"],
+			template: '\
+				<div class="text-center mb-3" @click="$emit(\'show\', [data, tool])">\
+					<div class="mb-1">\
+						<img :src="\'https://nguyenthanh1995.github.io/icon-jb/\' + data.icon" class="icon-tool-jb img-thumbnail lazy-loaded" :alt="data.icon"/>\
+					</div>\
+					<h6>\
+						{{ tool }}\
+					</h6>\
+					<div class="small text-secondary">\
+						Jailbreak for {{ data.support }}\
+					</div>\
+				</div>\
+			'
+		}
+	},
+	methods: {
+		showInfoTool: function (e) {
+			infoTool.infoTool = e
+			infoTool.empty = true
+		},
+		search: function (val) {
+			search(this.keyword, this, val)
+		},
+		isNothing: function () {
+			return !this
+			 .themes
+			 .some(function (e) {
+				 return e.show !== false
+			 })
+		}
+	}
+})
+
+
+function hide () {
+	my("#sidenav")
+	.removeClass("h-100")
+	.addClass("h-0")
+}
+
+
+function iOSVersion () {
+	var os = navigator.userAgent.match(/OS ([\d\._]*)/)
+	
+	if (!os) return "unknown"
+	
+	return os[1].replace(/_/g, ".")
+}
+function fixed (arr, $n) {
+	var tmp = [], i = 3 - arr.length
+	while (i --)  tmp.push(0)
+	return arr.length < $n ? arr.concat(tmp) : arr
+}
+function checkInVer (os, tmp) {
+	os = fixed(os.split("."), 3)
+	tmp = fixed(tmp.split("."), 3)
+	var _tmp, result
+
+	my.each(os, function(key, val){
+		if (val !== tmp[key] && val !== "x" && tmp[key] !== "x") {
+
+			if ((val - 0) < (tmp[key] - 0))
+				result = -1
+			else result = 1
+			return false
+			
+		}
+		else result = 0
+	})
+	
+	return result
+}
+
+function checkingVers (e) {
+	var os = iOSVersion()
+	e = e.replace(/(?:\s+)|(?:\((?:32|64)\ ?- ?bit\))/g, "")
+			.split("&")
+	
+	return e.some(function (f) {
+		if (f.indexOf("-") > -1) {
+			var tmp = f.split("-"),
+			$r1 = checkInVer(os, tmp[0]),
+			$r2 = checkInVer(os, tmp[1])
+//console.log($r1)
+			return ($r1 === 0 || $r1 === 1) && ($r2 === 0 || $r2 === -1)
+		}
+		
+		return !checkInVer(os, f)
+			
+	})
+	
+}
+
+!function (global) {
+	var to, rx
+	function noSpace (str) {
+		return str.replace(/ /g, "")
+	}
+	global.search = function search (val, vue, delay) {
+		global.clearTimeout(to)
+		to = setTimeout(function () {
+			rx = new RegExp(
+				noSpace(
+					my.strips(val)
+				), 'i'
+			)
+			my.each(vue.tools, function (key, e) {
+				Vue.set(e, "isShow", !!noSpace(key).match(rx) || !!noSpace(e.support).match(rx))
+			})
+		}, delay)
+	}
+}(this)
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Simple Translate Tool</title>
+
+<meta property="og:title" content="Translate Tool">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/CydiaIcon.png">
+<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/translate/">
+<meta property="og:site_name" content="Translate Tool" />
+<meta property="og:description" content="Simple Tool Translate file .XML or .strings in the iOS by Nguyen Thanh (shin-dev)" />
+<meta property="description" content="Simple Tool Translate file .XML or .strings in the iOS by Nguyen Thanh (shin-dev)  " /> 
+<meta name="description" content="Simple Tool Translate file .XML or .strings in the iOS by Nguyen Thanh (shin-dev)  " /> 
+<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker, translate tool, xml, ios, strings" />
+<meta property="article:tag" content="Simple Translate Tool by Nguyen Thanh (shin-dev)" />
+<meta property="og:type" content="website">
+
+	<script src=https://nguyenthanh1995.github.io/my.js></script>
+	<script src=https://nguyenthanh1995.github.io/lib/XML.js></script>
+	<script src=https://nguyenthanh1995.github.io/lib/vue.min.js></script>
+	<link rel=stylesheet href=https://nguyenthanh1995.github.io/css/bootstrap.min.css></link>
+	<link rel=stylesheet href=/css/apply.css></link> 
+        <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css ></link>
+	<meta name=viewport content='width=device-width, user-scalable=no, initial-scale=1.0' charset=utf-8 />
+	</head>
+	<body>
+	<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#header-page").find("#tools").addClass("active")
+    my("#header-page").find("#translate-tool").addClass("active") 
+})
+</script>
+		<div class=container>
+			<div class=row>
+				<div class=col>
+					<h3 class="text-center">
+						Simple Tool Translate Plist XML
+					</h3>
+				</div>
+			</div>
+			<div class=row>
+				<div class=col>
+					<h6 class="text-left text-secondary text-uppercase">
+						Mode
+					</h6>
+					<div class="btn-group btn-group-sm">
+						<button class="btn btn-outline-dark" :class="{active: mode === 'XML'}" @click="mode = 'XML'">Plist | XML</button>
+						<button class="btn btn-outline-dark" :class="{active: mode === 'Localizable'}" @click="mode = 'Localizable'">Localizable</button>
+					</div>
+					<div class="small text-secondary mt-2">Nếu ứng dụng bị treo 0% hãy thử đổi chế độ và thử lại.</div>
+				</div>
+			</div>
+			<div class=row>
+				<div class="col-12 col-lg-6">
+					<h6 class="text-left text-secondary text-uppercase">
+						Language
+					</h6>
+					<div class="input-group input-group-sm">
+						<select class="input-group custom-select" v-model=from>
+							<option v-for="val in language" :value=val.code :label=val.name>{{ val.name }} ({{ val.nativeName }})</option>
+						</select>
+						<div class="input-group-append">
+							<span class="input-group-text">to</span>
+						</div>
+						<select class="input-group custom-select" v-model=to>
+							<option v-for="val in language" :value=val.code :label=val.name>{{ val.name }} ({{ val.nativeName }})</option>
+						</select>
+					</div>
+				</div>
+				<div class="col mt-3 mt-lg-0">
+					<div class="input-group input-group-sm">
+						<textarea class="form-control" rows=12 placeholder="Content file plist" v-model=textContent></textarea>
+					</div>
+					<div class="small text-secondary my-2 text-center">or</div>
+					<div class="input-group input-group-sm">
+						<div class=custom-file>
+							<input type=file class=custom-file-input @change=loadFile($event.target.files[0]) />
+							<label class=custom-file-label accept=*/(?:plist|xml)>Choose file</label>
+						</div>
+					</div> 
+				</div>
+				<div class="col-12 col-lg-5 mt-3 mt-lg-0">
+					<div :hidden=translating class="progress mb-3" id=transing>
+						<div class="progress-bar progress-bar-striped progress-bar-animated" :style="{width: progress + '%'}">{{ ~~progress }}%</div>
+					</div>
+					<button class="btn btn-outline-primary btn-sm btn-block" @click=translate>Translate</button>
+				</div>
+			</div>
+			<div :hidden=!translated class=row>
+				<div class="col mt-3 mt-lg-0">
+					<h6 class="text-left text-secondary text-uppercase">
+						Result
+					</h6>
+					<div class="input-group input-group-sm">
+						<textarea class="form-control" rows=12 placeholder="Content file plist" :value=result></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.container > .row:not(*[class*="mb"], *[class="mt"]) {
+	margin-bottom: 1rem;
+}
+/*
+	my-\d: margin top and bottom
+*/
+
+</style>
+<script>
+
+var success = {}, globalXML, plistHeader = '<?xml version="1.0" encoding="UTF-8"?>\n<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">'
+var keyAPI = "trnsl.1.1.20190805T120232Z.0523a6991fcd184f.75d91c8953614377173228e9fc61b57678c66d4e";
+var language = JSON.parse(my.getText("https://dl.dropboxusercontent.com/s/ze5hyst321ei1se/lang.json?raw=1"))[0]
+
+console.error = console.warn = e => console.log(e + '')
+
+var container = new Vue({
+	el: ".container",
+	data: {
+		language: language,
+		from: "en",
+		to: "vi",
+		textContent: "",
+		translating: true,
+		progress: 0,
+		translated: false,
+		result: "",
+		mode: "XML"
+	},
+	watch: {
+		translated: function (n) {
+			if (n === true)
+				if (this.mode === "XML")
+					this.result = plistHeader + "\n" + XML.stringify(globalXML)
+				else this.result = globalXML.join("\n") + '\n'
+		}
+	},
+	methods: {
+		translate: function () {
+			this.translating = false
+			if (this.mode === "XML")
+			 	globalXML = XML.parse(this.textContent)
+			else globalXML = my.trim(this.textContent).split("\n")
+			 void translateXML()
+		},
+		loadFile: function (file) {
+			var _ = this
+			 my(new FileReader)
+			 .load(function () {
+				 _.textContent = decodeURIComponent(this.result)
+			 })[0]
+			 .readAsText(file, "UTF-8")
+		}
+	}
+})
+
+function translateXML () {
+	if (container.mode === "XML")
+		my(globalXML).find("dict")
+		.find("string")
+		.each(function (key){
+			translate(this, key)
+			success[key] = false
+		})
+	else my(globalXML)
+	.each(function (i, v) {
+ 		translate(v, i)
+		success[i] = false
+	})
+	
+}
+
+/*
+  my.ajax({
+	url: "/lb/Root-.xml",
+	dataType: "xml"
+  })
+  .done(function (xml) {
+	  my(globalXML = xml).find("dict")
+	  .find("string")
+	  .each(function (key){
+		  translate(this, key)
+		  success[key] = false
+		  //console.log(key)
+	  })
+	  
+  })*/
+  
+  function translate (el, i) {
+	  var text;
+	  if (container.mode === "XML")
+	  	text = el.innerHTML
+	  else text = el.split("=").slice(1).join("=");
+
+	  my.ajax({
+			url: "https://translate.yandex.net/api/v1.5/tr.json/translate",
+			type: 'post',
+			data: {
+				key: keyAPI,
+				text: text,
+				lang: [container.from, container.to].join("-")
+			},
+			dataType: "json",
+			timeout: 3e4,
+			contentType: true,
+			successFull: function(e) {
+				e = e.text[0]
+				if (container.mode === "XML")
+					el.innerHTML = e
+				else globalXML[i] = el.split("=")[0] + "=" + e;
+				success[i] = true
+				var r = checkDone()
+				if (r === true) {
+					container.translated = true
+					success = []
+				}
+				else {
+					container.progress = r * 100
+				}
+			},
+			error: function (e) {
+				success[i] = true
+				//console.log("" + e)
+			}
+	  })
+  }
+  
+  function checkDone () {
+	  var done = true, length = 0, now = 0, status
+	  my.each(success, function (key, val) {
+			length++
+			if (val === false) {
+				done = false
+				if (status === undefined)
+					status = length;
+			}
+	  })
+	  //console.log(status, length)
+	  return done || status / length
+  }
+  //translate()*/
+</script>
+	<script>window.onerror = function () {  var message = [arguments[0]] + ' at Line: ' + [arguments[2]]; window.webkit.messageHandlers.errorHandler.postMessage(message)};
+window.console.log = function() { for(var i = 0; i < arguments.length; i++) window.webkit.messageHandlers.logHandler.postMessage(arguments[i])  }; var sytaxErrorBrnoxProperty = 1;
+</script><style> * {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+} </style> </body>
+</html>

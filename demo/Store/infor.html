@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<script src=/my.js></script>
+		<script src=/lib/libmy.js></script>
+		<script src=/lib/vue.min.js></script>
+		<script src=/lib/search.params.min.js></script>
+		<link rel=stylesheet href=/lib/bootstrap.min.css></link>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+	apiKey: "AIzaSyBLHGwZfk0XoRAtM6WwgqtKbEpAM4z6OSw",
+	authDomain: "store-app-7e82d.firebaseapp.com",
+	databaseURL: "https://store-app-7e82d.firebaseio.com",
+	projectId: "store-app-7e82d",
+	storageBucket: "store-app-7e82d.appspot.com",
+	messagingSenderId: "465528518914",
+	appId: "1:465528518914:web:f965f61aa254a4d8ab6a1b",
+	measurementId: "G-KRD443YXML"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+				<div class="col-4">	
+					<img class="icon border" :src="app.icon">
+				</div>
+				<div class="col position-relative">
+					<div class="h6 t-0 position-absolute">
+						{{ app.name }}
+					</div>
+					<div class="small text-secondary b-0 position-absolute">
+						<span>{{ sizeof(app.size) }}</span>
+						<span class="float-right mr-0">*****</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Information -->
+			<div class="row mt-7" v-if="!!app.information">
+				<div class="col-12 text-bold h6 mb-0">
+					Information
+				</div>
+				<div class="col-12">
+					<table class="table table-sm w3-7 border-0 small">
+						<tr v-for="(val, key) in app.information" class="border-0">
+							<td class="text-secondary border-0"> {{ key }} </td>
+							<td class="border-0 text-bold"> {{ val }} </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Screenshoot -->
+			<div class="row mt-3" v-if="!!app.screenshoot">
+				<div class="col-12 text-bold h6 mb-0">
+					Screenshoot
+				</div>
+				<div class="col-12 mt-3">
+					<div class="scroll">
+						<img class="img-fluid screenshoot ml-3 border" :src="url" v-for="url in app.screenshoot"/>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Description -->
+			<div class="row mt-3">
+				<div class="col-12 text-bold h6 mb-0 icon-more" @click.prevent="isOpenDescription = !isOpenDescription">
+					Description
+				</div>
+				<div class="col-12 mt-3 small text-secondary detail-close" :class="{'detail-open': isOpenDescription}" v-html="app.description">
+
+				</div>
+			</div>
+		</div>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+.icon {
+	border-radius: 20px;
+	width: 80px;
+	height: 80px;
+}
+
+.t-0 {
+	top: 0 !important;
+}
+
+.b-0 {
+	bottom: 0 !important;
+}
+
+.mt-7 {
+	margin-top: 4.5rem !important;
+}
+.mt-10 {
+	margin-top: 6rem !important;
+}
+.scroll {
+	width: 100%;
+	height: 200px;
+	white-space: nowrap;
+	overflow-x: scroll !important;
+	overflow-y: hidden !important;
+	-webkit-overflow-scrolling: touch !important;
+	-moz-overflow-scrolling: touch !important;
+	-ms-overflow-scrolling: touch !important;
+	-o-overflow-scrolling: touch !important;
+	overflow-scrolling: touch !important;
+	-webkit-overflow-style: -webkit-autohiding-scrollbar !important;
+	-moz-overflow-style: -moz-autohiding-scrollbar !important;
+	-ms-overflow-style: -ms-autohiding-scrollbar !important;
+	-o-overflow-style: -o-autohiding-scrollbar !important;
+}
+.scroll > img {
+	width: 40%;
+	height: 100%;
+	display: inline-block;
+}
+
+.screenshoot {
+	border-radius: 10px;
+}
+
+.icon-more::after {
+	content: "";
+	width: 7px;
+	height: 7px;
+	border: 3px solid rgba(177, 177, 177, .5);
+	border-top: 0;
+	border-left: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	right: 1.5em;
+	transform: rotate(45deg);
+}
+
+.detail-close {
+	height: 3.5em !important;
+	overflow-y: hidden;
+}
+.detail-open {
+	height: auto !important;
+}
+</style>
+<script>
+console.error = console.warn = e => alert(e + "")
+
+new Vue({
+	el: ".container",
+	data: {
+		isOpenDescription: false,
+		app: {}
+	},
+	methods: {
+		sizeof(e) {
+			if (e > 1024 * 1024 * 1024)
+	   			return round(e / 1024 / 1024 / 1024) + "GB"
+			if (e > 1024 * 1024)
+	   			return round(e / 1024 / 1024) + "MB"
+			if (e > 1024)
+	   			return round(e / 1024) + "KB"
+			return e + "B"
+		}
+	},
+	mounted() {
+		var p = searchParams()["q"]
+
+		if (p === undefined || !p.match(/\S/))
+			return history.pushState ? history.pushState({}, "Home", "../index.html") : window.open("../index.html", "_self")
+		firebase.database()
+		.ref("apps/" + p)
+		.once("value", function(e) {
+		    this.app = e.val()
+		}.bind(this))
+	}
+})
+</script>
+	</body>
+</html>

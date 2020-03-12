@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Valentine 2020</title>
+<meta property="og:title" content="Valentine 2020">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/favicon.ico">
+<meta property="og:url" content="https://nguyenthanh1995.github.io/valentine">
+<meta property="og:site_name" content="Valentine 2020" />
+<meta property="og:description" content="Chúc mừng ngày lễ tình nhân." />
+<meta property="description" content="Chúc mừng ngày lễ tình nhân. " /> 
+<meta name="description" content="Chúc mừng ngày lễ tình nhân. " /> 
+<meta name="keywords" content="Valentine 2020, nguyenthanh, repo, tools, hacker" />
+<meta property="article:tag" content="Chúc mừng ngày lễ tình nhân. " />
+<meta property="og:type" content="website">
+
+	<script src=/my.js></script>
+	<meta name=viewport content='width=device-width, initial-scale=1.0' charset=utf-8 />
+<script src="/mycv.js"></script>
+<script src=./valentine-firework.js></script>
+<link href="https://fonts.googleapis.com/css?family=Cedarville+Cursive|Roboto&display=swap" rel="stylesheet">
+<style>
+
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-user-select: none;
+}
+div.valentine {
+   position: absolute;
+   top: 5rem;
+   text-align: center;
+   font-size: calc(100vw / 5);
+   color: #fff;
+   left: 50%;
+   -webkit-transform: translateX(-50%);
+       -ms-transform: translateX(-50%);
+           transform: translateX(-50%);
+   font-family: 'Cedarville Cursive', cursive;
+}
+#count-down {
+   font-size: calc(100vw / 7);
+}
+.anime {
+   -webkit-animation: zoom 1s ease-in-out 1;
+           animation: zoom 1s ease-in-out 1;
+}
+@-webkit-keyframes zoom {
+   0%, 100% {
+      transforn: scale(1)
+   }
+   50% {
+      -webkit-transform: scale(.8);
+              transform: scale(.8)
+   }
+}
+@keyframes zoom {
+   0%, 100% {
+      transforn: scale(1)
+   }
+   50% {
+      -webkit-transform: scale(.8);
+              transform: scale(.8)
+   }
+}
+.cmd-fake {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #131313;
+  color: #fff;
+  padding: 1rem;
+  z-index: 999999;
+}
+</style>
+	</head>
+	<body>
+<div class="cmd-fake">
+  Chúc mừng ngày lễ thánh Valentine!
+</div>
+
+<div class="valentine">
+
+   Valentine
+   <div id="count-down">10</div>
+
+</div>
+<script>
+
+my(".cmd-fake").typing({
+   delay: 50
+})
+.one("my.typing.done", function () {
+my(".cmd-fake").remove()
+my("#count-down").addClass("anime")
+.on(my.fx.animationEnd)
+.then(function () {
+    my(this).removeClass("anime")
+    .text(function (e) {
+        if (e - 1 === 0) {my(this).off(my.fx.animationEnd)
+            location.href = "./main.html"
+        }
+        return e - 1
+    })
+    setTimeout(function (e) {
+       my(e).addClass("anime")
+    }, 0, this)
+})
+
+})
+
+/*
+var stop = setInterval(function () {
+         my("#count-down")
+         .text(function ($1) {
+              if ($1 - 0 === 0) {
+                 clearInterval(stop)
+                 alert(10)
+              }
+              return $1 - 1
+         })
+     }, 1000)*/
+</script>
+	</body>
+</html>

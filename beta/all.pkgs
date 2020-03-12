@@ -1,0 +1,5 @@
+[
+{"Name": "CyPlay", "Version": "1.0~b1", "Section": "Cydia Custom", "Package": "git.shin.cyplay", "Author": "shin-chan <thanhnguyennguyen1995@gmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)", "Descript": "CyPlay get theme CH Play in your Cydia and most popular themes are updated, both free and paid.", "Arch": "iphoneos-arm", "Size": "1989056", "Time": "1582350276000"},
+{"Name": "CyPlay", "Version": "1.0~b2", "Section": "Cydia Custom", "Package": "git.shin.cyplay", "Author": "shin-chan <thanhnguyennguyen1995@gmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)", "Descript": "CyPlay get theme CH Play in your Cydia and most popular themes are updated, both free and paid. Compatity DarkModeCydia!", "Arch": "iphoneos-arm", "Size": "2185950", "Time": "1582415788000"},
+{"Name": "DarkMode Cydia", "Version": "1.0~b1", "Section": "Tweaks", "Package": "git.shin.darkmodecydia", "Author": "shin-chan", "Depends": "mobilesubstrate", "Descript": "Dark Mode for Cydia!", "Arch": "iphoneos-arm", "Size": "15304", "Time": "1582417517000"},
+{}]

@@ -1,0 +1,53 @@
+<div class="page single" data-name="single">
+  <div class="page-content">
+    <a href="#" onClick="javascript:history.go(0)" class="back link close-button">
+      <img src="https://www.freeiconspng.com/download/13577">
+    </a><br>	
+<div class="block">
+<h1>Apple Betas</h1>
+      <div class="author-block">
+        <a href="https://ipabox.store/applebeta/iosbeta.mobileconfig" class="external item-link link">
+          <img src="https://ipabox.store/icons/ios.jpg" alt="">
+          <div class="author-infos">
+            <div class="author-name">iOS12 Developer Beta</div>
+          </div>
+        </a>
+      </div><br>
+      <div class="author-block">
+        <a href="https://ipabox.store/applebeta/tvos12.mobileconfig" class="external item-link link">
+          <img src="https://ipabox.store/img/tvos12.png" alt="">
+          <div class="author-infos">
+            <div class="author-name">tvOS12 Developer Beta</div>
+          </div>
+        </a>
+      </div><br>
+      <div class="author-block">
+        <a href="https://ipabox.store/applebeta/tv.mobileconfig" class="external item-link link">
+          <img src="https://ipabox.store/icons/tv.jpg" alt="">
+          <div class="author-infos">
+            <div class="author-name">tvOS11 Developer Beta</div>
+          </div>
+        </a>
+      </div><br>
+      <div class="author-block">
+        <a href="https://ipabox.store/applebeta/tvos10.mobileconfig" class="external item-link link">
+          <img src="https://ipabox.store/icons/tvos10.png" alt="">
+          <div class="author-infos">
+            <div class="author-name">tvOS10 Developer Beta</div>
+          </div>
+        </a>
+      </div><br>
+      <div class="author-block">
+        <a href="https://ipabox.store/applebeta/watch.mobileconfig" class="external item-link link">
+          <img src="https://ipabox.store/icons/watch.jpg" alt="">
+          <div class="author-infos">
+            <div class="author-name">watchOS Developer Beta</div>
+          </div>
+        </a>
+      </div>	  
+	  
+    </div>	
+    </div>
+
+  </div>
+</div>

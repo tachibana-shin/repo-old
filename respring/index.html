@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Respring</title>
+	<script src=/my.js></script>
+	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css ></link>
+	<link rel=stylesheet href=/lib/bootstrap.min.css></link>
+	<meta name=viewport content='width=device-width, initial-scale=1.0'/>
+	</head>
+	<body>
+
+<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#menu-header").find("#home").addClass("active")
+    if (localStorage.getItem("theme") === "dark")
+	my("#menu-header")
+	.removeClass("navbar-light bg-light")
+	.addClass("navbar-dark bg-dark")
+})
+function toggleThemeMenu () {
+	my("#menu-header")
+	.toggleClass("navbar-light bg-light navbar-dark bg-dark")
+}
+</script>
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class=h6>
+						<script>
+document.write(
+	navigator.language
+	.slice(0, 2) === "vi" ? "Respring trên Safari, không yêu cầu jailbreak." : "Respring on Safari, without jailbreak."
+)
+						</script>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col footer">
+					<div class="swipe-rp">
+<div class="thumbnail">
+	<i class="fas fa-power-off">
+	</i>
+</div>
+<div class="bg">
+	<span>
+		<script>
+			document.write(
+			navigator.language
+			.slice(0, 2) === "vi" ? "Vuốt để respring" : "Swipe to respring")
+		</script>
+	</span>
+</div>
+					</div>
+				</div>
+			</div>
+			<div id=progress hidden class="row mt-3">
+				<div class="col">
+<div class="alert alert-info">
+	<div class="alert-header">
+		Respring Progress
+	</div>
+	<div class="alert-body">
+		Đang tiến hành...
+	</div>
+</div>
+				</div>
+			</div>
+		</div>
+		<style>
+
+.swipe-rp {
+	width: 100%;
+	height: 60px;
+	background-color: grey;
+	border-radius: 60px;
+	position: relative;
+}
+.swipe-rp > * {
+	position: absolute;
+}
+
+.swipe-rp > .thumbnail {
+	width: calc(60px - .4em);
+	height: calc(60px - .4em);
+	margin: .2em;
+	border-radius: 100%;
+	background-color: #fff;
+	text-align: center;
+	font-size: 150%;
+	line-height: calc(60px - .4em);
+	 z-index: 5;
+	 -webkit-transition: left 0s in-out;
+	 -o-transition: left 0s in-out;
+	 transition: left 0s in-out;
+}
+
+.swipe-rp > .bg {
+	display: block;
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	line-height: 60px;
+	padding-left: 60px;
+}
+
+.swipe-rp > .bg > span {
+	display: inline-block;
+	font-size: 1.5em;
+	font-weight: 400;
+	background: -webkit-gradient(linear, left top, right top, from(#4d4d4d), color-stop(40%, #4d4d4d), color-stop(50%, #ffffff), color-stop(60%, #4d4d4d), to(#4d4d4d));
+	background: -o-linear-gradient(left, #4d4d4d, #4d4d4d 40%, #ffffff 50%, #4d4d4d 60%, #4d4d4d);
+	background: linear-gradient(to right, #4d4d4d, #4d4d4d 40%, #ffffff 50%, #4d4d4d 60%, #4d4d4d);
+	background-size: 200%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-animation: slidetounlock 2.5s infinite linear;
+	        animation: slidetounlock 2.5s infinite linear;
+}
+
+@-webkit-keyframes slidetounlock {
+	0% {
+		background-position: 140% center
+	}
+	to {
+		background-position: -40% center
+	}
+}
+
+@keyframes slidetounlock {
+	0% {
+		background-position: 140% center
+	}
+	to {
+		background-position: -40% center
+	}
+}
+
+
+.fad {
+	-webkit-animation: rotate 1.5s linear infinite;
+	        animation: rotate 1.5s linear infinite;
+}
+
+@-webkit-keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg)
+	}
+}
+
+@keyframes rotate {
+	from {
+		-webkit-transform: rotate(0deg);
+		        transform: rotate(0deg)
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+		        transform: rotate(360deg)
+	}
+}
+
+
+.bg-opa {
+    background-color: rgba(0, 0, 0, .5);
+}
+
+		</style>
+		<script>
+my(".swipe-rp > .thumbnail")
+.on("touchmove")
+.prevent(function (e) {
+var $p = my(this).closest(".swipe-rp")
+var _ = my(this)
+	var X = e.changedTouches[0].clientX - $p.offset().left - _.width() / 2//getTouchInfo(this, my(this).width(), my(this).height(), e)[0].x// - 
+
+	if (X < 0) return false
+	if (X >= $p.width() - _.width() - parseFloat(_.css("margin-left"))) return _.dataUser("active", true), _.off("touchmove touchend"), respring(), false
+
+_.css(my.prefix("transition-duration"), ".0s")
+		.css("left", X + "px")
+		
+	$p.find(".bg").css("opacity", 1 - X / $p.width() * 2)
+	return false
+})
+.on("touchend")
+.prevent(function () {
+
+var _ = my(this)
+var $p = _.closest(".swipe-rp")
+
+	if (_.dataUser("active") !== true)
+		_.css(my.prefix("transition-duration"), ".3s")
+		.css("left", 0)
+		$p.find(".bg")
+		.css("opacity", 1)
+	
+})
+function respring () {
+    var i = 500
+    while (i--)
+    	location.href = "itms-services://?action=download-manifest&url=https://nguyenthanh1995.github.io/respring.plist"
+	progress.removeAttribute("hidden")
+}
+		</script>
+	</body>
+</html>

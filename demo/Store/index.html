@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<script src=/my.js></script>
+		<script src=/lib/libmy.js></script>
+		<script src=/lib/vue.min.js></script>
+		<link rel=stylesheet href=/lib/bootstrap.min.css></link>
+		<link rel=stylesheet href=/lib/limit-line.min.css></link>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+		<script src=https://cdn.jsdelivr.net/npm/vue-carousel-3d@0.2.0/dist/vue-carousel-3d.min.js></script>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+	apiKey: "AIzaSyBLHGwZfk0XoRAtM6WwgqtKbEpAM4z6OSw",
+	authDomain: "store-app-7e82d.firebaseapp.com",
+	databaseURL: "https://store-app-7e82d.firebaseio.com",
+	projectId: "store-app-7e82d",
+	storageBucket: "store-app-7e82d.appspot.com",
+	messagingSenderId: "465528518914",
+	appId: "1:465528518914:web:f965f61aa254a4d8ab6a1b",
+	measurementId: "G-KRD443YXML"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+	</head>
+	<body>
+	<div id="app">
+		<!-- tab hot -->
+		<page-spa :swipers="hot.swipers"
+			:apps-hot=hot.appHot
+			:app-preview=hot.appPreview
+			:is-loaded=hot.isLoaded
+			v-if="tabSelect== 'hot'"
+			@more="load('hot')">
+		</page-spa>
+		
+		<!-- tab game -->
+		<page-spa :swipers="game.swipers"
+			:apps-hot=game.appHot
+			:app-preview=game.appPreview
+			:is-loaded=game.isLoaded
+			v-else-if="tabSelect == 'game'"
+			@more="load('game')">
+		</page-spa>
+		
+		<!-- tab app -->
+		<page-spa :swipers="app.swipers"
+			:apps-hot=app.appHot
+			:app-preview=app.appPreview
+			:is-loaded=app.isLoaded
+			v-else-if="tabSelect == 'app'"
+			@more="load('app')">
+		</page-spa>
+		
+		<!-- tab search -->
+		<section class="container" v-if="tabSelect == 'search'">
+			<!-- input -->
+			<div class="row mt-3">
+				<div class="col-12">
+
+<form class="input-group search">
+	<input class="form-control outline-none"
+		type="text"
+		placeholder="Search"
+		style="border-radius: 20px;"
+		ref="inputSearch"
+		v-model="search.keyword"
+		@keydown.enter="searchPlease">
+	<span class="cancel"
+		v-if="search.keyword" 
+		@click="search.keyword = '';
+		$refs.inputSearch.focus()">
+			&times;
+	</span>
+</form>
+
+				</div>
+			</div>
+			
+			<!-- key hot -->
+			<div class="row mt-5">
+				<div class="col-12">
+					<span class="keyword-hot-item" v-for="keyword in search.keywordHot"
+@click="searchUseKeywordHot($event.target)"> {{ keyword }} </span>
+				</div>
+			</div>
+			
+			<!-- result -->
+			<preview-app :app-preview="search.result" if="!isEmptyObject(search.result)">
+			</preview-app>
+		</section>
+		
+		<!-- toolbar -->
+		
+		<section class="container fixed-bottom bg-light py-1 toolbar">
+			<div class="row">
+				<div class="col-3 text-center line-height-0" @click="switchT('hot')">
+						<img :src="'/svg/home' + (tabSelect == 'hot' ? '-selected.svg' : '.svg')" /><br>
+						<small class="text-secondary">Hot</small>
+				</div>
+				<div class="col-3 text-center line-height-0" @click="switchT('game')" @click.once="load('game')">
+						<img :src="'/svg/game' + (tabSelect == 'game' ? '-selected.svg' : '.svg')" /><br>
+						<small class="text-secondary">Game</small>
+				</div>
+				<div class="col-3 text-center line-height-0" @click="switchT('app')" @click.once="load('app')">
+						<img :src="'/svg/app' + (tabSelect == 'app' ? '-selected.svg' : '.svg')" /><br>
+						<small class="text-secondary">App</small>
+				</div>
+				<div class="col-3 text-center line-height-0" @click="tabSelect = 'search'">
+						<img :src="'/svg/search' + (tabSelect == 'search' ? '-selected.svg' : '.svg')" /><br>
+						<small class="text-secondary">Search</small>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<!-- template preview -->
+	<template id = "preview-app">
+		<transition-group name="fade-app" tag="div" class="row">
+			<div class="col-12 col-lg-6 col-xl-4 row mt-3 icon-download fa" v-for="(app, key) in appPreview" :key="equalKey(key)" @click="$root.goto(key)">
+
+<!--
+	equalKey function nothing
+	equalKey = e => e + ""
+-->
+
+				<div class="col-3">
+					<img class="icon-sm border" :src="app.icon" />
+				</div>
+	<!-- icon !important -->
+				<div class="col py-2 ml-2">
+					<div class="text-bold small limit-line-2">
+						<b>{{ app.name }}</b>
+					</div>
+					<span class="small-80 mt-3 text-normal"> {{ sizeof(app.size) }} </span>
+				</div>
+			</div>
+		</transition-group>
+	</template>
+	
+	<!-- template page-spa -->
+	<template id = "page-spa">
+		<section class="container">
+			<div class="row">
+				<transition tag="div" name="bouncy-app" class="col-12">
+<carousel-3d :autoplay=true 
+	:autoplay-timeout=3000 
+	:border=0
+	:autoplay-hover-pause=true
+	:height=120
+	:width="240"
+	v-if="swipers.length">
+	<slide v-for="(slide, i) in swipers" :index="i" :key="slide">
+	  <img :src=slide style="border-radius: 15px"/>
+	</slide>
+</carousel-3d>
+				</transition>
+			</div>
+			<transition-group name="fade-app" tag="div" class="row">
+<!-- $root = vue root -->
+				<div class="col-12 mt-3 h5 text-bold" :key="'title'">
+					<img src="/svg/hot.svg" /> Hot
+				</div>
+				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in appsHot" :key="equalKey(key)" @click="$root.goto(key)">
+					<img class="img-fluid icon-sm border" :src="app.icon" style="border-radius: 10px"/>
+					<div class="limit-line-1 small-80 text-bold mt-1">
+						{{ app.name }}
+					</div>
+				</div>
+			</transition-group>
+			
+			<!-- New App show 20 -->
+			<preview-app :app-preview="appPreview">
+			</preview-app>
+			
+			<!-- button load -->
+			<div class="my-3 row text-primary text-center">
+				<div class="col-12" v-if="isLoaded" @click="$emit('more')">
+					<div>More</div>
+					<img src="/svg/loading.svg" class="loading" />
+				</div>
+				<div class="col-12" v-else>
+					<div>Loading...</div>
+					<img src="/svg/loading-progress.svg" />
+				</div>
+			</div>
+		</section>
+	</template>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	padding-bottom: 3em;
+}
+
+.small-80 {
+	font-size: 70% !important;
+}
+.small-40 {
+	font-size: 45% !important;
+}
+
+.icon-sm {
+	border-radius: 15px;
+	font-weight: 20px !important;
+	width: 52px;
+	height: 52px;
+}
+
+.icon-download::after {
+	content: "\f019";
+	position: absolute;/*
+	width: 40px;
+	height: 40px;
+	background-color: rgb(50, 50, 200);*/
+	top: 0;
+	border-radius: 50%;
+	bottom: 0;
+	margin: auto;
+	margin-right: 0;
+	transform: translateX(-100%);
+	text-align: center;
+	line-height: 40px;
+}
+
+
+	.swiper-container {
+	  width: 100%;
+	  height: 100%;
+	   
+	}
+	.swiper-slide {
+	  text-align: center;
+	  font-size: 18px;
+	  background: #fff;
+
+	  /* Center slide text vertically */
+	  display: -webkit-box;
+	  display: -ms-flexbox;
+	  display: -webkit-flex;
+	  display: flex;
+	  -webkit-box-pack: center;
+	  -ms-flex-pack: center;
+	  -webkit-justify-content: center;
+	  justify-content: center;
+	  -webkit-box-align: center;
+	  -ms-flex-align: center;
+	  -webkit-align-items: center;
+	  align-items: center;
+	}
+	
+.carousel-3d-slide {
+	background-color: #00000000 !important;
+	border: 0 !important;
+}
+
+.toolbar img {
+	width: 27px;
+	height: 27px;
+}
+
+.toolbar [class*="my-"] {
+	font-size: 150%;
+}
+
+.line-height-0 {
+	line-height: .8 !important;
+}
+
+small {
+	font-size: 60% !important;
+}
+
+.fade-app-item {
+   transition-delay: 0.2s;
+}
+.fade-app-move {
+   transition: all .2s ease;
+}
+.fade-app-enter-active,
+.fade-app-leave-active {
+   transition: opacity .2s ease;
+}
+.fade-app-enter,
+.fade-app-leave-to {
+   opacity: 0;
+}
+
+.bouncy-app-item {
+   transition-delay: 0.2s;
+}
+.bouncy-app-move {
+   transition: all .2s ease;
+}
+.bouncy-app-enter-active,
+.bouncy-app-leave-active {
+   transition: transform .2s ease;
+}
+.bouncy-app-enter,
+.bouncy-app-leave-to {
+   transform: scale(0);
+}
+
+.loading {
+	animation: loader 1.2s linear infinite;
+}
+@keyframes loader {
+	from {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+	50% {
+		 opacity: 1;
+		 transform: translateY(0%);
+	}
+	to {
+		opacity: 0;
+		 transform: translateY(50%);
+	}
+}
+
+.search > span {
+	position: absolute;
+	top: 0; bottom: 0;
+	margin: auto;
+	right: .5em;
+	font-size: 150%;
+	z-index: 99999;
+}
+
+
+.keyword-hot-item {
+	color: #555;
+	margin-right: 10px;
+	font-size: 13.5px;
+	margin-right: 2px;
+	width: 35px;
+	height: 35px;
+	background: #f5f5f5;
+	padding: 9px 20px;
+	text-align: center;
+	line-height: 35px;
+	letter-spacing: 1px;
+	border-radius: 25px;
+}
+
+.keyword-hot-item:hover {
+	background-color: #121215;
+	color: #fff;
+}
+</style>
+<script>
+function limitObject (obj, e) {
+	var time = [], _obj = {}, tmp
+	for (var key in obj)
+		time.push(obj[key].time);
+		
+	time.sort().reverse()
+	.slice(0, 8)
+	.forEach(function (e) {
+		for (tmp in obj) {
+			if (obj[tmp].time === e){
+				_obj[tmp] = obj[tmp]
+				break;
+			}
+		}
+	})
+	
+	return _obj
+}
+function reverseObject (obj) {
+	var time = [], _obj = {}, tmp
+	for (var key in obj)
+		time.push(obj[key].time);
+		
+	time.sort().reverse()
+	.slice(0)
+	.forEach(function (e) {
+		for (tmp in obj) {
+			if (obj[tmp].time === e){
+				_obj[tmp] = obj[tmp]
+				break;
+			}
+		}
+	})
+	
+	return _obj
+}
+function eccent (str) {
+	return str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a")
+	.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e")
+	.replace(/ì|í|ị|ỉ|ĩ/g, "i")
+	.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o")
+	.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u")
+	.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y")
+	.replace(/đ/g, "d")
+	.replace(/À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ/g, "A")
+	.replace(/È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ/g, "E")
+	.replace(/Ì|Í|Ị|Ỉ|Ĩ/g, "I")
+	.replace(/Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ/g, "O")
+	.replace(/Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ/g, "U")
+	.replace(/Ỳ|Ý|Ỵ|Ỷ|Ỹ/g, "Y")
+	.replace(/Đ/g, "D");
+}
+
+
+var database = firebase.database()
+
+
+Vue.use(Carousel3d)
+
+console.error = console.warn = e => {if (e.toString().indexOf("database") === -1) console.log(e + "")}
+
+Vue.component("preview-app", {
+	template: "#preview-app",
+	props: {
+		appPreview: Object
+	},
+	methods: {
+		equalKey(val) {
+			return val + ""
+		},
+		sizeof: function(e) {
+if (e > 1024 * 1024 * 1024 * 1024)
+	return round(e / 1024 / 1024 / 1024 / 1024) + "TB"
+if (e > 1024 * 1024 * 1024)
+	return round(e / 1024 / 1024 / 1024) + "GB"
+if (e > 1024 * 1024)
+	return round(e / 1024 / 1024) + "MB"
+if (e > 1024)
+	return round(e / 1024) + "KB"
+return e + "B"
+		}
+	}
+})
+var app = new Vue({
+	el: "#app",
+	data: {
+		hot: {
+			swipers: [],
+			appPreview: {},
+			appHot: {},
+			appPreviewCount: 20,
+			pageY: 0,
+			isLoaded: false
+		},
+		app: {
+			swipers: [],
+			appPreview: {},
+			appHot: {},
+			appPreviewCount: 20,
+			pageY: 0,
+			isLoaded: false
+		},
+		game:  {
+			swipers: [],
+			appPreview: {},
+			appHot: {},
+			appPreviewCount: 20,
+			pageY: 0,
+			isLoaded: false
+		},
+		search: {
+			keyword: "",
+			keywordHot: [],
+			result: {},
+			pageY: 0
+		},
+		tabSelect: "hot"
+	},
+	components: {
+		"carousel-3d": Carousel3d.Carousel3d,
+		"slide": Carousel3d.Slide,
+		"page-spa": {
+			template: "#page-spa",
+			props: {
+				swipers: Array,
+				appPreview: {
+					type: Object,
+					default: {}
+				},
+				appsHot: {
+					type: Object,
+					default: {}
+				},
+				isLoaded: Boolean
+			},
+			components: {
+				"carousel-3d": Carousel3d.Carousel3d,
+				 "slide": Carousel3d.Slide,
+			},
+			methods: {
+				equalKey(val) {
+					return val + ""
+				}
+			}
+		}
+	},
+	methods: {
+		switchT(tabClick) {
+		   this[this.tabSelect]
+			.pageY = my("body")
+						.scrollTop()
+			this.tabSelect = tabClick
+			
+			my([window, document])
+			.scrollTop(this[
+				this.tabSelect
+			].pageY)
+		},
+		loadFire(type, fn, $count) {
+
+var e = database.ref("apps/")
+if (type !== null) {
+	e = e.orderByChild("type")
+	.equalTo(type)
+}
+e.limitToLast($count).once(
+	"value", fn.bind(this)
+)
+
+		},
+		load($proto) {
+		
+this[$proto].isLoaded = false
+
+this.loadFire($proto == "hot" ? null : $proto, function(e) {
+	this[$proto].appPreview = reverseObject ( e.val() )
+	this[$proto].appHot = limitObject( e.val(), 8 )
+	this[$proto].isLoaded = true
+	this[$proto].appPreviewCount += 20
+}, this[$proto].appPreviewCount)
+
+		},
+		searchUseKeywordHot(key) {
+			this.search.keyword = key.innerHTML
+			this.searchPlease()
+		},
+		searchPlease() {
+		
+			this.$refs.inputSearch
+			.blur()
+
+			database.ref("apps/")
+			.orderByChild("name")
+			.startBy(this.search.keyword)
+			.endBy(this.search.keyword)
+			.once("value", function (e) {
+				this.search.result = e.val()
+			}.bind(this))
+
+		},
+		isEmptyObject(obj) {
+			if (typeof obj !== "object")
+				return false
+			for (var tmp in obj)
+				return true
+			return false
+		},
+		goto(package) {
+			if (history.pushState)
+				history.pushState({
+					hot: this.hot,
+					app: this.app,
+					game: this.game,
+					search: this.search,
+					tabSelect: this.tabSelect
+				}, "Information", "../infor.html?package=" + package)
+			else window.open("../infor.html?package=" + package, "_self")
+		}
+	},
+	mounted() {
+		this.load("hot")
+		
+		database.ref("swipers/hot")
+		.once("value", function(e) {
+			app.hot.swipers = e.val()
+		})
+
+		database.ref("swipers/game")
+		.once("value", function(e) {
+			app.game.swipers = e.val()
+		})
+		
+		database.ref("swipers/app")
+		.once("value", function(e) {
+			app.app.swipers = e.val()
+		})
+		
+	}
+})
+
+</script>
+	</body>
+</html>

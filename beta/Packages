@@ -1,0 +1,102 @@
+Package: git.shin.cyplay
+Section: Cydia Custom
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0~b1
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)
+Conflicts: git.shin.modernc
+Filename: ./debs/cyplay_1.0~b1.deb
+Size: 1989056
+MD5sum: 57a6ed99df13e8b9196d451f9cc8aa81
+SHA1: 18e6af9f49a99280b352de821a85e330ac5a63ae
+SHA256: 3753743adb7796e7e182b32ad7ae1dc54db255456f2b7bbe427478465f7f6e33
+Description: CyPlay get theme CH Play in your Cydia and most popular themes are updated, both free and paid.
+Author: shin-chan <thanhnguyennguyen1995@gmail.com>
+Name: CyPlay
+dev: shin-chan
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.cyplay
+Icon: file:///Applications/Cydia.app/Logo.png
+
+Package: git.shin.cyplay
+Section: Cydia Custom
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0~b2
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)
+Conflicts: git.shin.modernc
+Filename: ./debs/cyplay_1.0~b2.deb
+Size: 2185950
+MD5sum: 19519d17243b9f5b952814b3fd5ce6ba
+SHA1: 723bd89ec93b3792d40a6b630350c7a074b921cc
+SHA256: c0781d31a324cff1ec0a7daea9b72c0b03f9ed53516b1467f8cee11809c194ff
+Description: CyPlay get theme CH Play in your Cydia and most popular themes are updated, both free and paid. Compatity DarkModeCydia!
+Author: shin-chan <thanhnguyennguyen1995@gmail.com>
+Name: CyPlay
+dev: shin-chan
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.cyplay
+Icon: file:///Applications/Cydia.app/Logo.png
+
+Package: git.shin.cyplay
+Section: Cydia Custom
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0~b3
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)
+Conflicts: git.shin.modernc
+Filename: ./debs/cyplay_1.0~b3.deb
+Size: 2186546
+MD5sum: 92f91c8ce2a99a729bd5d5defb3a967d
+SHA1: 010cb767e26a29eae0b0d5132355b2849fc4abd6
+SHA256: 5d32f210abcbc4db6913d5b875575f1df1ee499dfe27c91b8eece0da20e27244
+Description: CyPlay get theme CH Play in your Cydia and most popular themes are updated, both free and paid. Compatity DarkModeCydia! 1.0~b3 bug fix error iOS9, maxium attack in iOS12, iOS13. Add mode!
+Author: shin-chan <thanhnguyennguyen1995@gmail.com>
+Name: CyPlay
+dev: shin-chan
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.cyplay
+Icon: file:///Applications/Cydia.app/Logo.png
+
+Package: git.shin.cyplay
+Section: Cydia Custom
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0~b4
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)
+Conflicts: git.shin.modernc
+Filename: ./debs/cyplay_1.0~b4.deb
+Size: 2198700
+MD5sum: ededc534efca68e06e368d6dcc60253d
+SHA1: 747ffa7a6f9c7a474e752165d227737d0c6c2297
+SHA256: 227c16a9711c5f94453be33d277c32921371d6c2d2f2b76aa4620a16d94a030e
+Description: CyPlay get theme CH Play in your Cydia and most popular themes are updated, both free and paid. Compatity DarkModeCydia! 1.0~b3 bug fix error iOS9, maxium attack in iOS12, iOS13. Add mode!
+Author: shin-chan <thanhnguyennguyen1995@gmail.com>
+Name: CyPlay
+dev: shin-chan
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.cyplay
+Icon: file:///Applications/Cydia.app/Logo.png
+
+Package: git.shin.darkmodecydia
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0~b1
+Depends: mobilesubstrate
+Filename: ./debs/darkmodecydia_1.0~b1.deb
+Size: 15304
+MD5sum: 735390e7b7b68f710e1d4693bd13c03c
+SHA1: 8a0d17a45ff292ee150205394a11ca4edaf26136
+SHA256: 746510c09df182a80de7442897ad28c8542945e72a987a0fdc08cc5e24f72144
+Description: Dark Mode for Cydia!
+Name: DarkMode Cydia
+Author: shin-chan
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.darkmodecydia
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+

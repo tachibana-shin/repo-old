@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="30px" viewBox="0 0 30 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>tab_ic_game_default</title>
+    <desc>Created with Sketch.</desc>
+    <g id="切图" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02---Lite" transform="translate(-75.000000, -116.000000)" fill-rule="nonzero">
+            <g id="分组-5-copy" transform="translate(75.000000, 116.000000)">
+                <path d="M10,8 L20,8 C23.8659932,8 27,11.1340068 27,15 C27,18.8659932 23.8659932,22 20,22 L10,22 C6.13400675,22 3,18.8659932 3,15 C3,11.1340068 6.13400675,8 10,8 Z" id="矩形" fill="#D1D8E6"></path>
+                <path d="M16,7.04624277 C16,6.14707771 16,5.47270392 16,5.02312139 C16,4.34874759 16,3.6743738 16,3 C16,2.44771525 16.4477153,2 17,2 C17.5522847,2 18,2.44771525 18,3 C18,4.16666667 18,5.33333333 18,6.5 C18,7.27777778 18,8.44444444 18,10 C16.840625,9.60211946 16,8.42870906 16,7.04624277 Z" id="Shape-path-Copy-2" fill="#D1D8E6" transform="translate(17.000000, 6.000000) scale(-1, 1) rotate(-270.000000) translate(-17.000000, -6.000000) "></path>
+                <rect id="tab_ic_game_default" x="0" y="0" width="30" height="30"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

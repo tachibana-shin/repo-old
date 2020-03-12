@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MTermial Theme Manager</title>
+
+<meta property="og:title" content="MTerminal Theme Manager ">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/icons/terminal-noise.png">
+<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/mterminal-theme/">
+<meta property="og:site_name" content="MTerminal Theme Manager" />
+<meta property="og:description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) " />
+<meta property="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) " /> 
+<meta name="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev)" /> 
+<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker, mterminal theme manager" />
+<meta property="article:tag" content="MTerminal Theme Manager by Nguyen Thanh (shin-dev)" />
+<meta property="og:type" content="website">
+	<script src=https://nguyenthanh1995.github.io/lib/vue.min.js></script>
+	<script src=/my.js></script> 
+	<link rel=stylesheet href=https://nguyenthanh1995.github.io/lib/bootstrap.min.css></link>
+	<link rel=stylesheet href=/css/apply.css></link> 
+        <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css ></link>
+	<meta charset=utf-8 name=viewport content='width=device-width, user-scalable=no, initial-scale=1.0'/>
+<script src="https://nguyenthanh1995.github.io/lib/jscolor.js"></script>
+	</head>
+	<body>
+<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#header-page").find("#tools").addClass("active")
+    my("#header-page").find("#mterminal-theme-manager").addClass("active") 
+})
+</script>
+		<section class=header>
+			<img class="img-thumbnail icon-terminal mx-3">
+			<span class="text-header h6 over-x-auto">MTermial Theme Manager</span>
+		</section>
+	
+		<div class="container mt-4">
+			<div class=row>
+				<div class=col>
+					<h6 class="text-secondary">Welcome to MTerminal Theme Manager by shin-chan.</h6>
+					<div class="small text-secondary">Cho phép bạn tạo tùy chỉnh giao diện của MTerminal. Bạn có thể sử dụng những theme có sẵn <a href=./theme.html>tại đây</a></div>
+				</div>
+			</div>
+			<div class="row my-3">
+				<div class=col>
+					<a href=mterminal:/// target=_blank class="btn btn-sm btn-danger">Reset All Setting MTerminal</a>
+				</div>
+			</div>
+			<div class=row>
+				<div class="col-12 col-xl-6">
+					<div class=opt>
+						<label>Palette Color</label>
+						<div class="input-group input-group-sm d-xl-block d-none">
+							<input class="form-control jscolor" v-for="i in 16" v-model="palette[i - 1] "/>
+						</div>
+						<div class="d-xl-none d-block">
+							<div class="input-group input-group-sm" v-for="j in 4">
+								<input class="form-control jscolor" v-for="i in 4" v-model="palette[i - 1 + (j - 1) * 4]" />
+							</div>
+						</div>
+						<small>palette (array[16]): color palette</small>
+					</div>
+					<hr class="d-xl-none" />
+				</div>
+				<div class="col-12 col-xl-6">
+					<div class=opt>
+						<label>Background Color</label>
+						<color @input-color="bgColor = $event" :value="'000000'"></color>
+						<small>bgColor (string): background color</small>
+					</div>
+					<div class=opt>
+						<label>Text Color</label>
+						<color @input-color="fgColor = $event" :value="FFFFFF"></color>
+						<small>fgColor (string): normal text color</small>
+					</div>
+					<div class=opt>
+						<label>Text Bold Color</label>
+						<color @input-color="fgBoldColor = $event" :value="FFFFFF"></color>
+						<small>fgBoldColor (string); bold text color</small>
+					</div>
+					<hr class="d-xl-none" />
+				</div>
+				<div class="col-12 col-xl-6">
+					<div class=opt>
+						<label>Background Cursor Color</label>
+						<color @input-color="bgCursorColor = $event" :value=FFFFFF></color>
+						<small>bgCursorColor (string); cursor fill color</small>
+					</div>
+					
+					<div class=opt>
+						<label>Text Cursor Color</label>
+						<color @input-color="fgCursorColor = $event" :value="'000000'"></color>
+						<small>fgCursorColor (string); text color at cursor</small>
+					</div>
+					<hr class="d-xl-none" />
+				</div>
+				<div class="col-12 col-xl-6">
+					<div class=opt>
+						<label>Font Family</label>
+						<div class="input-group input-group-sm" style=width:6em;>
+							<input class=form-control v-model=fontName />
+						</div>
+						<small>fontName (string): font name (all fonts supported)
+</small>
+					</div>
+					<div class=opt>
+						<label>Font Size</label>
+						<div class="input-group input-group-sm" style=width:6em;>
+							<input class=form-control v-model=fontSize />
+							<select class="form-control custom-select" v-model=fontSize>
+								<option  v-for="val in 98" :value='val + 2 + ".0"' label="">{{ val + 2 }}</option>
+							</select>
+						</div>
+						<small>fontSize (double): font size in points
+</small>
+					</div>
+					<div class=opt>
+						<label>Width Sample</label>
+						<div class="input-group input-group-sm">
+							<input class=form-control v-model=fontWidthSample />
+						</div>
+						<small>fontWidthSample (string): string used to calculate the column width
+</small>
+					</div>
+					<div class=opt>
+						<label>Allow Change Width</label><br>
+						<boolean @input-color="fontProportional = $event"></boolean><br>
+						<small>fontProportional (boolean): whether to allow variable widths
+</small>
+					</div>
+				</div>
+				<div class="col-12 col-xl-12 my-4 border-primary">
+					<button class="btn btn-sm btn-primary btn-block" @click=apply>Apply Change</button>
+				</div>
+			</div>
+		</div>
+		<style type=text/css>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+.icon-terminal {
+	width: 3em;;
+	height: 3em;
+	background-image: url("https://nguyenthanh1995.github.io/icons/terminal.png");
+	background-size: 100% 100%;
+}
+.text-header {
+	vertical-align: middle;
+	line-height: 1;
+}
+.header {
+	overflow: hidden;
+	height: 3em;
+}
+.opt > * {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+.opt {
+	/*margin-top: .8rem;*/
+}
+.opt > small {
+	color: #6c757d;
+}
+.opt > label {
+	text-transform: capitalize;
+}
+
+.color {
+	width: 8em;
+}
+		</style>
+		<script>
+
+//global
+Vue.component("color", {
+	data: function () {
+		return {
+			
+		}
+	},
+	template: '\
+		<div class="input-group input-group-sm color">\
+			<div class="input-group-prepend">\
+				<span class="input-group-text">#</span>\
+			</div>\
+			<input class="form-control jscolor" @change="$emit(\'input-color\', $event.target.value)" :value=value />\
+		</div>\
+	',
+	props: ["value"]
+})
+
+Vue.component("boolean", {
+	data: function () {
+		return {
+			opt: false
+		}
+	},
+	template: '\
+		<div class="btn-group btn-group-sm">\
+			<button class="btn btn-outline-dark" :class="{active: opt}" @click="$emit(\'input-color\', opt = true)">true</button>\
+			<button class="btn btn-outline-dark" :class="{active: !opt}" @click="$emit(\'input-color\', opt = false)">false</button>\
+		</div>\
+	'
+})
+
+
+
+var body = new Vue({
+	el: ".container",
+	data: {
+		bgColor: "000000",
+		fgColor: "808080",
+		fgBoldColor: "808080",
+		bgCursorColor: "000000",
+		fgCursorColor: "808080",
+		fontName: null,
+		fontSize: "12",
+		palette: "2E3436 CC0000 4E9A06 C4A000 3465A4 75507B 06989A D3D7CF 555753 EF2929 8AE234 FCE94F 729FCF AD7FA8 34E2E2 EEEEEE".split(" "),
+		fontWidthSample: null,
+		fontProportional: false,
+		FFFFFF: "808080"
+	},
+	watch: {
+		
+	},
+	methods: {
+		apply: function () {
+			var param = {
+				bgColor: this.bgColor,
+				  fgColor: this.fgColor,
+				  fgBoldColor: this.fgBoldColor,
+				  bgCursorColor: this.bgCursorColor,
+				  fgCursorColor: this.fgCursorColor,
+				  fontName: this.fontName,
+				  fontSize: this.fontSize,
+				  palette: this.palette.join(','),
+				  fontWidthSample: this.fontWidthSample,
+				  fontProportional: this.fontProportional
+			}
+			if (!this.fontName)
+				delete param.fontName
+			if (!this.fontWidthSample)
+				delete param.fontWidthSample
+			var data = []
+			for (var key in param)
+				data.push(
+					(key + "=" + param[key]).replace(/\s/g, "")
+				)
+				
+			param = data.join("&")
+			open("mterminal://?" + param)
+			console.log("mterminal://?" + param)
+		}
+	}
+});
+		</script>
+	</body>
+</html>
