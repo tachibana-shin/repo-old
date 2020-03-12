@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>App Chat Online</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="App Chat Online on the Web">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta property="og:title" content="App Chat Online">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/icons/app-chat.png">
+<meta property="og:url" content="https://nguyenthanh1995.github.io/chat.html">
+<meta property="og:site_name" content="App Chat Online" />
+<meta property="og:description" content="App Chat Online on the Web by Nguyen Thanh (shin-dev) " />
+<meta property="description" content="App Chat Online on the Web Nguyen Thanh (shin-dev) " />
+<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker, app chat online" />
+<meta property="article:tag" content="App Chat Online on the Web by Nguyen Thanh (shin-dev)" />
+<meta property="og:type" content="website">
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="App Chat">
+  <meta name="theme-color" content="#303F9F">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="App Chat">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#171717">
+
+  <!-- Tile icon for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
+  <meta name="msapplication-navbutton-color" content="#171717">
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+  
+  <!-- App Styling -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en">
+  <script src="/my.js"></script> <script src=/my.js></script>
+  <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css></link>
+  <link rel="stylesheet" href=/lib/bootstrap.min.css>
+ 
+</head>
+<body>
+
+<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#header-page").find("#chat-online").addClass("active")
+})
+</script> 
+
+<div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+  <!-- Header section containing logo -->
+  <header class="mdl-layout__header mdl-color-text--white">
+	<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
+	  <div id="user-container">
+		<div hidden id="user-pic"></div>
+		<div hidden id="user-name"></div>
+		<button hidden id="sign-out" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+		  Đăng xuất
+		</button>
+		<button hidden id="sign-in" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+		  <i class="material-icons">account_circle</i>Đăng nhập qua Google
+		</button>
+				<button hidden id="sign-out-fb" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+		  Đăng xuất
+		</button>
+		<button hidden id="sign-in-fb" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
+		  <i class="material-icons">account_circle</i>Đăng nhập qua Facebook
+		</button>
+	  </div>
+	</div>
+  </header>
+
+  <main class="mdl-layout__content mdl-color--grey-100">
+	<div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
+
+	  <!-- Messages container -->
+	  <div id="messages-card" class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+		<div class="mdl-card__supporting-text mdl-color-text--grey-600">
+		  <div id="messages">
+			<span id="message-filler"></span>
+		  </div>
+		  <form id="message-form">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+			  <textarea class="mdl-textfield__input" type="text" id="message"></textarea>
+			  <label class="mdl-textfield__label" for="message">Tin nhắn...</label>
+			</div>
+			<button id="submit" disabled type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+			  Gửi
+			</button>
+		  </form>
+		  <form id="image-form">
+			<input id="mediaCapture" type="file" accept="image/*,capture=camera">
+			<button id="submitImage" title="Thêm ảnh" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect icon">
+			  
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="512px" height="512px" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve">
+<path d="M352,288c0,53-43,96-96,96c-53.016,0-96-43-96-96s42.984-96,96-96C309,192,352,235,352,288z M512,160v256
+	c0,35.344-28.656,64-64,64H64c-35.344,0-64-28.656-64-64V160c0-35.344,28.656-64,64-64h96V64c0-17.688,14.328-32,32-32h128
+	c17.688,0,32,14.313,32,32v32h96C483.344,96,512,124.656,512,160z M384,288c0-70.563-57.438-128-128-128
+	c-70.578,0-128,57.438-128,128s57.422,128,128,128C326.563,416,384,358.563,384,288z M480,128h-96v64h96V128z"/>
+</svg>
+
+			</button>
+		  </form>
+		</div>
+	  </div>
+
+	  <div id="must-signin-snackbar" class="mdl-js-snackbar mdl-snackbar">
+		<div class="mdl-snackbar__text"></div>
+		<button class="mdl-snackbar__action" type="button"></button>
+	  </div>
+
+	</div>
+  </main>
+</div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+
+  // Initialize Firebase
+  var config = {
+  apiKey: "AIzaSyAIm343O_cNAsHATMVGqZnZMJnRDMcc7hg",
+  authDomain: "quantum-chemist-237712.firebaseapp.com",
+  databaseURL: "https://quantum-chemist-237712.firebaseio.com",
+  projectId: "quantum-chemist-237712",
+  storageBucket: "quantum-chemist-237712.appspot.com",
+  messagingSenderId: "583878542854",
+  appId: "1:583878542854:web:b674a829037f595d4c6587"
+};
+firebase.initializeApp(config);
+
+'use strict';
+//onerror = console.log = e => alert(e + "")
+// Initializes FriendlyChat.
+function FriendlyChat() {
+  this.checkSetup();
+
+  // Shortcuts to DOM Elements.
+  this.messageList = document.getElementById('messages');
+  this.messageForm = document.getElementById('message-form');
+  this.messageInput = document.getElementById('message');
+  this.submitButton = document.getElementById('submit');
+  this.submitImageButton = document.getElementById('submitImage');
+  this.imageForm = document.getElementById('image-form');
+  this.mediaCapture = document.getElementById('mediaCapture');
+  this.userPic = document.getElementById('user-pic');
+  this.userName = document.getElementById('user-name');
+  this.signInButton = document.getElementById('sign-in');
+  this.signOutButton = document.getElementById('sign-out-fb');
+  this.signInButtonFB = document.getElementById('sign-in-fb');
+  this.signOutButtonFB = document.getElementById('sign-out');
+  this.signInSnackbar = document.getElementById('must-signin-snackbar');
+
+  // Saves message on form submit.
+  this.messageForm.addEventListener('submit', this.saveMessage.bind(this));
+  this.signOutButton.addEventListener('click', this.signOut.bind(this));
+  this.signInButton.addEventListener('click', this.signIn.bind(this));
+  this.signOutButtonFB.addEventListener('click', this.signOut.bind(this));
+  this.signInButtonFB.addEventListener('click', this.signInFb.bind(this));
+
+  // Toggle for the button.
+  var buttonTogglingHandler = this.toggleButton.bind(this);
+  this.messageInput.addEventListener('keyup', buttonTogglingHandler);
+  this.messageInput.addEventListener('change', buttonTogglingHandler);
+
+  // Events for image upload.
+  this.submitImageButton.addEventListener('click', function() {
+	this.mediaCapture.click();
+  }.bind(this));
+  this.mediaCapture.addEventListener('change', this.saveImageMessage.bind(this));
+
+  this.initFirebase();
+}
+
+// Sets up shortcuts to Firebase features and initiate firebase auth.
+FriendlyChat.prototype.initFirebase = function() {
+  // Shortcuts to Firebase SDK features.
+  this.auth = firebase.auth();
+  this.database = firebase.database();
+  this.storage = firebase.storage();
+  // Initiates Firebase auth and listen to auth state changes.
+  this.auth.onAuthStateChanged(this.onAuthStateChanged.bind(this));
+  this.loadMessages();
+};
+
+// Loads chat messages history and listens for upcoming ones.
+FriendlyChat.prototype.loadMessages = function() {
+  // Reference to the /messages/ database path.
+  this.messagesRef = this.database.ref('messages');
+  // Make sure we remove all previous listeners.
+  this.messagesRef.off();
+
+  // Loads the last 12 messages and listen for new ones.
+  var setMessage = function(data) {
+	var val = data.val();
+	this.displayMessage(data.key, val.name, val.text, val.photoUrl, val.imageUrl);
+  }.bind(this);
+  this.messagesRef.limitToLast(30).on('child_added', setMessage);
+  this.messagesRef.limitToLast(30).on('child_changed', setMessage);
+};
+
+// Saves a new message on the Firebase DB.
+FriendlyChat.prototype.saveMessage = function(e) {
+  e.preventDefault();
+  // Check that the user entered a message and is signed in.
+  if (this.messageInput.value && this.checkSignedInWithMessage()) {
+	var currentUser = this.auth.currentUser;
+	// Add a new message entry to the Firebase Database.
+	this.messagesRef.push({
+	  name: currentUser.displayName,
+	  text: this.messageInput.value,
+	  photoUrl: currentUser.photoURL || '/images/profile_placeholder.png'
+	}).then(function() {
+	  // Clear message text field and SEND button state.
+	  FriendlyChat.resetMaterialTextfield(this.messageInput);
+	  this.toggleButton();
+	}.bind(this)).catch(function(error) {
+	  console.error('Error writing new message to Firebase Database', error);
+	});
+  }
+};
+
+// Sets the URL of the given img element with the URL of the image stored in Firebase Storage.
+FriendlyChat.prototype.setImageUrl = function(imageUri, imgElement) {
+  imgElement.src = imageUri;
+
+  // TODO(DEVELOPER): If image is on Firebase Storage, fetch image URL and set img element's src.
+};
+
+// Saves a new message containing an image URI in Firebase.
+// This first saves the image in Firebase storage.
+FriendlyChat.prototype.saveImageMessage = function(event) {
+  var file = event.target.files[0];
+  // Clear the selection in the file picker input.
+  //this.imageForm.reset();
+
+  // Check if the file is an image.
+  if (!file.type.match('image.*')) {
+	var data = {
+	  message: 'You can only share images',
+	  timeout: 2000
+	};
+	this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
+	return;
+  }
+  // Check if the user is signed-in
+  if (this.checkSignedInWithMessage()) {
+
+	// TODO(DEVELOPER): Upload image to Firebase storage and add message.
+//imageUrl
+var _ = this
+var sto = friendlyChat.storage
+	.ref('messenger/' + Date.now()  + (Math.random() + "").replace(/\./, ""))
+	.put(file, {
+		contentType: file.type
+	})
+			
+ sto.on('state_changed',function(){
+					
+ },
+ function () {
+	//error
+ },
+ function () {
+
+	sto.snapshot
+	.ref.getDownloadURL()
+	.then(function(downloadURL) {
+		var currentUser = firebase.auth().currentUser;
+         	_.messagesRef.push({
+	            name: currentUser.displayName,
+	            photoUrl: currentUser.photoURL || '/img/profile_placeholder.png',
+	            imageUrl: downloadURL
+		}).then(function() {
+                     FriendlyChat.resetMaterialTextfield(_.messageInput);
+	             _.toggleButton();
+	        })
+	        .catch(function(error) {
+	             console.error('Error writing new message to Firebase Database', error);
+	        })
+	})
+ })
+  }
+};
+
+// Signs-in Friendly Chat.
+FriendlyChat.prototype.signIn = function() {
+  // Sign in Firebase using popup auth and Google as the identity provider.
+  var provider = new firebase.auth.GoogleAuthProvider();
+  this.auth.signInWithPopup(provider);
+}
+FriendlyChat.prototype.signInFb = function() {
+  // Sign in Firebase using popup auth and Google as the identity provider.
+  var provider = new firebase.auth.FacebookAuthProvider();
+  //provider.addScope('user_birthday');
+  provider.setCustomParameters({
+  'display': 'popup'
+ });
+ firebase.auth().signInWithRedirect(provider);
+ firebase.auth().signInWithPopup(provider).then(function(result) {
+	  // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	  var token = result.credential.accessToken;
+	  // The signed-in user info.
+	  var user = result.user;
+	  // ...
+	}).catch(function(error) {
+	  // Handle Errors here.
+	  var errorCode = error.code;
+	  var errorMessage = error.message;
+	  // The email of the user's account used.
+	  var email = error.email;
+	  // The firebase.auth.AuthCredential type that was used.
+	  var credential = error.credential;
+	  // ...
+	});
+	firebase.auth().getRedirectResult().then(function(result) {
+  if (result.credential) {
+	// This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	var token = result.credential.accessToken;
+	// ...
+  }
+  // The signed-in user info.
+  var user = result.user;
+}).catch(function(error) {
+  // Handle Errors here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  // The email of the user's account used.
+  var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+  var credential = error.credential;
+  // ...
+});
+
+};
+
+// Signs-out of Friendly Chat.
+FriendlyChat.prototype.signOut = function() {
+  // Sign out of Firebase.
+  this.auth.signOut();
+};
+
+// Triggers when the auth state change for instance when the user signs-in or signs-out.
+FriendlyChat.prototype.onAuthStateChanged = function(user) {
+this.loadMessages();
+  if (user) { // User is signed in!
+	// Get profile pic and user's name from the Firebase user object.
+	var profilePicUrl = user.photoURL; // Only change these two lines!
+	var userName = user.displayName;   // Only change these two lines!
+
+	// Set the user's profile pic and name.
+	this.userPic.style.backgroundImage = 'url(' + profilePicUrl + ')';
+	this.userName.textContent = userName;
+
+	// Show user's profile and sign-out button.
+	this.userName.removeAttribute('hidden');
+	this.userPic.removeAttribute('hidden');
+	this.signOutButton.removeAttribute('hidden');
+
+	// Hide sign-in button.
+	this.signInButton.setAttribute('hidden', 'true');
+	this.signInButtonFB.setAttribute('hidden', 'true');
+	// We load currently existing chant messages.
+  } else { // User is signed out!
+	// Hide user's profile and sign-out button.
+	this.userName.setAttribute('hidden', 'true');
+	this.userPic.setAttribute('hidden', 'true');
+	this.signOutButton.setAttribute('hidden', 'true');
+
+	// Show sign-in button.
+	this.signInButton.removeAttribute('hidden');
+	this.signInButtonFB.removeAttribute('hidden');
+  }
+};
+
+// Returns true if user is signed-in. Otherwise false and displays a message.
+FriendlyChat.prototype.checkSignedInWithMessage = function() {
+  // Return true if the user is signed in Firebase
+  if (this.auth.currentUser) {
+	return true;
+  }
+
+  // Display a message to the user using a Toast.
+  var data = {
+	message: 'You must sign-in first',
+	timeout: 2000
+  };
+  this.signInSnackbar.MaterialSnackbar.showSnackbar(data);
+  return false;
+};
+
+// Resets the given MaterialTextField.
+FriendlyChat.resetMaterialTextfield = function(element) {
+  element.value = '';
+  element.parentNode.MaterialTextfield.boundUpdateClassesHandler();
+};
+
+// Template for messages.
+FriendlyChat.MESSAGE_TEMPLATE =
+	'<div class="message-container">' +
+	  '<div class="spacing"><div class="pic"></div></div>' +
+	  '<div class="message"></div>' +
+	  '<div class="name"></div>' +
+	'</div>';
+
+// A loading image URL.
+FriendlyChat.LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif';
+
+// Displays a Message in the UI.
+FriendlyChat.prototype.displayMessage = function(key, name, text, picUrl, imageUri) {
+  var div = document.getElementById(key);
+  // If an element for that message does not exists yet we create it.
+  if (!div) {
+	var container = document.createElement('div');
+	container.innerHTML = FriendlyChat.MESSAGE_TEMPLATE;
+	div = container.firstChild;
+	div.setAttribute('id', key);
+	this.messageList.appendChild(div);
+  }
+  if (picUrl) {
+	div.querySelector('.pic').style.backgroundImage = 'url(' + picUrl + ')';
+
+  }
+  div.querySelector('.name').textContent = name;
+  var messageElement = div.querySelector('.message');
+  if (text) { // If the message is text.
+	messageElement.textContent = text;
+	// Replace all line breaks by <br>.
+	messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
+  } else if (imageUri) { // If the message is an image.
+	var image = document.createElement('img');
+	var a = document.createElement("a")
+	a.href = imageUri
+	image.addEventListener('load', function() {
+	  this.messageList.scrollTop = this.messageList.scrollHeight;
+	}.bind(this));
+	this.setImageUrl(imageUri, image);
+	//messageElement.innerHTML = '';
+	a.appendChild(image)
+	messageElement.appendChild(a);
+  }
+  // Show the card fading-in.
+  setTimeout(function() {div.classList.add('visible')}, 1);
+  this.messageList.scrollTop = this.messageList.scrollHeight;
+  this.messageInput.focus();
+};
+
+// Enables or disables the submit button depending on the values of the input
+// fields.
+FriendlyChat.prototype.toggleButton = function() {
+  if (this.messageInput.value) {
+	this.submitButton.removeAttribute('disabled');
+  } else {
+	this.submitButton.setAttribute('disabled', 'true');
+  }
+};
+
+// Checks that the Firebase SDK has been correctly setup and configured.
+FriendlyChat.prototype.checkSetup = function() {
+  if (!window.firebase || !(firebase.app instanceof Function) || !window.config) {
+	window.alert('You have not configured and imported the Firebase SDK. ' +
+		'Make sure you go through the codelab setup instructions.');
+  } else if (config.storageBucket === '') {
+	window.alert('Your Firebase Storage bucket has not been enabled. Sorry about that. This is ' +
+		'actually a Firebase bug that occurs rarely. ' +
+		'Please go and re-generate the Firebase initialisation snippet (step 4 of the codelab) ' +
+		'and make sure the storageBucket attribute is not empty. ' +
+		'You may also need to visit the Storage tab and paste the name of your bucket which is ' +
+		'displayed there.');
+  }
+};
+
+onload = function() {
+  window.friendlyChat = new FriendlyChat();
+};
+</script>
+<style>
+html, body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+main, #messages-card {
+  height: 100%;
+  padding-bottom: 0;
+}
+#messages-card-container {
+  height: 100vh;
+  padding-bottom: 0;
+}
+
+#messages-card {
+  margin-top: 15px;
+}
+.mdl-layout__header-row span {
+  margin-left: 15px;
+  margin-top: 17px;
+}
+.mdl-grid {
+  max-width: 1024px;
+  margin: auto;
+}
+.material-icons {
+  font-size: 36px;
+  top: 8px;
+  position: relative;
+}
+.mdl-layout__header-row {
+  padding: 0;
+  margin: 0 auto;
+}
+.mdl-card__supporting-text {
+  width: auto;
+  height: 100%;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+#messages {
+  overflow-y: auto;
+  margin-bottom: 10px;
+  height: calc(100% - 100px);
+}
+#header-page {
+  font-size: 1rem !important;
+}
+#message-filler {
+  flex-grow: 1;
+}
+.message-container:first-of-type {
+  border-top-width: 0;
+}
+.message-container {
+  display: block;
+  margin-top: 10px;
+  border-top: 1px solid #f3f3f3;
+  padding-top: 10px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+.message-container.visible {
+  opacity: 1;
+}
+.message-container .pic {
+  background-image: url('/img/profile_placeholder.png');
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  background-size: 30px;
+  border-radius: 20px;
+}
+.message-container .spacing {
+  display: table-cell;
+  vertical-align: top;
+}
+.message-container .message {
+  display: table-cell;
+  width: calc(100% - 40px);
+  padding: 5px 0 5px 10px;
+}
+.message-container .name {
+  display: inline-block;
+  width: 100%;
+  padding-left: 40px;
+  color: #bbb;
+  font-style: italic;
+  font-size: 12px;
+  box-sizing: border-box;
+}
+#message-form {
+  display: flex;
+  flex-direction: row;
+  width: calc(100% - 48px);
+  float: left;
+}
+#image-form {
+  display: flex;
+  flex-direction: row;
+  width: 48px;
+  float: right;
+}
+#message-form .mdl-textfield {
+  width: calc(100% - 100px);
+}
+#message-form button, #image-form button {
+  width: 100px;
+  margin: 15px 0 0 10px;
+}
+.mdl-card {
+  min-height: 0;
+}
+.mdl-card {
+  background: linear-gradient(white, #f9f9f9);
+  justify-content: space-between;
+}
+#user-container {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  right: 0;
+  padding-left: 10px;
+  justify-content: flex-end;
+  padding-right: 10px;
+}
+#user-container #user-pic {
+  top: -3px;
+  position: relative;
+  display: inline-block;
+  background-image: url('/img/profile_placeholder.png');
+  background-repeat: no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 40px;
+  border-radius: 20px;
+}
+#user-container #user-name {
+  font-size: 16px;
+  line-height: 36px;
+  padding-right: 10px;
+  padding-left: 20px;
+}
+#image-form #submitImage {
+  width: auto;
+  padding: 0 6px 0 1px;
+  min-width: 0;
+}
+#image-form #submitImage .material-icons {
+  top: -1px;
+}
+.message img {
+  max-width: 300px;
+  max-height: 200px;
+}
+#mediaCapture {
+  display: none;
+}
+@media screen and (max-width: 610px) {
+  #user-container {
+	background-color: rgb(3,155,229);
+	height: 38px;
+	padding-right: 2px;
+  }
+  #user-container #user-pic {
+	top: 2px;
+	width: 33px;
+	height: 33px;
+	background-size: 33px;
+  }
+  .mdl-layout__header > * {
+      margin: 0 !important;
+      padding: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+  }
+  .mdl-layout__header {
+      height: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      top: 0 !important;
+      background-color: transparent;
+	  box-shadow: none;
+	  border: 0;
+	  outline: none;
+  }
+}
+.mdl-textfield__label:after {
+  background-color: #0288D1;
+}
+.mdl-textfield--floating-label.is-focused .mdl-textfield__label {
+  color: #0288D1;
+}
+.mdl-button .material-icons {
+  top: -1px;
+  margin-right: 5px;
+}
+
+.icon svg {
+    width: 2em;
+    height: 2em;
+}
+
+</style>
+</body>
+</html>

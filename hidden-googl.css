@@ -1,0 +1,30 @@
+body {
+	top: auto !important;
+	position: static !important;
+	min-height: initial !important;
+}
+.skiptranslate {
+	visibility: hidden
+}
+#\:0\.targetLanguage {
+	visibility: visible;
+	margin: 3px auto -5px
+}
+.goog-te-combo {
+	height: 30px;
+	border: 1px solid #c8c7cc;
+}
+#\:1\.container, #goog-gt-tt {
+	display: none !important
+}
+.goog-tooltip {
+	display: none !important
+}
+.goog-tooltip:hover {
+	display: none !important
+}
+.goog-text-highlight {
+	background-color: transparent !important;
+	border: none !important;
+	box-shadow: none !important
+}

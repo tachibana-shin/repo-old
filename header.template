@@ -1,0 +1,168 @@
+
+<nav id=menu-header class="navbar navbar-expand-lg navbar-light bg-light">
+	<a class="navbar-brand" href="https://nguyenthanh1995.github.io">
+		<img class="img-fluid mr-1" style="width: 2em; height: 2em" src=https://nguyenthanh1995.github.io/CydiaIcon.png />
+	</a>
+	<button class="navbar-toggler menu-btn" data-toggle="collapse" data-target="#menu-open">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="menu-open">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item" id=home>
+				<a class="nav-link" href="/index.html">
+	<i class="fas mr-1 fa-home"></i>
+	Home (Repo)
+	<!--<span class="sr-only">(current)</span>-->
+				</a>
+			</li>
+			<li class="nav-item" id=jailbreak-tool>
+				<a class="nav-link" href="/jailbreak-tool">
+	<i class="fas mr-1 fa-tools"></i>
+	Jailbreak Tools
+				</a>
+			</li>
+			<li class="nav-item" id=chat-online>
+				<a class="nav-link" href="/chat.html">
+	<i class="fas mr-1 fa-comments"></i>
+	Chat Online
+				</a>
+			</li>
+			<li class="nav-item" id=shin-box-installer>
+				<a class="nav-link" href="/install">
+	<i class="fab mr-1 fa-app-store"></i>
+	Shin Box Installer
+				</a>
+			</li> 
+			<li class="nav-item dropdown" id=tools>
+				<a href=javascript:void(0) class="nav-link dropdown-toggle" data-toggle="dropdown">
+	<i class="fas mr-1 fa-toolbox"></i>
+	Tools
+				</a>
+				<div class="dropdown-menu">
+					<a class="dropdown-item" href="/tools/translate" id=translate-tool>
+	<i class="fas mr-1 fa-language"></i>
+	Translate Tool
+					</a>
+		  			<a class="dropdown-item" href="/tools/mterminal-theme" id=mterminal-theme-manager>
+	<i class="fas mr-1 fa-terminal"></i>
+	MTerminal Theme Manager
+					</a>
+		  			<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="/jbme/9/" id=jb-me9>
+	<i class="fab mr-1 fa-apple"></i>
+	JailbreakMe (9.1-9.3.4 32-bit)
+					</a>
+		  			<a class="dropdown-item" href="/jbme/10/" id=jb-me10>
+	<i class="fab mr-1 fa-apple"></i>
+	JailbreakMe (10.x 64-bit)
+					</a>
+		  			<div class="dropdown-divider"></div> 
+		  			<a class="dropdown-item" href="#">Something else here</a>
+				</div>
+			</li>
+			<li class="nav-item" id=about>
+				<a class="nav-link" href="/about.html">
+	<i class="fas mr-1 fa-info-circle"></i>
+	About
+				</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0 mr-lg-2" method="GET" action="/search.html">
+			<input class="form-control mr-sm-2" label="Search" name="q" placeholder="Nhập từ khóa để tìm kiếm">
+			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+		<hr class="my-1 d-lg-none d-xl-none">
+		<div class="my-2 my-lg-0">
+			<a target=_blank href="https://www.facebook.com/profile.php?id=100024588752208" class="social"><i class="fab fa-facebook-square"></i></a>
+			<a target=_blank href="https://twitter.com/NguyenThanhDev" class="social"><i class="fab fa-twitter"></i></a>
+			<a target=_blank href="https://www.instagram.com/thanh6454nguyen/" class="social"><i class="fab fa-instagram"></i></a>
+			<!--<i class="fab fa-facebook-messenger social"></i>-->
+			<a target=_blank href="https://github.com/nguyenthanh1995" class="social"><i class="fab fa-github"></i></a>
+			<a target=_blank href="mailto:thanhnguyennguyen1995@gmail.com" class="social"><i class="fas fa-envelope"></i></a>
+		</div>
+	</div>
+</nav>
+<style type=text/css>
+
+.fa-facebook-square { color: #3b5998; }
+.fa-github { color: #000; }
+.fa-instagram { 
+	background: #3f729b;
+	background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+	background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	-ms-background-clip: text;
+	-o-background-clip: text;
+	background-clip: text;
+	color: rgba(0, 0, 0, 0);
+}
+.fa-twitter { color: #00aced !important; }
+.fa-envelope { color: #93a1a1 !important; }
+
+
+.social {
+	font-size: 150%;
+	margin-right: .1em;
+	color: initial;
+}
+.fa-facebook-square:hover {
+	text-shadow: 0 0 15px #3b5998;
+}
+.fa-twitter:hover {
+	text-shadow: 0 0 15px #00aced;
+}
+.fa-instagram:hover {
+	text-shadow: 0 0 15px #f09433; 
+}
+.fa-github:hover {
+	text-shadow: 0 0 15px #000;
+}
+.fa-envelope:hover {
+	text-shadow: 0 0 15px #93a1a1;
+}
+.social:active {
+	color: initial;
+}
+#menu-header .social:last-child {
+	margin-right: auto;
+}
+/*
+.navbar-dark .social > i {
+	color: #f8f9fa;
+}
+*/
+</style>
+<script type=text/javascript>
+!function () {
+   var js = document.createElement("script")
+   js.src = "/lib/polyfill.min.js"
+   document.head.appendChild(js)
+   js = document.createElement("script")
+   js.src = "/lib/bootstrap-native.min.js"
+   document.head.appendChild(js)
+}(void 0)
+//load script file lazy
+
+/*
+if (localStorage.getItem("theme") === "dark")
+	my("#menu-header")
+	.removeClass("navbar-light bg-light")
+	.addClass("navbar-dark bg-dark")
+function toggleThemeMenu () {
+	my("#menu-header")
+	.toggleClass("navbar-light bg-light navbar-dark bg-dark")
+}*/
+
+addEventListener("load", function() {
+   setTimeout(hideURLbar, 0);
+}, false);
+
+function hideURLbar() {
+   window.scrollTo(0, 1);
+}
+
+</script>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Search in Repo</title>
+<meta property="og:title" content="Nguyen Thanh Repo">
+<meta property="og:image" content="https://nguyenthanh1995.github.io/CydiaIcon.png">
+<meta property="og:url" content="https://nguyenthanh1995.github.io">
+<meta property="og:site_name" content="Nguyen Thanh Repo Search" />
+<meta property="og:description" content="Search Tweaks in Repo. It also contains many useful jailbreak and programming tools." />
+<meta property="description" content="Search Tweaks in Repo. It also contains many useful jailbreak and programming tools." /> 
+<meta name="description" content="Search Tweaks in Repo. It also contains many useful jailbreak and programming tools." /> 
+<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker" />
+<meta property="article:tag" content="Search Tweaks in Repo. It also contains many useful jailbreak and programming tools." />
+<meta property="og:type" content="website">
+
+	<script src=/my.js></script>
+	<script src=/lib/vue.min.js></script>
+	<script src="/lib/search.params.min.js"></script>
+	<link rel=stylesheet href=/lib/bootstrap.min.css>
+	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css>
+	<link rel=stylesheet href=/lib/limit-line.min.css>
+	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+	</head>
+	<body>
+
+<div id=header-page></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#menu-header").find("#home").addClass("active")
+})
+</script>
+
+		<div class="container" hidden>
+			<div class="row my-3">
+				<div class="col small">
+					Kết quả tìm kiếm cho "{{ search }}" (<b>{{ tweaks.length }}</b> kết quả)
+				</div>
+			</div>
+			
+			<transition-group tag="div" name="tweaks-search" class="row" id="main-show-tweak">
+				<div class="col-12 col-md-6 col-lg-4 col-xl-3 row m-0 px-1 py-2 border-bottom" @click="open(tweak.value.Package)" v-for="(tweak, index) in tweaks" :key=tweak.value.Package v-if="index <= showContent">
+					<div class="col-3 col-md-12 col-xl-12 col-lg-12 text-center text-middle p-icon">
+						<img-lazy class="icon" :src=getIcon[tweak.value.Package] :type="tweak.value.Section"></img-lazy>
+					</div>
+					<div class="col">
+						<div>
+							<span class="h6 limit-line-1 p-0 m-0 limit-md-2 limit-line-xl-2 limit-line-lg-2"> {{ tweak.value.Name }} </span>
+						</div>
+						<div> 
+							<small>{{ tweak.value.Version }} • {{ sizeof(tweak.value.Size) }} <br>
+						<span class="text-secondary limit-line-1  limit-md-2 limit-line-xl-2 limit-line-lg-2"> {{ tweak.value.Descript }} </span></small>
+						</div>
+					</div>
+
+				</div>
+			</transition-group>
+			
+		</div>
+		
+		<template id="cydia-img-lazy">
+			<div class="align-self-start">
+				<!-- ảnh chính từ thông tin ứng dụng -->
+				<img v-bind="$attrs" class="icon" :src="src || ''" v-if="status === 0" @error="status++" />
+				<!-- ảnh từ kiểu của tweak mặc định ở trong icons -->
+				<img v-bind="$attrs" class="icon" :src="'/icons/' + encode(type) + '.png'" v-else-if="status === 1" @error="status++" />
+				<!-- mặc định -->
+				<img v-bind="$attrs" class="icon" src="/icons/unknown.png" v-else />
+			</div>
+		</template>
+		
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.icon {
+   width: 100%;
+}
+.tweaks-search-item {
+   transition-delay: 0.2s;
+}
+.tweaks-search-move {
+   transition: all .3: ease;
+}
+.tweaks-search-enter-active,
+.tweaks-search-leave-active {
+   transition: opacity .3s ease;
+}
+.tweaks-search-enter,
+.tweaks-search-leave-to {
+   opacity: 0;
+}
+		</style>
+		<script>
+
+onerror = console.error = console.warn = function (d) {
+  console.log(d + "")
+}
+
+!function () {
+
+"use strict"
+
+var search = searchParams()["q"]
+
+if (search === undefined || !search.match(/\S/))
+	return window.open("https://nguyenthanh1995.github.io", "_self")
+
+var data = my.getText("/all.pkgs")
+var icons = my.getText("/icons.json")
+
+if (data === undefined || icons === undefined)
+	throw new Error("load data failed")
+else data = JSON.parse(data), icons = JSON.parse(icons)
+
+//console.log(data)
+
+var pkg = {}
+
+my.each(data, function (e) {
+	if (data[e].Package !== undefined &&  (pkg[data[e].Package] === undefined || pkg[data[e].Package].Version < data[e].Version))
+		pkg[data[e].Package] = data[e]
+})
+// data not use. Clear this
+function nos (str) {
+	return str.replace(/\s/gi, "")
+}
+
+var rsearch = new RegExp(my.strips(nos(search)), "gi")
+
+var ls = "Name Package Author Section Descript".split(" ")
+
+//clear data and set value empty
+data = {}
+var tmp
+//setup all array in ls
+my.each(ls, function (e) {
+	data[ ls[e] ] = []
+})
+//searchParams
+my.each(pkg, function (e) {
+	ls.some(function (type) {
+		
+		if (typeof data[type] !== "object")
+			return false
+		
+		tmp = ( pkg[e][type].match(rsearch) || [""] ).join("").length
+
+		 if (tmp !== 0)
+		 	return data[type].push({
+		 		antutu: tmp,
+				 value: pkg[e]
+		 	}), true
+	})
+	//return false
+})
+
+var dataSearched = []
+
+ls.some(function (key) {
+	dataSearched = dataSearched.concat(data[key])
+})
+
+
+var VueMain = new Vue({
+	el: ".container",
+	data: {
+		tweaks: dataSearched,
+		search: search,
+		showContent: 20,
+		pageY: 0
+	},
+	methods: {
+	    sizeof: function (e) {
+			if (e > 1024 * 1024)
+	   			return round(e / 1024 / 1024) + "MB"
+			if (e > 1024)
+	   			return round(e / 1024) + "KB"
+			return e + "B"
+		},
+		getIcon: function (pkg) {
+			return icons[pkg]
+		},
+		open: function (pkg) {
+    		window.open("/description.html?goto=" + pkg, "_self")
+		}
+	},
+	components: {
+		"img-lazy": {
+			template: "#cydia-img-lazy",
+			methods: {
+				encode: function(e) {
+		  		return encodeURIComponent(e)
+				}
+			},
+			data: function () {
+				return {
+					status: 0
+				}
+			},
+			props: {
+				type: String,
+	    		src: String,
+	    		pageY: Number
+			}
+		}
+	},
+	mounted: function () {
+		my(this.$root.$el).unAttr("hidden")
+	},
+	watch: {
+	    pageY: function (e) {
+	        var el = my("#main-show-tweak")
+	        if (el.height() - e <= 500)
+	        	this.showContent += 20
+	    }
+	}
+})
+
+my(document).scroll(function () {
+    VueMain.pageY = window.pageOffsetY || my("body").scrollTop() || my(document).scrollTop()
+
+})
+
+}(this)
+		</script>
+	</body>
+</html>
