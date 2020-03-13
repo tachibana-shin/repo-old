@@ -877,7 +877,9 @@ function updateObject ($root,$obj) {
 }
 
 addEventListener("popstate", function (e) {
-    updateObject(app, stateHistory.pop())
+    var object = stateHistory.pop()
+    alert(JSON.stringify(object))
+    updateObject(app, object)
 })
 </script>
 	</body>
