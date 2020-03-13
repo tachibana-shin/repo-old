@@ -184,7 +184,7 @@
 		
 		<!-- toolbar -->
 		
-		<section class="container fixed-bottom bg-light py-1 toolbar" v-else-if="tabSelect != 'inforApp'">
+		<section class="container fixed-bottom bg-light py-1 toolbar" v-if="tabSelect != 'inforApp'">
 			<div class="row">
 				<div class="col-3 text-center line-height-0" @click="switchT('hot')">
 						<img :src="'/svg/home' + (tabSelect == 'hot' ? '-selected.svg' : '.svg')" /><br>
