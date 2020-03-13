@@ -805,7 +805,7 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 		},
 		goto(package, data) {
 			if (history.pushState)
-				stateHistory.push(my.$clone(this.$data)), history.pushState(this.$data, null, "infor.html?package=" + package)//,
+				stateHistory.push(my.$clone(this.$data)), history.pushState(this.$data, null, "infor.html?package=" + package);
 				//history.replaceState({a: 100}, "Information", "?package=" + package);
 
 			this.switchT("inforApp")
@@ -877,9 +877,7 @@ function updateObject ($root,$obj) {
 }
 
 addEventListener("popstate", function (e) {
-    var object = stateHistory.pop()
-    alert(JSON.stringify(object))
-    updateObject(app, object)
+   updateObject(app, stateHistory.pop())
 })
 </script>
 	</body>
