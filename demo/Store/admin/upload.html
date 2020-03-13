@@ -590,7 +590,7 @@ try {
 		name: _.name,
 		icon: ICON,
 		size: _.size,
-	   versions: _.versions,
+	   versions: encodeURIComponent(_.versions),
 	   infor: _.infor,
 	   type: _.type,
       time: Date.now(),
