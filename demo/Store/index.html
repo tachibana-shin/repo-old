@@ -862,9 +862,23 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 	}
 })
 
+function updateObject ($root,$obj) {
+   var key
+   for (key in $obj) {
+      if (typeof $obj[key] == "object") {
+         updateObject($roor[key],$obj[key])
+      }
+      else {
+         if ($root._isVue)
+            $root[key] = $obj[key]
+         else Vue.$set($root, key, $obj[key])
+      }
+   }
+}
 addEventListener("popstate", function (e) {
     alert(e + "")
     alert(typeof e.state)
+    updateObject(app, e.state)
 })
 </script>
 	</body>
