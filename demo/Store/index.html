@@ -805,7 +805,7 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 		},
 		goto(package, data) {
 			if (history.pushState)
-				stateHistory.push(this.$data), history.pushState(this.$data, null, "infor.html?package=" + package)//,
+				stateHistory.push(my.$clone(this.$data)), history.pushState(this.$data, null, "infor.html?package=" + package)//,
 				//history.replaceState({a: 100}, "Information", "?package=" + package);
 
 			this.switchT("inforApp")
