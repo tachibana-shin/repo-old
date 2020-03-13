@@ -269,11 +269,11 @@
 			<div class="my-3 row text-primary text-center">
 				<div class="col-12" v-if="isLoaded" @click="$emit('more')">
 					<div>More</div>
-					<img src="/lb/svg/loading.svg" class="loading" />
+					<img src="/svg/loading.svg" class="loading" />
 				</div>
 				<div class="col-12" v-else>
 					<div>Loading...</div>
-					<img src="/lb/svg/loading-progress.svg" />
+					<img src="/svg/loading-progress.svg" />
 				</div>
 			</div>
 		</section>
@@ -865,7 +865,7 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 function updateObject ($root,$obj) {
    var key
    for (key in $obj) {
-      if (typeof $obj[key] == "object") {
+      if ($obj[key] !== null && typeof $obj[key] == "object") {
          updateObject($root[key],$obj[key])
       }
       else {
