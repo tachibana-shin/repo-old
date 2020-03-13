@@ -862,22 +862,15 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 	}
 })
 
-function updateObject ($root,$obj) {
+function updateObject ($obj) {
    var key
    for (key in $obj) {
-      if ($obj[key] !== null && typeof $obj[key] == "object") {
-         updateObject($root[key],$obj[key])
-      }
-      else {
-         if ($root._isVue)
-            $root[key] = $obj[key]
-         else Vue.set($root, key, $obj[key])
-      }
+      app[key] = my.$clone($obj[key])
    }
 }
 
 addEventListener("popstate", function (e) {
-   updateObject(app, stateHistory.pop())
+   updateObject(stateHistory.pop())
 })
 </script>
 	</body>
