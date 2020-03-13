@@ -2,13 +2,17 @@
 <html>
 	<head>
 		<title>Page Title</title>
-		<script src=/my.js></script>
-		<script src=/lib/libmy.js></script>
-		<script src=/lib/vue.min.js></script>
-		<link rel=stylesheet href=/lib/bootstrap.min.css></link>
-		<link rel=stylesheet href=/lib/limit-line.min.css></link>
+		<script src=/lb/my.js></script>
+		<script src=/lb/libmy.js></script>
+		<script src=/lb/view.js></script>
+		<script src=/lb/clip.js></script>
+		<script src=/lb/vue.min.js></script>
+		<link rel=stylesheet href=/lb/awesome/css/all.css></link>
+		<link rel=stylesheet href=/lb/bootstrap.min.css></link>
+		<link rel=stylesheet href=/lb/limit-line.css></link>
 		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
 		<script src=https://cdn.jsdelivr.net/npm/vue-carousel-3d@0.2.0/dist/vue-carousel-3d.min.js></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.8.0/marked.min.js"></script>
 
 <!-- The core Firebase JS SDK is always required and must be listed first -->
 <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
@@ -66,7 +70,7 @@
 		</page-spa>
 		
 		<!-- tab search -->
-		<section class="container" v-if="tabSelect == 'search'">
+		<section class="container" v-else-if="tabSelect == 'search'">
 			<!-- input -->
 			<div class="row mt-3">
 				<div class="col-12">
@@ -103,24 +107,101 @@
 			</preview-app>
 		</section>
 		
+		<!-- information app -->
+		<section class="container" v-else-if="tabSelect == 'inforApp'">
+			<div class="row">
+				<div class="col-12 my-2" @click="back()">
+					&lt; Back
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-4">	
+					<img class="icon border" :src="inforApp.app.icon" :key="inforApp.app.icon">
+				</div>
+				<div class="col position-relative">
+					<div class="h5 t-0 position-absolute">
+						{{ inforApp.app.name }}
+					</div>
+					<div class="small-14 text-secondary b-0 position-absolute">
+						<span>{{ sizeof(inforApp.app.size) }}</span> | <span v-if="inforApp.app.infor"> {{ inforApp.app.infor.developer }}</span>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Information -->
+			<div class="row mt-5" v-if="tabSelect == 'inforApp'">
+				<div class="col-12 text-bold h6 mb-0">
+					Information
+				</div>
+				<div class="col-12">
+					<table class="table table-sm w3-7 border-0">
+						<tr v-for="(val, key) in inforApp.app.infor" class="border-0">
+							<td class="text-secondary text-capitalize border-0 small-14"> {{ key }} </td>
+							<td class="border-0 small-14"> {{ val }} </td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+			<!-- Screenshoot -->
+			<div class="row mt-3" v-if="!!inforApp.app.screenshoot">
+				<div class="col-12 text-bold h6 mb-0">
+					Screenshoot
+				</div>
+				<div class="col-12 mt-3">
+					<div class="scroll">
+						<img class="img-fluid screenshoot ml-3 border" :src="url" v-for="url in inforApp.app.screenshoot" :key="inforApp.app.icon + url"/>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Description -->
+			<div class="row mt-3" v-if="!!inforApp.app.description">
+				<div class="col-12 text-bold h6 mb-0 icon-more" @click.prevent="$set(inforApp, 'isOpenDescription', !inforApp.isOpenDescription)">
+					Description
+				</div>
+				<div class="col-12 mt-3 small-14 text-secondary detail-close" :class="{'detail-open': inforApp.isOpenDescription}" v-html="marked(inforApp.app.description)">
+
+				</div>
+			</div>
+			
+			<!-- hot app -->
+			<transition-group name="fade-app" tag="div" class="row mt-3">
+<!-- $root = vue root -->
+				<div class="col-12 mt-3 h6" :key="'title'">
+					You may be interested in
+				</div>
+				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in inforApp.hotTrens" :key="equalKey(key)" @click="$root.goto(key, app)">
+					<img class="img-fluid icon-sm border" :src="app.icon" style="border-radius: 10px"/>
+					<div class="limit-line-1 small-80 text-bold mt-1">
+						{{ app.name }}
+					</div>
+				</div>
+			</transition-group>
+			
+			<div class="row download fixed-bottom">
+				{ hotTrens }
+			</div>
+		</section>
+		
 		<!-- toolbar -->
 		
 		<section class="container fixed-bottom bg-light py-1 toolbar">
 			<div class="row">
 				<div class="col-3 text-center line-height-0" @click="switchT('hot')">
-						<img :src="'/svg/home' + (tabSelect == 'hot' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'/lb/svg/home' + (tabSelect == 'hot' ? '-selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">Hot</small>
 				</div>
 				<div class="col-3 text-center line-height-0" @click="switchT('game')" @click.once="load('game')">
-						<img :src="'/svg/game' + (tabSelect == 'game' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'/lb/svg/game' + (tabSelect == 'game' ? '-selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">Game</small>
 				</div>
 				<div class="col-3 text-center line-height-0" @click="switchT('app')" @click.once="load('app')">
-						<img :src="'/svg/app' + (tabSelect == 'app' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'/lb/svg/app' + (tabSelect == 'app' ? '-selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">App</small>
 				</div>
 				<div class="col-3 text-center line-height-0" @click="tabSelect = 'search'">
-						<img :src="'/svg/search' + (tabSelect == 'search' ? '-selected.svg' : '.svg')" /><br>
+						<img :src="'/lb/svg/search' + (tabSelect == 'search' ? '-selected.svg' : '.svg')" /><br>
 						<small class="text-secondary">Search</small>
 				</div>
 			</div>
@@ -130,7 +211,7 @@
 	<!-- template preview -->
 	<template id = "preview-app">
 		<transition-group name="fade-app" tag="div" class="row">
-			<div class="col-12 col-lg-6 col-xl-4 row mt-3 icon-download fa" v-for="(app, key) in appPreview" :key="equalKey(key)" @click="$root.goto(key)">
+			<div class="col-12 col-lg-6 col-xl-4 row mt-3 icon-download fa" v-for="(app, key) in appPreview" :key="equalKey(key)" @click="$root.goto(key, app)">
 
 <!--
 	equalKey function nothing
@@ -172,9 +253,9 @@
 			<transition-group name="fade-app" tag="div" class="row">
 <!-- $root = vue root -->
 				<div class="col-12 mt-3 h5 text-bold" :key="'title'">
-					<img src="/svg/hot.svg" /> Hot
+					<img src="/lb/svg/hot.svg" /> Hot
 				</div>
-				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in appsHot" :key="equalKey(key)" @click="$root.goto(key)">
+				<div class="col-3 col-sm-4 col-lg-2 col-xl-1 mb-3 text-center" v-for="(app, key) in appsHot" :key="equalKey(key)" @click="$root.goto(key, app)">
 					<img class="img-fluid icon-sm border" :src="app.icon" style="border-radius: 10px"/>
 					<div class="limit-line-1 small-80 text-bold mt-1">
 						{{ app.name }}
@@ -190,11 +271,11 @@
 			<div class="my-3 row text-primary text-center">
 				<div class="col-12" v-if="isLoaded" @click="$emit('more')">
 					<div>More</div>
-					<img src="/svg/loading.svg" class="loading" />
+					<img src="/lb/svg/loading.svg" class="loading" />
 				</div>
 				<div class="col-12" v-else>
 					<div>Loading...</div>
-					<img src="/svg/loading-progress.svg" />
+					<img src="/lb/svg/loading-progress.svg" />
 				</div>
 			</div>
 		</section>
@@ -363,6 +444,156 @@ small {
 	background-color: #121215;
 	color: #fff;
 }
+
+.icon {
+	border-radius: 20px;
+	width: 80px;
+	height: 80px;
+}
+
+.t-0 {
+	top: 0 !important;
+}
+
+.b-0 {
+	bottom: 0 !important;
+}
+
+.mt-7 {
+	margin-top: 4.5rem !important;
+}
+.mt-10 {
+	margin-top: 6rem !important;
+}
+.scroll {
+	width: 100%;
+	height: 200px;
+	white-space: nowrap;
+	overflow-x: scroll !important;
+	overflow-y: hidden !important;
+	-webkit-overflow-scrolling: touch !important;
+	-moz-overflow-scrolling: touch !important;
+	-ms-overflow-scrolling: touch !important;
+	-o-overflow-scrolling: touch !important;
+	overflow-scrolling: touch !important;
+	-webkit-overflow-style: -webkit-autohiding-scrollbar !important;
+	-moz-overflow-style: -moz-autohiding-scrollbar !important;
+	-ms-overflow-style: -ms-autohiding-scrollbar !important;
+	-o-overflow-style: -o-autohiding-scrollbar !important;
+}
+.scroll > img {
+	width: 40%;
+	height: 100%;
+	display: inline-block;
+}
+
+.screenshoot {
+	border-radius: 10px;
+}
+
+.icon-more::after {
+	content: "";
+	width: 7px;
+	height: 7px;
+	border: 3px solid rgba(177, 177, 177, .5);
+	border-top: 0;
+	border-left: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	right: 1.5em;
+	transform: rotate(45deg);
+}
+
+.detail-close {
+	height: 3.5em !important;
+	overflow-y: hidden;
+}
+.detail-open {
+	height: auto !important;
+}
+.small-14 {
+	font-size: 14px !important;
+}
+
+.small-80 {
+	font-size: 70% !important;
+}
+.small-40 {
+	font-size: 45% !important;
+}
+
+.icon-sm {
+	border-radius: 15px;
+	font-weight: 20px !important;
+	width: 52px;
+	height: 52px;
+}
+
+.icon-download::after {
+	content: "\f019";
+	position: absolute;/*
+	width: 40px;
+	height: 40px;
+	background-color: rgb(50, 50, 200);*/
+	top: 0;
+	border-radius: 50%;
+	bottom: 0;
+	margin: auto;
+	margin-right: 0;
+	transform: translateX(-100%);
+	text-align: center;
+	line-height: 40px;
+}
+
+
+	.swiper-container {
+	  width: 100%;
+	  height: 100%;
+	   
+	}
+	.swiper-slide {
+	  text-align: center;
+	  font-size: 18px;
+	  background: #fff;
+
+	  /* Center slide text vertically */
+	  display: -webkit-box;
+	  display: -ms-flexbox;
+	  display: -webkit-flex;
+	  display: flex;
+	  -webkit-box-pack: center;
+	  -ms-flex-pack: center;
+	  -webkit-justify-content: center;
+	  justify-content: center;
+	  -webkit-box-align: center;
+	  -ms-flex-align: center;
+	  -webkit-align-items: center;
+	  align-items: center;
+	}
+	
+.carousel-3d-slide {
+	background-color: #00000000 !important;
+	border: 0 !important;
+}
+
+.toolbar img {
+	width: 27px;
+	height: 27px;
+}
+
+.toolbar [class*="my-"] {
+	font-size: 150%;
+}
+
+.line-height-0 {
+	line-height: .8 !important;
+}
+
+small {
+	font-size: 60% !important;
+}
 </style>
 <script>
 function limitObject (obj, e) {
@@ -424,7 +655,7 @@ var database = firebase.database()
 
 Vue.use(Carousel3d)
 
-console.error = console.warn = e => {if (e.toString().indexOf("database") === -1) console.log(e + "")}
+console.error = console.warn = e => {if (e.toString().indexOf("database") === -1) alert(e + "")}
 
 Vue.component("preview-app", {
 	template: "#preview-app",
@@ -436,15 +667,8 @@ Vue.component("preview-app", {
 			return val + ""
 		},
 		sizeof: function(e) {
-if (e > 1024 * 1024 * 1024 * 1024)
-	return round(e / 1024 / 1024 / 1024 / 1024) + "TB"
-if (e > 1024 * 1024 * 1024)
-	return round(e / 1024 / 1024 / 1024) + "GB"
-if (e > 1024 * 1024)
-	return round(e / 1024 / 1024) + "MB"
-if (e > 1024)
-	return round(e / 1024) + "KB"
-return e + "B"
+			return this.$root
+			.sizeof(e)
 		}
 	}
 })
@@ -480,6 +704,12 @@ var app = new Vue({
 			keywordHot: [],
 			result: {},
 			pageY: 0
+		},
+		inforApp: {
+			app: {},
+			hotTrens: [],
+			pageY: 0,
+			isOpenDescription: false
 		},
 		tabSelect: "hot"
 	},
@@ -572,16 +802,45 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 				return true
 			return false
 		},
-		goto(package) {
+		back() {
+			history.back()
+		},
+		goto(package, data) {
 			if (history.pushState)
-				history.pushState({
-					hot: this.hot,
-					app: this.app,
-					game: this.game,
-					search: this.search,
-					tabSelect: this.tabSelect
-				}, "Information", "../infor.html?package=" + package)
-			else window.open("../infor.html?package=" + package, "_self")
+				history.pushState({a: 100}, null, "infor.html?package=" + package)//,
+				//history.replaceState({a: 100}, "Information", "?package=" + package);
+
+			this.switchT("inforApp")
+			this.$set(this.inforApp, "isOpenDescription", false)
+			this.$set(this.inforApp, "app", {})
+			this.$set(this.inforApp, "hotTrens", [])
+			this.loadForce(data)
+		},
+		sizeof(e) {
+			if (e > 1024 * 1024 * 1024)
+	   			return round(e / 1024 / 1024 / 1024) + "GB"
+			if (e > 1024 * 1024)
+	   			return round(e / 1024 / 1024) + "MB"
+			if (e > 1024)
+	   			return round(e / 1024) + "KB"
+			return e + "B"
+		},
+		marked: function (e) {
+			if (e == null || e.undefined) return e
+			return marked.apply(null, arguments)
+		},
+		equalKey(e) {
+			return e + ""
+		},
+		loadForce($object) {
+			this.$set(this.inforApp, "app", $object)
+			this.loadFire(
+				this.inforApp.app.type,
+				e => {
+					this.$set(this.inforApp, "hotTrens", e.val())
+				},
+				8
+			)
 		}
 	},
 	mounted() {
@@ -605,6 +864,10 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 	}
 })
 
+addEventListener("popstate", function (e) {
+    alert(e + "")
+    alert(typeof e.state)
+})
 </script>
 	</body>
 </html>
