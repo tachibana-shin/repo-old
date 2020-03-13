@@ -5,7 +5,7 @@
 		<script src=/my.js></script>
 		<script src=/lib/libmy.js></script>
 		<script src=/lib/vue.min.js></script>
-		<link rel=stylesheet href=/lib/awesome/css/all.css></link>
+		<link rel=stylesheet href=/lb/awesome/css/all.css></link>
 		<link rel=stylesheet href=/lib/bootstrap.min.css></link>
 		<link rel=stylesheet href=/lib/limit-line.min.css></link>
 		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
@@ -649,7 +649,7 @@ function eccent (str) {
 
 
 var database = firebase.database()
-
+var stateHistory = []
 
 Vue.use(Carousel3d)
 
@@ -805,7 +805,7 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 		},
 		goto(package, data) {
 			if (history.pushState)
-				history.pushState({a: 100}, null, "infor.html?package=" + package)//,
+				history.pushState(this.$data, null, "infor.html?package=" + package), stateHistory.push(this.$data)//,
 				//history.replaceState({a: 100}, "Information", "?package=" + package);
 
 			this.switchT("inforApp")
@@ -877,9 +877,7 @@ function updateObject ($root,$obj) {
 }
 
 addEventListener("popstate", function (e) {
-    alert(JSON.stringify(e.state))
-    alert(typeof e.state)
-    updateObject(app, e.state)
+    updateObject(app, stateHistory.pop())
 })
 </script>
 	</body>
