@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Page Title</title>
+		<script src="https://polyfill.io/v3/polyfill.min.js?version=3.52.1"></script>
 		<script src=/my.js></script>
 		<script src=/lib/libmy.js></script>
 		<script src=/lib/vue.min.js></script>
@@ -666,7 +667,9 @@ var stateHistory = []
 
 Vue.use(Carousel3d)
 
-onerror = console.error = console.warn = e => {if (e.toString().indexOf("database") === -1) alert(e + "")}
+onerror = console.error = console.warn = function (e) {
+if (e.toString().indexOf("database") === -1) alert(e + "")
+}
 
 Vue.component("preview-app", {
 	template: "#preview-app",
@@ -674,10 +677,10 @@ Vue.component("preview-app", {
 		appPreview: Object
 	},
 	methods: {
-		equalKey(val) {
+		equalKey: function (val) {
 			return val + ""
 		},
-		sizeof: function(e) {
+		sizeof: function (e) {
 			return this.$root
 			.sizeof(e)
 		}
@@ -747,14 +750,14 @@ var app = new Vue({
 				 "slide": Carousel3d.Slide,
 			},
 			methods: {
-				equalKey(val) {
+				equalKey: function (val) {
 					return val + ""
 				}
 			}
 		}
 	},
 	methods: {
-		switchT(tabClick) {
+		switchT: function (tabClick) {
 		   this[this.tabSelect]
 			.pageY = my("body")
 						.scrollTop()
@@ -765,7 +768,7 @@ var app = new Vue({
 				this.tabSelect
 			].pageY)
 		},
-		loadFire(type, fn, $count) {
+		loadFire: function (type, fn, $count) {
 
 var e = database.ref("apps/")
 if (type !== null)
@@ -777,7 +780,7 @@ e.limitToLast($count).once(
 )
 
 		},
-		load($proto) {
+		load: function ($proto) {
 		
 this[$proto].isLoaded = false
 
@@ -789,11 +792,11 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 }, this[$proto].appPreviewCount)
 
 		},
-		searchUseKeywordHot(key) {
+		searchUseKeywordHot: function (key) {
 			this.search.keyword = key.innerHTML
 			this.searchPlease()
 		},
-		searchPlease() {
+		searchPlease: function () {
 		
 			this.$refs.inputSearch
 			.blur()
@@ -807,23 +810,23 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 			}.bind(this))
 
 		},
-		isEmptyObject(obj) {
+		isEmptyObject: function(obj) {
 			if (typeof obj !== "object")
 				return false
 			for (var tmp in obj)
 				return true
 			return false
 		},
-		back() {
+		back: function () {
 			history.back()
 		},
-		open() {
+		open: function () {
 		    window.open.apply(window, arguments)
 		},
-		atob(e) {
+		atob: function (e) {
 		    return window.atob(e)
 		},
-		goto(package, data) {
+		goto: function(package, data){
 			if (history.pushState)
 				stateHistory.push(my.$clone(this.$data)), history.pushState(this.$data, null, "infor.html?package=" + package);
 				//history.replaceState({a: 100}, "Information", "?package=" + package);
@@ -835,7 +838,7 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 			this.$set(this.inforApp, "hotTrens", [])
 			this.loadForce(data, package)
 		},
-		sizeof(e) {
+		sizeof: function (e) {
 			if (e > 1024 * 1024 * 1024)
 	   			return round(e / 1024 / 1024 / 1024) + "GB"
 			if (e > 1024 * 1024)
@@ -848,10 +851,10 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 			if (e == null || e.undefined) return e
 			return marked.apply(null, arguments)
 		},
-		equalKey(e) {
+		equalKey: function (e) {
 			return e + ""
 		},
-		loadForce($object, uid) {
+		loadForce: function ($object, uid) {
 			this.$set(this.inforApp, "app", $object)
 			this.loadFire(
 				this.inforApp
@@ -867,7 +870,7 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 			)
 		}
 	},
-	mounted() {
+	mounted: function () {
 		this.load("hot")
 		
 		database.ref("swipers/hot")
