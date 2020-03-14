@@ -24,7 +24,7 @@
 
 <script>
 onerror = function (e, f, g, h) {
-   alert([e, f, g, h].join(" | "))
+   alert([].slice.call(arguments).join(" | "))
 }
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -666,7 +666,7 @@ function limitObject (obj, e) {
 	
 	return _obj
 }
-function reverseObject (obj) {/*
+function reverseObject (obj) {
 	var time = [], _obj = {}, tmp
 	for (var key in obj)
 		time.push(obj[key].time);
@@ -680,7 +680,7 @@ function reverseObject (obj) {/*
 				break;
 			}
 		}
-	})*/
+	})
 	
 	return obj
 }
@@ -705,8 +705,8 @@ function eccent (str) {
 var database = firebase.database()
 var stateHistory = []
 
-onerror = console.error = console.warn = function (e, f, g, h) {
-if (e.toString().indexOf("database") === -1) alert([e, f, g, h].join(" | "))
+console.error = console.warn = function (e, f, g, h) {
+if (e.toString().indexOf("database") === -1) alert("console " + [e, f, g, h].join(" | "))
 }
 
 Vue.component("preview-app", {
