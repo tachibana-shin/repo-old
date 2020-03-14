@@ -42,11 +42,11 @@
 	<body>
 		<div class="container">
 			<div class="row bg-primary text-light my-1">
-				<div classs="col-12" v-if="!auth.login">
-					<img class="avatar" src="/icons/google.png"/> <span class="mx-3" @click="signInGoogle" :key="Login"> Sign in Google</span>
-				<div classs="col-12" v-else>
-						<img class="avatar" :src=auth.photoURL /> <span class="mx-3"> {{ auth.name }} </span> <button class="btn btn-sm btn-primary" @click="signOut" :key="Logout">Sign Out</button>
-					</div>
+				<div class="col-12" v-if="!auth.login">
+					<img class="avatar" src="/icons/google.png"/> <span class="mx-3" @click="signInGoogle" key="Login"> Sign in Google</span>
+				</div>
+				<div class="col-12" v-else>
+					<img class="avatar" :src=auth.photoURL /> <span class="mx-3"> {{ auth.name }} </span> <button class="btn btn-sm btn-primary" @click="signOut" key="Logout">Sign Out</button>
 				</div>
 			</div>
 			<div class="row">
