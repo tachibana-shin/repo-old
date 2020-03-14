@@ -39,6 +39,16 @@
 	</head>
 	<body>
 		<div class="container">
+			<div class="row bg-primary">
+				<div classs="col-12">
+					<div v-if="!auth.login">
+						<img class="avatar" src="/icons/google.png"> <span class="mx-3" @click="signInGoogle"> Sign in Google</span>
+					</div>
+					<div v-else @click="signInGoogle">
+						<img class="avatar" :src=auth.photoURL> <span class="mx-3"> {{ auth.name }} </span> <button class="btn btn-sm btn-primary" @click="signOut">Sign Out</button>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<div class="col-4">	
 					<img class="icon border" :src="iconbase" @click=inpMediaIcon>
@@ -398,7 +408,7 @@ Vue.component("media", {
         this.loadURL()
 	}
 })
-new Vue({
+var app = new Vue({
 	el: ".container",
 	data: {
 		name: "",
@@ -416,7 +426,12 @@ new Vue({
 		nameProgress: "",
 		progress: "",
 		description: null,
-		isLoading: false
+		isLoading: false,
+		auth: {
+		    login: firebase.auth().currentUser,
+		    photoURL: "",
+		    name: ""
+		}
 	},
 	watch: {
 		icon(n) {
@@ -461,6 +476,13 @@ new Vue({
 	    }
 	},
 	methods: {
+		signInGoogle() {
+		    var provider = new firebase.auth.GoogleAuthProvider()
+			firebase.auth().signInWithPopup(provider)
+		},
+		signOut() {
+		    firebase.auth().signOut()
+		},
 		is() {
 			return (!(this.name + "").match(/\S/) || !(this.package + "").match(/\S/) || typeof this.icon != "object" || !(this.size + "").match(/\S/))
 		},
@@ -541,6 +563,8 @@ new my.promise(rejack => {
 		function () {
 			// error
 			_.status = "error"
+			_.isLoading = false
+			alert("Máy chủ từ chối kết nối")
 		},
 		function () {
 			_.status = "done"
@@ -613,6 +637,7 @@ try {
 	.catch(function () {
 		_.status = "error?"
 		_.isLoading = false
+		alert("Máy chủ từ chối kết nối")
 	})
 } catch (e) { alert("failed " + e) }
 })
@@ -626,6 +651,16 @@ try {
 	}
 })
 
+
+firebase.auth().onAuthStateChanged(function (user) {
+  if (user) {
+	Vue.set(app.auth, "login", true)
+	Vue.set(app.auth, "photoURL", user.photoURL)
+	Vue.set(app.auth, "name", user.displayName)
+  } else {
+  	Vue.set(app.auth, "login", false)
+  }
+})
 </script>
 	</body>
 </html>
