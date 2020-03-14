@@ -87,7 +87,7 @@
 				</div>
 				<div class="col-12 mt-3">
 					<div class="input-group">
-						<textarea class="form-control" v-model="versions" placeholder='"key" = "URL"'></textarea>
+						<textarea class="form-control" v-model="versions" placeholder='"key": "URL",\n"key": "URL"'></textarea>
 					</div>
 				</div>
 			</div>
@@ -462,7 +462,7 @@ new Vue({
 	},
 	methods: {
 		is() {
-			return (!(this.name + "").match(/\S/) || !(this.package + "").match(/\S/) || typeof this.icon != "object" || !(this.size + "").match(/\S/) || !(this.versions + "").match(/\S/))
+			return (!(this.name + "").match(/\S/) || !(this.package + "").match(/\S/) || typeof this.icon != "object" || !(this.size + "").match(/\S/))
 		},
 		toURL(file) {
 			
@@ -507,9 +507,19 @@ new Vue({
 		removeFile(index) {
 		    this.screenshoot.splice(index, 1)
 		},
+		checkVers() {
+		    try {
+		        JSON.parse("{" + this.versions + "}")
+		        return true
+		    } catch (e) {
+		    	  return false
+		    }
+		},
 		post() {
 			if (this.is())
 				return 
+			if (!this.checkVers())
+				return alert("Version error")
 //var storage = firebase.storage()
 var ICON, SCREENSHOOT = [], _ = this
 _.isLoading = true
@@ -590,7 +600,7 @@ try {
 		name: _.name,
 		icon: ICON,
 		size: _.size,
-	   versions: encodeURIComponent(_.versions),
+	   versions: btoa(encodeURIComponent(_.versions)),
 	   infor: _.infor,
 	   type: _.type,
       time: Date.now(),
