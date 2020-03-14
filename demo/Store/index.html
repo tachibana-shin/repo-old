@@ -860,13 +860,13 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 			this.loadFire(
 				this.inforApp
 				.app.type,
-				e => {
+				function (e) {
 					var obj = my.$clone(e.val())
 					if (obj[uid] !== undefined)
 						delete obj[uid]
 					this.$set(this.inforApp, "hotTrens", obj)
 					
-				},
+				}.bind(this),
 				8
 			)
 		}
