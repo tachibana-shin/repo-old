@@ -668,8 +668,6 @@ function eccent (str) {
 var database = firebase.database()
 var stateHistory = []
 
-Vue.use(Carousel3d)
-
 onerror = console.error = console.warn = function (e) {
 if (e.toString().indexOf("database") === -1) alert(e + "")
 }
