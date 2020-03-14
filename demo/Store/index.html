@@ -107,11 +107,11 @@
 		
 		<!-- information app -->
 		<section class="container" v-else-if="tabSelect == 'inforApp'">
-			<div class="row">
+			<!--<div class="row">
 				<div class="col-12 my-2" @click="back()">
 					&lt; Back
 				</div>
-			</div>
+			</div>-->
 			<div class="row">
 				<div class="col-4">	
 					<img class="icon border" :src="inforApp.app.icon" :key="inforApp.app.icon">
@@ -127,7 +127,7 @@
 			</div>
 			
 			<!-- Information -->
-			<div class="row mt-5" v-if="tabSelect == 'inforApp'">
+			<div class="row mt-5" v-if="!!inforApp.app.infor">
 				<div class="col-12 text-bold h6 mb-0">
 					Information
 				</div>
@@ -177,8 +177,21 @@
 				</div>
 			</transition-group>
 			
-			<div class="row download fixed-bottom">
-				{ hotTrens }
+			<div class="row py-1 download fixed-bottom bg-light">
+				<div class="col-12">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text">Version</span>
+						</div>
+						<select class="form-control custom-select" ref="select-link">
+							<option v-for="(link, ver) in JSON.parse('{' + decodeURIComponent(atob(inforApp.app.versions)) + '}')"
+:value="link"> {{ ver }} </option>
+						</select>
+						<div class="input-group-append">
+							<button class="btn btn-primary rounded-0" @click="open($refs['select-link'].value)"> Download </button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 		
@@ -707,6 +720,7 @@ var app = new Vue({
 			app: {},
 			hotTrens: [],
 			pageY: 0,
+			uid: "",
 			isOpenDescription: false
 		},
 		tabSelect: "hot"
@@ -754,10 +768,10 @@ var app = new Vue({
 		loadFire(type, fn, $count) {
 
 var e = database.ref("apps/")
-if (type !== null) {
+if (type !== null)
 	e = e.orderByChild("type")
 	.equalTo(type)
-}
+
 e.limitToLast($count).once(
 	"value", fn.bind(this)
 )
@@ -803,6 +817,12 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 		back() {
 			history.back()
 		},
+		open() {
+		    window.open.apply(window, arguments)
+		},
+		atob(e) {
+		    return window.atob(e)
+		},
 		goto(package, data) {
 			if (history.pushState)
 				stateHistory.push(my.$clone(this.$data)), history.pushState(this.$data, null, "infor.html?package=" + package);
@@ -811,8 +831,9 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 			this.switchT("inforApp")
 			this.$set(this.inforApp, "isOpenDescription", false)
 			this.$set(this.inforApp, "app", {})
+			this.$set(this.inforApp, "uid", "")
 			this.$set(this.inforApp, "hotTrens", [])
-			this.loadForce(data)
+			this.loadForce(data, package)
 		},
 		sizeof(e) {
 			if (e > 1024 * 1024 * 1024)
@@ -830,12 +851,17 @@ this.loadFire($proto == "hot" ? null : $proto, function(e) {
 		equalKey(e) {
 			return e + ""
 		},
-		loadForce($object) {
+		loadForce($object, uid) {
 			this.$set(this.inforApp, "app", $object)
 			this.loadFire(
-				this.inforApp.app.type,
+				this.inforApp
+				.app.type,
 				e => {
-					this.$set(this.inforApp, "hotTrens", e.val())
+					var obj = my.$clone(e.val())
+					if (obj[uid] !== undefined)
+						delete obj[uid]
+					this.$set(this.inforApp, "hotTrens", obj)
+					
 				},
 				8
 			)
