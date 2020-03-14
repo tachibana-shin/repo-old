@@ -23,6 +23,7 @@
 <script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-analytics.js"></script>
 
 <script>
+
 onerror = function (e, f, g, h) {
    alert([].slice.call(arguments).join(" | "))
 }
@@ -648,6 +649,7 @@ small {
 }
 </style>
 <script>
+
 function limitObject (obj, e) {
 	var time = [], _obj = {}, tmp
 	for (var key in obj)
@@ -666,6 +668,7 @@ function limitObject (obj, e) {
 	
 	return _obj
 }
+
 function reverseObject (obj) {
 	var time = [], _obj = {}, tmp
 	for (var key in obj)
