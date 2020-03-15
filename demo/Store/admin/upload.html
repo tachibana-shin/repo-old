@@ -68,7 +68,12 @@
 					<table class="table table-sm w3-7 border-0 small">
 						<tr class="border-0">
 							<td class="text-secondary border-0"> Package id </td>
-							<td class="border-0 text-bold"><input class="appea-none" v-model=package /></td>
+							<td class="border-0 text-bold">
+
+<input class="appea-none" v-model=package />
+
+<button class="btn btn-sm btn-dark" @click="getInforInDB">Get</button>
+							</td>
 						</tr>
 						<tr class="border-0">
 							<td class="text-secondary border-0"> Developer </td>
@@ -97,7 +102,7 @@
 				</div>
 				<div class="col-12 mt-3">
 					<div class="input-group">
-						<textarea class="form-control" v-model="versions" placeholder='"key": "URL",\n"key": "URL"'></textarea>
+						<textarea class="form-control" v-model="versions" placeholder='"key": "URL", \n"key": "URL"'></textarea>
 					</div>
 				</div>
 			</div>
@@ -317,8 +322,8 @@ body {
     width: 100%;
 }
 .avatar {
-    width: 3em;
-    height: 3em;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
 }
 </style>
@@ -375,17 +380,18 @@ function json (e) {
 }
 function toURL(file) {
    return new my.promise(e => {
-	 my(new FileReader)
-	 .load(function () {
-		 e.done(this.result)
-	 })[0]
-	  .readAsDataURL(file)
+	 if (typeof file === "string")
+	 	e.done(file)
+	 else my(new FileReader)
+	 	.load(function () {
+		 	e.done(this.result)
+	 	})[0].readAsDataURL(file)
    })
 }
 Vue.component("media", {
 	template: "\
 		<div class='ml-3'>\
-			<img class='img-fluid screenshoot border' v-if='file && file.type.match(/image/)' :src='base' @click=\"$emit('change-file')\"/>\
+			<img class='img-fluid screenshoot border' v-if='file && (typeof file === \"string\" || file.type.match(/image/))' :src='base' @click=\"$emit('change-file')\"/>\
 			<span class='remove-file' @click.stop=\"$emit('remove-file')\">\
 				&times;\
 			</span>\
@@ -490,7 +496,7 @@ var app = new Vue({
 		    firebase.auth().signOut()
 		},
 		is() {
-			return (!(this.name + "").match(/\S/) || !(this.package + "").match(/\S/) || typeof this.icon != "object" || !(this.size + "").match(/\S/))
+			return (!(this.name + "").match(/\S/) || !(this.package + "").match(/\S/) || typeof this.icon === null || !(this.size + "").match(/\S/))
 		},
 		toURL(file) {
 			
@@ -543,6 +549,25 @@ var app = new Vue({
 		    	  return false
 		    }
 		},
+		getInforInDB() {
+		    if (!this.package.match(/\S/))
+				return alert("Id?")
+		    database
+		    .ref("apps/" + btoa(this.package))
+		    .once("value", e => {
+		        e = e.val()
+		        if (e === null || typeof e !== "object")
+					return alert("Không có dữ liệu của gói này")
+		        this.name = e.name
+		        this.icon = e.icon
+		        this.infor = e.infor
+		        this.size = e.size
+		        this.versions = decodeURIComponent(atob(e.versions))
+				 this.type = e.type
+				 this.screenshoot = e.screenshoot
+				 this.description.value(e.description)
+			})
+		},
 		post() {
 			if (this.is())
 				return 
@@ -555,6 +580,13 @@ new my.promise(rejack => {
 	// upload icon app!
 	
 	_.nameProgress = "icon"
+  if (typeof _.icon === "string") {
+	ICON = _.icon
+	_.status = "no change! done"
+	rejack.done()
+  }
+  else {
+	
 	var upTask = storage.ref("icons/" + _.package + ".png")
 	.put(_.icon, { contentType: _.icon.type })
 	
@@ -582,6 +614,7 @@ new my.promise(rejack => {
 			})
 		}
 	)
+  }
 })
 .then(rejack => {
 
@@ -590,6 +623,13 @@ new my.promise(rejack => {
 	upload(_.screenshoot[0], 0)
 	function upload (val, key) {
 		_.nameProgress = "screen " + key
+	  if (typeof val === "string") {
+	  	SCREENSHOOT[key++] = val
+	  	_.status = "no change! done"
+	  	if (key >= _.screenshoot.length) rejack.done();
+		else upload(_.screenshoot[key], key)
+	  }
+	  else {
 		var upTask = storage.ref("screenshoot/" + _.package + "/" + key + ".jpg")
 		.put(val, { contentType: val.type })
 
@@ -614,10 +654,11 @@ new my.promise(rejack => {
 				.then(function(url) {
 					SCREENSHOOT[key++] = url
 					if (key >= _.screenshoot.length) rejack.done();
-				 else upload(_.screenshoot[key], key)
+				 	else upload(_.screenshoot[key], key)
 				})
 			}
 		)
+	  }
 	}
 })
 .then(rejack => {
@@ -633,7 +674,7 @@ try {
 	   versions: btoa(encodeURIComponent(_.versions)),
 	   infor: _.infor,
 	   type: _.type,
-      time: Date.now(),
+       time: Date.now(),
       	description: _.description.value()
 	})
 	.then(function () {
@@ -667,6 +708,7 @@ firebase.auth().onAuthStateChanged(function (user) {
   	Vue.set(app.auth, "login", false)
   }
 })
+
 </script>
 	</body>
 </html>
