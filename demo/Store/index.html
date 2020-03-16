@@ -903,15 +903,16 @@ my.each(data, function (e, f) {
 
 var dataSearched = []
 
-ls.some(function (key) {
+ls.forEach(function (key) {
 	dataSearched = dataSearched.concat(_data[key].sort(function (a, b) { return b.antutu - a.antutu }))
-
 })
+
 var obj = {}
 
 my.each(dataSearched, function (f, e) {
-	obj[e] = data[e.key]
+	obj[e.key] = data[e.key]
 })
+
 Vue.set(this.search, "result", obj)
 
 			})
