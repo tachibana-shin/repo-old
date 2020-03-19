@@ -93,7 +93,7 @@ v-model="login.password"
 			<!-- no member -->
 			<div class="row mt-5">
 				<div class="col-12 text-center text-secondary">
-					Not a member? <a href="sign-up.html" @click="tab = 'signUp'" class="text-inherit">Sign up now</a>
+					Not a member? <a href="sign-up.html" @click.prevent="tab = 'signUp'" class="text-inherit">Sign up now</a>
 				</div>
 			</div>
 		</section>
@@ -123,7 +123,7 @@ v-model="login.password"
 	<input type="radio" class="custom-control-input" name="radio-stacked" id="GiaoVien" v-model="updateInfor.chucvu" required value="1">
 	<label class="custom-control-label" for="GiaoVien">Giáo viên</label>
 </div>
-<small class="text-secondary"> Bạn là ngưởi ra để hay người làm bài?</small>
+<small class="text-secondary"> Bạn là người ra để hay người làm bài?</small>
 
 					</div>
 				</div>
