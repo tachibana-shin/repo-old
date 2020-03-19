@@ -37,7 +37,7 @@
 	</head>
 	<body>
 		<!-- this is the list monHoc -->
-	<div id = "app">
+	<div id = "app" hidden>
 		<div class="container" v-if="tab == 'home'">
 			<div class="row">
 				<div class="col-12 py-3">
@@ -209,8 +209,11 @@ var fb = {
     var finish = true
     fb.auth
     .onAuthStateChanged(user => {
-        if (finish && user != null)
-        	factory(global), finish = false
+        if (finish && user != null){
+        	fb.user = user
+        	factory(global)
+        	finish = false
+        }
         else location.href = "./login.html"
 alert(JSON.stringify(user))
     })
@@ -442,6 +445,7 @@ new Vue({
 	},
 	mounted() {
 		this.openHome()
+		my(this.$root.$el).unAttr("hidden")
 	}
 })
 
