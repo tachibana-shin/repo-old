@@ -36,7 +36,7 @@
 	</head>
 	<body>
 
-<div id = "app">
+<div id = "app" hidden>
 	<div v-if="tab == 'login'">
 	
 		<!-- login -->
@@ -472,6 +472,9 @@ var app = new Vue({
 			})
 			.end()
 		}
+	},
+	mounted() {
+		my(this.$root.$el).unAttr("hidden")
 	}
 })
 fb.auth.onAuthStateChanged(user => {
