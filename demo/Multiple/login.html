@@ -454,6 +454,7 @@ $set(this.login, "isMemberFB", true)
 				})
 			})
 			.then(rej => {
+alert(this.updateInfor.chucvu)
 				fb.database
 				.ref("userAll/" + fb.user.uid)
 				.set({
@@ -461,7 +462,7 @@ $set(this.login, "isMemberFB", true)
 					email: fb.user.email,
 					photoURL: fb.user.photoURL,
 					"classroom-created": {},
-					isTeacher: !!this.updateInfor.chucvu
+					isTeacher: Boolean(this.updateInfor.chucvu)
 				})
 				.then(e => {
 					alert("Thanh cong")
