@@ -1,0 +1,30 @@
+<html>
+<head>
+    <!--polyfills for IE11-->
+    <script crossorigin src="https://unpkg.com/core-js-bundle@3.3.2/minified.js"></script>
+    <!--dependencies-->
+    <script crossorigin src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
+    <!--library-->
+    <script src="https://zvolodymyr.github.io/docxjs/dist/docx-preview.js"></script>
+</head>
+<body>
+	<input id="files" type="file" id="files" accept=".docx"/>    <button id="loadButton">load</button>
+    <div id="doc">
+    </div>
+
+    <script>
+
+        document.getElementById("loadButton").addEventListener("click", loadDocx);
+
+        function loadDocx() {
+            var file = document.getElementById("files").files[0];
+            var container = document.getElementById("doc");
+            
+            docx.renderAsync(file, container, null, { 
+                debug: true,
+                experimental: true 
+            }).then(function(x){ console.log(x); });
+        }
+    </script>
+</body>
+</html>
