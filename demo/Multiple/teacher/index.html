@@ -64,6 +64,10 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="col-12 text-secondary" v-if="home.noClassRoom">
+Bạn chưa tạo lớp học nào
+				</div>
 			</div>
 		</div>
 		
@@ -290,7 +294,8 @@ new Vue({
 	el: "div#app",
 	data: {
 		home: {
-			nameClassRoom: {}
+			nameClassRoom: {},
+			noClassRoom: false
 		},
 		inClass: {
 			baiTap: {},
@@ -460,7 +465,7 @@ new Vue({
 				})
 			})
 			.then((rej, res, args) => {
-				Object
+				args[0] != null ?Object
 				.values(args[0])
 				.forEach(e => {
 					fb.database
@@ -468,7 +473,7 @@ new Vue({
 					.once("value", f => {
 						this.$set(this.home.nameClassRoom, e, f.val())
 					})
-				})
+				}) : this.home.noClassRoom = true
 			})
 			.catch(e => console.log(e + ""))
 			.then(e => {
