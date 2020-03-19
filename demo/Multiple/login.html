@@ -426,15 +426,11 @@ var app = new Vue({
 		gotoPage() {
 			fb.database.ref("userAll/" + fb.user.uid + "/isTeacher")
 			.once("value", e => {
-				switch ( e.val() ) {
-					case true:
-						location.href = "./teacher/index.html"
-						break
-					case false:
-						location.href = "./index.html"
-						break;
-					default:
-						location.reload()
+				if (e.val() === true)
+					location.href = "./teacher/index.html"
+				else if (e.val() === false)
+					location.href = "./index.html"
+				else location.reload()
 				}
 			})
 		},
@@ -454,7 +450,6 @@ $set(this.login, "isMemberFB", true)
 				})
 			})
 			.then(rej => {
-alert(this.updateInfor.chucvu)
 				fb.database
 				.ref("userAll/" + fb.user.uid)
 				.set({
