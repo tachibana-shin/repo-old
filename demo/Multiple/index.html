@@ -215,7 +215,6 @@ var fb = {
         	finish = false
         }
         else location.href = "./login.html"
-alert(JSON.stringify(user))
     })
 
 }(this, function () {
@@ -280,6 +279,9 @@ new Vue({
 						rej.done()
 					else alert("Bạn đã vào lớp SWAP_CLASS_EXISTS")
 				})
+				.catch(e => {
+					alert(e + "")
+				})
 			})
 			.then(rej => {
 				fb.database
@@ -287,6 +289,9 @@ new Vue({
 				.push(this.addClassRoom.nameClass)
 				.then(e => {
 					alert("Vào lớp thành công FB_LOGIN_DATABASE")
+				})
+				.catch(e => {
+					alert(e + "")
 				})
 			})
 			.end()
