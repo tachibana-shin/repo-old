@@ -426,6 +426,7 @@ var app = new Vue({
 		gotoPage() {
 			fb.database.ref("userAll/" + fb.user.uid + "/isTeacher")
 			.once("value", e => {
+alert(e.val())
 				if (e.val() === true)
 					location.href = "./teacher/index.html"
 				else if (e.val() === false)
