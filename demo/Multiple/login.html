@@ -304,7 +304,7 @@ var fb = {
 	database: firebase.database(),
 	user: firebase.auth().currentUser
 }
-error = console.error = console.warn = e => alert(e + "")
+onerror = console.error = console.warn = e => alert(e + "")
 !function (global, factory) {
     var finish = true
     fb.auth
@@ -431,7 +431,6 @@ var app = new Vue({
 				else if (e.val() === false)
 					location.href = "./index.html"
 				else location.reload()
-				}
 			})
 		},
 		saveUpdateInfor() {
