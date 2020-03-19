@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<script src=/my.js></script>
+		<script src=/lib/libmy.js></script>
+		<script src=/lib/vue.min.js></script>
+		<link rel=stylesheet href=/lb/awesome/css/all.css></link>
+		<link rel=stylesheet href=/lib/bootstrap.min.css></link>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+	apiKey: "AIzaSyApMopr5RvoUu_bA8JyjdDa7OnUQiIscn0",
+	authDomain: "multiple-choice-a9.firebaseapp.com",
+	databaseURL: "https://multiple-choice-a9.firebaseio.com",
+	projectId: "multiple-choice-a9",
+	storageBucket: "multiple-choice-a9.appspot.com",
+	messagingSenderId: "713586640321",
+	appId: "1:713586640321:web:d61a8f3abb31a23fdcdb40",
+	measurementId: "G-TE6GW1KBR1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+	</head>
+	<body>
+
+<div id = "app">
+	<div v-if="tab == 'login'">
+	
+		<!-- login -->
+		<section class="container login-popup"  v-if="login.user == null">
+			<div class="row mt-5">
+				<div class="col-12">
+					<h4 class="text-center">Login to continue</h4>
+				</div>
+			</div>
+			
+			<div class="row mt-3">
+				<div class="col-12">
+					<div class="input-group input-group-lg">
+						<div class="input-group-append">
+							<span class="input-group-text border-0 bg-tr"><i class="far fa-user"></i></span>
+						</div>
+						<input class="form-control shadow-none border-0" required
+v-model="login.email" 
+@input="$set(login, 'statusLogin', undefined)" />
+						<label class="in-valid">Email or username</label>
+					</div>
+				</div>
+				<div class="col-12 mt-3">
+					<div class="input-group input-group-lg">
+						<div class="input-group-append">
+							<span class="input-group-text border-0 bg-tr"><i class="far fa-lock"></i></span>
+						</div>
+						<input class="form-control shadow-none border-0" required type="password"
+v-model="login.password"
+@input="$set(login, 'statusLogin', undefined)" />
+						<label class="in-valid">Password</label>
+					</div>
+					<small class="float-right text-secondary" @click="tab = 'forgotPass'">Forgot Password?</small>
+				</div>
+				<div class="col-12 mt-3">
+					<span class="text-danger small yb-1" v-if="login.statusLogin != undefined"> {{ login.statusLogin }} </span>
+					<button class="btn btn-block login text-center text-light" @click="signInEmail"><i class="fas fa-sign-in-alt mr-3"></i>Login</button>
+				</div>
+			</div>
+			<div class="row my-3">
+				<div class="col-12 text-center text-secondary">
+					or login using
+				</div>
+			</div>
+			
+			<!-- social -->
+			<div class="row">
+				<div class="col-12 text-center">
+					<button class="btn btn-sm bg-facebook social text-light rounded-circle" @click="signInFacebook"><i class="fab fa-facebook-f"></i></button>
+					<button class="btn btn-sm bg-google text-light rounded-circle social" @click="signInGoogle"><i class="fab fa-google-plus-g"></i></button>
+				</div>
+			</div>
+			
+			<!-- no member -->
+			<div class="row mt-5">
+				<div class="col-12 text-center text-secondary">
+					Not a member? <a href="sign-up.html" @click="tab = 'signUp'" class="text-inherit">Sign up now</a>
+				</div>
+			</div>
+		</section>
+		
+		<section class="container" v-else-if="login.isMemberFB === false">
+			<div class="row">
+				<div class="col-12">
+					<h4 class="text-center">Welcome {{ login.user.displayName || '' }} to Multiple Choice A9</h4>
+				</div>
+				
+				<div class="col-12">
+					<div class="name" v-if="login.user.displayName == null">
+						<label> Tên của bạn </label>
+						<div class="input-group">
+							<input class="form-control" placeholder="e.x: Mr.Bin" v-model="updateInfor.name" />
+						</div>
+						<small class="text-secondary"> Tên của bạn sẽ hiển thị trên bài tập như là tác giả.</small>
+					</div>
+					<div class="chucvu mt-3">
+						<label> Chức vụ </label>
+
+<div class="custom-control custom-radio">
+	<input type="radio" class="custom-control-input" name="radio-stacked" required id="HocSinh" v-model="updateInfor.chucvu" value="0">
+	<label class="custom-control-label" for="HocSinh">Học sinh</label>
+</div>
+<div class="custom-control custom-radio">
+	<input type="radio" class="custom-control-input" name="radio-stacked" id="GiaoVien" v-model="updateInfor.chucvu" required value="1">
+	<label class="custom-control-label" for="GiaoVien">Giáo viên</label>
+</div>
+<small class="text-secondary"> Bạn là ngưởi ra để hay người làm bài?</small>
+
+					</div>
+				</div>
+				<div class="col-12 mt-3">
+					<button class="btn btn-primary" @click="saveUpdateInfor">
+						Cập nhật
+					</button>
+				</div>
+			</div>
+		</section>
+		<!-- logout -->
+		<section class="container" v-else>
+			<div class="row mt-5">
+				<div class="col-12">
+					<h4 class="text-center">Your logged!</h4>
+				</div>
+			</div>
+			<div class="row mt-3 text-center">
+				<div class="col-12">
+					<img class="rounded-circle img-fluid img-thumbnail" style="width: 120px; height: 120px" :src="login.user.photoURL" />
+				</div>
+				<div class="col-12 mt-2">
+					<b> {{ login.user.displayName }} </b> 
+				</div>
+			</div>
+			<div class="row mt-3 text-center">
+				<div class="col-12">
+					<button class="btn btn-primary" @click="signOut">Sign Out</button>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<div v-else-if="tab == 'forgotPass'">
+		<section class="container">
+			<div class="row">
+				<div class="col-12 p-3">
+					<b @click="tab = 'login'">&lt; Login</b>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					Chúng tôi sẽ giúp bạn lấy lại tài khoản của mình. Nhập email mà bạn đã dùng để đăng ký tài khoản. Sau khi nhấn nút gửi, đi tới hòm thư của bạn vả đặt lại mật khẩu ngay!<br>
+					<label class="mt-3"> Email </label>
+					<div class="input-group">
+						<input class="form-control" placeholder="e.x: admin@google.com" v-model="forgotPass.email" />
+					</div>
+					<button class="btn btn-primary float-right mt-2" @click="sendEmailRsPas"> Gửi </button>
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<div v-else-if="tab == 'signUp'">
+		<section class="container">
+			<div class="row">
+				<div class="col-12 p-3">
+					<b @click="tab = 'login'">&lt; Login</b>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12">
+					<label> Tên của bạn </label>
+					<div class="input-group">
+						<input placeholder="e.x: Mr.Bin" class="form-control" v-model="signUp.username" />
+					</div>
+				</div>
+				
+				<div class="col-12 mt-3">
+					<label> Email </label>
+					<div class="input-group">
+						<input placeholder="e.x: admin@google.com" class="form-control" v-model="signUp.email" />
+					</div>
+				</div>
+				
+				<div class="col-12">
+					<label> Mật khẩu </label>
+					<div class="input-group">
+						<input placeholder="Password" type="password" class="form-control" v-model="signUp.pass" />
+					</div>
+				</div>
+				
+				<div class="col-12">
+					<label> Nhập lại mật khẩu </label>
+					<div class="input-group">
+						<input placeholder="Password" type="password" class="form-control" v-model="signUp.repass" />
+					</div>
+				</div>
+				
+				<div class="col-12 mt-3">
+					<div class="text-danger" v-if="!!signUp.err">
+						{{ signUp.err }}
+					</div>
+					<div class="text-danger" v-if="!!signUp.succ">
+						{{ signUp.succ }}
+					</div>
+					<button class="btn btn-primary" @click="plsSignUp">Đăng ký</button>
+<br>
+					<small class="mt-3 text-secondary">Sau khi nhấn đăng ký. Hệ thống sẽ tự đăng nhập. Bạn phải reload page!</small>
+				</div>
+			</div>
+			
+			
+		</section>
+	</div>
+</div>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.bg-tr {
+	background-color: transparent !important;
+}
+.shadow-none {
+	box-shadow: none !important;
+}
+.form-control:focus + .in-valid,
+.form-control:valid + .in-valid {
+	top: 0;
+	background-color: #fff;
+	padding: 0 0.5em 0 0.5em;
+	color: #00aaff;
+}
+
+.in-valid {
+	position: absolute;
+	top: 50%;
+	left: 1em;
+	color: rgba(0, 0, 0, .5);
+	left: 4.5em;
+	transform: translateY(-50%);
+	z-index: 3;
+	transition: top 0.3s linear, transform 0.3s linear;
+}
+
+
+.fa-middle::before {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+}
+.form-control {
+	font-size: 1rem !important;
+}
+
+.social {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+.login {
+	background: #a64bf4 !important;
+	border-radius: 20px;
+}
+.bg-facebook {
+	background-color: #3b5998 !important;
+}
+.bg-google {
+	background-color: #dd4b39 !important;
+}
+</style>
+<script>
+var fb = {
+	auth: firebase.auth(),
+	database: firebase.database(),
+	user: firebase.auth().currentUser
+}
+console.error = console.warn = e => console.log(e + "")
+var $set = Vue.set
+var app = new Vue({
+	el: "#app",
+	data: {
+		login: {
+			email: "",
+			password: "",
+			statusLogin: undefined,
+			user: fb.auth.currentUser,
+			isMemberFB: undefined
+		},
+		updateInfor: {
+			name: "",
+			chucvu: 0
+		},
+		forgotPass: {
+			email: ""
+		},
+		signUp: {
+		    username: "",
+		    email: "",
+		    pass: "",
+		    repass: "",
+		    err: "",
+		    succ: ""
+		},
+		tab: 'login'
+	},
+	methods: {
+		plsSignUp() {
+		    if (this.signUp.pass !== this.signUp.repass)
+				return this.$set(this.signUp, "err", "Mật khẩu không khớp")
+			fb.auth.createUserWithEmailAndPassword(this.signUp.email, this.signUp.pass)
+			.catch(e => {
+			    this.err = e.message
+			})
+		},
+		signInEmail() {
+			fb.auth.signInWithEmailAndPassword(this.login.email, this.login.password)
+			.catch(e => {
+								$set(this.login, "statusLogin", "Tên đăng nhập hoặc mật khẩu không đúng. Bạn quên mật khẩu?")
+			})
+		},
+		signInFacebook() {
+			var provider = new firebase.auth.FacebookAuthProvider()
+	
+	//provider.addScope('user_birthday')
+	
+			provider
+			.setCustomParameters({
+				'display': 'popup'
+			})
+	
+			fb.auth
+			.signInWithRedirect(provider);
+	
+			fb.auth
+			.signInWithPopup(provider)
+			.then(function (result) {
+				var token = result
+				.credential.accessToken
+		
+	  			var user = result.user
+			}).catch(function(error){
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				var email = error.email;
+				var credential = error.credential
+			})
+			fb.auth
+			.getRedirectResult()
+			.then(function (result) {
+
+				if (result.credential) {
+				var token = result
+					t.credential
+					.accessToken
+
+				}
+				var user = result.user;
+			}).catch(function (error) {
+				var errorCode = error.code;
+				var errorMessage = error.message;
+				var email = error.email;
+  // The firebase.auth.AuthCredential type that was used.
+				var credential = error.credential
+			})
+		},
+		signInGoogle() {
+			fb.auth
+			.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+		},
+		signUpNow() {
+			
+		},
+		signOut() {
+			fb.auth.signOut()
+		},
+		sendEmailRsPas() {
+			fb.auth
+			.sendPasswordResetEmail(this.forgotPass.email)
+			.then(e => {
+				alert("Đã gửi")
+			})
+			.catch(e => {
+				alert(e + "")
+			})
+		},
+		saveUpdateInfor() {
+			new my.promise(rej => {
+				firebase.auth()
+				.currentUser
+				.updateProfile({
+					displayName: this.updateInfor.name
+				})
+				.then(d => {
+					rej.done()
+				})
+				.catch(d => {
+			   		 alert(d + "")
+				})
+			})
+			.then(rej => {
+				fb.database
+				.ref("userAll/" + fb.user.uid)
+				.set({
+					name: this.updateInfor.name,
+					email: fb.user.email,
+					photoURL: fb.user.photoURL,
+					"classroom-created": {},
+					isTeacher: !!this.updateInfor.chucvu
+				})
+				.then(e => {
+					alert("Thanh cong")
+					$set(this.login, "isMemberFb", true)
+				})
+				.catch(e => {
+					alert(e + "")
+				})
+			})
+			.end()
+		}
+	}
+})
+fb.auth.onAuthStateChanged(user => {
+	Vue.set(app.login, "user", fb.user = user)
+	user != null && fb.database.ref("userAll/" + user.uid)
+	.once("value", e => {
+		Vue.set(app.login, "isMemberFB", e.val() != null)
+	})
+})
+
+</script>
+	</body>
+</html>
