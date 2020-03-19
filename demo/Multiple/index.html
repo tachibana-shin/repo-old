@@ -208,11 +208,11 @@ var fb = {
 !function (global, factory) {
     var finish = true
     fb.auth
-    .onAuthStateChanged(e => {
-        if (finish && e !== null)
-        	factory(global)
+    .onAuthStateChanged(user => {
+        if (finish && user != null)
+        	factory(global), finish = false
         else location.href = "./login.html"
-        finish = false
+alert(JSON.stringify(user))
     })
 
 }(this, function () {
