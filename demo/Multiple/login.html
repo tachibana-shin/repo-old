@@ -439,6 +439,7 @@ var app = new Vue({
 			})
 		},
 		saveUpdateInfor() {
+$set(this.login, "isMemberFB", true)
 			new my.promise(rej => {
 				firebase.auth()
 				.currentUser
@@ -464,7 +465,7 @@ var app = new Vue({
 				})
 				.then(e => {
 					alert("Thanh cong")
-					$set(this.login, "isMemberFb", true)
+					$set(this.login, "isMemberFB", true)
 				})
 				.catch(e => {
 					alert(e + "")
