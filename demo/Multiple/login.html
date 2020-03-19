@@ -424,7 +424,7 @@ var app = new Vue({
 			})
 		},
 		gotoPage() {
-			fb.database("userAll/" + fb.user.uid + "/isTeacher")
+			fb.database.ref("userAll/" + fb.user.uid + "/isTeacher")
 			.once("value", e => {
 				switch ( e.val() ) {
 					case true:
