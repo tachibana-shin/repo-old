@@ -386,7 +386,7 @@ new Vue({
 			.then(rej => {
 				fb.database
 				.ref("classroom-name/" + hash)
-				 set().then(e => {rej.done()})
+				.set().then(e => {rej.done()})
 			})
 			.catch(e => {
 				console.log(e + "")
