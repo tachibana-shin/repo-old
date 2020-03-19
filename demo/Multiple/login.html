@@ -154,6 +154,12 @@ v-model="login.password"
 					<button class="btn btn-primary" @click="signOut">Sign Out</button>
 				</div>
 			</div>
+
+			<div class="row mt-3 text-center">
+				<div class="col-12">
+					<a class="text-primary" @click="gotoPage">Đi tới Multiple Choice A9 &rt;</a>
+				</div>
+			</div>
 		</section>
 	</div>
 	
@@ -405,6 +411,21 @@ var app = new Vue({
 			})
 			.catch(e => {
 				alert(e + "")
+			})
+		},
+		gotoPage() {
+			fb.database("userAll/" + fb.user.uid + "/isTeacher")
+			.once("value", e => {
+				switch ( e.val() ) {
+					case true:
+						location.href = "./teacher/index.html"
+						break
+					case false:
+						location.href = "./index.html"
+						break;
+					default:
+						location.reload()
+				}
 			})
 		},
 		saveUpdateInfor() {
