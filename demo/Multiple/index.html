@@ -184,6 +184,7 @@ body {
 //xung băm md5
 
 //logined
+onerror = console.warn = console.error = e => alert(e + "")
 
 var fb = {
 	database: firebase.database(),
@@ -204,8 +205,6 @@ var fb = {
 	}
 }
 
-onerror = console.warn = console.error = e => console.log(e + "")
-
 !function (global, factory) {
     var finish = true
     fb.auth
@@ -216,7 +215,9 @@ onerror = console.warn = console.error = e => console.log(e + "")
         finish = false
     })
 
-}(this, new Vue({
+}(this, function () {
+
+new Vue({
 	el: "div#app",
 	data: {
 		home: {
@@ -444,7 +445,7 @@ onerror = console.warn = console.error = e => console.log(e + "")
 	}
 })
 
-)
+})
 
 /*
 	$root: {
