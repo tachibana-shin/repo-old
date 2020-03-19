@@ -279,7 +279,7 @@ var fb = {
 	}
 }
 
-if (!fb.checkSignIn)
+if (!fb.checkSignIn())
 	location.href = "../login.html";
 
 firebase.auth().onAuthStateChanged(e => fb.user = e)
