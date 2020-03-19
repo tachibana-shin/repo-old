@@ -206,7 +206,7 @@ var fb = {
 //firebase.auth().onAuthStateChanged(e => fb.user = e)
 
 
-console.warn = console.error = e => console.log(e + "")
+onerror = console.warn = console.error = e => console.log(e + "")
 
 new Vue({
 	el: "div#app",
