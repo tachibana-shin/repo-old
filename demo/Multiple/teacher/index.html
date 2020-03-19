@@ -42,7 +42,7 @@
 	</head>
 	<body>
 		<!-- this is the list monHoc -->
-	<div id = "app">
+	<div id = "app" hidden>
 		<div class="container" v-if="tab == 'home'">
 			<div class="row">
 				<div class="col-12 py-3">
@@ -259,6 +259,7 @@ body {
 //xung băm md5
 
 //logined
+//logined
 error = console.log = e => (e + "").match(/^(DOCX)/) || alert(e + "")
 var fb = {
 	database: firebase.database(),
@@ -267,24 +268,23 @@ var fb = {
 	user: firebase.auth().currentUser,
 	checkSignIn: function () {
 		return !!this.auth.currentUser
-	},
-	signOut() {
-		this.auth.signOut()
-	},
-	signIn(email, pass) {
-		return this.auth.signInWithEmailAndPassword(email, pass)
-	},
-	signUp(email, pass) {
-		return this.auth.createUserWithEmailAndPassword(email, pass)
 	}
 }
 
-if (!fb.checkSignIn())
-	location.href = "../login.html";
+onerror = console.warn = console.error = e => alert(e + "")
 
-firebase.auth().onAuthStateChanged(e => fb.user = e)
-
-console.warn = console.error = e => console.log(e + "")
+!function (global, factory) {
+	var finish = true
+    fb.auth
+    .onAuthStateChanged(user => {
+        if (finish && user != null){
+        	fb.user = user
+        	factory(global)
+        	finish = false
+        }
+        else location.href = "../login.html"
+    })
+}(this, function () {
 
 new Vue({
 	el: "div#app",
@@ -483,9 +483,11 @@ new Vue({
 	},
 	mounted() {
 		this.openHome()
+		my(this.$root.$el).unAttr("hidden")
 	}
 })
 
+})
 /*
 	$root: {
 		"data-classroom": {
