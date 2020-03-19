@@ -325,9 +325,7 @@ var fb = {
 	database: firebase.database(),
 	storage: firebase.storage(),
 	auth: firebase.auth(),
-	user: {
-		uid: "929190383"
-	},//firebase.auth().currentUser,
+	user:firebase.auth().currentUser,
 	checkSignIn: function () {
 		return !!this.auth.currentUser
 	}
@@ -335,7 +333,7 @@ var fb = {
 
 //onerror = console.warn = console.error = e => alert(e + "")
 
-!function (global, factory) {/*
+!function (global, factory) {
 	var finish = true
 	fb.auth
 	.onAuthStateChanged(user => {
@@ -345,8 +343,7 @@ var fb = {
 			finish = false
 		}
 		else location.href = "../login.html"
-	})*/
-	factory()
+	})
 }(this, function () {
 
 new Vue({
