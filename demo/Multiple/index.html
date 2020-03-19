@@ -257,7 +257,7 @@ body {
 //xung băm md5
 
 //logined
-error = console.log = e => alert(e + "")
+error = console.log = e => (e + "").match(/^(DOCX)/) && alert(e + "")
 var fb = {
 	database: firebase.database(),
 	storage: firebase.storage(),
