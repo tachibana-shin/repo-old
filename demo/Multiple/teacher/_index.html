@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+		<script src=/my.js></script>
+		<script src=/lib/libmy.js></script>
+		<script src=/lib/md5.js></script>
+		<script src=/lib/vue.min.js></script>
+		<link rel=stylesheet href=/lb/awesome/css/all.css></link>
+		<link rel=stylesheet href=/lib/bootstrap.min.css></link>
+    <script src="https://unpkg.com/core-js-bundle@3.3.2/minified.js"></script>
+    <!--dependencies-->
+    <script src="https://unpkg.com/jszip/dist/jszip.min.js"></script>
+    <!--library-->
+    <script src="https://zvolodymyr.github.io/docxjs/dist/docx-preview.js"></script>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset=utf-8 />
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-auth.js"></script>
+<!-- TODO: Add SDKs for Firebase products that you want to use
+	 https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+	apiKey: "AIzaSyApMopr5RvoUu_bA8JyjdDa7OnUQiIscn0",
+	authDomain: "multiple-choice-a9.firebaseapp.com",
+	databaseURL: "https://multiple-choice-a9.firebaseio.com",
+	projectId: "multiple-choice-a9",
+	storageBucket: "multiple-choice-a9.appspot.com",
+	messagingSenderId: "713586640321",
+	appId: "1:713586640321:web:d61a8f3abb31a23fdcdb40",
+	measurementId: "G-TE6GW1KBR1"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+	</head>
+	<body>
+		<!-- this is the list monHoc -->
+	<div id = "app" hidden>
+		<div class="container" v-if="tab == 'home'">
+			<div class="row">
+				<div class="col-12 py-3">
+					<span class="text-bold">Lớp học</span>
+					<span class="float-right h5" @click=" tab = 'addClassRoom' ">+</span>
+				</div>
+			</div>
+			
+			<!-- list -->
+			<div class="row">
+				<div class="col-12">
+					<div class="classroom" v-for="(name, code) in home.nameClassRoom" :md5="code" @click="openClass(code)">
+						<div>
+							<img class="icon-40px" src="/lb/h3lix.png" />
+						</div>
+						<div class="d-inline">
+							{{ name }}<br>
+							<small class="text-secondary"> Mã lớp {{ code }} </small> 
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 text-secondary" v-if="home.noClassRoom">
+Bạn chưa tạo lớp học nào
+				</div>
+			</div>
+		</div>
+		
+		<!-- bài tâp -->
+		<section class="container" v-if="tab == 'inClass'">
+			<div class="row">
+				<div class="col-12 py-3">
+					<span class="text-bold" @click="openHome">&lt; Bài tập</span>
+					<span class="float-right h5" @click=" tab = 'addBaiTap' ">+</span>
+				</div>
+			</div>
+			
+			<!-- list -->
+			<div class="row">
+				<div class="col-12">
+					<div class="classroom" v-for="(name, code) in inClass.baiTap" :md5="code" @click="openBaiTap(code)">
+						<div>
+							<img class="icon-40px" src="/lb/h3lix.png" />
+						</div>
+						<div class="d-inline">
+							{{ name }}<br>
+							<small class="text-secondary"> Xung băm {{ code }} </small> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- in baitap -->
+		<section class="container" v-if="tab == 'inBaiTap'">
+			<div class="row">
+				<div class="col-12 py-3">
+					<span class="text-bold" @click="openClass(inClass.md5)">&lt; Câu hỏi</span>
+				</div>
+			</div>
+			
+			<!-- list -->
+			<div class="row">
+				<div class="col-12">
+					<div class="preview border" v-html="inBaiTap.question"></div>
+				</div>
+				<div class="col-12">
+					<div class="input-group">
+						<input class="form-control" v-model="inBaiTap.length" />
+					</div>
+					
+	{{ inBaiTap.answerTrue }}
+
+					<div class="answer">
+						<div class="border btn w-2 h-2 m-0" v-for="i in inBaiTap.length - 0" :class="{ 'btn-primary': inBaiTap.answerTrue[i - 1] !== undefined, 'font-italic': i - 1 == inBaiTap.select }" @click="inBaiTap.select = i - 1">{{ i + (inBaiTap.answerTrue[i - 1] !== undefined ? ":" + inBaiTap.answerTrue[i - 1] : "") }}</div>
+					</div>
+					
+					<div class="control-panel fixed-bottom text-center bg-white">
+						<div>
+							<button class="btn" @click="prevSelect(inBaiTap)">Prev</button>
+							Câu {{ inBaiTap.select + 1 }}
+							<button class="btn" @click="nextSelect(inBaiTap)">Next</button>
+						</div>
+						
+						<div class="row">
+							<div class="col-3 text-center" v-for="i in 'ABCD'.split('')">
+		<button class="btn btn-sm" :class="{ 'btn-primary': inBaiTap.answerTrue[ inBaiTap.select ] == i }" @click="$set(inBaiTap.answerTrue, inBaiTap.select, i) ">
+			{{ i }}
+		</button>
+							</div>
+						</div>
+						
+						<div class="mt-3">
+							<button class="btn btn-sm btn-block btn-primary" @click="saveAnswerTrue">Lưu</button>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</section>
+		
+		<!-- add classroom -->
+		<section class="container" v-if='tab == "addClassRoom"'>
+			<div class="row">
+				<div class="col-12 py-3">
+					<span class="text-bold" @click="openHome">&lt; Tạo lớp</span>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-12">
+					<div class="input-group">
+						<input class="form-control" v-model="addClassRoom.nameNewClass"/>
+						<div class="input-group-append">
+							<button class="btn btn-dark" @click="createClassRoom">Tạo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- add baitpa -->
+		<section class="container" v-if=" tab == 'addBaiTap' ">
+			<div class="row">
+				<div class="col-12 py-3">
+					<span class="text-bold" @click="openClass(inClass.md5)">&lt; Tạo bài tập</span>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-12">
+					<label> Tên bài </label>
+					<div class="input-group input-group-sm">
+						<input class="form-control" v-model="addBaiTap.name" />
+					</div>
+					
+					<label class="mt-3"> Chọn đề bài (.pdf, .docx, .oct) </label>
+					<div class="input-group input-group-sm">
+						<div class="custom-file">
+							<input class="custom-file-input" type="file" ref="fileDeBai" @change="$set(addBaiTap, 'question', $event.target.files[0])" accept=".docx" />
+							<label class="custom-file-label">Chọn tệp</label>
+						</div>
+					</div>
+					
+					<div ref="preview" class="preview border"></div>
+
+					<label class="mt-3"> Thời gian làm</label>
+<div class="input-group input-group-sm">
+						<input class="form-control" type="time" v-model="addBaiTap.timeAction" />
+					</div>
+					
+					<label class="mt-3"> Các câu hỏi </label>
+					<div class="input-group">
+						<input class="form-control" v-model="addBaiTap.length" />
+					</div>
+					
+	{{ addBaiTap.answerTrue }}
+
+					<div class="answer">
+						<div class="border btn w-2 h-2 m-0" v-for="i in addBaiTap.length - 0" :class="{ 'btn-primary': addBaiTap.answerTrue[i - 1] !== undefined, 'font-italic': i - 1 == addBaiTap.select }" @click="$set(addBaiTap, 'select', i - 1)">{{ i + (addBaiTap.answerTrue[i - 1] !== undefined ? ":" + addBaiTap.answerTrue[i - 1] : "") }}</div>
+					</div>
+					
+					<div class="control-panel fixed-bottom text-center bg-light">
+						<div>
+							<button class="btn" @click="prevSelect(addBaiTap)">Prev</button>
+							Câu {{ addBaiTap.select + 1 }}
+							<button class="btn" @click="nextSelect(addBaiTap)">Next</button>
+						</div>
+						
+						<div class="row">
+							<div class="col-3 text-center" v-for="i in 'ABCD'.split('')">
+		<button class="btn btn-sm" :class="{ 'btn-primary': addBaiTap.answerTrue[ addBaiTap.select ] == i }" @click="$set(addBaiTap.answerTrue, addBaiTap.select, i) ">
+			{{ i }}
+		</button>
+							</div>
+						</div>
+						
+						<div class="mt-3">
+							<button class="btn btn-sm btn-block btn-primary" @click="saveAddBaiTap">Lưu</button>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+	</div>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+.icon-40px {
+	width: 60px;
+	height: 60px;
+}
+.classroom {
+	height: 70px;
+	margin: 5px;
+	display: flex;
+}
+.answer {
+	margin-bottom: 7em;
+}
+
+.preview {
+   overflow: scroll !important;
+   width: 100%;
+   height: 300px;
+}
+
+</style>
+<script>
+//xung băm md5
+
+//logined
+//logined
+error = console.log = e => (e + "").match(/^(DOCX)/) || alert(e + "")
+var fb = {
+	database: firebase.database(),
+	storage: firebase.storage(),
+	auth: firebase.auth(),
+	user: firebase.auth().currentUser,
+	checkSignIn: function () {
+		return !!this.auth.currentUser
+	}
+}
+
+onerror = console.warn = console.error = e => alert(e + "")
+
+!function (global, factory) {
+	var finish = true
+    fb.auth
+    .onAuthStateChanged(user => {
+        if (finish && user != null){
+        	fb.user = user
+        	factory(global)
+        	finish = false
+        }
+        else location.href = "../login.html"
+    })
+}(this, function () {
+
+new Vue({
+	el: "div#app",
+	data: {
+		home: {
+			nameClassRoom: {},
+			noClassRoom: false
+		},
+		inClass: {
+			baiTap: {},
+			md5: ""
+		},
+		inBaiTap: {
+			answerTrue: [],
+			question: "",
+			length: 0,
+			select: 0,
+			md5: "",
+			controlPanel: {
+				select: ""
+			}
+		},
+		addClassRoom: {
+			nameNewClass: ""
+		},
+		addBaiTap: {
+		   answerTrue: [],
+			question: "",
+			length: 0,
+			select: 0,
+			name: "",
+			md5Class: "",
+			timeAction: "23:59",
+			controlPanel: {
+				select: ""
+			}
+		},
+		tab: "home"
+	},
+	watch: {
+		tab(_new) {
+			this.clear(this[_new])
+		},
+		"addBaiTap.question": function (e) {
+			docx.renderAsync(e, this.$refs.preview, null, { 
+                debug: true,
+                experimental: true 
+          }).then(x => { this.$refs.preview.getElementsByTagName("style")[0].remove() });
+		}
+	},
+	methods: {
+		clear() {
+			
+		},
+		saveAddBaiTap() {
+			var hash = md5(this.inBaiTap.md5 + Date.now())
+			//băm này
+			new my.promise(rej => {
+			// up load data lên 
+				fb.database
+				.ref("exercise/" + hash)
+				.set({
+					answerTrue: this.addBaiTap.answerTrue,
+					student: {},
+					question: this.$refs.preview.innerHTML,
+					timeAction: this.addBaiTap.timeAction
+				})
+				.then(e => {
+					rej.done()
+				})
+				.catch(e => {
+					alert("mã lỗi FB_EXERCISE_DATABASE")
+				})
+			})
+			.catch(e => { alert(e + "") })
+			.then(rej => {
+				fb.database.ref("data-classroom/" + this.inClass.md5 + "/" + hash).set(this.addBaiTap.name)
+.then(e => { rej.done() })
+			})
+			.catch(e => { alert(e + "") })
+			.then(e => {
+				console.log("Thành công")
+			})
+			.catch(e => { alert(e + "") })
+			.end()
+		},
+		createClassRoom() {
+			var hash = md5(fb.user.uid + Date.now())
+			new my.promise(rej => {
+
+				fb.database
+				.ref("data-classroom/" + hash).set({})
+				.then(e => {rej.done()})
+			})
+			.then(rej => {
+				fb.database
+				.ref("classroom-name/" + hash)
+				.set().then(e => {rej.done()})
+			})
+			.catch(e => {
+				console.log(e + "")
+			})
+			.then(rej => {
+				fb.database
+				.ref("userAll/" + fb.user.uid + "/classroom-created")
+				.push(hash)
+				.then(e => {
+					rej.done()
+				})
+			})
+			.then(e => {
+				console.log("Thành công")
+			})
+			.end()
+		},
+		saveAnswerTrue() {
+			fb.database
+			.ref("exercise/" + this.inBaiTap.md5 + "/answerTrue")
+			 .set(this.inBaiTap.answerTrue)
+			 .then(e => {
+				 console.log("Thành công " + this.inBaiTap.md5)
+			 })
+			 .catch(e => {
+				 console.log("Thất bại " + this.inBaiTap.md5)
+			 })
+		},
+		prevSelect(obj) {
+			var e = obj.select
+			e--
+			if (e < 0) e = obj.length - 1
+			Vue.set(obj, "select", e)
+		},
+		nextSelect(obj) {
+			var e = obj.select
+			e++
+			if (e >= obj.length) e = 0
+			Vue.set(obj, "select", e)
+		},
+		openBaiTap(md5) {
+			fb.database
+			.ref("exercise/" + md5)
+			 .once("value", e => {
+				this.$set(this.inBaiTap, "answerTrue", e.val().answerTrue)
+				this.$set(this.inBaiTap, "question", e.val().question)
+				this.$set(this.inBaiTap, "length", e.val().answerTrue.length)
+				this.$set(this.inBaiTap, "md5", md5)
+			 })
+			 this.tab = "inBaiTap"
+		},
+		openClass(code) {
+			fb.database
+			.ref("data-classroom/" + code)
+			.once("value", e => {
+				this.$set(this.inClass, "baiTap", e.val())
+			})
+			this.tab = "inClass"
+			this.inClass.md5 = code
+		},
+		getNameClassRoom(code) {
+			new my.promise(rej => {
+				fb.database
+				.ref("classroom/" + code)
+				.once("value", e => {
+				
+				})
+			})
+		},
+		openHome() {
+			new my.promise(rej => {
+				fb.database
+				.ref("userAll/" + fb.user.uid + "/classroom-created")
+				.once("value", function(e){
+					rej.done( e.val() )
+				})
+			})
+			.then((rej, res, args) => {
+				args[0] != null ?Object
+				.values(args[0])
+				.forEach(e => {
+					fb.database
+					.ref("classroom-name/" + e)
+					.once("value", f => {
+						this.$set(this.home.nameClassRoom, e, f.val())
+					})
+				}) : this.home.noClassRoom = true
+			})
+			.catch(e => console.log(e + ""))
+			.then(e => {
+				this.nameClassRoom = nameClassRoom
+			})
+			.end()
+			this.tab = "home"
+		},
+		basename(path) {
+			return path.slice(path.lastIndexOf("."))
+		}
+	},
+	mounted() {
+		this.openHome()
+		my(this.$root.$el).unAttr("hidden")
+	}
+})
+
+})
+/*
+	$root: {
+		"data-classroom": {
+			code-class: {
+				md5: "Tên bài
+				....
+			}
+		},
+		"classroom-name": {
+			claas-room: "NAME"
+		},
+		"exercise": {
+			md5: {
+				answerTrue: [....],
+				student: [uid...],
+				question: linkFIRE
+			}
+			......
+		}
+	},
+	userAll: {
+		uid: {
+			name: ...,
+			email: ...,
+			photoURL: ....,
+			"classroom-created": [code....],
+			isTeacher: true
+		},
+		uid: {
+			name: ...,
+			email: ...,
+			photoURL: ....,
+			"classroom-append": {
+				code-class: {
+				  md5: point
+				}
+			}
+		}
+	}
+
+*/
+</script>
+	</body>
+</html>
