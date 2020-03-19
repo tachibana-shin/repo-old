@@ -203,12 +203,20 @@ var fb = {
 		return this.auth.createUserWithEmailAndPassword(email, pass)
 	}
 }
-//firebase.auth().onAuthStateChanged(e => fb.user = e)
-
 
 onerror = console.warn = console.error = e => console.log(e + "")
 
-new Vue({
+!function (global, factory) {
+    var finish = true
+    fb.auth
+    .onAuthStateChanged(e => {
+        if (finish && e !== null)
+        	factory(global)
+        else location.href = "./login.html"
+        finish = false
+    })
+
+}(this, new Vue({
 	el: "div#app",
 	data: {
 		home: {
@@ -435,6 +443,8 @@ new Vue({
 		this.openHome()
 	}
 })
+
+)
 
 /*
 	$root: {
