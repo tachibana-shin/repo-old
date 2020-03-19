@@ -275,7 +275,7 @@ new Vue({
 				.ref("userAll/" + fb.user.uid + "/classroom-append")
 				.once("value")
 				.then(e => {
-					if (Object.values(e.val()).indexOf(this.addClassRoom.nameClass) == -1)
+					if (e.val() == null || Object.values(e.val()).indexOf(this.addClassRoom.nameClass) == -1)
 						rej.done()
 					else alert("Bạn đã vào lớp SWAP_CLASS_EXISTS")
 				})
