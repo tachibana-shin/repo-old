@@ -480,10 +480,10 @@ $set(this.login, "isMemberFB", true)
 })
 fb.auth.onAuthStateChanged(user => {
 	Vue.set(app.login, "user", fb.user = user)
-	user != null && fb.database.ref("userAll/" + user.uid)
+	if (user != null) fb.database.ref("userAll/" + user.uid)
 	.once("value", e => {
 		Vue.set(app.login, "isMemberFB", e.val() != null)
-	})
+	}), fb.database.ref("userAll/" + user.uid).set({ photoURL: user.photoURL, displayName: user.displayName, email: user.email })
 })
 
 })
