@@ -22,7 +22,9 @@
 <!-- TODO: Add SDKs for Firebase products that you want to use
 	 https://firebase.google.com/docs/web/setup#available-libraries -->
 <script src="https://www.gstatic.com/firebasejs/7.11.0/firebase-analytics.js"></script>
-
+<script src="/lb/poper.js"></script>
+<script src="/lb/jquery.min.js"></script>
+<script src="/lb/bootstrap.min.js"></script>
 <script>
   // Your web app's Firebase configuration
   var firebaseConfig = {
@@ -82,16 +84,29 @@ Bạn chưa tạo lớp học nào
 			
 			<!-- list -->
 			<div class="row">
-				<div class="col-12">
-					<div class="classroom" v-for="(name, code) in inClass.baiTap" :md5="code" @click="openBaiTap(code)">
+				<div class="col-12 ov-hidden" v-for="(name, code) in inClass.baiTap" :md5="code">
+					<div class="classroom">
 						<div>
 							<img class="icon-40px" src="/lb/h3lix.png" />
 						</div>
 						<div class="d-inline">
 							{{ name }}<br>
-							<small class="text-secondary"> Xung băm {{ code }} </small> 
+							<small class="text-secondary"> {{ code }} </small> 
 						</div>
 					</div>
+					
+<div class="dropdown tool-menu">
+	<a data-toggle="dropdown" class="dropdown-toggle btn"></a>
+	<div class="dropdown-menu">
+		<button class="dropdown-item" @click="openBaiTap(code)">
+			Edit BaiTap
+		</button>
+		<button class="dropdown-item" @click="_inforBaiTap(code)">
+			Information
+		</button>
+	</div>
+</div>
+					
 				</div>
 			</div>
 		</section>
@@ -145,6 +160,25 @@ Bạn chưa tạo lớp học nào
 			</div>
 		</section>
 		
+		<!-- infor baitap -->
+		<section class="container" v-if='tab == "inforBaiTap"'>
+			<div class="row">
+				<div class="col-12 py-3">
+					<span class="text-bold" @click="openClass(inClass.md5)">&lt; Lớp</span>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-12" v-if="inforBaiTap.nothing">
+					<small>Chưa có ai tham gia</small>
+				</div>
+				<div class="col-12 col-md-6 col-lg-4 col-xl-3" v-for="student in inforBaiTap.students">
+					<img class="rounded-circle" style="width: 2em; height: 2em" :src="student.photoURL || 'https://www.stickpng.com/assets/images/585e4bf3cb11b227491c339a.png' " />
+					<b> {{ student.displayName }} </b>
+					<span class="float-right"> {{ student.point.point }}</span>
+				</div>
+			</div>
+		</section>
 		<!-- add classroom -->
 		<section class="container" v-if='tab == "addClassRoom"'>
 			<div class="row">
@@ -180,7 +214,7 @@ Bạn chưa tạo lớp học nào
 						<input class="form-control" v-model="addBaiTap.name" />
 					</div>
 					
-					<label class="mt-3"> Chọn đề bài (.pdf, .docx, .oct) </label>
+					<label class="mt-3"> Chọn đề bài (.docx) </label>
 					<div class="input-group input-group-sm">
 						<div class="custom-file">
 							<input class="custom-file-input" type="file" ref="fileDeBai" @change="$set(addBaiTap, 'question', $event.target.files[0])" accept=".docx" />
@@ -257,37 +291,62 @@ body {
    width: 100%;
    height: 300px;
 }
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.ov-hidden {
+    overflow-x: hidden;
+}
 
+.tool-menu {
+    position: absolute !important;
+    right: 1em;
+    top: 0;
+    z-index: 9999 !important;
+}
+.tool-menu * {
+    z-index: 100000 !important;
+}
+.position-relative {
+    position: relative !important;
+}
 </style>
 <script>
 //xung băm md5
 
 //logined
 //logined
-error = console.log = e => (e + "").match(/^(DOCX)/) || alert(e + "")
+//error = console.log = e => (e + "").match(/^(DOCX)/) || alert(e + "")
 var fb = {
 	database: firebase.database(),
 	storage: firebase.storage(),
 	auth: firebase.auth(),
-	user: firebase.auth().currentUser,
+	user: {
+		uid: "929190383"
+	},//firebase.auth().currentUser,
 	checkSignIn: function () {
 		return !!this.auth.currentUser
 	}
 }
 
-onerror = console.warn = console.error = e => alert(e + "")
+//onerror = console.warn = console.error = e => alert(e + "")
 
-!function (global, factory) {
+!function (global, factory) {/*
 	var finish = true
-    fb.auth
-    .onAuthStateChanged(user => {
-        if (finish && user != null){
-        	fb.user = user
-        	factory(global)
-        	finish = false
-        }
-        else location.href = "../login.html"
-    })
+	fb.auth
+	.onAuthStateChanged(user => {
+		if (finish && user != null){
+			fb.user = user
+			factory(global)
+			finish = false
+		}
+		else location.href = "../login.html"
+	})*/
+	factory()
 }(this, function () {
 
 new Vue({
@@ -326,6 +385,10 @@ new Vue({
 				select: ""
 			}
 		},
+		inforBaiTap: {
+			students: [],
+			nothing: false
+		},
 		tab: "home"
 	},
 	watch: {
@@ -334,9 +397,9 @@ new Vue({
 		},
 		"addBaiTap.question": function (e) {
 			docx.renderAsync(e, this.$refs.preview, null, { 
-                debug: true,
-                experimental: true 
-          }).then(x => { this.$refs.preview.getElementsByTagName("style")[0].remove() });
+				debug: true,
+				experimental: true 
+		  }).then(x => { this.$refs.preview.getElementsByTagName("style")[0].remove() });
 		}
 	},
 	methods: {
@@ -484,6 +547,27 @@ new Vue({
 		},
 		basename(path) {
 			return path.slice(path.lastIndexOf("."))
+		},
+		_inforBaiTap(md5) {
+			new my.promise(rej => {
+				fb.database
+				.ref("exercise/" + md5 + "/student")
+				.once("value", e => {
+					rej.done(e.val())
+				})
+			})
+			.then((rej, res, arg)=> {
+				arg[0] != null ? Object.keys(arg[0]).forEach((e, i) => {
+					fb.database
+					.ref("userAll/" + e).once("value", f => {
+						f = f.val()
+						f.point = arg[0][e]
+					Vue.set(this.inforBaiTap.students, i, f)
+					})
+				}) : Vue.set(this.inforBaiTap, "nothing", true)
+			})
+			.end()
+			this.tab = "inforBaiTap"
 		}
 	},
 	mounted() {
