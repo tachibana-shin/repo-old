@@ -311,8 +311,8 @@ error = console.error = console.warn = e => alert(e + "")
     .onAuthStateChanged(user => {
     	if (finish)
     		fb.user = user,
-    		finish = false
-    	factory(global)
+    		finish = false,
+    		factory(global)
     })
 }(this, function () {
 var $set = Vue.set
