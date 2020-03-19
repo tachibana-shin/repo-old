@@ -327,7 +327,7 @@ new Vue({
 			docx.renderAsync(e, this.$refs.preview, null, { 
                 debug: true,
                 experimental: true 
-          }).then(function(x){ alert(this.$refs.preview.innerHTML); });
+          }).then(x => { alert(this.$refs.preview.innerHTML); });
 		}
 	},
 	methods: {
