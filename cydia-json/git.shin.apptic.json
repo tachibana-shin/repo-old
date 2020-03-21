@@ -1,0 +1,1 @@
+{"Name": "AppTic", "Version": "1.2.2", "Section": "Tweaks", "Package": "git.shin.apptic", "Author": "MayBeMe <maybeme.tweak@gmail.com>", "Depends": "mobilesubstrate, ws.hbang.common, preferenceloader", "Descript": "Add Haptic Feedback when you open an app !", "Arch": "iphoneos-arm", "Size": "185674", "Time": "1582363071000"}

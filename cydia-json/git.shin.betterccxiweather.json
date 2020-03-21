@@ -1,0 +1,1 @@
+{"Name": "BetterCCXI (Weather Addon)", "Version": "1.0.3", "Section": "Tweaks", "Package": "git.shin.betterccxiweather", "Author": "ATWiiks", "Depends": "mobilesubstrate, com.opa334.ccsupport, preferenceloader, com.atwiiks.betterccxi", "Descript": "Weather Module for BetterCCXI", "Arch": "iphoneos-arm", "Size": "25970", "Time": "1582362929000"}
