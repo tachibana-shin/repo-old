@@ -1,0 +1,1 @@
+{"Name": "ForceInPicture", "Version": "0.0.1-2", "Section": "Tweaks", "Package": "git.shin.forceinpicture", "Author": "cole cabral @ca13ra1 <cabralcole@gmail.com>", "Depends": "firmware (>= 9.0), mobilesubstrate", "Descript": "\"Programmatically\" enable picture in picture feature.", "Arch": "iphoneos-arm", "Size": "3872", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "CarBridge (iOS 13)", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.carbridge13", "Author": "leftyfl1p <carbridgetweak@gmail.com>", "Depends": "firmware (>= 13.0), mobilesubstrate, com.rpetrich.rocketbootstrap", "Descript": "View any app in CarPlay", "Arch": "iphoneos-arm", "Size": "137538", "Time": "1582245053000"}

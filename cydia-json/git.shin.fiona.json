@@ -1,0 +1,1 @@
+{"Name": "Fiona", "Version": "0.1", "Section": "Tweaks", "Package": "git.shin.fiona", "Author": "julioverne", "Depends": "mobilesubstrate, preferenceloader", "Descript": "Keep WiFi Always Connected", "Arch": "iphoneos-arm", "Size": "49016", "Time": "1581840632000"}

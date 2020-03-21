@@ -1,0 +1,1 @@
+{"Name": "Harpy Cracked", "Version": "2.0.1", "Section": "System", "Package": "git.shin.harpy", "Author": "midnightchips <midnightchips@gmail.com>", "Depends": "firmware (>= 9.0), network-cmds", "Descript": "Control your network with ease.", "Arch": "iphoneos-arm", "Size": "6607824", "Time": "1581840632000"}

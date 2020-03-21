@@ -1,0 +1,1 @@
+{"Name": "Goodges 2", "Version": "2.1.4", "Section": "Tweaks", "Package": "git.shin.goodges2", "Author": "NoisyFlake", "Depends": "mobilesubstrate, firmware (>= 11.0), me.nepeta.libcolorpicker, applist", "Descript": "Good bye badges, hello labels! For iOS 11-12", "Arch": "iphoneos-arm", "Size": "117516", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "Cydia Failsafe", "Version": "2.1", "Section": "Utilities", "Package": "git.shin.cydiainstall", "Author": "D4ni <mail@d4ni.nl>", "Depends": "firmware (>= 10.0)", "Descript": "Re-Install Cydia if Cydia Error.", "Arch": "iphoneos-arm", "Size": "1812010", "Time": "1581840632000"}

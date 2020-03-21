@@ -1,0 +1,1 @@
+{"Name": "ClassicFolders 2", "Version": "2.0.4k", "Section": "Tweaks", "Package": "git.shin.classicfolders2", "Author": "CoolStar & Jeremy Goulet", "Depends": "firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)", "Descript": "Bring back iOS 6 folders to iOS 10!", "Arch": "iphoneos-arm", "Size": "3122124", "Time": "1581840632000"}

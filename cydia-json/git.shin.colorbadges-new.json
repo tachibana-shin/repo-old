@@ -1,0 +1,1 @@
+{"Name": "ColorBadges", "Version": "1.4.4", "Section": "Tweaks", "Package": "git.shin.colorbadges-new", "Author": "David Goldman <help@golddavid.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5.000), preferenceloader", "Descript": "Colorize your badges", "Arch": "iphoneos-arm", "Size": "83386", "Time": "1581840632000"}

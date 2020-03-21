@@ -1,0 +1,1 @@
+{"Name": "GamePlayer", "Version": "3.4", "Section": "Utilities", "Package": "git.shin.gameplayer", "Author": "shin-chan", "Depends": "", "Descript": "GamePlayer is a game cheating tool. It can easily modify HP, MP, money and so on. iOS 6.x, 7.x, 8.x and 9.x are supported.", "Arch": "iphoneos-arm", "Size": "1503022", "Time": "1582941616000"}

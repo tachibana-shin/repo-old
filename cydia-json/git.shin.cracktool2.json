@@ -1,0 +1,1 @@
+{"Name": "CrackTool2", "Version": "2.3~beta9", "Section": "Utilities", "Package": "git.shin.cracktool2", "Author": "julioverne", "Depends": "ldid (>= 1:1.2.1), sed, shell-cmds, system-cmds, uikittools (>= 1.1.4), coreutils-bin, coreutils", "Descript": "Crack Tweaks on one click", "Arch": "iphoneos-arm", "Size": "432318", "Time": "1581840632000"}

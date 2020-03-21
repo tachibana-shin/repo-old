@@ -1,0 +1,1 @@
+{"Name": "Flow", "Version": "1.1.4", "Section": "Tweaks", "Package": "git.shin.flow", "Author": "Muirey03", "Depends": "mobilesubstrate, preferenceloader, com.muirey03.libmryipc, ws.hbang.common (>= 1.11)", "Descript": "Cover Flow like never before!", "Arch": "iphoneos-arm", "Size": "255156", "Time": "1582857443000"}

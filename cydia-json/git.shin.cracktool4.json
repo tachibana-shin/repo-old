@@ -1,0 +1,1 @@
+{"Name": "CrackTool4", "Version": "4.0~beta9c", "Section": "Utilities", "Package": "git.shin.cracktool4", "Author": "julioverne", "Depends": "ldid (>= 2.1.1), sed, shell-cmds, system-cmds, uikittools (>= 1.1.4), coreutils-bin, coreutils, odcctools", "Descript": "Crack Tweaks on one clickMaintainer: nguyenthanh", "Arch": "iphoneos-arm", "Size": "516662", "Time": "1581840632000"}

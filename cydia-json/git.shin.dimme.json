@@ -1,0 +1,1 @@
+{"Name": "DimMe", "Version": "2.0.3", "Section": "Tweaks", "Package": "git.shin.dimme", "Author": "Rene Kahle <packetfahrer@web.de>", "Depends": "mobilesubstrate, applist, preferenceloader (>= 2.2.3), firmware (>= 7.0)", "Descript": "Dim the Screen with options.", "Arch": "iphoneos-arm", "Size": "359876", "Time": "1581840632000"}

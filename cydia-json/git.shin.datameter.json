@@ -1,0 +1,1 @@
+{"Name": "DataMeter", "Version": "1.4-3", "Section": "Addons (NotificationCenter)", "Package": "git.shin.datameter", "Author": "Minuit <minuits@163.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)", "Descript": "DataMeter for iOS 7-10 Notification Center", "Arch": "iphoneos-arm", "Size": "338456", "Time": "1583216841000"}

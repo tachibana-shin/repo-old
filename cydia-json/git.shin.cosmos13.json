@@ -1,0 +1,1 @@
+{"Name": "Cosmos13", "Version": "1.2-1", "Section": "Tweaks", "Package": "git.shin.cosmos13", "Author": "Sirius24", "Depends": "mobilesubstrate, preferenceloader, firmware (>= 13.0), com.creaturesurvive.libcscolorpicker", "Descript": "System-wide customization!", "Arch": "iphoneos-arm", "Size": "2169614", "Time": "1582857676000"}

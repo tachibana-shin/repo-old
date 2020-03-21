@@ -1,0 +1,1 @@
+{"Name": "HapticScroll", "Version": "2.3.1-1", "Section": "Tweaks", "Package": "git.shin.hapticscroll", "Author": "Hrvoje Kostic <hrvoje.kostic@gmail.com>", "Depends": "firmware (>= 9.0), mobilesubstrate, preferenceloader, applist", "Descript": "Haptic feedback when top/bottom scroll limit is reached.", "Arch": "iphoneos-arm", "Size": "66282", "Time": "1581903138000"}

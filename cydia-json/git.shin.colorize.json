@@ -1,0 +1,1 @@
+{"Name": "Colorize", "Version": "1.2.5", "Section": "Tweaks", "Package": "git.shin.colorize", "Author": "Stevie Hetelekides <hetelek@gmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)", "Descript": "artwork-based color UI for Music app", "Arch": "iphoneos-arm", "Size": "82720", "Time": "1581924132000"}

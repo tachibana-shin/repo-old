@@ -1,0 +1,1 @@
+{"Name": "Compatimark", "Version": "1.0.1", "Section": "Cydia Custom", "Package": "git.shin.compatimark", "Author": "CP Digital Darkroom <tweaks@cpdigitaldarkroom.support>", "Depends": "mobilesubstrate, cydia (>= 1.1.19)", "Descript": "Mark Compatible Cydia Packages", "Arch": "iphoneos-arm", "Size": "10986", "Time": "1581840632000"}

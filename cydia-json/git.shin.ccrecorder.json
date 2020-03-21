@@ -1,0 +1,1 @@
+{"Name": "CCRecorder (iOS 10)", "Version": "1.0.2.2", "Section": "Tweaks", "Package": "git.shin.ccrecorder", "Author": "@ijapija00 <support@ijapija00.com>", "Depends": "firmware (>= 10.0), mobilesubstrate, preferenceloader", "Descript": "Record Your Screen From The Control Center...", "Arch": "iphoneos-arm", "Size": "131282", "Time": "1581840632000"}

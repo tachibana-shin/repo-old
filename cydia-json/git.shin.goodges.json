@@ -1,0 +1,1 @@
+{"Name": "Goodges", "Version": "1.1.5", "Section": "Tweaks", "Package": "git.shin.goodges", "Author": "faku99", "Depends": "firmware (>= 8.0), mobilesubstrate, org.thebigboss.libcolorpicker, applist, preferenceloader", "Descript": "Good bye badges, hello labels! For iOS 8-10", "Arch": "iphoneos-arm", "Size": "90288", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "Grupi", "Version": "1.0.2.1", "Section": "Tweaks", "Package": "git.shin.grupi", "Author": "Soongyu Kwon & Timeloop", "Depends": "mobilesubstrate, ws.hbang.common (>= 1.11), firmware (>= 11.0)", "Descript": "Grouped Notifications for iOS 11 ~ iOS 13", "Arch": "iphoneos-arm", "Size": "171416", "Time": "1582025928000"}

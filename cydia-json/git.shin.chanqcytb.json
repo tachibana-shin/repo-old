@@ -1,0 +1,1 @@
+{"Name": "Adblock for YouTube", "Version": "1.0.7", "Section": "Tweaks", "Package": "git.shin.chanqcytb", "Author": "Majd Alfhaily", "Depends": "firmware (>= 8.0)", "Descript": "Block ads for Youtube.", "Arch": "iphoneos-arm", "Size": "46612", "Time": "1581840632000"}

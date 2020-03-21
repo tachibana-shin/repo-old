@@ -1,0 +1,1 @@
+{"Name": "Dim", "Version": "1.5.2", "Section": "Tweaks", "Package": "git.shin.dim", "Author": "shin-chan", "Depends": "firmware(>= 6.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "Dim your screen even further!", "Arch": "iphoneos-arm", "Size": "243948", "Time": "1581840632000"}

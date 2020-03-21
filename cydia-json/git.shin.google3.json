@@ -1,0 +1,1 @@
+{"Name": "Google Pixel 3", "Version": "1.0", "Section": "Widgets (Lockscreen)", "Package": "git.shin.google3", "Author": "AussieAppz <info@aussieappz.com>", "Depends": "com.matchstic.xenhtml, com.junesiphone.xeninfo", "Descript": "Say hello to G3", "Arch": "iphoneos-arm", "Size": "1624208", "Time": "1584790594000"}

@@ -1,0 +1,1 @@
+{"Name": "CuKey", "Version": "1.0.2", "Section": "Tweaks", "Package": "git.shin.cukey", "Author": "DevelopApple <mydevelop1@gmail.com>", "Depends": "mobilesubstrate, ws.hbang.common, firmware (>= 10.0), me.nepeta.libcolorpicker", "Descript": "An awesome Tweak Custom Keyboard Sounds!", "Arch": "iphoneos-arm", "Size": "259728", "Time": "1581840632000"}

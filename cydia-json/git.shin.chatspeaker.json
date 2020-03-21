@@ -1,0 +1,1 @@
+{"Name": "ChatSpeaker", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.chatspeaker", "Author": "Prasa", "Depends": "mobilesubstrate, ws.hbang.common (>= 1.11)", "Descript": "Speak incoming notification with options!", "Arch": "iphoneos-arm", "Size": "118662", "Time": "1581914384000"}

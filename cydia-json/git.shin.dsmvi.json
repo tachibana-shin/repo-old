@@ -1,0 +1,1 @@
+{"Name": "DontStopMyCall vi", "Version": "1.0", "Section": "Localization", "Package": "git.shin.dsmvi", "Author": "shin-chan", "Depends": "git.shin.dsm", "Descript": "Add Vietnamese for DontStopMyCall", "Arch": "iphoneos-arm", "Size": "1858", "Time": "1584792146000"}

@@ -1,0 +1,1 @@
+{"Name": "GoodWiFi", "Version": "0.0~beta5", "Section": "Tweaks", "Package": "git.shin.goodwifi", "Author": "julioverne", "Depends": "mobilesubstrate, preferenceloader", "Descript": "Better WiFi Preferences", "Arch": "iphoneos-arm", "Size": "128646", "Time": "1581840632000"}
