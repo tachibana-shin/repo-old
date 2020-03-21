@@ -1,0 +1,1 @@
+{"Name": "libSpringPlus", "Version": "0.0.2", "Section": "Development", "Package": "git.shin.libspring", "Author": "Rishanan", "Depends": "mobilesubstrate", "Descript": "Essential lib for SpringPlus", "Arch": "iphoneos-arm", "Size": "5370", "Time": "1581840632000"}

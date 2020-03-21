@@ -1,0 +1,1 @@
+{"Name": "NotifyWifi7 (iOS7/8/9)", "Version": "1.1-7", "Section": "Tweaks", "Package": "git.shin.notifywifi7", "Author": "ichitaso <willfeeltips.notify7@gmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate, preferenceloader, com.a3tweaks.flipswitch", "Descript": "Wi-Fi Change Notification on Banner", "Arch": "iphoneos-arm", "Size": "215524", "Time": "1581840632000"}

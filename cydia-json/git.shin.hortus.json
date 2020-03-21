@@ -1,0 +1,1 @@
+{"Name": "Hortus", "Version": "1.4.5", "Section": "Tweaks", "Package": "git.shin.hortus", "Author": "Shade Zepheri <ziroalpha@gmail.com>", "Depends": "firmware (>= 8.4), mobilesubstrate (>= 0.9.5000), preferenceloader, applist", "Descript": "Hook's Law for iOS 9", "Arch": "iphoneos-arm", "Size": "57296", "Time": "1581840632000"}

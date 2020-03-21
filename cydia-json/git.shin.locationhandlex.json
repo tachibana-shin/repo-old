@@ -1,0 +1,1 @@
+{"Name": "LocationHandleX", "Version": "2.0-1", "Section": "Tweaks", "Package": "git.shin.locationhandlex", "Author": "Cunstuck <cunstuck@gmail.com>", "Depends": "firmware (>= 10.0), mobilesubstrate (>= 0.9.5000)", "Descript": "change your real location in any App", "Arch": "iphoneos-arm", "Size": "486904", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "NoLowPowerAutoLock [Public]", "Version": "0.0.3", "Section": "Tweaks", "Package": "git.shin.nolowpowerautolock", "Author": "Spark", "Depends": "mobilesubstrate", "Descript": "Prevent your device from Auto-Locking when in low power mode", "Arch": "iphoneos-arm", "Size": "57752", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "Headphone Button Disabller", "Version": "0.1-2", "Section": "Tweaks", "Package": "git.shin.hpbdisabller", "Author": "ichitaso", "Depends": "firmware (>= 9.0), mobilesubstrate, preferenceloader", "Descript": "Disable official headphone buttons", "Arch": "iphoneos-arm", "Size": "52460", "Time": "1581840632000"}

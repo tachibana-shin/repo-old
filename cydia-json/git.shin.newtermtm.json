@@ -1,0 +1,1 @@
+{"Name": "NewTerm Theme Manager", "Version": "0.0.2", "Section": "Tweaks", "Package": "git.shin.newtermtm", "Author": "WitherTech <witherking@withertech.com>", "Depends": "mobilesubstrate", "Descript": "custom NewTerm color schemes with ansi color codes", "Arch": "iphoneos-arm", "Size": "59432", "Time": "1582941831000"}

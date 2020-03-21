@@ -1,0 +1,1 @@
+{"Name": "NudeKeys", "Version": "4.3", "Section": "Tweaks", "Package": "git.shin.nudekeys", "Author": "Orangebananaspy <support@orangebananaspy.com>", "Depends": "firmware (>= 7.0), mobilesubstrate, preferenceloader", "Descript": "Strip those sexy keys!", "Arch": "iphoneos-arm", "Size": "1596244", "Time": "1581840632000"}

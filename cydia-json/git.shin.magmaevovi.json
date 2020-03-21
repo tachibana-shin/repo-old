@@ -1,0 +1,1 @@
+{"Name": "Magma Evo vi", "Version": "0.2", "Section": "Localization", "Package": "git.shin.magmaevovi", "Author": "shin-chan", "Depends": "mobilesubstrate, git.shin.magmaevo", "Descript": "Add Vietnamese", "Arch": "iphoneos-arm", "Size": "2640", "Time": "1582859565000"}

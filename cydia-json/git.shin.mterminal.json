@@ -1,0 +1,1 @@
+{"Name": "MTerminal", "Version": "1.4-5", "Section": "Applications", "Package": "git.shin.mterminal", "Author": "lordscotland", "Depends": "firmware (>= 4.0), system-cmds", "Descript": "A MobileTerminal fork", "Arch": "iphoneos-arm", "Size": "129024", "Time": "1582939803000"}

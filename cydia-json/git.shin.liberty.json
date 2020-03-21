@@ -1,0 +1,1 @@
+{"Name": "Liberty", "Version": "0.2.9", "Section": "Tweaks", "Package": "git.shin.liberty", "Author": "Ryley Angus", "Depends": "mobilesubstrate, preferenceloader, applist", "Descript": "Disable MobilecSubstrate in apps", "Arch": "iphoneos-arm", "Size": "87640", "Time": "1581840632000"}

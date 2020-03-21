@@ -1,0 +1,1 @@
+{"Name": "libCSWeather", "Version": "0.5.1b", "Section": "System", "Package": "git.shin.libcsweather", "Author": "CreatureSurvive <support@creaturecoding.com>", "Depends": "mobilesubstrate", "Descript": "a simple library for fetching weather information", "Arch": "iphoneos-arm", "Size": "61864", "Time": "1582509003000"}

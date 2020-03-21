@@ -1,0 +1,1 @@
+{"Name": "NoDockLabels 10", "Version": "0.0.2", "Section": "Tweaks", "Package": "git.shin.nodocklabels10", "Author": "pxcex", "Depends": "mobilesubstrate, firmware (>= 10.0)", "Descript": "Hide Labels On Dock Icon. IOS 10 Only!", "Arch": "iphoneos-arm", "Size": "3958", "Time": "1583216696000"}

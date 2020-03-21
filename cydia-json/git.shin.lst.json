@@ -1,0 +1,1 @@
+{"Name": "Temporal", "Version": "1.0-1", "Section": "Tweaks", "Package": "git.shin.lst", "Author": "ridn <appleidname@yahoo.com>", "Depends": "firmware (>= 10.0), mobilesubstrate (>= 0.9.5000)", "Descript": "World clock/timezones on lock screen.", "Arch": "iphoneos-arm", "Size": "20696", "Time": "1581840632000"}

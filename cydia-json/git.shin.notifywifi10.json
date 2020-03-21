@@ -1,0 +1,1 @@
+{"Name": "NotifyWiFi10", "Version": "1.0.2", "Section": "Tweaks", "Package": "git.shin.notifywifi10", "Author": "ichitaso <willfeeltips+notify@gmail.com>", "Depends": "firmware (>= 10.0), mobilesubstrate, preferenceloader, com.a3tweaks.flipswitch (>= 1.0.16~beta2)", "Descript": "Wi-Fi Change Notification Manager", "Arch": "iphoneos-arm", "Size": "218174", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "LockApps", "Version": "1.2", "Section": "Tweaks", "Package": "git.shin.lockapps", "Author": "Azozz ALFiras", "Depends": "mobilesubstrate, com.spark.libsparkapplist, ws.hbang.common", "Descript": "Lock Apps by Face id & Touch id!", "Arch": "iphoneos-arm", "Size": "490694", "Time": "1581840632000"}

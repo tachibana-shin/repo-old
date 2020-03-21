@@ -1,0 +1,1 @@
+{"Name": "iThemer", "Version": "2.0.0-1", "Section": "Tweaks", "Package": "git.shin.ithemer", "Author": "DODGraphics <dodgraphics.1010@gmail.com>", "Depends": "mobilesubstrate, preferenceloader", "Descript": "An awesome MobileSubstrate tweak!", "Arch": "iphoneos-arm", "Size": "241046", "Time": "1581840632000"}

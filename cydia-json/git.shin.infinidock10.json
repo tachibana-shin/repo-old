@@ -1,0 +1,1 @@
+{"Name": "Infinidock for iOS10", "Version": "2.1.2-1", "Section": "Tweaks", "Package": "git.shin.infinidock10", "Author": "chpwn <support@chpwn.com>", "Depends": "mobilesubstrate, preferenceloader (>= 1.1), com.chpwn.iconsupport, git.shin.hsmapfix", "Descript": "Scroll your dock with infinite icons!", "Arch": "iphoneos-arm", "Size": "62906", "Time": "1581840632000"}

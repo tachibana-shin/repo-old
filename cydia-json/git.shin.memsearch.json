@@ -1,0 +1,1 @@
+{"Name": "GameGem", "Version": "1.5", "Section": "Utilities", "Package": "git.shin.memsearch", "Author": "Aidoo.TK <aidoo.tk@gmail.com>", "Depends": "firmware (>= 8.0)", "Descript": "Memory debug tool for iOS. Support iPhone and iPad above iOS 8.x", "Arch": "iphoneos-arm", "Size": "3999004", "Time": "1581840632000"}

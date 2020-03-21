@@ -1,0 +1,1 @@
+{"Name": "LowPowerMode", "Version": "1.0-3", "Section": "Tweaks", "Package": "git.shin.lowpowermode", "Author": "cole cabral @ca13ra1 <cabralcole@gmail.com>", "Depends": "firmware (>= 9.0), mobilesubstrate", "Descript": "Low power mode always on.", "Arch": "iphoneos-arm", "Size": "4312", "Time": "1581840632000"}
