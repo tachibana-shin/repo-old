@@ -1,0 +1,1 @@
+{"Name": "TikTokConfirms", "Version": "1.0.0", "Section": "Tweaks", "Package": "git.shin.tiktokconfirms", "Author": "CydiaGeek <lucaluca86@aol.com>", "Depends": "mobilesubstrate, firmware (>= 10.0), preferenceloader", "Descript": "Confirms Alerts for TikTok!", "Arch": "iphoneos-arm", "Size": "121462", "Time": "1581840632000"}

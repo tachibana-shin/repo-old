@@ -1,0 +1,1 @@
+{"Name": "SmoothBattery", "Version": "1.0.5", "Section": "Tweaks", "Package": "git.shin.smoothbattery", "Author": "CydiaGeek <lucaluca86@aol.com>", "Depends": "mobilesubstrate, firmware (>= 9.0), preferenceloader, org.thebigboss.libcolorpicker", "Descript": "Smooth and Color options for your Battery!", "Arch": "iphoneos-arm", "Size": "108412", "Time": "1581840632000"}

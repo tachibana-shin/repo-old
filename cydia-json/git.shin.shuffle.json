@@ -1,0 +1,1 @@
+{"Name": "shuffle", "Version": "1.1.0", "Section": "Tweaks", "Package": "git.shin.shuffle", "Author": "CreatureSurvive <support@creaturecoding.com>", "Depends": "ds: firmware (>= 8.0), com.ex.libsubstitute | mobilesubstrategit.shin.libcspreferences", "Descript": "Mix up your preferences", "Arch": "iphoneos-arm", "Size": "311142", "Time": "1582509051000"}

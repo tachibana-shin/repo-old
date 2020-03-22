@@ -1,0 +1,1 @@
+{"Name": "Speedtest++", "Version": "1.0.0.1", "Section": "Tweaks", "Package": "git.shin.speedtestpp", "Author": "SarahH12099", "Depends": "mobilesubstrate, firmware (>= 10.0)", "Descript": "Remove ADS from SpeedTest App", "Arch": "iphoneos-arm", "Size": "5094", "Time": "1581840632000"}

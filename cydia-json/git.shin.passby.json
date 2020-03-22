@@ -1,0 +1,1 @@
+{"Name": "PassBy", "Version": "1.8.3", "Section": "Tweaks", "Package": "git.shin.passby", "Author": "Giorgio Iavicoli <giorgio.iavicoli@icloud.com>", "Depends": "firmware (>= 9.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "Bypass passcode in many ways", "Arch": "iphoneos-arm", "Size": "83460", "Time": "1581840632000"}

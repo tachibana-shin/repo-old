@@ -1,0 +1,1 @@
+{"Name": "SmartTap X", "Version": "0.2-55", "Section": "Tweaks", "Package": "git.shin.smarttapx", "Author": "shin-chan", "Depends": "mobilesubstrate,preferenceloader", "Descript": "Turn on the screen by tapping it!", "Arch": "iphoneos-arm", "Size": "189634", "Time": "1581840632000"}

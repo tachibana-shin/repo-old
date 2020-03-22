@@ -1,0 +1,1 @@
+{"Name": "Tage", "Version": "1.2.2-1k", "Section": "Tweaks", "Package": "git.shin.tage", "Author": "Ma Jun", "Depends": "mobilesubstrate, preferenceloader, firmware (>= 7.0)", "Descript": "Awesome multitasking gestures and more.", "Arch": "iphoneos-arm", "Size": "620322", "Time": "1581840632000"}

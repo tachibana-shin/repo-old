@@ -1,0 +1,1 @@
+{"Name": "Time", "Version": "5.6", "Section": "Tweaks", "Package": "git.shin.time", "Author": "NaneraManu", "Depends": "mobilesubstrate, org.thebigboss.libcolorpicker, preferenceloader,firmware (<= 13.4)", "Descript": "Your Time in your way.", "Arch": "iphoneos-arm", "Size": "430696", "Time": "1584790716000"}

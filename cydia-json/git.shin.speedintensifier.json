@@ -1,0 +1,1 @@
+{"Name": "Speed Intensifier", "Version": "10.1-1", "Section": "Tweaks", "Package": "git.shin.speedintensifier", "Author": "pw5a29 <pw5a29@gmail.com>", "Depends": "mobilesubstrate, firmware (>= 6.0), preferenceloader, applist", "Descript": "Speeds up iOS Animations", "Arch": "iphoneos-arm", "Size": "59768", "Time": "1583216676000"}

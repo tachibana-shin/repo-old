@@ -1,0 +1,1 @@
+{"Name": "Switchus", "Version": "1.4", "Section": "Tweaks", "Package": "git.shin.switchus", "Author": "SynnyG <synnyg.devjb@gmail.com>", "Depends": "mobilesubstrate, firmware (>= 11.0), applist", "Descript": "Customize the App Switcher like never before !", "Arch": "iphoneos-arm", "Size": "123328", "Time": "1582957784000"}

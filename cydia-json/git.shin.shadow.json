@@ -1,0 +1,1 @@
+{"Name": "Shadow", "Version": "2.0.20", "Section": "Tweaks", "Package": "git.shin.shadow", "Author": "jjolano <jjolano@me.com>", "Depends": "firmware (>=8.0), mobilesubstrate, ws.hbang.common, applist, preferenceloader", "Descript": "Block Jailbreak in apps.", "Arch": "iphoneos-arm", "Size": "252212", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "StoreSwitcher 2", "Version": "1.0.3", "Section": "Tweaks", "Package": "git.shin.storeswitcher2", "Author": "subdiox", "Depends": "firmware (>= 11), mobilesubstrate", "Descript": "Adds a button to switch account in App Store account page on iOS 11+.", "Arch": "iphoneos-arm", "Size": "45912", "Time": "1583216735000"}

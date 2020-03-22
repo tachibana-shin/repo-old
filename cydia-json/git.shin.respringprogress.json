@@ -1,0 +1,1 @@
+{"Name": "RespringProgress", "Version": "1.3", "Section": "Tweaks", "Package": "git.shin.respringprogress", "Author": "wizages <wizagesmax@gmail.com>", "Depends": "firmware (>= 9.0), mobilesubstrate, firmware(<< 10.0) | git.shin.bae", "Descript": "progress bar for respring & reboot", "Arch": "iphoneos-arm", "Size": "11230", "Time": "1583216909000"}

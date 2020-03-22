@@ -1,0 +1,1 @@
+{"Name": "SmallerCCButtons", "Version": "0.0.2", "Section": "Tweaks", "Package": "git.shin.smallerccbuttons", "Author": "fidele007 <kforcefidele@yahoo.com>", "Depends": "mobilesubstrate, com.rpetrich.flipcontrolcenter", "Descript": "Make bottom CC buttons smaller (like stock iOS) for FlipControlCenter.", "Arch": "iphoneos-arm", "Size": "4574", "Time": "1581840632000"}

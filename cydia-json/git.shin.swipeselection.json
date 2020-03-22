@@ -1,0 +1,1 @@
+{"Name": "SwipeSelection", "Version": "1.5.2-1", "Section": "Tweaks", "Package": "git.shin.swipeselection", "Author": "iKy1e (Kyle Howells) <freerunnering+SwipeSelection@gmail.com>", "Depends": "mobilesubstrate (>= 0.9.5000), firmware (>= 4.0)", "Descript": "keyboard swipes move cursor & select text", "Arch": "iphoneos-arm", "Size": "15118", "Time": "1583216638000"}

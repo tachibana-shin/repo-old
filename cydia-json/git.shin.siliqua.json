@@ -1,0 +1,1 @@
+{"Name": "Siliqua", "Version": "1.0-2", "Section": "Tweaks", "Package": "git.shin.siliqua", "Author": "LaughingQuoll <laughingquoll@gmail.com>", "Depends": "firmware (>= 9.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "AirPods Gestures and New Features", "Arch": "iphoneos-arm", "Size": "26702", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "Random Icon Flip", "Version": "0.3-7", "Section": "Tweaks", "Package": "git.shin.randomiconsflip", "Author": "shin-chan", "Depends": "mobilesubstrate, firmware (>= 4.0)", "Descript": "Randomly Flips SB Icons", "Arch": "iphoneos-arm", "Size": "10302", "Time": "1581840632000"}

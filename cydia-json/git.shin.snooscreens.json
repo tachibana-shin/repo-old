@@ -1,0 +1,1 @@
+{"Name": "SnooScreens", "Version": "1.1-1", "Section": "Tweaks", "Package": "git.shin.snooscreens", "Author": "Milo Darling <milodarling98+snooscreens@gmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), libactivator, preferenceloader", "Descript": "Set wallpaper to favorite subreddit!", "Arch": "iphoneos-arm", "Size": "234202", "Time": "1584791015000"}

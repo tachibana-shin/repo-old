@@ -1,0 +1,1 @@
+{"Name": "Shy Page Dots", "Version": "0.1.1", "Section": "Tweaks", "Package": "git.shin.shypagedots", "Author": "ryst <ryan.stephenson@gmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)", "Descript": "Hide page dots when not scrolling", "Arch": "iphoneos-arm", "Size": "9216", "Time": "1583216714000"}
