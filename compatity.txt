@@ -481,3 +481,18 @@ com.pulandres.watools 8+
 git.shin.yobunpro 12, 13
 git.shin. 
 git.shin.replayer all
+git.shin.ccmusicartwork 13
+git.shin.copiedlabel 10, 11, 12, 13
+git.shin.customsw 11, 12, 13
+git.shin.discordautoscroll 9, 10, 11, 12, 13
+git.shin.facebookautoscroll 9, 10, 11, 12, 13
+git.shin.fireflyx 11, 12, 13
+git.shin.floatingdockplus13 13+
+git.shin.google3 7+
+git.shin.instagramautoscroll 9, 10, 11, 12, 13
+git.shin.ringer13 12, 13
+git.shin.sleepizy 11, 12, 13
+git.shin.sleepizyvi 11, 12, 13
+git.shin.snooscreens 7, 8
+git.shin.time 12, 13
+git.shin.whatcol 10, 11, 12, 13

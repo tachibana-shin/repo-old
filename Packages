@@ -2223,6 +2223,25 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.ccmodulespro
 
+Package: git.shin.ccmusicartwork
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0.3
+Depends: mobilesubstrate, firmware (>= 13.0)
+Conflicts: com.spark.ccmusicartwork
+Filename: ./debs/ccmusicartwork_1.0.3.deb
+Size: 21902
+MD5sum: 0e82afa1f8cccde324976bda052f72ad
+SHA1: 9be61fea009a6eb0e139eb9b82a32ddb0954f214
+SHA256: 2883e9ceab01ad0551b7db0720319ea13ce8b349dbaf171cec50cfa88b1708a8
+Description: Album artwork in music cc module.
+Name: CCArtwork
+Author: cole cabral
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.ccmusicartwork
+
 Package: git.shin.ccrecorder
 Priority: optional
 Section: Tweaks
@@ -2789,6 +2808,42 @@ Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.comp
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 
+Package: git.shin.complications
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 3.0
+Depends: mobilesubstrate
+Filename: ./debs/complications_3.0.deb
+Size: 665198
+MD5sum: 704329a39b134a5d969a807f6aa8d246
+SHA1: 9efb01bd9c12e4bc6ae3017261b77824d2e17d97
+SHA256: 153e83efda9dca327cfed4d8db9b8e6920fc66527b0f8dd3dbf624c5673925e4
+Description: watchOS widgets on your lock screen
+Name: Complications
+Author: Ben Giannis
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.complications
+
+Package: git.shin.copiedlabel
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0.1
+Depends: mobilesubstrate, preferenceloader, com.spark.libsparkapplist
+Filename: ./debs/copiedlabel_1.0.1.deb
+Size: 43080
+MD5sum: bd84966411e3c450cd588f772a684c7c
+SHA1: c44d0a05198f95f8f7942bccd3417d65e7a8a548
+SHA256: 899c5031c41d77159cef877bb93d9e015fcb19a7c970105700bacfe0ab7238f5
+Description: Longpress to copy text lable on anywhere app. Configure options from Settings!
+Name: CopiedLabel
+Author: pxcex
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.copiedlabel
+
 Package: git.shin.cosmos13
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -2964,6 +3019,24 @@ Author: Lefteris Karkaletsis <kartermanios@gmail.com>
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.custompods
+
+Package: git.shin.customsw
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0.3
+Depends: mobilesubstrate, preferenceloader, com.spark.libsparkcolourpicker
+Filename: ./debs/customsw_0.0.3.deb
+Size: 125232
+MD5sum: 6da98ade0cb304bd5c33684c943cfdc0
+SHA1: 167c1265fca3c4e36ef4a2fdd645fb86f16ac533
+SHA256: 7b730d195071ece7d71a8279637c4ff45a410070f9cbb7131c5120c9363bfe81
+Description: An awesome MobileSubstrate tweak!
+Name: Custom SW
+Author: mostafa89
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.customsw
 
 Package: git.shin.cyanea
 Section: Tweaks
@@ -3415,6 +3488,24 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dimme
 
+Package: git.shin.discordautoscroll
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0.1
+Depends: mobilesubstrate
+Filename: ./debs/discordautoscroll_0.0.1.deb
+Size: 7504
+MD5sum: e957b87c7cba453165c1853b168ec8c5
+SHA1: fbc1ec5a11e528ef3ea519a8c86a8c9f13760c1e
+SHA256: d7c88f09cd0a825b6838dab3a8f6f78902181411cec11cf4823a678db7160fda
+Description: Discord AutoScroll prevents finger fatigue when scrolling a lot on Discord.app.
+Name: Discord AutoScroll
+Author: pxcex
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.discordautoscroll
+
 Package: git.shin.display-touch
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -3571,21 +3662,39 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dsm
 
+Package: git.shin.dsm
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.3
+Depends: mobilesubstrate
+Filename: ./debs/dsm_1.3.deb
+Size: 74244
+MD5sum: a442a5ca85db3b1e95a74e3a421b12fc
+SHA1: 5db86cfa8ef35f0a9dc49efe9cbf3155d1a46f25
+SHA256: 00de1220f5e63e8b8de6eb4f750ae6896ad344e831546ec187fee417dd7ef28f
+Description: Don't hang up my call when I press sleep/lock/power button!
+Name: DontStopMyCall Cracked
+Author: Prasa
+Icon: https://repo.packix.com/api/Packages/5e0f54ecd32d5c001fc5313e/icon/download?size=medium&hash=2
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dsm
+
 Package: git.shin.dsmvi
 Section: Localization
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
 Architecture: iphoneos-arm
 Version: 1.0
-Depends: mobilesubstrate
+Depends: git.shin.dsm
 Filename: ./debs/dsmvi_1.0.deb
-Size: 1344
-MD5sum: 469d4baf572edd87d69af345bbd5515a
-SHA1: e655ca11631026d15bb3944d45785a01bbd63beb
-SHA256: 7f6d59cfe9e41918aee7d3ce78ff435c99430af71fcb22d03b38cdc8c6ef1ab6
+Size: 1858
+MD5sum: 22cd92004636cf381a634ba543e1647b
+SHA1: 31516ca8c833a75edc018e94117d59cc86dfa17e
+SHA256: ebf92e886b4b60d7df1b1a01ac6d1b709fb62b1a02519ab95fc99ecf3c1c06ea
 Description: Add Vietnamese for DontStopMyCall
 Name: DontStopMyCall vi
 Author: shin-chan
-Icon: https://repo.packix.com/api/Packages/5e0f54ecd32d5c001fc5313e/icon/download?size=medium&hash=2
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dsmvi
@@ -3627,6 +3736,24 @@ Author: pxcex
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.facebook-no-ads
+
+Package: git.shin.facebookautoscroll
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0.2
+Depends: mobilesubstrate
+Filename: ./debs/facebookautoscroll_0.0.2.deb
+Size: 10424
+MD5sum: f2322727aed47998dfce72fddcf1511d
+SHA1: a004bc645e07c7d5c85f533efd3ab0ff098ecdc7
+SHA256: d0584d02f8c522bc0d4d0944c429428850e3f07dc26fa741e2f37bdfbba83c97
+Description: Facebook AutoScroll prevents finger fatigue when scrolling a lot on Facebook.app & Messenger.app.
+Name: Facebook AutoScroll
+Author: pxcex
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.facebookautoscroll
 
 Package: git.shin.fastx
 Section: Tweaks
@@ -3694,6 +3821,24 @@ MD5sum: 970f9626d855c0e7f9bb984b99d83796
 SHA1: 84048f6deae1d7baefe8e1f4e63e4723f8fd25fd
 SHA256: c7df3460ba72fe0fca3518fbd1749d32d1182c0c80462cdecab4972c97bf6ed9
 Description: your device will be so fast
+Name: FastX
+Author: mostafa
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.fastx
+
+Package: git.shin.fastx
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.5.3
+Depends: mobilesubstrate
+Filename: ./debs/fastx_1.5.3.deb
+Size: 36136
+MD5sum: 2e80370953c6658f014781284553cb2d
+SHA1: 787620ccc730f68a555972b9cd57a949e323a709
+SHA256: bd7fa6ff5ff092d5cd7a37edd73e7fc32e048e2452f49b5fea10114c85a01576
+Description: An awesome MobileSubstrate tweak!
 Name: FastX
 Author: mostafa
 Homepage: https://nguyenthanh1995.github.io/
@@ -3832,6 +3977,25 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.firefly
 
+Package: git.shin.fireflyx
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.2
+Depends: mobilesubstrate, preferenceloader, firmware (>= 11.0), com.creaturesurvive.libcscolorpicker, com.spark.libsparkapplist
+Filename: ./debs/fireflyx_1.1.2.deb
+Size: 691914
+MD5sum: 3ccdd2021cebb9dac3da3a259d18f1f0
+SHA1: 4a75a52d8423cc269b54665355a682062bfc7c90
+SHA256: 4bfbdd0f3dbb8ffd7570681ca9840041cccac0a083bf6b0805738d4736be505b
+Description: Replace your badge with a glowing icon, and animations!
+Name: FireflyX Cracked
+Author: Sirius24
+Icon: https://repo.packix.com/api/Packages/5e5b24891be1b3001a59435b/icon/download?size=medium
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.fireflyx
+
 Package: git.shin.flex3-32b
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -3876,6 +4040,26 @@ Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.Flex
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 
+Package: git.shin.floatingdockplus13
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.6
+Depends: firmware (>= 13.0),mobilesubstrate,preferenceloader,com.spark.libsparkapplist
+Conflicts: com.imkpatil.floatingdock, com.synnyg.floatydock, com.imkpatil.floatingdockplus
+Filename: ./debs/floatingdockplus13_1.1.6.deb
+Size: 92816
+MD5sum: fa7e60e72a3444e572168b432af598c5
+SHA1: 00077729d4c36fbb0860bce333bd37921ea1b053
+SHA256: b9ed774f882ba9311a796f2af92c7434ac1b2cb7cb8744977f94e24e2e4d6150
+Description: Use your Dock like a PRO!
+Name: FloatingDockPlus13
+Author: P2KDev <p2kdev@gmail.com>
+Icon: file:///Library/Application Support/FloatingDockPlus13/icon.png
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.floatingdockplus13
+
 Package: git.shin.flow
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -3907,6 +4091,24 @@ Size: 156478
 MD5sum: ece0cb7bc4abc7f595c723a30c9f59fb
 SHA1: de8666c7b25c81d3d5f44f6212a899911c13212b
 SHA256: 3d20953e57af8ef21d1d7eaa9264abef9d7352ddbc837738592dcbe4782b8c6d
+Description: Music control everywhere!
+Name: Flowic
+Author: SynnyG <synnyg.devjb@gmail.com>
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.flowic
+
+Package: git.shin.flowic
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2
+Depends: mobilesubstrate, firmware (>= 11.0), applist, com.opa334.ccsupport, ws.hbang.common (>= 1.11), preferenceloader
+Filename: ./debs/flowic_1.2.deb
+Size: 204714
+MD5sum: 53c9564b047dd3184b9151f478aa726f
+SHA1: 198cfd8bb280bd54908570b87e7acccb5e80a7fb
+SHA256: 9710443650c3e11c065259e1d574671161a9d3ed60d383c8e15a473fca1a1e38
 Description: Music control everywhere!
 Name: Flowic
 Author: SynnyG <synnyg.devjb@gmail.com>
@@ -4289,6 +4491,24 @@ Icon: file:///Library/PreferenceBundles/GoodWiFiSettings.bundle/icon@2x.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.goodwifi
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: git.shin.google3
+Section: Widgets (Lockscreen)
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0
+Depends: com.matchstic.xenhtml, com.junesiphone.xeninfo
+Filename: ./debs/google3_1.0.deb
+Size: 1624208
+MD5sum: 95ffa1593f94834d28eb983408b26f02
+SHA1: f9ba32375f9a3f6a7a4aaf745cc86f4e46b00179
+SHA256: 738a0afe7b32d17699c470d3e7f0e397265b10d77bb147b02a676f14772b48c5
+Description: Say hello to G3
+Name: Google Pixel 3
+Author: AussieAppz <info@aussieappz.com>
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.google3
 
 Package: git.shin.grupi
 Section: Tweaks
@@ -4719,6 +4939,24 @@ Tag: cydia::commercial, purpose::extension
 dev: chpwn
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.infinidock
 Homepage: https://nguyenthanh1995.github.io/
+
+Package: git.shin.instagramautoscroll
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0.1
+Depends: mobilesubstrate
+Filename: ./debs/instagramautoscroll_0.0.1.deb
+Size: 8242
+MD5sum: 0b8ae800830c5accadeca4921218a66c
+SHA1: 8d2ebd03f872dec2a636fb797942db7bdfcee20a
+SHA256: c1a541c30e5ae914b4f806829af953ad15b39e1f01ded3dc809337f62e9f3379
+Description: Instagram AutoScroll prevents finger fatigue when scrolling a lot on Instagram.app.
+Name: Instagram AutoScroll
+Author: pxcex
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.instagramautoscroll
 
 Package: git.shin.instalauncher.packix
 Section: Tweaks
@@ -5530,6 +5768,25 @@ Icon: file:///Library/PreferenceBundles/MagmaEvo.bundle/icons/Magma@2x.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.magmaevo
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: git.shin.magmaevo
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2.0
+Depends: mobilesubstrate, firmware (>= 12.0), preferenceloader, com.opa334.ccsupport, org.thebigboss.libcolorpicker (>= 1.6.7)
+Conflicts: com.noisyflake.magma, com.noisyflake.magmapro
+Filename: ./debs/magmaevo_1.2.0.deb.deb
+Size: 147332
+MD5sum: 9e68f5decdb10ec34142915bfcb03eff
+SHA1: aa7c046d070c3fd26efdf02ccb748d1075975c6d
+SHA256: 22226bf69149538ceae0c87daa08bc19dae8b55a42059275152291856d496fbe
+Description: Redefine your Control Center
+Name: Magma Evo
+Author: NoisyFlake
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.magmaevo
 
 Package: git.shin.magmaevovi
 Section: Localization
@@ -6490,6 +6747,24 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.phonexl
 
+Package: git.shin.phonexl
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2.7
+Depends: mobilesubstrate
+Filename: ./debs/phonexl_1.2.7.deb
+Size: 39504
+MD5sum: f1e0b40c6dcbd8d84789a59ccb37fad0
+SHA1: 842feaff4fdabc31edb32df5f8e7c3b2c622bc1c
+SHA256: dd76e96072cad42ccbf4e44f51ae388ae0d6d221383fdb1e4645943b59b3bbaf
+Description: An awesome MobileSubstrate tweak!
+Name: phonexl
+Author: mik
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.phonexl
+
 Package: git.shin.photomanager12
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -6656,6 +6931,25 @@ Description: Your control center, reimagined.
 Name: Prysm Beta 9
 Author: LaughingQuoll
 Icon: https://repo.packix.com/api/Packages/5e30d22a5b17d7001a6948e1/icon/download?size=medium&hash=2
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.prysm
+
+Package: git.shin.prysm
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.4.1
+Depends: mobilesubstrate, com.laughingquoll.prefixui, com.opa334.ccsupport
+Filename: ./debs/prysm_1.4.1.deb
+Size: 396256
+MD5sum: 22b6496411e596a7abe414b75fd747b1
+SHA1: a3acbeb4ee86815c02b69dea7121b995bfa367ac
+SHA256: efccfb4fcd9b4981033e740dbc38d389dcd02ed98f2e2346b312bb448a25ecfd
+Description: Your control center, reimagined.
+Name: Prysm Cracked
+Author: LaughingQuoll
+Icon: https://repo.packix.com/api/Packages/5e58e8685bcef5001a252e4f/icon/download?size=medium&hash=2
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.prysm
@@ -6949,6 +7243,24 @@ Tag: purpose::extension, compatible::ios9, compatible::ios10
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.respringprogress
+
+Package: git.shin.ringer13
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2.4
+Depends: mobilesubstrate
+Filename: ./debs/ringer13_1.2.4.deb
+Size: 64212
+MD5sum: 9b59be1cde8c3d80cc98a9080b4fd3c9
+SHA1: 3d784e9fae929bf293d402c1990154d6ea183efc
+SHA256: ef82472750df4a365e97b13711ddac827fbd378dd84df2538562e951c86fb53f
+Description: An iOS 13 inspired Ringer HUD
+Name: Ringer13
+Author: KingPuffdaddi
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.ringer13
 
 Package: git.shin.rockethack
 Section: Tweaks
@@ -7436,6 +7748,43 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.sleepfx
 
+Package: git.shin.sleepizy
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2.1
+Depends: mobilesubstrate, ws.hbang.common (>= 1.14), firmware (>= 11.0)
+Filename: ./debs/sleepizy_1.2.1.deb
+Size: 736374
+MD5sum: 41c9518705f143503e14363898b5ce4f
+SHA1: 4ebe0d4c1170dd4bf19bde78a638ca1c314fbce1
+SHA256: b7d49df5857ecf318a82ac3dc80fa9cdc0512fd61610527e1fbf1b80180ab9e9
+Description: Fall asleep with your music! Set a timer to stop your music directly from Control Center, with many features
+Name: Sleepizy Cracked
+Author: AnthoPak
+Icon: https://repo.packix.com/api/Packages/5d1632736f5ead001b78b7d7/icon/download?size=medium&hash=2
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.sleepizy
+
+Package: git.shin.sleepizyvi
+Section: Localization
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0
+Depends: git.shin.sleepizy
+Filename: ./debs/sleepizyvi_1.0.deb
+Size: 3416
+MD5sum: aaf662e23e26facd151837be1b6d42d0
+SHA1: ff30bb5891d8e6ef1443bd086d08da58a8bc4167
+SHA256: 4c03b3d4e85b991529d66f8287288334f26cdb9c35126edcfc46a32eb99469f0
+Description: Add Vietnamese for Sleepizy
+Name: Sleepizy vi
+Author: shin-chan
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.sleepizyvi
+
 Package: git.shin.sleipnizer4
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -7724,6 +8073,27 @@ Icon: file:///Library/PreferenceBundles/SmoothBattery.bundle/icon@2x.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.smoothbattery
 Homepage: https://nguyenthanh1995.github.io/
 
+Package: git.shin.snooscreens
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1-1
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), libactivator, preferenceloader
+Filename: ./debs/snooscreens_1.1-1.deb
+Size: 234202
+MD5sum: 0a53c7b71ba086e469eb23c3c5a3ff9c
+SHA1: 39b1f00f9a5a2ed0343932633b629777082a224f
+SHA256: b48a5999af255f26a097f45c9f94ad591bbd663abc3b6affcdc2e6a2a8f824bf
+Description: Set wallpaper to favorite subreddit!
+Name: SnooScreens
+Author: Milo Darling <milodarling98+snooscreens@gmail.com>
+dev: milodarling
+Tag: purpose::extension, ios7support::1, ios8support::1
+Icon: file:///Library/PreferenceBundles/SnooScreens.bundle/SnooScreens@2x.png
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.snooscreens
+
 Package: git.shin.widgetsnow
 Section: Widgets
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -7945,6 +8315,24 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.st5
 
+Package: git.shin.st5
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 5.1.0
+Depends: mobilesubstrate, preferenceloader, applist, com.rpetrich.rocketbootstrap
+Filename: ./debs/st5_5.1.0.deb
+Size: 842070
+MD5sum: 6ffb303867f8de20f7ef5671916fdba0
+SHA1: 54ffa9a859e30b101cffa8c058f15f0715f5b5e5
+SHA256: a26517a23a8d2190a8e69e13c01662d4224804ed7b9edf475287121024b1244e
+Description: Customize your device like never before.
+Name: Springtomize 5
+Author: sharedRoutine
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.st5
+
 Package: git.shin.stalky
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -7978,6 +8366,24 @@ Size: 568946
 MD5sum: 6d9ea7a917ba9849e4941172f9de3560
 SHA1: f9b3b62da8fa8527f7970e56721fabddc1d47f30
 SHA256: e8e544b152552f7bf6cf10a18e88e11956b6aa2d558655bbdaf5130cc72ac9c6
+Description: An awesome MobileSubstrate tweak!
+Name: Statusbar Mix
+Author: mostafa
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.statusbarmix
+
+Package: git.shin.statusbarmix
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.6
+Depends: mobilesubstrate, preferenceloader, com.spark.libsparkcolourpicker
+Filename: ./debs/statusbarmix_1.1.6.deb
+Size: 568944
+MD5sum: 65ee228826361daa1eea481c307b96ca
+SHA1: f832a983c0e9fc744a761db888f4855d48ac72b2
+SHA256: b2d4d72b0b76630bccfa98bfbeb71b1bcd7b59bbb2d32b1114cc0e1fb3d31234
 Description: An awesome MobileSubstrate tweak!
 Name: Statusbar Mix
 Author: mostafa
@@ -8338,6 +8744,53 @@ Author: Ziph0n
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.tilayer2
+
+Package: git.shin.time
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 5.6
+Depends: mobilesubstrate, org.thebigboss.libcolorpicker, preferenceloader,firmware (<= 13.4)
+Conflicts: com.manu.timedemo
+Filename: ./debs/time_5.6.deb
+Size: 430696
+MD5sum: 070247259e962ef136484d4b2c583f7c
+SHA1: 066beeb679df4d2e178881969a57edb94ea14af9
+SHA256: f6df6dc92a992ac977baf4646d1937d469b01b8bd84cb3588d8617c52564fd0a
+Description: Your Time in your way.
+ Your Time in your way.
+ -Statusbar(Right,Left,Control Center).
+ -Lockscreen Date & Time Can be Customization.
+ -Setting to display diffrent Timezone time at left top bottom,right,CC.
+ -What's new
+ -System storage used,free space.
+ -Network speed.
+ -WLan Network Name.
+ -Ram speed.
+ -iOS Version.
+ -CC Time with same options as in Home page.
+ -CC Network Customization,cellular text,etc.
+ -All includes with custom size ,fonts. WiFi, Cellular colors,4G to 5G or else.
+ -http://www.nsdateformatter.com/ for more date time format settings
+ ver5.2~5.3
+ -WifiNetwork or else instead of Cellular Network,Change display option in prefrence settting,
+ -Volume Sound while pressing button,
+ -Mute Toggle sound if unmute,
+ -HS Clock Icon label customization,
+ -HS Calander Icon label customization,
+ -Switches color systemwides,
+ -Double tap Wifi icon to disable wifi(Default is disabled,Enable to see the action),
+ -Battery Icon & %age change colors based on battery level(fixes),Also it will gave conflict with other battery tweak,Disable battery option in setting if you dont use Time,
+ -Display options feature addition.
+ -refrences are easy to adjust and mostly user friendly & user required setting is already defaults.
+ -iPAD supported(Tested on ipad pro 12.9 by user).
+ -Custom Image in Time String
+Name: Time
+Author: NaneraManu
+Icon: /Timeprefs/Resources/Timelarge.png
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.time
 
 Package: git.shin.tinybanners
 Section: Tweaks
@@ -8798,6 +9251,24 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.vibrato
 
+Package: git.shin.vibrato
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.4.1
+Depends: mobilesubstrate, firmware (>= 9.0), ws.hbang.common (>= 1.11), preferenceloader
+Filename: ./debs/vibrato_1.4.1.deb
+Size: 94076
+MD5sum: 0ff0ee3b62cd05f64730f2380bc9ad44
+SHA1: 407ea530e08f5f24c6077ab319f29429623be944
+SHA256: e94ee8cc0406fbd05263e29975b78b16c9ee26e8f3296e36d3744ef001999a98
+Description: Feel more your device by making it vibrate!
+Name: Vibrato
+Author: SynnyG <synnyg.devjb@gmail.com>
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.vibrato
+
 Package: git.shin.vinculum
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -9016,6 +9487,26 @@ Author: Ryan Bushe
 Sponsor: nguyenthanh
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.wethr
 Homepage: https://nguyenthanh1995.github.io/
+
+Package: git.shin.whatcol
+Priority: optional
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0-2
+Depends: mobilesubstrate, preferenceloader, ws.hbang.common, com.rpetrich.rocketbootstrap, org.thebigboss.libcolorpicker
+Filename: ./debs/whatcol_1.0-2.deb
+Size: 1900144
+MD5sum: 2407610e64fb73c2763d78255e4c4d37
+SHA1: f4a1bed97c537bffb95f8cc4122c909c75a6769e
+SHA256: 93032c997c17c61250a77d08ab13c3ce706559b0c540897ac76be4e43eb1261c
+Description: Customize your WhatsApp colors!
+Name: WhatCol
+Author: ahmedmakls
+dev: ahmedmakls
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.whatcol
 
 Package: git.shin.whitedreamfs
 Section: Widgets
