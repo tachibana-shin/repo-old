@@ -11,13 +11,15 @@
 <meta name="description" content="Depiction Repo Cydia by Nguyen Thanh (shin-dev) " class=g-descript /> 
 <meta property="article:tag" content="Depiction Repo Cydia by Nguyen Thanh (shin-dev)" class=g-descript />
 <meta property="og:type" content="website">
-	<script src=./my.js></script>
+	<script src=./my.js async></script>
 	<link rel=stylesheet href=css/bootstrap.min.css></link>
 	<link rel=stylesheet href=/lb/bootstrap.min.css></link>
 	<link rel=stylesheet href=main.css></link>
 	<link rel=stylesheet href=hidden-googl.css></link>
 	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
-	<script src="https://translate.google.com/translate_a/element.js?cb=googleInit"></script>
+	<script src="https://translate.google.com/translate_a/element.js?cb=googleInit" async></script>
+	<script src="/lib/search.params.min.js" async></script>
+	<script src="/lib/fix-cookie.js" async></script>
 	</head>
 	<body>
 		<div class=container>
@@ -247,82 +249,91 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 	}, Object.defineProperty(e, "__esModule", { value: !0 });
 });
 
+!function (global, factory) {
+	global.onload = factory
+}(this, function () {
 function iOSVer() {
-	var match = (navigator.appVersion).split('OS ');
+	var match = navigator.appVersion.split('OS ');
 	if (match.length > 1)
 		return match[1].split(' ')[0].split('_').join('.')
 	return false
 }
 function iOSToArray (str) {
-    return my.trim(str)
-    		.replace(/\s/g, '')
-    		.split(',')
+	return my.trim(str)
+			.replace(/\s/g, '')
+			.split(',')
 }
+
 function checkVers (f) {
-    var e = iOSVer()
-    if (e === false) return;
-    e = e.split('.')[0]
+	var e = iOSVer(), $1, $2
+	if (e === false) return;
+	e = e.split('.')[0]
 	return iOSToArray(f)
 	.some(function(g) {
-	    if (g.indexOf('+') > -1)
-	    	return parseInt(g) <= (e - 0);
-	    if (g.split('.')[0] === e)
-	    	return true;
+		if (g.match(/.+\-.+/)) {
+			$1 = g.split("-")[0].split('.')[0]
+			$2 = g.split("-")[1].split('.')[0]
+
+			if (!$1.match(/\d/))
+				g = $2 + "+"
+			else if (!$2.match(/\d/))
+				g = $2 + "-"
+			else return ($1 - 0) <= (e - 0) && ($2 - 0) >= (e - 0)
+		}
+
+		if (g.indexOf('+') > -1)
+			return parseInt(g) <= (e - 0);
+		if (g.indexOf('-') > -1)
+			return abs(parseInt(g)) >= (e - 0);
+		if (g.split('.')[0] === e)
+			return true;
 	})
 }
-var json = JSON.parse(my.getText("./all.pkgs")).sort(function (a, b) {
-     return b.Time - a.Time
-}) 
-var href = location.href
-var isRQ = href.indexOf("?")
-var id, os = "unknown"
-var infoSimple
-if (isRQ > -1) {
-	href = href.slice(isRQ + 1)
-			.split('&')
-			.map(function (val) {
-    			return val.split('=')
-			});
-	my.each(href, function (val, val) {
-		if (val[0] === "goto")
-    		id = val.slice(1)
-    				.join('=')
-		if (val[0] === "os")
-    		os = val.slice(1)
-					.join('=')
-	})
-	my.each(json, function (key, val) {
-		if (val.Package === id) {
-    		infoSimple = val
-    		return false
-    	}
-	})
-	my.getText("./compatity.txt")
-	.split("\n").map(function (e) {
+var json = JSON.parse(my.getText("list.pkgs")).sort(function (a, b) {
+	 return b.Time - a.Time
+})
+var os = "unknown"
+
+
+var id = searchParams()["goto"]
+if (navigator.userAgent.search(/Cydia/) === -1) {
+	my("#open-cydia")
+		.unAttr('hidden')
+	my("#open-cydia-url")
+		.attr("href", "cydia://url/https://cydia.saurik.com/api/share#?source=https://nguyenthanh1995.github.io/&package=" + id)
+}
+
+if ( id.match(/\S/) ) {
+	my.getText("compatity.txt").split("\n")
+	.map(function (e) {
 		e = e.split(' ')
 		if (e[0] === id)
-			os = e.slice(1).join(" ").trim();
+			os = e.slice(1).join(" ")
+			.trim();
 	})
-	init()
-	
-	if (navigator.userAgent.search(/Cydia/) === -1) {
-		my("#open-cydia")
-		.unAttr('hidden')
-		my("#open-cydia-url")
-		.attr("href", "cydia://url/https://cydia.saurik.com/api/share#?source=https://nguyenthanh1995.github.io/&package=" + id)
-	}
+
+	my.get("cydia-json/" + id + ".json", function (data) {
+		if (typeof data == "string" && data.match(/\S/))
+			init( JSON.parse(data) )
+		else 
+			notExistTweak()
+	})
+	.fail(notExistTweak)
+
 }
-else {
-    my('#package-info').attr("hidden", true)
+else notExistTweak()
+
+function notExistTweak () {
+	init()
+	//my('#package-info').attr("hidden", true)
 	my('#descript')
 	.text("Description not exists in the this request!")
 	my('#iOS-ver').text('unknown')
 }
+function init (infoSimple) {
+	my('#iOS-ver').text(iOSVer())
 
-function init () {
-my('#iOS-ver').text(iOSVer())
-
-my('#complity').html("Support for iOS " + os)
+	my('#complity').html("Support for iOS " + os)
 
 if (os === "unknown")
 	my('#complity').bg('#ffff24')
@@ -333,22 +344,20 @@ else my('#complity').bg('#ff0024')
 if (typeof infoSimple !== "object" || my.isEmptyObj(infoSimple)) {
 	my("#__warning").unAttr("hidden").find("#warning").text("Can't find info tweak " + id)
 	my('#descript').text("Description not exists in the this request!")
-        return;
+		return;
 }
 
-my(".g-title").each(function () {
-   my(this).attr("content", document.title = "Description Tweak " + infoSimple.Name)
-})
+my(".g-title").mattr("content", document.title = "Description Tweak " + infoSimple.Name)
+
 my("#og-url").attr("content", "https://https://nguyenthanh1995.github.io/description.html?goto=" + infoSimple.Package)
 //Using infoSimple.Package or location.href (Request)
-my(".g-descript").each(function () {
-    my(this).attr("content", infoSimple.Descript)
-})
-my("#og-icon").attr("content", "https://nguyenthanh1995.github.io/icons/" + encodeURI(
-			   infoSimple.Section ?
-			   infoSimple.Section : 
-			   "unknown"
-		) + ".png")
+my(".g-descript").mattr("content", infoSimple.Descript)
+
+my("#og-icon").attr("content", "icons/" + encodeURI(
+	infoSimple.Section ?
+	infoSimple.Section : 
+	"unknown"
+) + ".png")
 
 my('#tweak-name').text(infoSimple.Name)
 my('#pkg_name').text(infoSimple.Name)
@@ -368,8 +377,8 @@ var $start = 0;
 
 my("#more-tweak-update")
 .click(function () {
-    $start += 5
-    loadRecentUpdates($start)
+	$start += 5
+	loadRecentUpdates($start)
 })
 
 loadRecentUpdates($start)
@@ -399,10 +408,10 @@ function loadRecentUpdates ($s) {
 	}
 	my("#last_update")
 	.html(function (e) {
-	    return e + htmlnews
+		return e + htmlnews
 	})
    if (count >= leng)
-       my("#more-tweak-update").css("opacity", 0.5);
+	   my("#more-tweak-update").css("opacity", 0.5);
 }
 
 loadListType()
@@ -412,20 +421,20 @@ function loadListType ($html) {
    my("#browser-pkg").addClass("mb-0")
    var ls = []
 	json.forEach(function (e) {
-       	if (my.isEmptyObj(e))
-       		return;
-       	if (!ls.some(function (f) {
-       	    if (f.type === e.Section)
+	   	if (my.isEmptyObj(e))
+	   		return;
+	   	if (!ls.some(function (f) {
+	   		if (f.type === e.Section)
 				return f.pkg.push(e), true
 			
-       	})) ls.push({
-       	    type: e.Section,
-       	    pkg: [e]
-       	})
+	   	})) ls.push({
+	   		type: e.Section,
+	   		pkg: [e]
+	   	})
    })
    
    ls = ls.sort(function (a, b) {
-       return (a.type || '').charCodeAt(0) - (b.type || '').charCodeAt(0)
+	   return (a.type || '').charCodeAt(0) - (b.type || '').charCodeAt(0)
    })
 
    var $s = (my("#browser-pkg").data("count") || 0) - 0
@@ -462,22 +471,22 @@ function loadListType ($html) {
 
 my("#more-browser-pkg")
 .click(function () {
-    my("#browser-pkg")
-    .data("count", function (e) {
-        return (e || 0) - 0 + 5
-    })
+	my("#browser-pkg")
+	.data("count", function (e) {
+		return (e || 0) - 0 + 5
+	})
 
-    loadListType(
-    	my("#browser-pkg").html()
-    )
+	loadListType(
+		my("#browser-pkg").html()
+	)
 })
 
 function loadInfoPkg (e) {
-    my("#browser-pkg")
-    .removeClass("mb-0")
-    .data("count", 0)
-    my("#more-browser-pkg").attr("hidden", true)
-    var json = JSON.parse(
+	my("#browser-pkg")
+	.removeClass("mb-0")
+	.data("count", 0)
+	my("#more-browser-pkg").attr("hidden", true)
+	var json = JSON.parse(
 		decodeURIComponent(
 			my(e).data("pkg")
 		)
@@ -492,7 +501,7 @@ function loadInfoPkg (e) {
 		</li>";
 	
 	json.forEach(function (e) {
-	    var urlOpen = "cydia://package/" + e.Package
+		var urlOpen = "cydia://package/" + e.Package
 		if (navigator.userAgent.search(/Cydia/) === -1)
 			urlOpen = location.protocol + "//" + location.hostname + "/description.html?goto=" + e.Package;
 		tmp = encodeURI(
@@ -500,7 +509,7 @@ function loadInfoPkg (e) {
 			e.Section : 
 			"unknown"
 		)
-	    $html += "\
+		$html += "\
 		<li>\
 			<p>\
 				<a href=" + urlOpen + " target=_blank>\
@@ -517,15 +526,15 @@ if (localStorage.getItem("theme") === "dark")
 	my("<link rel=stylesheet href=m-dark.css id=theme-dark></link>").appendTo("head");
 
 function themeToggle () {
-    var theme
-    if (my("#theme-dark")[0])
+	var theme
+	if (my("#theme-dark")[0])
 		my("#theme-dark").remove(), theme = "light"
 	else my("<link rel=stylesheet href=m-dark.css id=theme-dark></link>").appendTo("head"), theme = "dark"
 
 	localStorage.setItem("theme", theme)
 	
 }
-
+})
 function googleInit() {
 	new google.translate.TranslateElement({
 		multilanguagePage: true,
