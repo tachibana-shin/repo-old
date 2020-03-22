@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Depiction Repo Nguyen Thanh</title>
+
+<meta property="og:title" content="Depiction Nguyen Thanh Repo" class=g-title>
+<meta property="og:image" content="https://nguyenthanh1995.github.io/CydiaIcon.png" id=og-icon>
+<meta property="og:url" content="https://nguyenthanh1995.github.io" id=og-url>
+<meta property="og:site_name" content="Nguyen Thanh Repo" class=g-title />
+<meta property="og:description" content="Depiction Repo Cydia by Nguyen Thanh (shin-dev) " class=g-descript />
+<meta name="description" content="Depiction Repo Cydia by Nguyen Thanh (shin-dev) " class=g-descript /> 
+<meta property="article:tag" content="Depiction Repo Cydia by Nguyen Thanh (shin-dev)" class=g-descript />
+<meta property="og:type" content="website">
+	<script src=./my.js></script>
+	<link rel=stylesheet href=css/bootstrap.min.css></link>
+	<link rel=stylesheet href=/lb/bootstrap.min.css></link>
+	<link rel=stylesheet href=main.css></link>
+	<link rel=stylesheet href=hidden-googl.css></link>
+	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+	<script src="https://translate.google.com/translate_a/element.js?cb=googleInit"></script>
+	</head>
+	<body>
+		<div class=container>
+			<div hidden id="open-cydia" class="row mt-3">
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">NguyenThanh Repo</h6>
+		<ul class="bg-white">
+			<li>
+				<a id="open-cydia-url" href="cydia://url/https://cydia.saurik.com/api/share#?source=https://nguyenthanh1995.github.io/">
+					<img src="icons/cydia7.png" class="icon_"/>
+					<label>Open Cydia</label>
+				</a>
+			</li>
+		</ul>
+			<p class="small text-center text-secondary">Repo: https://nguyenthanh1995.github.io/</p>
+				</div>
+			</div>
+			<div class=row>
+				<div class=col>
+					<div id="google-translate" class="text-center">
+					</div>
+				</div>
+			</div>  
+			<div class=row>
+				<div class=col>
+					<h6 class="text-uppercase text-secondary" id=tweak-name></h6>
+					<div style="height: 2rem; line-height: 2rem; background: #ff0024"
+" class="w-100 text-center align-middle font-italic" id=complity></div>
+					<p class="small text-secondary text-center mt-1">
+						Current iOS <span id=iOS-ver></span>
+					</p>
+				</div>
+			</div>
+			<div id=__warning hidden class="row mt-3">
+				<div class=col>
+					<div class="my-1 alert alert-danger" role=alert id=warning>
+					</div>
+				</div>
+			</div> 
+			<div class="row mt-3">
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">Description</h6>
+					<div class="my-1 py-3 px-3 bg-white" id=descript>
+					</div>
+				</div>
+			</div> 
+			<div class="row mt-3" id=package-info>
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">Package info</h6>
+		<ul class="bg-white no-goto">
+			<li><p>Name<span class="value" id="pkg_name">-</span></p></li>
+			<li><p>Identifier<span class="value" id="pkg_id">-</span></p></li>
+			<li><p>Author<span class="value" id="pkg_author">-</span></p></li>
+			<li><p>Architecture<span class="value" id="pkg_arch">-</span></p></li>
+			<li><p>Section<span class="value" id="pkg_section">-</span></p></li>
+			<li><p>Version<span class="value" id="pkg_version">-</span></p></li>
+			<li><p>Depends<span class="value" id="pkg_depends">-</span></p></li>
+
+			<li><p>Size<span class="value" id="pkg_size">-</span></p></li>
+			<li><p>Updated<span class="value" id="pkg_time">-</span></p></li>
+		</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">Package updates</h6>
+					<ul class="bg-white mb-0" id="last_update">
+
+					</ul>
+					<button id=more-tweak-update class="float-right no-app border-0 mt-2 mb-1">
+						<i class=icon-more></i>
+						<label>More</label>
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">Browser packages</h6>
+					<ul class="bg-white mb-0" id="browser-pkg">
+
+					</ul>
+					<button id=more-browser-pkg class="float-right no-app border-0 mt-2 mb-1">
+						<i class=icon-more></i>
+						<label>More</label>
+					</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">Social</h6>
+					<ul class="bg-white">
+	<li>
+		<a href="https://github.com/nguyenthanh1995" target="_blank">
+			<img src="icons/github.png" class="icon_"/>
+			<label>GitHub</label>
+		</a>
+	</li>
+	<li>
+		<a href="https://twitter.com/NguyenThanhDev" target="_blank">
+			<img src="icons/twitter.png" class="icon_"/>
+			<label>Follow NguyenThanhDev</label>
+		</a>
+	</li>
+	<li>
+		<a href="/chat.html" target="_blank">
+			<img src="icons/app-chat.png" class="icon_"/>
+			<label>Chat Online</label>
+		</a>
+	</li> 
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class=col>
+					<h6 class="text-uppercase text-secondary">Theme</h6>
+					<ul class="bg-white">
+						<li>
+							<p>
+								<button class="no-app border-0" onclick=themeToggle()>Change Theme</button>
+							</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class=col>
+					<p class="small text-center text-secondary">
+						Nguyen Thanh (shin-dev) © 2020
+					</p>
+				</div>
+			</div>
+		</div>
+	<style type=text/css>
+
+	</style>
+	<script>
+onerror = function (e) {
+   alert(e + '')
+}
+ 
+"use strict";
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+
+!function (e, i) {
+	"object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? module.exports = i() : "function" == typeof define && define.amd ? define(i) : (e = e || self).filesize = i();
+}(undefined, function () {
+	"use strict";
+	var e = /^(b|B)$/,
+	    i = { iec: { bits: ["b", "Kib", "Mib", "Gib", "Tib", "Pib", "Eib", "Zib", "Yib"], bytes: ["B", "KiB", "MiB", "GiB", "TiB", "PiB", "EiB", "ZiB", "YiB"] }, jedec: { bits: ["b", "Kb", "Mb", "Gb", "Tb", "Pb", "Eb", "Zb", "Yb"], bytes: ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"] } },
+	    b = { iec: ["", "kibi", "mebi", "gibi", "tebi", "pebi", "exbi", "zebi", "yobi"], jedec: ["", "kilo", "mega", "giga", "tera", "peta", "exa", "zetta", "yotta"] };function t(t) {
+		var o = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+		if (isNaN(t)) throw new TypeError("Invalid number");var n = [],
+		    a = 0,
+		    B = !0 === o.bits,
+		    r = !0 === o.unix,
+		    d = o.base || 2,
+		    s = void 0 !== o.round ? o.round : r ? 1 : 2,
+		    c = void 0 !== o.locale ? o.locale : "",
+		    f = o.localeOptions || {},
+		    u = void 0 !== o.separator ? o.separator : "",
+		    y = void 0 !== o.spacer ? o.spacer : r ? "" : " ",
+		    M = o.symbols || {},
+		    h = 2 === d && o.standard || "jedec",
+		    l = o.output || "string",
+		    m = !0 === o.fullform,
+		    p = o.fullforms instanceof Array ? o.fullforms : [],
+		    v = void 0 !== o.exponent ? o.exponent : -1,
+		    j = Number(t),
+		    N = j < 0,
+		    g = d > 2 ? 1e3 : 1024;return N && (j = -j), (-1 === v || isNaN(v)) && (v = Math.floor(Math.log(j) / Math.log(g))) < 0 && (v = 0), v > 8 && (v = 8), "exponent" === l ? v : (0 === j ? (n[0] = 0, n[1] = r ? "" : i[h][B ? "bits" : "bytes"][v]) : (a = j / (2 === d ? Math.pow(2, 10 * v) : Math.pow(1e3, v)), B && (a *= 8) >= g && v < 8 && (a /= g, v++), n[0] = Number(a.toFixed(v > 0 ? s : 0)), n[0] === g && v < 8 && void 0 === o.exponent && (n[0] = 1, v++), n[1] = 10 === d && 1 === v ? B ? "kb" : "kB" : i[h][B ? "bits" : "bytes"][v], r && (n[1] = "jedec" === h ? n[1].charAt(0) : v > 0 ? n[1].replace(/B$/, "") : n[1], e.test(n[1]) && (n[0] = Math.floor(n[0]), n[1] = ""))), N && (n[0] = -n[0]), n[1] = M[n[1]] || n[1], !0 === c ? n[0] = n[0].toLocaleString() : c.length > 0 ? n[0] = n[0].toLocaleString(c, f) : u.length > 0 && (n[0] = n[0].toString().replace(".", u)), "array" === l ? n : (m && (n[1] = p[v] ? p[v] : b[h][v] + (B ? "bit" : "byte") + (1 === n[0] ? "" : "s")), "object" === l ? { value: n[0], symbol: n[1] } : n.join(y)));
+	}return t.partial = function (e) {
+		return function (i) {
+			return t(i, e);
+		};
+	}, t;
+});
+
+!function (e, t) {
+	"object" == (typeof exports === "undefined" ? "undefined" : _typeof(exports)) && "undefined" != typeof module ? t(exports) : "function" == typeof define && define.amd ? define(["exports"], t) : t((e = e || self).timeago = {});
+}(undefined, function (e) {
+	"use strict";
+	var c = [60, 60, 24, 7, 365 / 7 / 12, 12];function n(e) {
+		return e instanceof Date ? e : !isNaN(e) || /^\d+$/.test(e) ? new Date(parseInt(e)) : (e = (e || "").trim().replace(/\.\d+/, "").replace(/-/, "/").replace(/-/, "/").replace(/(\d)T(\d)/, "$1 $2").replace(/Z/, " UTC").replace(/([+-]\d\d):?(\d\d)/, " $1$2"), new Date(e));
+	}function f(e, t) {
+		for (var n = e < 0 ? 1 : 0, r = e = Math.abs(e), a = 0; e >= c[a] && a < c.length; a++) {
+			e /= c[a];
+		}return (0 === (a *= 2) ? 9 : 1) < (e = ~~e) && (a += 1), t(e, a, r)[n].replace("%s", e);
+	}function d(e, t) {
+		return (+(t = t ? n(t) : new Date()) - +n(e)) / 1e3;
+	}var r = ["second", "minute", "hour", "day", "week", "month", "year"];function t(e, t) {
+		if (0 === t) return ["just now", "right now"];var n = r[~~(t / 2)];return 1 < e && (n += "s"), [e + " " + n + " ago", "in " + e + " " + n];
+	}var a = ["秒", "分钟", "小时", "天", "周", "个月", "年"];function i(e) {
+		return o[e] || t;
+	}var o = { en_US: t, zh_CN: function zh_CN(e, t) {
+			if (0 === t) return ["刚刚", "片刻后"];var n = a[~~(t / 2)];return [e + " " + n + "前", e + " " + n + "后"];
+		} },
+	    s = "timeago-id";function l(e) {
+		return parseInt(e.getAttribute(s));
+	}var p = {},
+	    v = function v(e) {
+		clearTimeout(e), delete p[e];
+	};function h(e, t, n, r) {
+		v(l(e));var a = r.relativeDate,
+		    i = r.minInterval,
+		    o = d(t, a);e.innerText = f(o, n);var u = setTimeout(function () {
+			h(e, t, n, r);
+		}, Math.min(1e3 * Math.max(function (e) {
+			for (var t = 1, n = 0, r = Math.abs(e); e >= c[n] && n < c.length; n++) {
+				e /= c[n], t *= c[n];
+			}return r = (r %= t) ? t - r : t, Math.ceil(r);
+		}(o), i || 1), 2147483647));p[u] = 0, function (e, t) {
+			e.setAttribute(s, t);
+		}(e, u);
+	}e.cancel = function (e) {
+		e ? v(l(e)) : Object.keys(p).forEach(v);
+	}, e.format = function (e, t, n) {
+		return f(d(e, n && n.relativeDate), i(t));
+	}, e.register = function (e, t) {
+		o[e] = t;
+	}, e.render = function (e, t, n) {
+		var r = e.length ? e : [e];return r.forEach(function (e) {
+			h(e, function (e) {
+				return e.getAttribute("datetime");
+			}(e), i(t), n || {});
+		}), r;
+	}, Object.defineProperty(e, "__esModule", { value: !0 });
+});
+
+function iOSVer() {
+	var match = (navigator.appVersion).split('OS ');
+	if (match.length > 1)
+		return match[1].split(' ')[0].split('_').join('.')
+	return false
+}
+function iOSToArray (str) {
+    return my.trim(str)
+    		.replace(/\s/g, '')
+    		.split(',')
+}
+function checkVers (f) {
+    var e = iOSVer()
+    if (e === false) return;
+    e = e.split('.')[0]
+	return iOSToArray(f)
+	.some(function(g) {
+	    if (g.indexOf('+') > -1)
+	    	return parseInt(g) <= (e - 0);
+	    if (g.split('.')[0] === e)
+	    	return true;
+	})
+}
+var json = JSON.parse(my.getText("./all.pkgs")).sort(function (a, b) {
+     return b.Time - a.Time
+}) 
+var href = location.href
+var isRQ = href.indexOf("?")
+var id, os = "unknown"
+var infoSimple
+if (isRQ > -1) {
+	href = href.slice(isRQ + 1)
+			.split('&')
+			.map(function (val) {
+    			return val.split('=')
+			});
+	my.each(href, function (val, val) {
+		if (val[0] === "goto")
+    		id = val.slice(1)
+    				.join('=')
+		if (val[0] === "os")
+    		os = val.slice(1)
+					.join('=')
+	})
+	my.each(json, function (key, val) {
+		if (val.Package === id) {
+    		infoSimple = val
+    		return false
+    	}
+	})
+	my.getText("./compatity.txt")
+	.split("\n").map(function (e) {
+		e = e.split(' ')
+		if (e[0] === id)
+			os = e.slice(1).join(" ").trim();
+	})
+	init()
+	
+	if (navigator.userAgent.search(/Cydia/) === -1) {
+		my("#open-cydia")
+		.unAttr('hidden')
+		my("#open-cydia-url")
+		.attr("href", "cydia://url/https://cydia.saurik.com/api/share#?source=https://nguyenthanh1995.github.io/&package=" + id)
+	}
+}
+else {
+    my('#package-info').attr("hidden", true)
+	my('#descript')
+	.text("Description not exists in the this request!")
+	my('#iOS-ver').text('unknown')
+}
+
+function init () {
+my('#iOS-ver').text(iOSVer())
+
+my('#complity').html("Support for iOS " + os)
+
+if (os === "unknown")
+	my('#complity').bg('#ffff24')
+else if (os === "all" || checkVers(os))
+	my('#complity').bg('#00ff24')
+else my('#complity').bg('#ff0024')
+
+if (typeof infoSimple !== "object" || my.isEmptyObj(infoSimple)) {
+	my("#__warning").unAttr("hidden").find("#warning").text("Can't find info tweak " + id)
+	my('#descript').text("Description not exists in the this request!")
+        return;
+}
+
+my(".g-title").each(function () {
+   my(this).attr("content", document.title = "Description Tweak " + infoSimple.Name)
+})
+my("#og-url").attr("content", "https://https://nguyenthanh1995.github.io/description.html?goto=" + infoSimple.Package)
+//Using infoSimple.Package or location.href (Request)
+my(".g-descript").each(function () {
+    my(this).attr("content", infoSimple.Descript)
+})
+my("#og-icon").attr("content", "https://nguyenthanh1995.github.io/icons/" + encodeURI(
+			   infoSimple.Section ?
+			   infoSimple.Section : 
+			   "unknown"
+		) + ".png")
+
+my('#tweak-name').text(infoSimple.Name)
+my('#pkg_name').text(infoSimple.Name)
+my('#pkg_id').text(infoSimple.Package)
+my('#pkg_section').text(infoSimple.Section)
+my('#pkg_version').text(infoSimple.Version)
+my('#pkg_size').text(filesize(infoSimple.Size - 0))
+my('#pkg_time').text(timeago.format(infoSimple.Time - 0))
+my('#pkg_arch').text(infoSimple.Arch)
+my('#pkg_author').text(infoSimple.Author)
+my('#pkg_depends').text(infoSimple.Depends)
+my('#descript').text(infoSimple.Descript)
+
+}
+
+var $start = 0;
+
+my("#more-tweak-update")
+.click(function () {
+    $start += 5
+    loadRecentUpdates($start)
+})
+
+loadRecentUpdates($start)
+function loadRecentUpdates ($s) {
+	var htmlnews = "";
+	var count = $s, leng = json.length, tmp
+	for (; count < $s + 5 && count < leng; count++) {
+		if (my.isEmptyObject(json[count])) continue;
+		var urlOpen = "cydia://package/" + json[count].Package
+		if (navigator.userAgent.search(/Cydia/) === -1)
+			urlOpen = location.protocol + "//" + location.hostname + "/description.html?goto=" + json[count].Package;
+		tmp = encodeURI(
+			json[count].Section ?
+			json[count].Section : 
+			"unknown"
+		)
+		
+		htmlnews +=  "\
+		<li>\
+			<p>\
+				<a href='" + urlOpen + "' target=_blank>\
+					<img class=icon_ src=./icons/" + tmp + ".png />\
+					<label>" + json[count].Name + " ~ v" + json[count].Version + "</label>\
+				</a>\
+			</p>\
+		</li>"
+	}
+	my("#last_update")
+	.html(function (e) {
+	    return e + htmlnews
+	})
+   if (count >= leng)
+       my("#more-tweak-update").css("opacity", 0.5);
+}
+
+loadListType()
+
+function loadListType ($html) {
+   my("#more-browser-pkg").unAttr("hidden")
+   my("#browser-pkg").addClass("mb-0")
+   var ls = []
+	json.forEach(function (e) {
+       	if (my.isEmptyObj(e))
+       		return;
+       	if (!ls.some(function (f) {
+       	    if (f.type === e.Section)
+				return f.pkg.push(e), true
+			
+       	})) ls.push({
+       	    type: e.Section,
+       	    pkg: [e]
+       	})
+   })
+   
+   ls = ls.sort(function (a, b) {
+       return (a.type || '').charCodeAt(0) - (b.type || '').charCodeAt(0)
+   })
+
+   var $s = (my("#browser-pkg").data("count") || 0) - 0
+   var i = $s, length = ls.length
+   var tmp;
+
+   if ($html === undefined)
+   		$html = "";
+   for (;i < length && i < $s + 5; i++) {
+		tmp = encodeURI(
+			ls[i].type ?
+			ls[i].type : 
+			"unknown"
+		)
+		
+		$html +=  "\
+		<li>\
+			<p>\
+				<button class=\"no-app border-0\" onclick=loadInfoPkg(this) data-name=" + tmp + " data-pkg=\"" + encodeURIComponent(JSON.stringify(ls[i].pkg)) + "\">\
+					<img class=icon_ src=icons/" + tmp + ".png />\
+					<label>" + decodeURIComponent(tmp) + " (" + ls[i].pkg.length + ")" + "</label>\
+				</button>\
+			</p>\
+		</li>"
+	}
+   
+   my("#browser-pkg").html($html)
+   my("#more-browser-pkg")
+   		.css("opacity", 1)
+   if (i >= length)
+   		my("#more-browser-pkg")
+   		.css("opacity", .5)
+}
+
+my("#more-browser-pkg")
+.click(function () {
+    my("#browser-pkg")
+    .data("count", function (e) {
+        return (e || 0) - 0 + 5
+    })
+
+    loadListType(
+    	my("#browser-pkg").html()
+    )
+})
+
+function loadInfoPkg (e) {
+    my("#browser-pkg")
+    .removeClass("mb-0")
+    .data("count", 0)
+    my("#more-browser-pkg").attr("hidden", true)
+    var json = JSON.parse(
+		decodeURIComponent(
+			my(e).data("pkg")
+		)
+	), $html = "\
+		<li>\
+			<p>\
+				<button class=\"no-app border-0\" onclick=loadListType()>\
+					<img class=icon_ src=icons/back.png />\
+					<label>Back</label>\
+				</button>\
+			</p>\
+		</li>";
+	
+	json.forEach(function (e) {
+	    var urlOpen = "cydia://package/" + e.Package
+		if (navigator.userAgent.search(/Cydia/) === -1)
+			urlOpen = location.protocol + "//" + location.hostname + "/description.html?goto=" + e.Package;
+		tmp = encodeURI(
+			e.Section ?
+			e.Section : 
+			"unknown"
+		)
+	    $html += "\
+		<li>\
+			<p>\
+				<a href=" + urlOpen + " target=_blank>\
+					<img class=icon_ src=icons/" + tmp + ".png />\
+					<label>" + e.Name + " - " + e.Version + "</label>\
+				</a>\
+			</p>\
+		</li>"
+	})
+	my("#browser-pkg").html($html)
+}
+
+if (localStorage.getItem("theme") === "dark")
+	my("<link rel=stylesheet href=m-dark.css id=theme-dark></link>").appendTo("head");
+
+function themeToggle () {
+    var theme
+    if (my("#theme-dark")[0])
+		my("#theme-dark").remove(), theme = "light"
+	else my("<link rel=stylesheet href=m-dark.css id=theme-dark></link>").appendTo("head"), theme = "dark"
+
+	localStorage.setItem("theme", theme)
+	
+}
+
+function googleInit() {
+	new google.translate.TranslateElement({
+		multilanguagePage: true,
+		gaTrack: true
+	}, 'google-translate')
+}
+
+	</script>
+	</body>
+</html>
