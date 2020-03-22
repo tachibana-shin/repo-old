@@ -1,0 +1,1 @@
+{"Name": "Alkasine", "Version": "1.6", "Section": "Tweaks", "Package": "git.shim.alkaline", "Author": "Ben software", "Depends": "firmware (>= 7.0), mobilesubstrate, preferenceloader", "Descript": "Themeable status bar battery replacement for iOS 7.", "Arch": "iphoneos-arm", "Size": "1381224", "Time": "1581840632000"}

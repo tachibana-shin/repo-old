@@ -1,0 +1,1 @@
+{"Name": "AFaker", "Version": "2.0", "Section": "Tweaks", "Package": "git.shin.afaker", "Author": "shin-chan", "Depends": "firmware (>= 8.0), mobilesubstrate (>= 0.9.5000), preferenceloader, com.rpetrich.rocketbootstrap", "Descript": "fake carrier/battery; dialer passcode app launching", "Arch": "iphoneos-arm", "Size": "70988", "Time": "1582940836000"}

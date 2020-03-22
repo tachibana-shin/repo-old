@@ -1,0 +1,1 @@
+{"Name": "shuffle", "Version": "0.8.0b", "Section": "Tweaks", "Package": "git.shin.", "Author": "CreatureSurvive", "Depends": "mobilesubstrate, com.creaturecoding.libcspreferences", "Descript": "Mix up your preferences", "Arch": "iphoneos-arm", "Size": "123756", "Time": "1582509102000"}

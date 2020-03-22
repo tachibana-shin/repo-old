@@ -1,0 +1,1 @@
+{"Name": "A-Font", "Version": "1.7", "Section": "Tweaks", "Package": "git.shin.a-font", "Author": "Baw Appie <pp121324@gmail.com>", "Depends": "mobilesubstrate, applist (>= 1.5.15~beta1)", "Descript": "Install Font Family for your iPhone.", "Arch": "iphoneos-arm", "Size": "825746", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "AdobeOS", "Version": "0.1", "Section": "Themes", "Package": "git.shin.adobeos", "Author": "Rico", "Depends": "com.anemonetheming.anemone | com.spark.snowboard", "Descript": "Adobe software inspired theme.", "Arch": "iphoneos-arm", "Size": "2314364", "Time": "1582363204000"}

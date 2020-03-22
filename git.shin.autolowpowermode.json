@@ -1,0 +1,1 @@
+{"Name": "AutoLowPowerMode", "Version": "0.0.1-2+debug", "Section": "Tweaks", "Package": "git.shin.autolowpowermode", "Author": "fidele007 <kforcefidele@yahoo.com>", "Depends": "mobilesubstrate", "Descript": "Automatically turn on Low Power Mode when device's battery is low.", "Arch": "iphoneos-arm", "Size": "5392", "Time": "1581840632000"}

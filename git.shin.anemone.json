@@ -1,0 +1,1 @@
+{"Name": "Anemone", "Version": "2.1.8-2", "Section": "Tweaks", "Package": "git.shin.anemone", "Author": "AnemoneTeam", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), com.rpetrich.rocketbootstrap, pincrush", "Descript": "An awesome theme manager!", "Arch": "iphoneos-arm", "Size": "4038120", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "BatteryNotch", "Version": "1.5.4", "Section": "Tweaks", "Package": "git.shin.batterynotch", "Author": "gilshahar7", "Depends": "mobilesubstrate, org.thebigboss.libcolorpicker", "Descript": "Represent battery around the notch", "Arch": "iphoneos-arm", "Size": "87018", "Time": "1582363015000"}

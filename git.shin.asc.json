@@ -1,0 +1,1 @@
+{"Name": "AlwaysShowChanges10", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.asc", "Author": "Rishanan <rishanan1996@gmail.com>", "Depends": "mobilesubstrate", "Descript": "Enable \"Show All Changes\" for all packages automatically.", "Arch": "iphoneos-arm", "Size": "4160", "Time": "1582416689000"}

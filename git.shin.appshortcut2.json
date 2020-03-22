@@ -1,0 +1,1 @@
+{"Name": "AppShortcut 2", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.appshortcut2", "Author": "Don", "Depends": "ds: firmware (>= 10.0)mobilesubstrate, applist, preferenceloader", "Descript": "Quickly access your favorite apps!", "Arch": "iphoneos-arm", "Size": "47462", "Time": "1582362970000"}

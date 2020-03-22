@@ -1,0 +1,1 @@
+{"Name": "Backup Debian", "Version": "1.0", "Section": "Development", "Package": "git.shin.bdeb", "Author": "shin-chan", "Depends": "bash (>= 4.0.17-13), coreutils (>= 8.12-12p), grep (>= 2.5.4-3), sed (>= 4.1.5-7), gawk (>= 3.1.6-2p), apt7 (>= 0.7.25.3-6)", "Descript": "Backup your debian.", "Arch": "iphoneos-arm", "Size": "3436", "Time": "1583991537000"}

@@ -1,0 +1,1 @@
+{"Name": "Batchomatic", "Version": "4.2", "Section": "Tweaks", "Package": "git.shin.batchomatic", "Author": "Capt Inc <teamcaptinc@gmail.com>", "Depends": "firmware (>= 11.0), mobilesubstrate, coreutils", "Descript": "Batch install your tweaks, repos, saved .debs, tweak preferences, and hosts file!", "Arch": "iphoneos-arm", "Size": "100546", "Time": "1581840632000"}

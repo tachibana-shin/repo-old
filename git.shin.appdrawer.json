@@ -1,0 +1,1 @@
+{"Name": "AppDrawer for iOS 11", "Version": "1.5.3-1", "Section": "Tweaks", "Package": "git.shin.appdrawer", "Author": "Guillermo Moran (@fr0st)", "Depends": "mobilesubstrate, applist, preferenceloader", "Descript": "Android-style app drawer for iOS", "Arch": "iphoneos-arm", "Size": "110636", "Time": "1582363447000"}
