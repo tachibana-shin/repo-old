@@ -1,0 +1,1 @@
+{"Name": "Unsize", "Version": "0.0.3", "Section": "Tweaks", "Package": "git.shin.unsize", "Author": "fidele007", "Depends": "mobilesubstrate", "Descript": "Show disk usage of an app in its uninstall alert.", "Arch": "iphoneos-arm", "Size": "6096", "Time": "1581840632000"}

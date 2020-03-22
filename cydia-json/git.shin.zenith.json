@@ -1,0 +1,1 @@
+{"Name": "Zenith", "Version": "1.2.5", "Section": "Tweaks", "Package": "git.shin.zenith", "Author": "Muirey03", "Depends": "mobilesubstrate, preferenceloader, ws.hbang.common (>= 1.14)", "Descript": "Organisation Done Right", "Arch": "iphoneos-arm", "Size": "280236", "Time": "1582857464000"}

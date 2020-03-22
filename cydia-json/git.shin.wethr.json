@@ -1,0 +1,1 @@
+{"Name": "Wethr", "Version": "1.2-1", "Section": "Addons", "Package": "git.shin.wethr", "Author": "Ryan Bushe", "Depends": "mobilesubstrate, git.shin.lockhtml4", "Descript": "A weather widget for LockHTML4!", "Arch": "iphoneos-arm", "Size": "18442", "Time": "1581840632000"}

@@ -1,0 +1,1 @@
+{"Name": "Ultrasound", "Version": "1.2.10", "Section": "Tweaks", "Package": "git.shin.ultrasound", "Author": "Ayden Panhuyzen", "Depends": "mobilesubstrate, firmware (>= 11.0), preferenceloader", "Descript": "Customize your volume HUD.", "Arch": "iphoneos-arm", "Size": "328166", "Time": "1581840632000"}

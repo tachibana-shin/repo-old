@@ -1,0 +1,1 @@
+{"Name": "TransparentDock", "Version": "1.1-1", "Section": "Tweaks", "Package": "git.shin.transparentdock", "Author": "Jonathan Bailey", "Depends": "mobilesubstrate (>= 0.9.5000), firmware (>= 7.0)", "Descript": "Remove iOS 7 dock's blurred background", "Arch": "iphoneos-arm", "Size": "3864", "Time": "1581840632000"}

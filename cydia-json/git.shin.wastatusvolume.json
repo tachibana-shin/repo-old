@@ -1,0 +1,1 @@
+{"Name": "WAStatusVolume", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.wastatusvolume", "Author": "midkin <midkin@hotmail.com>", "Depends": "firmware (>= 7.0), mobilesubstrate, preferenceloader", "Descript": "Status Volume of WhatsApp at your iDevice.", "Arch": "iphoneos-arm", "Size": "361008", "Time": "1582025906000"}

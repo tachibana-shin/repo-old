@@ -1,0 +1,1 @@
+{"Name": "TinyBar (iOS)", "Version": "0.2.0", "Section": "Tweaks", "Package": "git.shin.tinybar", "Author": "Michele Primavera", "Depends": "firmware (>= 7.0.2), mobilesubstrate, preferenceloader, applist", "Descript": "Thins notification banners down to size!", "Arch": "iphoneos-arm", "Size": "92930", "Time": "1581840632000"}

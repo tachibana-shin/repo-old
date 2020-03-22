@@ -1,0 +1,1 @@
+{"Name": "Watermelon", "Version": "1.3.9", "Section": "Tweaks", "Package": "git.shin.watermelon", "Author": "LaughingQuoll", "Depends": "mobilesubstrate, com.laughingquoll.prefixui, com.spark.libsparkapplist, preferenceloader", "Descript": "WatchOS style lockscreen widgets.", "Arch": "iphoneos-arm", "Size": "552324", "Time": "1581840632000"}

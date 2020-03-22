@@ -1,0 +1,1 @@
+{"Name": "TransparentCameraBar", "Version": "1.7.6", "Section": "Tweaks", "Package": "git.shin.transparentcamerabar", "Author": "PoomSmart", "Depends": "mobilesubstrate, preferenceloader, firmware (>= 5.0), ws.hbang.common (>= 1.2)", "Descript": "Set opacity, hide and shrink camera bars.", "Arch": "iphoneos-arm", "Size": "104982", "Time": "1581840632000"}
