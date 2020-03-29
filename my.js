@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b14
+ * my.js v1.4.2 b16
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -638,7 +638,7 @@ return my.extend(this, {
 			try {
 				n.stopPropagation()
 			} catch (e) {}
-			if( isFunc(t) )
+			if( isFunc(fn) )
 				return fn.call(this, n)
 		}, opt)
 	},
@@ -1345,31 +1345,35 @@ countdown2: function (e) {
 
 },
 promise: function (obj, fn) {
-    if (fn === undefined)
-    	fn = obj,
-    	obj = {
+    if (fn === undefined) {
+    	fn = obj
+    	
+    	obj = function () {
+    		
+    		if (obj.event.length <= obj.state) return false;
+			
+			try {
+    	       	obj.res = obj.event[ obj.state++ ].call(obj.this, obj, arguments, arguments)
+			}
+			catch (e) {
+    	       if (obj.error.length <= obj.wom) return false;
+				obj.error[ obj.wom++ ].call(obj.this, e)
+			}
+			
+			return true;
+    	}
+		
+    	my.extend(obj, {
+    	    this: obj,
     	    event: [],
     	    state: 0,
     	    error: [],
     	    wom: 0,
     	    res: undefined,
-    	    done: function () {
-    	       if (this.event.length <= this.state) return false;
-				try {
-    	       		this.res = this.event[
-						this.state++
-					].call(this.this, this, this.res, arguments)
-				}
-				catch (e) {
-    	       if (this.error.length <= this.wom) return false;
-				    this.error[
-				    	this.wom++
-				    ].call(this.this, e)
-				}
-				return true;
-				
-    	    }
-    	}, obj.this = obj;
+    	    done: obj
+    	})
+
+    }
     this.then = function (_fn) {
         obj.event.push(_fn)
         return new my.promise(obj, fn)
