@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b16
+ * my.js v1.4.2 b17
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -956,6 +956,7 @@ dataUser: function ( key, value ) {
 		data = dataUser.get(elem, key)
 		if ( data !== undefined )
 			return data;
+		return
 	}
 	
 	dataUser.set(elem, key, value)
@@ -1058,7 +1059,7 @@ while(i < _prefix) {if(my.exCSS(prefix[i] + r)) return prefix[i] + r; i++}
 	return undefined
 },
 $clone: function (r) {
-    return r.nodeType === 1 ? r.cloneNode(!0) : JSON.parse(JSON.stringify(r))
+    return r.nodeType === 1 ? r.cloneNode(!0) : my.extend(Array.isArray(r) ? [] : {}, r)
 },
 isEmptyObj: function (a) {
     for(var i in a) return false;
