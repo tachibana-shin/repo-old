@@ -1,1 +1,0 @@
-{"Name": "CCArtwork", "Version": "1.0.3", "Section": "Tweaks", "Package": "git.shin.ccmusicartwork", "Author": "cole cabral", "Depends": "mobilesubstrate, firmware (>= 13.0)", "Descript": "Album artwork in music cc module.", "Arch": "iphoneos-arm", "Size": "21902", "Time": "1584790639000"}

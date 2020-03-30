@@ -1,1 +1,0 @@
-{"Name": "FoxFort Tools", "Version": "1.0.12", "Section": "System", "Package": "git.shin.foxforttools", "Author": "FoxfortMobile", "Depends": "mobilesubstrate, git.shin.libfoxfortutils (>= 1.0.13), com.rpetrich.rocketbootstrap (>= 1.0.3)", "Descript": "Helper tools for Foxfort tweaks", "Arch": "iphoneos-arm", "Size": "2890698", "Time": "1581840632000"}

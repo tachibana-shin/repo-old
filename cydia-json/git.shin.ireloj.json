@@ -1,1 +1,0 @@
-{"Name": "iReloj", "Version": "2.1.2", "Section": "Widgets", "Package": "git.shin.ireloj", "Author": "@luis9_49", "Depends": "firmware (>= 10), com.matchstic.xenhtml, com.junesiphone.xeninfo", "Descript": "An elegant and animated clock for your iPhone.", "Arch": "iphoneos-arm", "Size": "68258", "Time": "1582858500000"}

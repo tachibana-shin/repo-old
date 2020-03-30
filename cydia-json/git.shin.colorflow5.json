@@ -1,1 +1,0 @@
-{"Name": "ColorFlow 5 (iOS 13)", "Version": "1.0.1", "Section": "Tweaks", "Package": "git.shin.colorflow5", "Author": "David Goldman <help@golddavid.com>", "Depends": "firmware (>= 13.0), mobilesubstrate (>= 0.9.5.000), preferenceloader", "Descript": "colorful music.", "Arch": "iphoneos-arm", "Size": "644746", "Time": "1582072639000"}

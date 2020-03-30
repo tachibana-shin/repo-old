@@ -1,1 +1,0 @@
-{"Name": "Dayn", "Version": "0.1.3-1", "Section": "Tweaks", "Package": "git.shin.dayn", "Author": "JannikCrack, Devvix", "Depends": "mobilesubstrate, ws.hbang.common (>= 1.14)", "Descript": "More beautiful notification banner similar to iOS9 style", "Arch": "iphoneos-arm", "Size": "398842", "Time": "1582509197000"}

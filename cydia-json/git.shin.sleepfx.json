@@ -1,1 +1,0 @@
-{"Name": "SleepFX", "Version": "2.4-1", "Section": "Tweaks", "Package": "git.shin.sleepfx", "Author": "Malcolm Hall <indiekiduk@gmail.com>", "Depends": "mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), firmware (>= 5.1)", "Descript": "Enjoy stunning FX when entering sleep", "Arch": "iphoneos-arm", "Size": "1087680", "Time": "1581902271000"}

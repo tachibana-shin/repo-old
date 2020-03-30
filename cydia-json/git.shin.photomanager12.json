@@ -1,1 +1,0 @@
-{"Name": "PhotoManager (iOS 12 & 13)", "Version": "1.1.2-3", "Section": "Tweaks", "Package": "git.shin.photomanager12", "Author": "Frozen Penguin", "Depends": "mobilesubstrate, com.rpetrich.rocketbootstrap", "Descript": "Add many features to the photos app.", "Arch": "iphoneos-arm", "Size": "471112", "Time": "1581840632000"}

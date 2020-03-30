@@ -1,1 +1,0 @@
-{"Name": "Cydia Eraser for iOS10.x", "Version": "0.9.43", "Section": "Utilities", "Package": "git.shin.impactor10", "Author": "Jay Freeman (saurik) <saurik@saurik.com>", "Depends": "firmware (>= 10.0), firmware (<= 10.3.4)", "Descript": "specific utility to unjailbreak most devices", "Arch": "iphoneos-arm", "Size": "519990", "Time": "1581840632000"}

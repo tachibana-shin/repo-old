@@ -1,1 +1,0 @@
-{"Name": "BlockAds ", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.blockads", "Author": "shin-chan", "Depends": "", "Descript": "Block ads for iPhone. Active on jailbreak and non-jailbreak. After install, please open Terminal run: su <passwd default: alpine>; blockads -on", "Arch": "iphoneos-arm", "Size": "21790", "Time": "1582466408000"}

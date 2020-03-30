@@ -1,1 +1,0 @@
-{"Name": "Iconator (iOS11&12)", "Version": "2.7.2", "Section": "Tweaks", "Package": "git.shin.iconresizerforios11", "Author": "Soh Satoh", "Depends": "mobilesubstrate, com.chpwn.iconsupport, ws.hbang.common (>= 1.11)", "Descript": "Control icons on Homescreen whatever you want to do. Confirmed works on iOS11&12.", "Arch": "iphoneos-arm", "Size": "119398", "Time": "1581840632000"}

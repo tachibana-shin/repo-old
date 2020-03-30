@@ -1,1 +1,0 @@
-{"Name": "(Re-)load GamePlayer", "Version": "1.0", "Section": "System", "Package": "git.shin.replayer", "Author": "shin-chan", "Depends": "git.shin.gameplayer | com.luomao.gameplayer", "Descript": "Fix GamePlayer Die! Use cmd \"replayer\"", "Arch": "iphoneos-arm", "Size": "1030", "Time": "1583887752000"}

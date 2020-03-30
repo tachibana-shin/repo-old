@@ -1,1 +1,0 @@
-{"Name": "MiDevice", "Version": "2.0.0-3", "Section": "Tweaks", "Package": "git.shin.midevice", "Author": "DODGraphics", "Depends": "mobilesubstrate, firmware (>= 11.0), preferenceloader, org.thebigboss.libcolorpicker, applist", "Descript": "An awesome MobileSubstrate tweak!", "Arch": "iphoneos-arm", "Size": "224026", "Time": "1582941855000"}

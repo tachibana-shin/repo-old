@@ -1,1 +1,0 @@
-{"Name": "Cydia Timeout Command", "Version": "0.1", "Section": "Utilities", "Package": "git.shin.cydiatimeoutcmd", "Author": "shin-dev", "Depends": "", "Descript": "Shorten Cydia's refresh time.", "Arch": "iphoneos-arm", "Size": "1124", "Time": "1581840632000"}

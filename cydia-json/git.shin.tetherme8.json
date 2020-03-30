@@ -1,1 +1,0 @@
-{"Name": "TetherMe for iOS 8+", "Version": "1.2.3", "Section": "Tweaks", "Package": "git.shin.tetherme8", "Author": "Sam Bingner <support@tetherme.net>", "Depends": "firmware (>= 8.0), preferenceloader (>= 2.2.2), firmware (>= 11.0) | network-cmds", "Descript": "More advanced modem settings", "Arch": "iphoneos-arm", "Size": "206256", "Time": "1581840632000"}

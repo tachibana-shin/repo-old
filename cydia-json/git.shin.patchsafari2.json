@@ -1,1 +1,0 @@
-{"Name": "file:// for MobileSafari", "Version": "2.1.3248-1", "Section": "Tweaks", "Package": "git.shin.patchsafari2", "Author": "Jay Freeman (saurik) <saurik@saurik.com>", "Depends": "mobilesubstrate (>= 0.9.2587-1)ds: dpkg (>= 1.13.25-5)", "Descript": "generally allow browsing local files", "Arch": "iphoneos-arm", "Size": "2864", "Time": "1583216509000"}

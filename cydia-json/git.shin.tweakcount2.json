@@ -1,1 +1,0 @@
-{"Name": "Tweak Count 2", "Version": "1.0.1", "Section": "Tweaks", "Package": "git.shin.tweakcount2", "Author": "Alexandre <Alexandre31.tweak@gmail.com>", "Depends": "firmware (>= 6.0), mobilesubstrate (>= 0.9.5000), cydia (>= 1.1.19), preferenceloader", "Descript": "count of installed tweaks in Cydia", "Arch": "iphoneos-arm", "Size": "32138", "Time": "1581840632000"}

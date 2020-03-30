@@ -1,1 +1,0 @@
-{"Name": "SmartTap", "Version": "0.8-350k", "Section": "Tweaks", "Package": "git.shin.smarttap", "Author": "shin-chan", "Depends": "firmware (>= 5.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)", "Descript": "Turn on the screen by tapping it!", "Arch": "iphoneos-arm", "Size": "107846", "Time": "1581840632000"}

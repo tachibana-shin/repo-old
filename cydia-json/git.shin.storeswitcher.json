@@ -1,1 +1,0 @@
-{"Name": "StoreSwitcher", "Version": "1.0-1", "Section": "Tweaks", "Package": "git.shin.storeswitcher", "Author": "Ori Kadosh <support@orikad.com>", "Depends": "firmware (>= 9.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "Switch App Store accounts easily", "Arch": "iphoneos-arm", "Size": "111828", "Time": "1583216657000"}

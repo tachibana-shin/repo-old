@@ -1,1 +1,0 @@
-{"Name": "AUPM (BETA)", "Version": "1.0~beta1", "Section": "Packaging", "Package": "git.shin.aupm", "Author": "Wilson Styres <wilson@styres.me>", "Depends": "dpkg, cydia", "Descript": "", "Arch": "iphoneos-arm", "Size": "3349254", "Time": "1581840632000"}

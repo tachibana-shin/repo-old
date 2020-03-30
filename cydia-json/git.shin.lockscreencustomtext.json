@@ -1,1 +1,0 @@
-{"Name": "Lockscreen Custom Text iOS10", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.lockscreencustomtext", "Author": "155matt <jirachi155@gmail.com>", "Depends": "firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "Change the 'Press Home To Unlock' text", "Arch": "iphoneos-arm", "Size": "30988", "Time": "1583216571000"}

@@ -1,1 +1,0 @@
-{"Name": "SmartTap XS", "Version": "0.2-42", "Section": "Tweaks", "Package": "git.shin.smarttapxs", "Author": "Elias Limneos <limneoselias@gmail.com>", "Depends": "mobilesubstrate, preferenceloader, firmware (>= 11.0), git.shin.cracktool4", "Descript": "Smarttap for iOS 11 -> 13", "Arch": "iphoneos-arm", "Size": "179830", "Time": "1581840632000"}

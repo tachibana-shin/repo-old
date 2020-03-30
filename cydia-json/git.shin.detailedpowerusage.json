@@ -1,1 +1,0 @@
-{"Name": "DetailedPowerUsage", "Version": "1.0.2b-1", "Section": "Tweaks", "Package": "git.shin.detailedpowerusage", "Author": "TheComputerWhisperer", "Depends": "firmware (>= 9.0), mobilesubstrate", "Descript": "View info battery your device", "Arch": "iphoneos-arm", "Size": "547918", "Time": "1581840632000"}

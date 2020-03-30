@@ -1,1 +1,0 @@
-{"Name": "LockPlus Pro vi", "Version": "0.2", "Section": "Localization", "Package": "git.shin.lockplusprovi", "Author": "shin-chan", "Depends": "git.shin.lockpluspro, mobilesubstrate, preferenceloader, firmware (>= 8.0)", "Descript": "Add Vietnamese for LockPlus Pro.", "Arch": "iphoneos-arm", "Size": "3704", "Time": "1582860135000"}

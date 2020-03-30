@@ -1,1 +1,0 @@
-{"Name": "LocalIAPStore", "Version": "1.4-5b", "Section": "Tweaks", "Package": "git.shin.localiapstoreios9", "Author": "Pangu", "Depends": "firmware (>= 7.0), mobilesubstrate, preferenceloader", "Descript": "Hack in-app in apps", "Arch": "iphoneos-arm", "Size": "70774", "Time": "1581840632000"}

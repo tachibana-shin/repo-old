@@ -1,1 +1,0 @@
-{"Name": "ReformX", "Version": "1.0-1", "Section": "Tweaks", "Package": "git.shin.reformx", "Author": "shin-chan ", "Depends": "firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), com.chpwn.iconsupport", "Descript": "ReformX. SpringBoard customization tweak.", "Arch": "iphoneos-arm", "Size": "1192124", "Time": "1581840632000"}

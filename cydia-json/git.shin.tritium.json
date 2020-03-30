@@ -1,1 +1,0 @@
-{"Name": "Tritium", "Version": "1.1.3", "Section": "Tweaks", "Package": "git.shin.tritium", "Author": "LaughingQuoll", "Depends": "mobilesubstrate, com.laughingquoll.prefixui, preferenceloader", "Descript": "A useful, power efficient and customisable always on display for iOS.", "Arch": "iphoneos-arm", "Size": "118182", "Time": "1583796453000"}

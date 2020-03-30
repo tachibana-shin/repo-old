@@ -1,1 +1,0 @@
-{"Name": "Zeppelin", "Version": "2.1.1-1", "Section": "Tweaks", "Package": "git.shin.zeppelin", "Author": "Alex Zielenski", "Depends": "firmware (>= 4.2), mobilesubstrate, preferenceloader", "Descript": "Replaces carrier text with an image!", "Arch": "iphoneos-arm", "Size": "961880", "Time": "1581840632000"}

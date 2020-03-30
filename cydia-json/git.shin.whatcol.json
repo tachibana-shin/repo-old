@@ -1,1 +1,0 @@
-{"Name": "WhatCol", "Version": "1.0-2", "Section": "Tweaks", "Package": "git.shin.whatcol", "Author": "ahmedmakls", "Depends": "mobilesubstrate, preferenceloader, ws.hbang.common, com.rpetrich.rocketbootstrap, org.thebigboss.libcolorpicker", "Descript": "Customize your WhatsApp colors!", "Arch": "iphoneos-arm", "Size": "1900144", "Time": "1584790573000"}

@@ -1,1 +1,0 @@
-{"Name": "SmartLowPower", "Version": "1.1", "Section": "Tweaks", "Package": "git.shin.smartlowpower", "Author": "NoisyFlake <contact@noisyflake.com>", "Depends": "firmware (>= 9.0), mobilesubstrate, preferenceloader, com.a3tweaks.flipswitch", "Descript": "Automate Low Power mode activation to save battery", "Arch": "iphoneos-arm", "Size": "72050", "Time": "1581840632000"}

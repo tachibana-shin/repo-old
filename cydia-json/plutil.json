@@ -1,1 +1,0 @@
-{"Name": "plutil", "Version": "0.1.0", "Section": "System", "Package": "plutil", "Author": "Samuel Bingner", "Depends": "firmware (>=2.0)", "Descript": "plutil as from erica sadun", "Arch": "iphoneos-arm", "Size": "69174", "Time": "1582604380000"}

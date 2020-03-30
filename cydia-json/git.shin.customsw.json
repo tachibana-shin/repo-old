@@ -1,1 +1,0 @@
-{"Name": "Custom SW", "Version": "0.0.3", "Section": "Tweaks", "Package": "git.shin.customsw", "Author": "mostafa89", "Depends": "mobilesubstrate, preferenceloader, com.spark.libsparkcolourpicker", "Descript": "An awesome MobileSubstrate tweak!", "Arch": "iphoneos-arm", "Size": "125232", "Time": "1584790756000"}

@@ -1,1 +1,0 @@
-{"Name": "myinst", "Version": "5.6.0.2", "Section": "Utilities", "Package": "git.shin.myinst", "Author": "shin-chan", "Depends": "ds: firmware (>= 7.0)mobilesubstrate, net.angelxwind.appsyncunified", "Descript": "Install your iPA. Using command myinst <path to .iPA>", "Arch": "iphoneos-arm", "Size": "92006", "Time": "1582940499000"}

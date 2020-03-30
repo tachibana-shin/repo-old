@@ -1,1 +1,0 @@
-{"Name": "CopiedLabel", "Version": "1.0.1", "Section": "Tweaks", "Package": "git.shin.copiedlabel", "Author": "pxcex", "Depends": "mobilesubstrate, preferenceloader, com.spark.libsparkapplist", "Descript": "Longpress to copy text lable on anywhere app. Configure options from Settings!", "Arch": "iphoneos-arm", "Size": "43080", "Time": "1584790808000"}

@@ -1,1 +1,0 @@
-{"Name": "TinyBanners 2", "Version": "1.0.4-2", "Section": "Tweaks", "Package": "git.shin.tinybanners2", "Author": "Don", "Depends": "mobilesubstrate,preferenceloader,applist,net.limneos.libbulletin", "Descript": "Unobtrusive yet useful notification banners!", "Arch": "iphoneos-arm", "Size": "136936", "Time": "1582077739000"}

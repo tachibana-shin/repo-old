@@ -1,1 +1,0 @@
-{"Name": "CustomDia", "Version": "1.4", "Section": "Cydia Custom", "Package": "git.shin.customdia", "Author": "maximehip <imax-my@live.fr>", "Depends": "firmware (>= 8.0), mobilesubstrate, cydia (>= 1.1.19), preferenceloader, ws.hbang.common", "Descript": "usability tweaks for Cydia app.", "Arch": "iphoneos-arm", "Size": "65956", "Time": "1581840632000"}

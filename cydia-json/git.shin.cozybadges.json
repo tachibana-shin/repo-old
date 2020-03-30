@@ -1,1 +1,0 @@
-{"Name": "CozyBadges", "Version": "1.1.0", "Section": "Tweaks", "Package": "git.shin.cozybadges", "Author": "NoisyFlake", "Depends": "firmware (>= 13.0), mobilesubstrate, org.thebigboss.libcolorpicker (>= 1.6.7)", "Descript": "A cozy place for your badges", "Arch": "iphoneos-arm", "Size": "66976", "Time": "1582072443000"}

@@ -1,1 +1,0 @@
-{"Name": "SelectTextColors", "Version": "0.0.1", "Section": "Tweaks", "Package": "git.shin.selecttextcolors", "Author": "pxcex", "Depends": "mobilesubstrate, ws.hbang.common, preferenceloader, org.thebigboss.libcolorpicker", "Descript": "Custom Highlight Color.", "Arch": "iphoneos-arm", "Size": "27578", "Time": "1581840632000"}

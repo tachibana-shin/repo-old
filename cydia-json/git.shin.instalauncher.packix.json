@@ -1,1 +1,0 @@
-{"Name": "InstaLauncher", "Version": "2.2", "Section": "Tweaks", "Package": "git.shin.instalauncher.packix", "Author": "Jonathan Winger Lang", "Depends": "mobilesubstrate, preferenceloader, applist(>=1.5.10)", "Descript": "Access ANY app instantly", "Arch": "iphoneos-arm", "Size": "162902", "Time": "1583796410000"}

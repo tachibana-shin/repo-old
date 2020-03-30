@@ -1,1 +1,0 @@
-{"Name": "Modern", "Version": "1.1.2", "Section": "Tweaks", "Package": "git.shin.modern", "Author": "FromDerik <DerikMalcolm@gmail.com>", "Depends": "firmware (>= 10.0), mobilesubstrate, ws.hbang.common, preferenceloader", "Descript": "iOS 10 - Modernize Your Notifications", "Arch": "iphoneos-arm", "Size": "98752", "Time": "1581840632000"}

@@ -1,1 +1,0 @@
-{"Name": "StatusVol X", "Version": "0.5-1+debug", "Section": "Tweaks", "Package": "git.shin.statusvolx", "Author": "Steven Rolfe", "Depends": "mobilesubstrate", "Descript": "Volume HUD in your status bar", "Arch": "iphoneos-arm", "Size": "57514", "Time": "1581840632000"}

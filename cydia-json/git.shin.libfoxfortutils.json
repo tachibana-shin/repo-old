@@ -1,1 +1,0 @@
-{"Name": "libfoxfortutils", "Version": "1.0.13", "Section": "System", "Package": "git.shin.libfoxfortutils", "Author": "FoxfortMobile", "Depends": "firmware (>= 7.0), com.rpetrich.rocketbootstrap (>= 1.0.3)", "Descript": "Basic utilities for Foxfort tweaks", "Arch": "iphoneos-arm", "Size": "1774994", "Time": "1581840632000"}

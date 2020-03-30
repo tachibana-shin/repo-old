@@ -1,1 +1,0 @@
-{"Name": "Sleeper", "Version": "6.0.1", "Section": "Tweaks", "Package": "git.shin.sleeper", "Author": "Joshua Seltzer", "Depends": "mobilesubstrate, firmware (>=8.0)", "Descript": "Set custom snooze times and skip alarms with the Clock app using Sleeper!", "Arch": "iphoneos-arm", "Size": "550914", "Time": "1581903118000"}

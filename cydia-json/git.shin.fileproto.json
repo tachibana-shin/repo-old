@@ -1,1 +1,0 @@
-{"Name": "fileProto (file:// enabler)", "Version": "1.2-2", "Section": "Tweaks", "Package": "git.shin.fileproto", "Author": "EltonG <eltongoci@gmail.com>", "Depends": "firmware (>= 9.0), mobilesubstrate (>= 0.9.5000)", "Descript": "Enable file:// urls for Mobile Safari.", "Arch": "iphoneos-arm", "Size": "6018", "Time": "1583216549000"}

@@ -1,1 +1,0 @@
-{"Name": "BigPiPEnergy", "Version": "1.1.0", "Section": "Tweaks", "Package": "git.shin.bigpipenergy", "Author": "itsjafer <itsjafer@gmail.com>", "Depends": "mobilesubstrate, ws.hbang.common (>= 1.11)", "Descript": "Removes the max size on Picture in Picture.", "Arch": "iphoneos-arm", "Size": "13926", "Time": "1581914416000"}

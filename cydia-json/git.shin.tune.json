@@ -1,1 +1,0 @@
-{"Name": "Tune", "Version": "1.1.1", "Section": "Tweaks", "Package": "git.shin.tune", "Author": "s1ris", "Depends": "mobilesubstrate, preferenceloader, firmware (>=13.0), ws.hbang.common (>= 1.2), org.thebigboss.libcolorpicker", "Descript": "Custom lock screen media controls.", "Arch": "iphoneos-arm", "Size": "221552", "Time": "1582026047000"}

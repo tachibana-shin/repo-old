@@ -1,1 +1,0 @@
-{"Name": "CustomLoadingText", "Version": "1.0.0-1", "Section": "Tweaks", "Package": "git.shin.customloadingtext", "Author": "CydiaGeek", "Depends": "mobilesubstrate, firmware (>= 8.0), preferenceloader", "Descript": "Custom loading text", "Arch": "iphoneos-arm", "Size": "46196", "Time": "1581840632000"}

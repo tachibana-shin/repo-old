@@ -1,1 +1,0 @@
-{"Name": "Cylinder", "Version": "1.1", "Section": "Tweaks", "Package": "git.shin.cylinder", "Author": "Reed Weichler", "Depends": "firmware (>= 3.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "Make your icons dance", "Arch": "iphoneos-arm", "Size": "504238", "Time": "1581840632000"}

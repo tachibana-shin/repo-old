@@ -1,1 +1,0 @@
-{"Name": "Cyanea", "Version": "1.0.1", "Section": "Tweaks", "Package": "git.shin.cyanea", "Author": "Sirius24", "Depends": "mobilesubstrate, preferenceloader, firmware (>= 12.0), com.creaturesurvive.libcscolorpicker", "Descript": "System UI Customization", "Arch": "iphoneos-arm", "Size": "958562", "Time": "1582072768000"}

@@ -1,1 +1,0 @@
-{"Name": "App Percent", "Version": "2.0.2", "Section": "Tweaks", "Package": "git.shin.apppercent", "Author": "pxcex <pxcex@icloud.com>", "Depends": "mobilesubstrate, firmware (>= 9.0), preferenceloader, net.limneos.libbulletin", "Descript": "Apps Installation in Percent (%) and Notification", "Arch": "iphoneos-arm", "Size": "23018", "Time": "1581840632000"}

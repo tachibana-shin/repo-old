@@ -1,1 +1,0 @@
-{"Name": "Dots", "Version": "1.2.7", "Section": "Tweaks", "Package": "git.shin.dots", "Author": "Shyam Lad <shyamladdev@gmail.com>", "Depends": "mobilesubstrate (>= 0.9.5.000), preferenceloader", "Descript": "Add notification dots to your OLED screen!", "Arch": "iphoneos-arm", "Size": "398208", "Time": "1582957746000"}

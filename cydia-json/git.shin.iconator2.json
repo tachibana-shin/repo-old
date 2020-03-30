@@ -1,1 +1,0 @@
-{"Name": "Iconator2", "Version": "3.0", "Section": "Tweaks", "Package": "git.shin.iconator2", "Author": "Soh Satoh", "Depends": "mobilesubstrate, ws.hbang.common (>= 1.11), com.spark.libsparkapplist, preferenceloader", "Descript": "Control homescreen whatever you want", "Arch": "iphoneos-arm", "Size": "1017656", "Time": "1581840632000"}

@@ -1,1 +1,0 @@
-{"Name": "NudeKeys (A12)", "Version": "1.0.0~b8", "Section": "Tweaks", "Package": "git.shin.nudekeys12", "Author": "Orangebananaspy", "Depends": "firmware (>= 12.0), mobilesubstrate, preferenceloader", "Descript": "Tweak awesome for keyboard", "Arch": "iphoneos-arm", "Size": "1971576", "Time": "1581840632000"}

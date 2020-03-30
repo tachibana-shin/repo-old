@@ -1,1 +1,0 @@
-{"Name": "FloatingDockPlus13", "Version": "1.1.6", "Section": "Tweaks", "Package": "git.shin.floatingdockplus13", "Author": "P2KDev <p2kdev@gmail.com>", "Depends": "firmware (>= 13.0),mobilesubstrate,preferenceloader,com.spark.libsparkapplist", "Descript": "Use your Dock like a PRO!", "Arch": "iphoneos-arm", "Size": "92816", "Time": "1584790791000"}

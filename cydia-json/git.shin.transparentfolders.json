@@ -1,1 +1,0 @@
-{"Name": "TransparentFolders", "Version": "1.0-1", "Section": "Tweaks", "Package": "git.shin.transparentfolders", "Author": "cole cabral @ca13ra1", "Depends": "firmware (>= 9.0), mobilesubstrate", "Descript": "Transparent Folders for iOS 9.0+!", "Arch": "iphoneos-arm", "Size": "5960", "Time": "1581840632000"}

@@ -1,1 +1,0 @@
-{"Name": "StatusPeek 2 (iOS 10)", "Version": "2.0b", "Section": "Tweaks", "Package": "git.shin.statuspeek2", "Author": "Noeliel <noelieldev@gmail.com>", "Depends": "firmware (>= 10.0), mobilesubstrate (>= 0.9.5000), preferenceloader", "Descript": "NC grabber as it was meant to be, round 2.", "Arch": "iphoneos-arm", "Size": "46414", "Time": "1581840632000"}

@@ -1,1 +1,0 @@
-{"Name": "BigClock Widget", "Version": "1.0", "Section": "Widgets", "Package": "git.shin.BigClock", "Author": "serif61 <serif61@gmail.com>", "Depends": "mobilesubstrate, com.matchstic.xenhtml, com.junesiphone.xeninfo", "Descript": "Big Analog Clock HS&LS Widget for XenHTML", "Arch": "iphoneos-arm", "Size": "575938", "Time": "1582858446000"}

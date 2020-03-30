@@ -1,1 +1,0 @@
-{"Name": "Sakeo", "Version": "1.0", "Section": "Widgets", "Package": "git.shin.sakeo", "Author": "@luis9_49", "Depends": "firmware (>= 10), com.matchstic.xenhtml, com.junesiphone.xeninfo", "Descript": "A cool widget for your device.", "Arch": "iphoneos-arm", "Size": "189078", "Time": "1583796740000"}

@@ -1,1 +1,0 @@
-{"Name": "Modernize", "Version": "2.0", "Section": "Tweaks", "Package": "git.shin.modernize", "Author": "TylerD3V", "Depends": "mobilesubstrate, firmware (>=11.0), ws.hbang.common (>= 1.13), com.creaturecoding.libcspreferences (>=1.2.0)", "Descript": "Your Device. Your Way.", "Arch": "iphoneos-arm", "Size": "306230", "Time": "1581924551000"}

@@ -1,1 +1,0 @@
-{"Name": "Chronos", "Version": "0.0.6~Beta1", "Section": "Tweaks", "Package": "git.shin.chronos", "Author": "Spark", "Depends": "mobilesubstrate, preferenceloader, com.spark.libsparkapplist", "Descript": "An awesome MobileSubstrate tweak!", "Arch": "iphoneos-arm", "Size": "262170", "Time": "1581840632000"}

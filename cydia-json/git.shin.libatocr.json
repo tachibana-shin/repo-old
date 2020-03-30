@@ -1,1 +1,0 @@
-{"Name": "libatocr", "Version": "5.2.6", "Section": "Development", "Package": "git.shin.libatocr", "Author": "Kent Krantz <kentkrantz@gmail.com>", "Depends": "firmware (>= 8.0)", "Descript": "libatocr for AutoTouch.", "Arch": "iphoneos-arm", "Size": "11565970", "Time": "1581840632000"}

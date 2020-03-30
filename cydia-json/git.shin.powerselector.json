@@ -1,1 +1,0 @@
-{"Name": "PowerSelector (Flipswitch)", "Version": "1.0-9", "Section": "Addons (Flipswitch)", "Package": "git.shin.powerselector", "Author": "ichitaso", "Depends": "mobilesubstrate, com.a3tweaks.flipswitch", "Descript": "The power supply relation of a device is operated.", "Arch": "iphoneos-arm", "Size": "51748", "Time": "1581840632000"}

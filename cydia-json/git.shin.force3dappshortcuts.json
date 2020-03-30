@@ -1,1 +1,0 @@
-{"Name": "Force3DAppShortcuts", "Version": "0.0.4-1", "Section": "Tweaks", "Package": "git.shin.force3dappshortcuts", "Author": "DGh0st <deeppwnage@yahoo.com>", "Depends": "mobilesubstrate, firmware (>= 10.0), preferenceloader", "Descript": "Enable 3D touch shortcuts on homescreen for older devices.", "Arch": "iphoneos-arm", "Size": "31238", "Time": "1581840632000"}

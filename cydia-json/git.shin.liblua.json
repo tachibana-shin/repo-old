@@ -1,1 +1,0 @@
-{"Name": "liblua", "Version": "5.2.6", "Section": "Development", "Package": "git.shin.liblua", "Author": "Kent Krantz <kentkrantz@gmail.com>", "Depends": "firmware (>= 8.0)", "Descript": "liblua for AutoTouch.", "Arch": "iphoneos-arm", "Size": "18138608", "Time": "1581840632000"}

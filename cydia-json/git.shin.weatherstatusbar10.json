@@ -1,1 +1,0 @@
-{"Name": "WeatherStatusBar10", "Version": "2.0.0", "Section": "Tweaks", "Package": "git.shin.weatherstatusbar10", "Author": "HiDaN", "Depends": "firmware (>= 9.0), mobilesubstrate, preferenceloader, org.thebigboss.libstatus9", "Descript": "Display current weather temperature in status bar!", "Arch": "iphoneos-arm", "Size": "125368", "Time": "1581840632000"}

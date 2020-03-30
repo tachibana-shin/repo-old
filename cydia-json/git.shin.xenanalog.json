@@ -1,1 +1,0 @@
-{"Name": "XenAnalog", "Version": "0.0.6", "Section": "Widgets", "Package": "git.shin.xenanalog", "Author": "umttpz <umttpz@outlook.com>", "Depends": "com.matchstic.xenhtml, com.junesiphone.xeninfo", "Descript": "Apple’s removed analog clock design", "Arch": "iphoneos-arm", "Size": "406364", "Time": "1581840632000"}

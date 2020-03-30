@@ -1,1 +1,0 @@
-{"Name": "Pagebar", "Version": "2.4.0", "Section": "Tweaks", "Package": "git.shin.pagebar", "Author": "calicocat", "Depends": "mobilesubstrate, me.nepeta.libcolorpicker, ws.hbang.common (>= 1.11)", "Descript": "Make your page dots yours", "Arch": "iphoneos-arm", "Size": "215350", "Time": "1581840632000"}

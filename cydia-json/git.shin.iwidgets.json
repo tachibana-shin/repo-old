@@ -1,1 +1,0 @@
-{"Name": "iWidgets", "Version": "1.3.2", "Section": "Tweaks", "Package": "git.shin.iwidgets", "Author": "eldwin <eldwin_@hotmail.com>", "Depends": "mobilesubstrate, firmware (>= 4.2.1)", "Descript": "HTML Widgets on SpringBoard!", "Arch": "iphoneos-arm", "Size": "332284", "Time": "1581840632000"}

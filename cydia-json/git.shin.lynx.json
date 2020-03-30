@@ -1,1 +1,0 @@
-{"Name": "Lynx", "Version": "1.1.4", "Section": "Tweaks", "Package": "git.shin.lynx", "Author": "MTAC", "Depends": "mobilesubstrate, ws.hbang.common, org.thebigboss.libcolorpicker, firmware (>= 13.0), com.rpetrich.rocketbootstrap", "Descript": "Ultimate device customization", "Arch": "iphoneos-arm", "Size": "359272", "Time": "1581926003000"}

@@ -1,1 +1,0 @@
-{"Name": "Aerial", "Version": "1.1", "Section": "Tweaks", "Package": "git.shin.aerial", "Author": "Surenix <surenix@surenix.me>", "Depends": "firmware (>= 9.0), mobilesubstrate (>= 0.9.6110), preferenceloader", "Descript": "Colour your status bar icons!", "Arch": "iphoneos-arm", "Size": "872450", "Time": "1581840632000"}
