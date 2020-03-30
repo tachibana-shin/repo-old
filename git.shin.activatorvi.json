@@ -1,1 +1,0 @@
-{"Name": "Activator (vi)", "Version": "1.1", "Section": "Localization", "Package": "git.shin.activatorvi", "Author": "shin-dev", "Depends": "mobilesubstrate, libactivator", "Descript": "Add Vietnamese language for Activator", "Arch": "iphoneos-arm", "Size": "9100", "Time": "1582859444000"}

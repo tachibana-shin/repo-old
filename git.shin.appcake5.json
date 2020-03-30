@@ -1,1 +1,0 @@
-{"Name": "AppCake 5", "Version": "5.6.0.2", "Section": "Utilities", "Package": "git.shin.appcake5", "Author": "Mickael liang", "Depends": "ds: firmware (>= 7.0)mobilesubstrate", "Descript": "Appcake for iOS 10.3.x", "Arch": "iphoneos-arm", "Size": "10919084", "Time": "1581840632000"}

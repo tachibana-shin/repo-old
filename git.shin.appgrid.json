@@ -1,1 +1,0 @@
-{"Name": "AppGrid", "Version": "0.0.2-2", "Section": "Tweaks", "Package": "git.shin.appgrid", "Author": "WitherTech <Witherking@Withertech.com>", "Depends": "mobilesubstrate", "Descript": "Change the style of the App Switcher to have an app grid like on the iPad.", "Arch": "iphoneos-arm", "Size": "43274", "Time": "1582363387000"}

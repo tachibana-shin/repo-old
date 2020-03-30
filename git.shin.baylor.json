@@ -1,1 +1,0 @@
-{"Name": "Baylor", "Version": "1.2", "Section": "Tweaks", "Package": "git.shin.baylor", "Author": "dpkg_", "Depends": "mobilesubstrate, ws.hbang.common (>= 1.11)", "Descript": "Better 3D-Touch Menus!", "Arch": "iphoneos-arm", "Size": "31320", "Time": "1582362990000"}

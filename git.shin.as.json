@@ -1,1 +1,0 @@
-{"Name": "ActiveSubstrate", "Version": "1.0", "Section": "Tweaks", "Package": "git.shin.as", "Author": "Rishanan", "Depends": "mobilesubstrate", "Descript": "Alert user on boot/respring if substrate is activated successfully.", "Arch": "iphoneos-arm", "Size": "4684", "Time": "1582416671000"}

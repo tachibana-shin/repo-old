@@ -1,1 +1,0 @@
-{"Name": "BatteryFullAlert", "Version": "0.0.1-12", "Section": "Tweaks", "Package": "git.shin.batteryfullalert", "Author": "Suu <462993145@qq.com>", "Depends": "firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)", "Descript": "alert when battery truly fully charged", "Arch": "iphoneos-arm", "Size": "371994", "Time": "1583216754000"}
