@@ -46,7 +46,7 @@ git.shin.hpbdisabller 10, 11, 12
 git.shin.icleanerpro 4+
 git.shin.icon all
 git.shin.ifile 10
-libactivator 8, 9, 10, 11, 12
+libactivator 8 - 12
 git.shin.liberty all
 git.shin.libspring all
 git.shin.localiapstoreios9 7, 8, 9, 10, 11, 12, 13
