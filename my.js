@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b17
+ * my.js v1.4.2 b19
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -625,6 +625,7 @@ isFunc(fn) && Loop(classToArray(name), function (e) {
 })
 return my.extend(this, {
 	prevent: function (fn, opt) {
+		arguments.length < 2 && (opt = { passive: false })
 		return that.on(name, function (n) {
 			try {
 				n.preventDefault()
@@ -691,13 +692,14 @@ that.on(w, m, opt)
 })
 return my.extend(this, {
 	prevent: function (fn, opt) {
+		arguments.length < 2 && (opt = { passive: false })
 		return that.one(name, function (n) {
 			try {
 			    n.preventDefault()
 			} catch (e) {}
 			if( isFunc(fn) )
 				return fn.call(this, n);
-		})
+		}, opt)
 	},
 	stop: function (fn, opt) {
 		return that.one(name, function (n) {
