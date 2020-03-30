@@ -1,5 +1,5 @@
 /*!
- * myCanvas.js v1.4 b6
+ * myCanvas.js v1.4 b7
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -91,7 +91,7 @@ isTouch || my(root).on([fx.start, fx.move].join(' '), function () {
 })
 
 /* add method "add" for [object CanvasGradient] */
-typeof CanvasGradient === 'object' && (CanvasGradient.prototype.add = function () {
+typeof CanvasGradient !== 'undefined' && (CanvasGradient.prototype.add = function () {
     return this.addColorStop.apply(this, arguments), this
 })
 /* add methods for Image */
