@@ -1061,7 +1061,7 @@ while(i < _prefix) {if(my.exCSS(prefix[i] + r)) return prefix[i] + r; i++}
 	return undefined
 },
 $clone: function (r) {
-    return r.nodeType === 1 ? r.cloneNode(!0) : my.extend(Array.isArray(r) ? [] : {}, r)
+    return r.nodeType === 1 ? r.cloneNode(!0) : JSON.parse(JSON.stringify(r))
 },
 isEmptyObj: function (a) {
     for(var i in a) return false;
