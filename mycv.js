@@ -1,5 +1,5 @@
 /*!
- * myCanvas.js v1.4 b7
+ * myCanvas.js v1.4 b8
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -117,6 +117,16 @@ function crCanvas (w, h) {
 		.data('type', 'my.context2d')
 		.appendTo('body')[0])
 }
+function noCanvas (w, h) {
+	return isCanvas(canvasPriv) ? 
+		my(canvasPriv).remove() :
+		(canvas = my('<canvas>')
+		.attr({
+			width: w === undefined ? ww : w,
+			height: h === undefined ? wh : h
+		})
+		.data('type', 'my.context2d')[0])
+}
 function isCanvas(e) {
 	return typeof e === 'object' && e + '' === '[object HTMLCanvasElement]'
 }
@@ -201,6 +211,7 @@ random: function (_1, _2) {
 		return _1 + rand(_2 - _1)
 },
 createCanvas: crCanvas,
+noCanvas: noCanvas,
 pie: function(x, y, r, d1, d2, a) {move(x, y),arc(x, y, r, d1, d2, a),to(x, y)},
 line: function(c,t,e,i){move(c,t),to(e,i)},
 arc:function(c,t,e,i,n,o){context2d.arc(c,t,e,getradi(i)-pi/2,getradi(n)-pi/2,o)},
