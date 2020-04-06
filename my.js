@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b19
+ * my.js v1.4.2 b20
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -320,7 +320,7 @@ Data.prototype = {
 			cache[camelCase(key)] = val;
 		else {
 			for (prop in key)
-				cache[camelCase(prop)] = data[prop];
+				cache[camelCase(prop)] = key[prop];
 		}
 		return cache;
 	},
