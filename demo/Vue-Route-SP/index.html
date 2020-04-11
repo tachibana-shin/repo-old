@@ -109,7 +109,9 @@ function restoreScrollPosition(e) {
         var isPush = window.history && 'pushState' in window.history
 		 var event = isPush ? 'popstate' : 'hashchange'
 		 window.addEventListener(event, e => {
+alert(e.state + "")
     		var getStoreData = storeData.pop()
+alert(JSON.stringify(getStoreData))
 			restoreScrollPosition(getStoreData.offset)
 			getStoreData.$vnode.$emit("pop", getStoreData.data)
 			getStoreData.$vnode.$root.currentRoute = getStoreData.path
