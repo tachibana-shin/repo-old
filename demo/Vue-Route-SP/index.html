@@ -30,20 +30,19 @@ var storeData = new Array
 
 function pushState (url, replace, data, $vnode) {
 
-    if (storeData.length < 1 || storeData[storeData.length - 1].path !== url ) {
-    	storeData.push({
-    	    path: url,
-    	    offset: getScrollPosition(),
-			data: data,
-			$vnode: $vnode
-    	})
-    }
-    	 
     var history = window.history;
     try {
       if (replace) {
         history.replaceState({url: url}, "", url);
       } else {
+        if (storeData.length < 1 || storeData[storeData.length - 1].path !== url ) {
+    		storeData.push({
+    	    	path: url,
+    	    	offset: getScrollPosition(),
+				data: data,
+				$vnode: $vnode
+    		})
+    	 }
         history.pushState({url: url}, "", url);
       }
     } catch (e) {
