@@ -110,9 +110,11 @@ function restoreScrollPosition(e) {
     		var getStoreData = storeData.pop()
 			restoreScrollPosition(getStoreData.offset)
 			getStoreData.$vnode.$emit("pop", getStoreData.data)
+			getStoreData.$vnode.$root.currentRoute = getStoreData.path
 		 })
     }
 }
+
 
 Vue.use(RouteVue)
 new Vue({
