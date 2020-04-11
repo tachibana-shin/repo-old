@@ -21,6 +21,7 @@
 			</router-view>
 		</div>
 		<script>
+console.error = console.warn = e => alert(e + "")
 var RouteVue = {
 	install: function(Vue) {
 
@@ -99,6 +100,7 @@ function restoreScrollPosition(e) {
 	pushState(self.to, false, self.data, self)
 	window.scrollTo(0, 0)
 	self.$root.currentRoute = self.to
+	return false
 					      }
 					  }
                 }, this.$slots.default)
