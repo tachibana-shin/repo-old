@@ -17,11 +17,12 @@
 					home
 				</router-link>
 			</div>
+			{{ path }}
 			<router-view>
 			</router-view>
 		</div>
 		<script>
-onerror = console.error = console.warn = e => alert(e + "")
+console.error = console.warn = e => alert(e + "")
 var RouteVue = {
 	install: function(Vue) {
 
@@ -98,9 +99,10 @@ function restoreScrollPosition(e) {
 					      click(e) {
 	e.preventDefault()
 	pushState(self.to, false, self.data, self)
+	pushState(self.to, true, self.data, self)
 	window.scrollTo(0, 0)
 	self.$root.currentRoute = self.to
-	return false
+	//return false
 					      }
 					  }
                 }, this.$slots.default)
@@ -109,9 +111,7 @@ function restoreScrollPosition(e) {
         var isPush = window.history && 'pushState' in window.history
 		 var event = isPush ? 'popstate' : 'hashchange'
 		 window.addEventListener(event, e => {
-alert(e.state + "")
     		var getStoreData = storeData.pop()
-alert(JSON.stringify(getStoreData))
 			restoreScrollPosition(getStoreData.offset)
 			getStoreData.$vnode.$emit("pop", getStoreData.data)
 			getStoreData.$vnode.$root.currentRoute = getStoreData.path
@@ -121,7 +121,7 @@ alert(JSON.stringify(getStoreData))
 
 
 Vue.use(RouteVue)
-new Vue({
+var app = new Vue({
     el: "#app",
     routes: {
         "./": {
@@ -132,8 +132,12 @@ new Vue({
         },
     },
     data: {
-        currentRoute: "./"
+        currentRoute: "./",
+        path: ""
     }
+})
+window.addEventListener("popstate", function () {
+   alert(1000)
 })
 		</script>
 	</body>
