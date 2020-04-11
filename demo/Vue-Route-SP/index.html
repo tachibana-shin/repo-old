@@ -21,7 +21,7 @@
 			</router-view>
 		</div>
 		<script>
-console.error = console.warn = e => alert(e + "")
+onerror = console.error = console.warn = e => alert(e + "")
 var RouteVue = {
 	install: function(Vue) {
 
