@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Page Title</title>
+
+	<script src=https://nguyenthanh1995.github.io/lib/vue.development.js></script>
+	<link rel=stylesheet href=https://nguyenthanh1995.github.io/lib/bootstrap.min.css></link>
+	<meta name=viewport content='width=device-width, initial-scale=1.0'/>
+	</head>
+	<body>
+		<div id = "app">
+			<div class="fixed-top bg-light">
+				<router-link to="./">
+					1
+				</router-link>
+				<router-link to="./home.html">
+					home
+				</router-link>
+			</div>
+			<router-view>
+			</router-view>
+		</div>
+		<script>
+var RouteVue = {
+	install: function(Vue) {
+
+var storeData = new Array
+
+function pushState (url, replace, data, $vnode) {
+
+    if (storeData.length < 1 || storeData[storeData.length - 1].path !== url ) {
+    	storeData.push({
+    	    path: url,
+    	    offset: getScrollPosition(),
+			data: data,
+			$vnode: $vnode
+    	})
+    }
+    	 
+    var history = window.history;
+    try {
+      if (replace) {
+        history.replaceState({url: url}, "", url);
+      } else {
+        history.pushState({url: url}, "", url);
+      }
+    } catch (e) {
+      window.location[replace ? 'replace' : 'assign'](url);
+    }
+}
+
+function getScrollPosition () {
+    return {
+        x: window.pageXOffset,
+        y: window.pageYOffset
+    }
+}
+
+function restoreScrollPosition(e) {
+	window.scrollTo(e.x, e.y)
+}
+
+
+        Vue.component("router-view", {
+            render(h) {
+                return h(this.ViewComponent)
+            },
+            computed: {
+                ViewComponent () {
+      				 return this.$root.$options.routes[this.$root.currentRoute] || (this.$root.$options.routes["404.html"] || { template: "<h1>404 Not Found</h1>" })
+    			 }
+            }
+        })
+        Vue.component("router-link", {
+            props: {
+                "to": {
+                    required: true,
+                    type: String
+                },
+                "tag": {
+                    type: String,
+                    default: "a"
+                },
+                "data": {
+                    required: false
+                }
+            },
+            inheritAttrs: true,
+            render(h) {
+                var self = this
+                var attrs = {}
+                if (this.tag == "A" || this.tag == "a")
+					attrs.href = this.to
+                return h(this.tag, {
+                    attrs: attrs,
+					  on: {
+					      click(e) {
+	e.preventDefault()
+	pushState(self.to, false, self.data, self)
+	window.scrollTo(0, 0)
+	self.$root.currentRoute = self.to
+					      }
+					  }
+                }, this.$slots.default)
+            }
+        })
+        var isPush = window.history && 'pushState' in window.history
+		 var event = isPush ? 'popstate' : 'hashchange'
+		 window.addEventListener(event, e => {
+    		var getStoreData = storeData.pop()
+			restoreScrollPosition(getStoreData.offset)
+			getStoreData.$vnode.$emit("pop", getStoreData.data)
+		 })
+    }
+}
+
+Vue.use(RouteVue)
+new Vue({
+    el: "#app",
+    routes: {
+        "./": {
+            template: "<h1>" + "Hello<br>".repeat(100) + "</h1>"
+        },
+        "./home.html": {
+            template: "<h1>" + "home<br>".repeat(100) + "</h1>"
+        },
+    },
+    data: {
+        currentRoute: "./"
+    }
+})
+		</script>
+	</body>
+</html>
