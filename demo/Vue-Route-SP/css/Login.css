@@ -1,0 +1,60 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.bg-tr {
+	background-color: transparent !important;
+}
+.shadow-none {
+	box-shadow: none !important;
+}
+.form-control:focus + .in-valid,
+.form-control:valid + .in-valid {
+	top: 0;
+	background-color: #fff;
+	padding: 0 0.5em 0 0.5em;
+	color: #00aaff;
+}
+
+.in-valid {
+	position: absolute;
+	top: 50%;
+	left: 1em;
+	color: rgba(0, 0, 0, .5);
+	left: 4.5em;
+	transform: translateY(-50%);
+	z-index: 3;
+	transition: top 0.3s linear, transform 0.3s linear;
+}
+
+
+.fa-middle::before {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	position: absolute;
+}
+.form-control {
+	font-size: 1rem !important;
+}
+
+.social {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+.login {
+	background: #a64bf4 !important;
+	border-radius: 20px;
+}
+.bg-facebook {
+	background-color: #3b5998 !important;
+}
+.bg-google {
+	background-color: #dd4b39 !important;
+}
