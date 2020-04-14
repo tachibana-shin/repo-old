@@ -1,0 +1,15 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+.bg-0 {
+    background-color: #00000000 !important;
+}
+
+.nav-item.active {
+    color: var(--primary) !important;
+}
