@@ -57,11 +57,11 @@
 						JailbreakMe (10.x 64-bit)
 					</a>
 		  			<div class="dropdown-divider"></div> 
-		  			<a class="dropdown-item" href="/minify.html" id="minify">
+		  			<a class="dropdown-item" href="/tools/minify" id="minify">
 						<i class="fas mr-1 fa-dot-circle"></i>
 						Minify Code
 		  			</a>
-		  			<a class="dropdown-item" href="/unminify.html" id="unminify">
+		  			<a class="dropdown-item" href="/tools/unminify." id="unminify">
 						<i class="fas mr-1 fa-dot-circle"></i>
 						Unminify Code
 		  			</a>
