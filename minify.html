@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+	<head>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
+		<meta property="og:image" content="https://nguyenthanh1995.github.io/favicon.ico">
+		<meta property="og:url" content="https://nguyenthanh1995.github.io">
+		<meta property="og:site_name" content="Minify Code by shin-chan" />
+		<meta property="og:description" content="Minify code html, css, js and fast code." />
+		<meta name="description" content="Minify code html, css, js and fast code." /> 
+		<meta name="keywords" content="minify code, html, css, js" />
+		<meta property="article:tag" content="minify, code, html, css, js, fast code" />
+		<meta property="og:type" content	="website">
+		<link href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css" rel="stylesheet">
+		<script src="https://nguyenthanh1995.github.io/my.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/libmy.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/clip.js"></script>
+	</head>
+	<body>
+
+		<div id = "header-page"></div>
+<script>
+my("#header-page").load("/header.template", function () {
+    my("#menu-header")
+	.find("#minify").addClass("active")
+})
+</script>
+
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-12">
+					<h3 class="text-danger p-0 m-0"> Minify Code </h3>
+					<small class="text-secondary"> Minify code and fast code html, css and js. </small> 
+				</div>
+			</div>
+			
+			<div class="row mt-5">
+				<form method="post" class="col-12 col-md-6">
+					<h4> Input Code </h4>
+					<p> Type
+					<div class="btn-group btn-group-sm type" role="group">
+						<button class="btn btn-outline-dark active">Auto</button>
+						<button class="btn btn-outline-dark">HTML</button>
+						<button class="btn btn-outline-dark">CSS</button>
+						<button class="btn btn-outline-dark">JS</button>
+					</div></p>
+
+					<textarea placeholder="Input Code" class="form-control mt-3" rows="15" name="input"></textarea>
+					<p class="text-secondary small isType"> Type: <span>Auto</span> </p>
+					<p class="text-secondary small status"> Status: <span>Nothing</span> </p>
+
+					<div class="mt-3 text-center">
+						<button class="btn btn-outline-success unminify">Minify</button>
+						<button class="btn btn-outline-primary download">Download</button>
+						<button class="btn btn-outline-primary raw">Raw</button>
+						<button class="btn btn-outline-secondary clear">Clear</button>
+					</div>
+				</form>
+				
+				<div class="col mt-5">
+					<h4> Minified Output </h4>
+					<textarea placeholder="Output Code" class="form-control mt-3" rows="15" id="output"></textarea>
+					<div class="mt-3 text-center">
+						<button class="btn btn-secondary copy">Copy</button>
+						<button class="btn btn-secondary select-all">Select All</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+<script>
+!function () {
+var type = "Auto"
+var method = {
+	cors: "https://cors-anywhere.herokuapp.com/",
+	js: "https://javascript-minifier.com/",
+	css: "https://cssminifier.com/",
+	html: "https://html-minifier.com/"
+}
+
+function isCss(a) {
+	return (/\w+\s*?\{[\s\S]+?\}/.test(a) && !/<(style).*?>[\s\S]+?<\/\1>/.test(a))
+}
+
+function isJs(a) {
+	return ((/function\s*?\w+\s*?\(.*?\)\s*?\{[\s\S]+?\}/.test(a) || /var\s*?\w+\s*?\=/.test(a)) && !/<(script).*?>[\s\S]+?<\/\1>/.test(a)) 
+}
+
+function isHtml(a) {
+	return (/<(\w+).*?>[\s\S]+?<\/\1>/.test(a))
+}
+
+function cors (e) {
+	my.ajax({
+		url: method.cors + method[e] + "raw",
+		data: { input: my("textarea").val() },
+		type: "post",
+		success: function (result) {
+			my("#output").val(result)
+			.color("#34495e")
+			my(".status > span").text("Ready")
+		},
+		error: function () {
+			my(".status > span").text("Error!")
+		}
+	})
+}
+
+function minify() {
+	var a = my("textarea").val()
+	my("#output").val(null)
+	my(".status > span").text("Waiting...")
+		if (type == "css" || (isCss(a) && !isJs(a))) {
+			my(".isType > span").text("CSS")
+			cors("css")
+		} else if (type == "js" || isJs(a)) {
+			my(".isType > span").text("JS")
+			cors("js")
+		} else if (type == "html" || isHtml(a)) {
+			my(".isType > span").text("HTML")
+			cors("html")
+		} else {
+		 	my(".isType > span").text("HTML")
+			cors("html")
+		}
+
+}
+
+
+my(".type > button")
+.mclick(function () {
+	my(".type > button")
+	.mremoveClass("active")
+	type = my(this).addClass("active").text().toLowerCase()
+})
+
+my(".unminify").click(minify)
+
+my(".copy").clipboard("#output", "copy")
+.on("my.clip.success", function () {
+	alert("Copy Success!")
+})
+.on("my.clip.failed", function () {
+	alert("Copy Failed! " + e.detail.error)
+})
+
+my(".select-all").click(function () {
+	my("#output").select()
+})
+
+my(".clear").click(function () {
+	my("textarea, #output").mval(null)
+	my(".status > span").text("Nothing")
+})
+
+my(".download").click(function () {
+	my("form").attr("action", method[type == "Auto" ? "html" : type] + "download").submit()
+})
+my(".raw").click(function () {
+	my("form").attr("action", method[type == "Auto" ? "html" : type] + "raw").submit()
+})
+
+my("form").submit(function (e) {
+	e.preventDefault()
+})
+
+}()
+</script>
+<style>
+
+</style>
+	</body>
+</html>
