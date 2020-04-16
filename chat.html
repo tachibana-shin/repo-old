@@ -45,7 +45,8 @@
   
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en">
-  <script src="/my.js"></script> <script src=/my.js></script>
+  <script src="/my.js"></script>
+  <script src=/lib/polyfill.min.js></script>
   <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css></link>
   <link rel="stylesheet" href=/lib/bootstrap.min.css>
  
@@ -55,7 +56,7 @@
 <div id=header-page></div>
 <script>
 my("#header-page").load("/header.template", function () {
-    my("#header-page").find("#chat-online").addClass("active")
+    my("#header-page #chat-online").addClass("active")
 })
 </script> 
 
