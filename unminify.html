@@ -153,7 +153,7 @@ function download(data, filename, type) {
 		setTimeout(function() {
 			my(a).remove()
 			window.URL.revokeObjectURL(url);  
-		}); 
+		}, 6e5); 
 	}
 }
 
