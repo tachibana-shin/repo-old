@@ -1,7 +1,7 @@
 
-<nav id=menu-header class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<a class="navbar-brand" href="https://nguyenthanh1995.github.io">
-		<img class="img-fluid mr-1" style="width: 2em; height: 2em" src=https://nguyenthanh1995.github.io/CydiaIcon.png />
+		<img class="img-fluid mr-1" style="width: 2em; height: 2em" src="https://nguyenthanh1995.github.io/CydiaIcon.png" />
 	</a>
 	<button class="navbar-toggler menu-btn" data-toggle="collapse" data-target="#menu-open">
 		<span class="navbar-toggler-icon"></span>
@@ -11,60 +11,66 @@
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item" id=home>
 				<a class="nav-link" href="/index.html">
-	<i class="fas mr-1 fa-home"></i>
-	Home (Repo)
-	<!--<span class="sr-only">(current)</span>-->
+					<i class="fas mr-1 fa-home"></i>
+					Home (Repo)
 				</a>
 			</li>
 			<li class="nav-item" id=jailbreak-tool>
 				<a class="nav-link" href="/jailbreak-tool">
-	<i class="fas mr-1 fa-tools"></i>
-	Jailbreak Tools
+					<i class="fas mr-1 fa-tools"></i>
+					Jailbreak Tools
 				</a>
 			</li>
 			<li class="nav-item" id=chat-online>
 				<a class="nav-link" href="/chat.html">
-	<i class="fas mr-1 fa-comments"></i>
-	Chat Online
+					<i class="fas mr-1 fa-comments"></i>
+					Chat Online
 				</a>
 			</li>
 			<li class="nav-item" id=shin-box-installer>
 				<a class="nav-link" href="/install">
-	<i class="fab mr-1 fa-app-store"></i>
-	Shin Box Installer
+					<i class="fab mr-1 fa-app-store"></i>
+					Shin Box Installer
 				</a>
 			</li> 
 			<li class="nav-item dropdown" id=tools>
 				<a href=javascript:void(0) class="nav-link dropdown-toggle" data-toggle="dropdown">
-	<i class="fas mr-1 fa-toolbox"></i>
-	Tools
+					<i class="fas mr-1 fa-toolbox"></i>
+					Tools
 				</a>
 				<div class="dropdown-menu">
 					<a class="dropdown-item" href="/tools/translate" id=translate-tool>
-	<i class="fas mr-1 fa-language"></i>
-	Translate Tool
+						<i class="fas mr-1 fa-language"></i>
+						Translate Tool
 					</a>
 		  			<a class="dropdown-item" href="/tools/mterminal-theme" id=mterminal-theme-manager>
-	<i class="fas mr-1 fa-terminal"></i>
-	MTerminal Theme Manager
+						<i class="fas mr-1 fa-terminal"></i>
+						MTerminal Theme Manager
 					</a>
 		  			<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="/jbme/9/" id=jb-me9>
-	<i class="fab mr-1 fa-apple"></i>
-	JailbreakMe (9.1-9.3.4 32-bit)
+						<i class="fab mr-1 fa-apple"></i>
+						JailbreakMe (9.1-9.3.4 32-bit)
 					</a>
 		  			<a class="dropdown-item" href="/jbme/10/" id=jb-me10>
-	<i class="fab mr-1 fa-apple"></i>
-	JailbreakMe (10.x 64-bit)
+						<i class="fab mr-1 fa-apple"></i>
+						JailbreakMe (10.x 64-bit)
 					</a>
 		  			<div class="dropdown-divider"></div> 
-		  			<a class="dropdown-item" href="#">Something else here</a>
+		  			<a class="dropdown-item" href="/minify.html" id="minify">
+						<i class="fab mr-1 fa-dot-circle"></i>
+						Minify Code
+		  			</a>
+		  			<a class="dropdown-item" href="/unminify.html" id="unminify">
+						<i class="fab mr-1 fa-dot-circle"></i>
+						Unminify Code
+		  			</a>
 				</div>
 			</li>
 			<li class="nav-item" id=about>
 				<a class="nav-link" href="/about.html">
-	<i class="fas mr-1 fa-info-circle"></i>
-	About
+					<i class="fas mr-1 fa-info-circle"></i>
+					About
 				</a>
 			</li>
 		</ul>
@@ -136,26 +142,19 @@
 }
 */
 </style>
-<script type=text/javascript>
-!function () {
-   var js = document.createElement("script")
-   js.src = "/lib/polyfill.min.js"
-   document.head.appendChild(js)
-   js = document.createElement("script")
+<script type="text/javascript">
+!function ($) {
+   var js
+   if (!$.head.classList) {
+     js = $.createElement("script")
+     js.src = "/lib/polyfill.min.js"
+     $.head.appendChild(js)
+   }
+   js = $.createElement("script")
    js.src = "/lib/bootstrap-native.min.js"
-   document.head.appendChild(js)
-}(void 0)
+   $.head.appendChild(js)
+}(document, void 0)
 //load script file lazy
-
-/*
-if (localStorage.getItem("theme") === "dark")
-	my("#menu-header")
-	.removeClass("navbar-light bg-light")
-	.addClass("navbar-dark bg-dark")
-function toggleThemeMenu () {
-	my("#menu-header")
-	.toggleClass("navbar-light bg-light navbar-dark bg-dark")
-}*/
 
 addEventListener("load", function() {
    setTimeout(hideURLbar, 0);
