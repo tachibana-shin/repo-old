@@ -26,12 +26,12 @@
 my("#header-page").load("/header.template", function () {
     my("#header-page #home").addClass("active")
     if (localStorage.getItem("theme") === "dark")
-	my("#header-page > div")
+	my("#header-page > *")
 	.removeClass("navbar-light bg-light")
 	.addClass("navbar-dark bg-dark")
 })
 function toggleThemeMenu () {
-	my("#header-page > div")
+	my("#header-page > *")
 	.toggleClass("navbar-light bg-light navbar-dark bg-dark")
 }
 </script>
