@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+	<head>
+		<title> Unminify Code Web [shin-chan] </title>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
+		<meta property="og:image" content="https://nguyenthanh1995.github.io/favicon.ico">
+		<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/unminify">
+		<meta property="og:site_name" content="Unminify Code by shin-chan" />
+		<meta property="og:description" content="Unminify code html, css, js and beautiful code." />
+		<meta name="description" content="Unminify code html, css, js and beautiful code." /> 
+		<meta name="keywords" content="unminify code, html, css, js" />
+		<meta property="article:tag" content="unminify, code, html, css, js, beautiful code" />
+		<meta property="og:type" content	="website">
+		<link href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="https://nguyenthanh1995.github.io/lib/awesome/css/all.min.css" rel="stylesheet">
+		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
+		<script src="https://nguyenthanh1995.github.io/my.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/libmy.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/clip.js"></script>
+	</head>
+	<body>
+	
+		<div id = "header-page"></div>
+		<script>
+			my("#header-page").load("/header.template", function () {
+    			my("#tools, #unminify").maddClass("active")
+			})
+		</script>
+
+		<div class="container">
+			<div class="row text-center">
+				<div class="col-12">
+					<h3 class="text-danger p-0 m-0"> Unminify Code </h3>
+					<small class="text-secondary"> Beautify code html, css and js. </small> 
+				</div>
+			</div>
+			
+			<div class="row mt-5">
+				<div class="col-12 col-md-6">
+					<h4> Input Code </h4>
+					<p> Type
+					<div class="btn-group btn-group-sm type" role="group">
+						<button class="btn btn-outline-dark active">Auto</button>
+						<button class="btn btn-outline-dark">HTML</button>
+						<button class="btn btn-outline-dark">CSS</button>
+						<button class="btn btn-outline-dark">JS</button>
+					</div></p>
+
+					<textarea placeholder="Input Code" class="form-control mt-3" rows="15" name="input"></textarea>
+					<p class="text-secondary small isType"> Type: <span>Auto</span> </p>
+					<p class="text-secondary small status"> Status: <span>Nothing</span> </p>
+
+					<div class="mt-3 text-center">
+						<button class="btn btn-outline-success unminify">Minify</button>
+						<button class="btn btn-outline-primary download">Download</button>
+						<button class="btn btn-outline-primary raw">Raw</button>
+						<button class="btn btn-outline-secondary clear">Clear</button>
+					</div>
+				</div>
+				
+				<div class="col mt-5">
+					<h4> Unminified Output </h4>
+					<textarea placeholder="Output Code" class="form-control mt-3" rows="15" id="output"></textarea>
+					<div class="mt-3 text-center">
+						<button class="btn btn-secondary copy">Copy</button>
+						<button class="btn btn-secondary select-all">Select All</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-css.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.7.5/beautify-html.min.js"></script>
+		<script>
+!function () {
+var type = "Auto"
+function isCss(a) {
+	return (/\w+\s*?\{[\s\S]+?\}/.test(a) && !/<(style).*?>[\s\S]+?<\/\1>/.test(a))
+}
+
+function isJs(a) {
+	return ((/function\s*?\w+\s*?\(.*?\)\s*?\{[\s\S]+?\}/.test(a) || /var\s*?\w+\s*?\=/.test(a)) && !/<(script).*?>[\s\S]+?<\/\1>/.test(a)) 
+}
+
+function isHtml(a) {
+	return (/<(\w+).*?>[\s\S]+?<\/\1>/.test(a))
+}
+
+function tounminify () {
+	var a = my('textarea').val()
+		if (type == "css" || (isCss(a) && !isJs(a))) {
+			my(".isType > span").text("CSS")
+			a = css_beautify(a)
+		} else if (type == "js" || isJs(a)) {
+			my(".isType > span").text("JS")
+			a = js_beautify(a)
+		} else if (type == "html" || isHtml(a)) {
+			my(".isType > span").text("HTML")
+			a = html_beautify(a)
+		} else {
+		 	my(".isType > span").text("HTML")
+			a = html_beautify(a)
+		}
+	return a
+}
+
+function unminify() {
+	my(".status > span").text("Waiting...")
+	my("#output")
+	.val(tounminify())
+	.color("#34495e")
+	my(".status > span").text("Ready")
+}
+
+
+my(".type > button")
+.mclick(function () {
+	my(".type > button")
+	.mremoveClass("active")
+	type = my(this).addClass("active").text().toLowerCase()
+})
+
+my(".unminify").click(unminify)
+
+my(".copy").clipboard("#output", "copy")
+.on("my.clip.success", function () {
+	alert("Copy Success!")
+})
+.on("my.clip.failed", function () {
+	alert("Copy Failed! " + e.detail.error)
+})
+
+my(".clear").click(function () {
+	my("textarea").val(null)
+})
+
+
+// Function to download data to a file
+function download(data, filename, type) {
+	var file = new Blob([data], {type: type});
+	if (window.navigator.msSaveOrOpenBlob) // IE10+
+		window.navigator.msSaveOrOpenBlob(file, filename);
+	else { // Others
+		var a = my("<a>").get(0)
+		var url = URL.createObjectURL(file)
+		a.href = url;
+		a.download = filename;
+		
+		my(a).appendTo("body")
+		.click()
+		
+		setTimeout(function() {
+			my(a).remove()
+			window.URL.revokeObjectURL(url);  
+		}); 
+	}
+}
+
+my(".download, .raw").mclick(function () {
+	var filename
+	
+	switch (my(".isType > span").text().trim().toLowerCase()) {
+		case "html":
+			filename = "index.html"
+			break
+		case "css":
+			filename = "style.css"
+			break;
+		case "js":
+			filename = "script.js"
+			break
+	}
+	download(tounminify(), filename, "text/plain")
+})
+
+my(".select-all").click(function () {
+	my("#output").select()
+})
+
+my(".clear").click(function () {
+	my("textarea, #output").mval(null)
+	my(".status > span").text("Nothing")
+})
+
+}()
+		</script>
+	</body>
+</html>
