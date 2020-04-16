@@ -24,14 +24,14 @@
 <div id=header-page></div>
 <script>
 my("#header-page").load("/header.template", function () {
-    my("#header-page > * > #home").addClass("active")
+    my("#header-page #home").addClass("active")
     if (localStorage.getItem("theme") === "dark")
-	my("#menu-header")
+	my("#header-page > div")
 	.removeClass("navbar-light bg-light")
 	.addClass("navbar-dark bg-dark")
 })
 function toggleThemeMenu () {
-	my("#menu-header")
+	my("#header-page > div")
 	.toggleClass("navbar-light bg-light navbar-dark bg-dark")
 }
 </script>
