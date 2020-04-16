@@ -58,11 +58,11 @@
 					</a>
 		  			<div class="dropdown-divider"></div> 
 		  			<a class="dropdown-item" href="/minify.html" id="minify">
-						<i class="fab mr-1 fa-dot-circle"></i>
+						<i class="fas mr-1 fa-dot-circle"></i>
 						Minify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/unminify.html" id="unminify">
-						<i class="fab mr-1 fa-dot-circle"></i>
+						<i class="fas mr-1 fa-dot-circle"></i>
 						Unminify Code
 		  			</a>
 				</div>
