@@ -2,7 +2,6 @@
 <html>
 	<head>
 		<title>Nguyen Thanh Repo</title>
-<!--<meta property="fb:app_id" content="601357674038185">-->
 <meta property="og:title" content="Nguyen Thanh Repo">
 <meta property="og:image" content="https://nguyenthanh1995.github.io/CydiaIcon.png">
 <meta property="og:url" content="https://nguyenthanh1995.github.io">
@@ -15,17 +14,17 @@
 <meta property="og:type" content="website">
 <meta name="google-site-verification" content="Z7kUu6LzKOt6CKFCyPWLakCIkqY2JDchbYFSzYVKIYo" />
 	<script src=./my.js></script>
+	<script src=/lib/polyfill.min.js></script>
 	<link rel=stylesheet href=/lib/bootstrap.min.css></link>
 	<link rel=stylesheet href=main.css></link>
-	<link rel=stylesheet href=/css/apply.css></link> 
-	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css></link>
-	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css>
+	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
 	</head>
 	<body class="mt-0">
 <div id=header-page></div>
 <script>
 my("#header-page").load("/header.template", function () {
-    my("#menu-header").find("#home").addClass("active")
+    my("#header-page > * > #home").addClass("active")
     if (localStorage.getItem("theme") === "dark")
 	my("#menu-header")
 	.removeClass("navbar-light bg-light")
