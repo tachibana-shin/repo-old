@@ -29,6 +29,7 @@
 <script src='https://cdn.rawgit.com/matthieua/WOW/1.0.1/dist/wow.min.js'></script>
 <script src="/lib/scroll-anime.js"></script>
 <script src=/my.js></script>
+<script src=/lib/polyfill.min.js></script>
 	</head>
 	<body>
 
@@ -36,7 +37,7 @@
 <script>
 new WOW().init();
 my("#header-page").load("/header.template", function (e) {
-    my("#menu-header")
+    my("#header-page > *")
     .removeClass("navbar-light bg-light")
     .addClass("navbar-dark bg-dark")
     .find("#shin-box-installer").addClass("active")
