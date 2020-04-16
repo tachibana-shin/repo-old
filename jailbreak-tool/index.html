@@ -13,6 +13,7 @@
 <meta property="article:tag" content="Jailbreak Tools by Nguyen Thanh (shin-dev)" />
 <meta property="og:type" content="website">
 	<script src=https://nguyenthanh1995.github.io/my.js></script>
+	<script src=https://nguyenthanh1995.github.io/lib/polyfill.min.js></script>
 	<script src=https://nguyenthanh1995.github.io/lib/vue.min.js></script>
 	<link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css></link>
 	<link rel=stylesheet href=/css/apply.css></link> 
@@ -24,7 +25,7 @@
 <div id=header-page></div>
 <script>
 my("#header-page").load("/header.template", function () {
-    my("#header-page").find("#jailbreak-tool").addClass("active")
+    my("#header-page #jailbreak-tool").addClass("active")
 })
 </script>
 		
