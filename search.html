@@ -14,6 +14,7 @@
 <meta property="og:type" content="website">
 
 	<script src=/my.js></script>
+	<script src=/lib/polyfill.min.js></script>
 	<script src=/lib/vue.min.js></script>
 	<script src="/lib/search.params.min.js"></script>
 	<link rel=stylesheet href=/lib/bootstrap.min.css>
@@ -26,7 +27,7 @@
 <div id=header-page></div>
 <script>
 my("#header-page").load("/header.template", function () {
-    my("#menu-header").find("#home").addClass("active")
+    my("#menu-header #home").addClass("active")
 })
 </script>
 
