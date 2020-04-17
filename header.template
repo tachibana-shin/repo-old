@@ -61,7 +61,7 @@
 						<i class="fas mr-1 fa-dot-circle"></i>
 						Minify Code
 		  			</a>
-		  			<a class="dropdown-item" href="/tools/unminify." id="unminify">
+		  			<a class="dropdown-item" href="/tools/unminify" id="unminify">
 						<i class="fas mr-1 fa-dot-circle"></i>
 						Unminify Code
 		  			</a>
