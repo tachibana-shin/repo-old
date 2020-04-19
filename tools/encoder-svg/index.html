@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> URL-encoder for SVG [shin-chan] </title>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
+		<meta property="og:image" content="https://nguyenthanh1995.github.io/favicon.ico">
+		<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/svg-encoder">
+		<meta property="og:site_name" content="Encoder SVG by shin-chan" />
+		<meta property="og:description" content="Encoder SVG to CSS." />
+		<meta name="description" content="Encoder SVG to CSS." /> 
+		<meta name="keywords" content="Encoder, SVG, CSS" />
+		<meta property="article:tag" content="Encoder, SVG, CSS" />
+		<meta property="og:type" content	="website">
+		<link href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="https://nguyenthanh1995.github.io/lib/awesome/css/all.min.css" rel="stylesheet">
+		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
+		<script src="https://nguyenthanh1995.github.io/my.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/libmy.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/clip.js"></script>
+	</head>
+	<body>
+		<div id = "header-page"></div>
+		<script>
+			my("#header-page").load("/header.template", function () {
+    			my("#tools, #encoder-svg").maddClass("active")
+			})
+		</script>
+		
+		<header class="container">
+			<div class="row">
+				<div class="col h4 text-center py-3 border-bottom">
+					URL-encoder for SVG
+				</div>
+			</div>
+		</header>
+		
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-12">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="mode">
+						<label class="custom-control-label" for="mode">Double</label>
+					</div>
+				</div>
+			</div>
+			
+			<div class="row mt-3">
+				<div class="col-12 col-md-6 col-xl-3">
+					<h6> Insert SVG </h6>
+
+					<div class="input-group mt-3">
+						<textarea class="form-control" rows="5" id="textarea-input"></textarea>
+						<div class="input-group-btn">
+							<button class="btn-sm border-0 btn-grey" id="example"> Ex </button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6 col-xl-3 mt-5">
+					<h6> Take encoded </h6>
+
+					<div class="input-group mt-3">
+						<textarea class="form-control" rows="5" id="result-code"></textarea>
+						<div class="input-group-btn">
+							<button class="btn-sm border-0 btn-grey" id="copy-result-code"> <i class="fas fa-save"></i> </button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6 col-xl-3 mt-5">
+					<h6> Ready for CSS </h6>
+
+					<div class="input-group mt-3">
+						<textarea class="form-control" rows="5" id="result-css"></textarea>
+						<div class="input-group-btn">
+							<button class="btn-sm border-0 btn-grey" id="copy-result-css"> <i class="fas fa-save"></i> </button>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6 col-xl-3 mt-5">
+					<h6> Preview </h6>
+
+					<div class="input-group">
+						<div class="form-control" id="preview"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+var symbols = /[\r\n%#()<>?\[\\\]^`{|}]/g;
+
+
+function getResults() {
+	var value = my("#textarea-input").val()
+	var quotes = getQuotes()
+	var namespaced = addNameSpace( value )
+	var escaped = encodeSVG( namespaced )
+    
+	var rcss = "background-image: url(" + quotes.level1 + "data:image/svg+xml," + escaped + "" + quotes.level1 + ");";
+    my("#result-code").val(escaped)
+    my("#result-css").val(rcss)
+    my("#preview").attr("style", rcss)
+}
+
+
+function example () {
+    my("#textarea-input").val("<svg>\
+  <circle r=\"50\" cx=\"50\" cy=\"50\" fill=\"tomato\"/>\
+  <circle r=\"41\" cx=\"47\" cy=\"50\" fill=\"orange\"/>\
+  <circle r=\"33\" cx=\"48\" cy=\"53\" fill=\"gold\"/>\
+  <circle r=\"25\" cx=\"49\" cy=\"51\" fill=\"yellowgreen\"/>\
+  <circle r=\"17\" cx=\"52\" cy=\"50\" fill=\"lightseagreen\"/>\
+  <circle r=\"9\" cx=\"55\" cy=\"48\" fill=\"teal\"/>\
+</svg>")
+	getResults()
+}
+
+function addNameSpace( data ) {
+    var quotes = getQuotes();
+    if ( data.indexOf( 'http://www.w3.org/2000/svg' ) < 0 ) {
+        data = data.replace( /<svg/g, "<svg xmlns=" + quotes.level2 + "http://www.w3.org/2000/svg" + quotes.level2 + "" );
+    }
+
+    return data;
+}
+
+function encodeSVG( data ) {
+    data = my("#mode").get(0)["checked"] === true ? data.replace( /"/g, '\'' ) : data.replace( /'/g, '"' );
+
+    data = data.replace( />\s{1,}</g, "><" )
+				 .replace( /\s{2,}/g, " " );
+
+    return data.replace( symbols, encodeURIComponent );
+}
+
+function getQuotes() {
+    var external = my("#mode").get(0)["checked"]
+    return {
+        level1: external === true ? "\"" : "\'",
+        level2: external === true ? "\'" : "\""
+    };
+}
+
+my("#textarea-input").input(getResults)
+my("#copy-result-code").clipboard("#result-code", "copy")
+my("#copy-result-css").clipboard("#result-css", "copy")
+my("#example").click(example)
+my("#mode").change(getResults)
+//my("button").click(example)
+
+		</script>
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+
+.input-group-btn {
+    position: absolute;
+    display: inline-block;
+    width: auto;
+    top: 0;
+    right: 0;
+    z-index: 1024;
+    font-size: 90% !important;
+}
+
+.btn-grey {
+    background-color: rgba(170, 170, 170, .5) !important;
+}
+
+#preview {
+    height: 8rem;
+}
+		</style>
+	</body>
+</html>
