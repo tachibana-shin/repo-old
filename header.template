@@ -65,6 +65,10 @@
 						<i class="fas mr-1 fa-dot-circle"></i>
 						Unminify Code
 		  			</a>
+		  			<a class="dropdown-item" href="/tools/encoder-svg" id="encoder-svg">
+						<i class="fas mr-1 fa-dot-circle"></i>
+						Encoder SVG
+		  			</a>
 				</div>
 			</li>
 			<li class="nav-item" id=about>
