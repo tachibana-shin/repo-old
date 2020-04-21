@@ -49,7 +49,7 @@
 			</div>
 
 			<div class="row collapse py-3 border-bottom" id="settings">
-				<div class="col-12 col-md-6">
+				<div class="col-12 col-md-6 col-lg-6 col-xl-6">
 					<div class="input-group input-group-sm">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> Plugins </span>
@@ -59,7 +59,7 @@
 					</div>
 				</div>
 
-				<div class="col-12 col-md-6 mt-3">
+				<div class="col-12 col-md-6 mt-3 col-lg-6 col-xl-6">
 					<div class="input-group input-group-sm">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> Presets </span>
@@ -69,7 +69,7 @@
 					</div>
 				</div>
 				
-				<div class="col-12 col-md-6 mt-3">
+				<div class="col-12 col-md-6 mt-3 col-lg-6 col-xl-6">
 					<div class="input-group input-group-sm">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> Theme </span>
@@ -78,7 +78,7 @@
 					</div>
 				</div>
 				
-				<div class="col-12 col-md-6 mt-3">
+				<div class="col-12 col-md-6 mt-3 col-lg-6 col-xl-6">
 					<div class="input-group input-group-sm">
 						<div class="input-group-prepend">
 							<span class="input-group-text"> URL </span>
@@ -98,13 +98,13 @@
 				
 				
 				
-		<div class="container p-0 m-0">
+		<div class="container m-md-0 p-md-0">
 
 			<div class="row p-0 m-0">
-				<div class="col-12 col-md-6 p-0 m-0 mt-5">
+				<div class="col-12 col-md-6 p-md-0 m-md-0 mt-5">
 					<textarea id="code" placeholder="Input JSX, React, ES6"></textarea>
 				</div>
-				<div class="col-12 col-md-6 p-0 m-0 mt-3 mt-md-5">
+				<div class="col-12 col-md-6 p-md-0 m-md-0 mt-3 mt-md-5">
 					<textarea id="result" placeholder="Output code"></textarea>
 				</div>
 			</div>
@@ -271,6 +271,14 @@ my("#jsx").change(e => {
 	color: #999;
 }
 
+@media (max-width: 768px) {
+  .p-md-0 {
+     padding: 0 !important;
+  }
+  .m-md-0 {
+     margin: 0 !important;
+  }
+}
 		</style>
 	</body>
 </html>
