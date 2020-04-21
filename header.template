@@ -58,19 +58,18 @@
 					</a>
 		  			<div class="dropdown-divider"></div> 
 		  			<a class="dropdown-item" href="/tools/minify" id="minify">
-						<i class="fas mr-1 fa-dot-circle"></i>
+						<i class="fas mr-1 fa-file-archive"></i>
 						Minify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/unminify" id="unminify">
-						<i class="fas mr-1 fa-dot-circle"></i>
 						Unminify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/jsx-to-es5" id="jsx-to-es5">
-						<i class="fas mr-1 fa-dot-circle"></i>
+						<i class="fab mr-1 fa-react"></i>
 						JSX to ES5
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/encoder-svg" id="encoder-svg">
-						<i class="fas mr-1 fa-dot-circle"></i>
+						<i class="fab mr-1 fa-centercode"></i>
 						Encoder SVG
 		  			</a>
 				</div>
