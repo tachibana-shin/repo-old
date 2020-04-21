@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b20
+ * my.js v1.4.2 b21
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -1132,7 +1132,7 @@ var xhr = new XMLHttpRequest || new ActiveXObject("Microsoft.XMLHTTP"),
 
 type = (opt.type || 'GET').toUpperCase(),
 
-dataType = (opt.dataType || 'TEXT').toUpperCase(),
+dataType = (opt.dataType || 'text').toLowerCase(),
 
 cache, uncached,
 
@@ -1181,6 +1181,20 @@ isFunc(opt.abort) && opt.abort(xhr) === true && xhr.abort()
 
 isFunc(opt.beforeSend) && opt.beforeSend(xhr)
 
+if (dataType == "blob" || dataType == "arraybuffer")
+   xhr.responseType = dataType.toLowerCase()
+
+if (typeof opt.xhrFields == "object")
+   for (var key in opt.xhrFields)
+      xhr[key] = opt.xhrFields[key];
+
+if ( opt.mimeType && xhr.overrideMimeType )
+   xhr.overrideMimeType( opt.mimeType )
+
+if ( !opt.crossDomain && !headers[ "X-Requested-With" ] ) 
+	headers[ "X-Requested-With" ] = "XMLHttpRequest"
+
+
 my(xhr).on("error timeout abort", function (t) {
 	my(this).trigger("ajax.fail", {
 		status: xhr.status,
@@ -1192,7 +1206,10 @@ my(xhr).on("error timeout abort", function (t) {
 
 })
 .on("readystatechange", function(){
-var data = dataType === 'XML' ? xhr.responseXML : dataType === 'TEXT' ? xhr.responseText : dataType === 'JSON' ? parseJSON(xhr.responseText) : "",
+
+var response = (xhr.responseType || "text") !== "text" || typeof xhr.responseText !== "string" ? xhr.response : xhr.responseText
+
+var data = dataType === 'xml' ? xhr.responseXML : dataType === 'text' ? response : dataType === 'json' ? parseJSON(xhr.responseText) : response,
 status = xhr.status,
 state = xhr.readyState;
 
