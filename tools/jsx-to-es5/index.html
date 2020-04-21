@@ -198,7 +198,7 @@ function App() {
 }
 
 
-var editor = CodeMirror.fromTextArea(code, {
+var editor = CodeMirror.fromTextArea(my("#code")[0], {
 	lineNumbers: true,
 	matchBrackets: true,
 	continueComments: "Enter",
@@ -208,7 +208,7 @@ var editor = CodeMirror.fromTextArea(code, {
 	mode: "jsx"
 })
 
-var result = CodeMirror.fromTextArea(result, {
+var result = CodeMirror.fromTextArea(my("#result")[0], {
 	lineNumbers: true,
 	matchBrackets: true,
 	continueComments: "Enter",
@@ -216,7 +216,6 @@ var result = CodeMirror.fromTextArea(result, {
 	lineWrapping: true,
 	theme: 	"default",
 	readOnly: "nocursor"
-	
 })
 
 var timestamp
