@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> JSX to ES5 [shin-chan] </title>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
+		<meta property="og:image" content="https://nguyenthanh1995.github.io/favicon.ico">
+		<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/jsx-to-es5">
+		<meta property="og:site_name" content="JSX to ES5 [shin-chan]" />
+		<meta property="og:description" content="JSX, ES6, React to ES5 [shin-chan]" />
+		<meta name="description" content="JSX, Es6, React to ES5 [shin-chan]" /> 
+		<meta name="keywords" content="jsx, es5, to es5, compile" />
+		<meta property="article:tag" content="jsx, es5, to es5, compile" />
+		<meta property="og:type" content	="website">
+		<link href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="https://nguyenthanh1995.github.io/lib/awesome/css/all.min.css" rel="stylesheet">
+		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
+		<script src="https://nguyenthanh1995.github.io/my.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/babel-6.6.1.min.js"></script>
+		<!-- Code Mirror -->
+		<link rel="stylesheet" href="https://codemirror.net/doc/docs.css">
+		<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+		<script src="https://codemirror.net/lib/codemirror.js"></script>
+		<script src="https://codemirror.net/addon/edit/matchbrackets.js"></script>
+		<script src="https://codemirror.net/addon/comment/continuecomment.js"></script>
+		<script src="https://codemirror.net/addon/comment/comment.js"></script>
+		<script src="https://codemirror.net/mode/javascript/javascript.js"></script>
+		<script src="https://codemirror.net/mode/xml/xml.js"></script>
+		<script src="https://codemirror.net/mode/jsx/jsx.js"></script>
+		<script src="https://codemirror.net/addon/display/placeholder.js"></script>
+	</head>
+	<body>
+	
+		<div id = "header-page"></div>
+		<script>
+			my("#header-page").load("/header.template", function () {
+    			my("#tools, #jsx-to-es5").each(function () { my(this).addClass("active") })
+			})
+		</script>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center py-3">
+					<h5>Compile code JS to ECMA5</h5>
+					<small class="text-secondary">This is a simple compile JSX, React.js and ECMA6 to ECMA5.</small>
+				</div>
+				<div class="col-12">
+					<button class="btn btn-outline-dark" data-toggle="collapse" data-target="#settings"><i class="fas fa-cogs"></i></button>
+				</div>
+			</div>
+
+			<div class="row p-0 m-0 collapse py-3 border-bottom" id="settings">
+				<div class="col-12 col-md-6 p-0 m-0">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Plugins </span>
+						</div>
+						
+						<input class="form-control" placeholder="react es2015" id="plugins"/>
+					</div>
+				</div>
+				<div class="col-12 col-md-6 p-0 m-0 mt-3">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Presets </span>
+						</div>
+						
+						<input class="form-control" placeholder="transform-flow-strip-type" id="presets"/>
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6 p-0 m-0 mt-3">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Theme </span>
+						</div>
+						<select class="form-control custom-select" id="theme"></select>
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6 p-0 m-0 mt-3">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> URL </span>
+						</div>
+						<input class="form-control" id="url"/>
+					</div>
+				</div>
+				<div class="col mt-3">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="jsx" checked>
+						<label class="custom-control-label" for="jsx">JSX</label>
+				</div>
+			</div>
+		</div>
+				
+				
+				
+		<div class="container p-0 m-0">
+
+			<div class="row p-0 m-0">
+				<div class="col-12 col-md-6 p-0 m-0 mt-5">
+					<textarea id="code" placeholder="Input JSX, React, ES6"></textarea>
+				</div>
+				<div class="col-12 col-md-6 p-0 m-0 mt-3 mt-md-5">
+					<textarea id="result" placeholder="Output code"></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/babel">
+
+function transformCode(script) {
+	return Babel.transform(script.content, buildBabelOptions(script, "compile.js")).code;
+}
+  function buildBabelOptions(script, filename) {
+
+/*
+	script: code
+	filename: script.url
+*/
+	return {
+	  filename: filename,
+	  presets: script.presets || ["react", "es2015"],
+	  plugins: script.plugins || [/*"proposal-class-properties", "proposal-object-rest-spread", */"transform-flow-strip-types"],
+	  sourceMaps: false,
+	  sourceFileName: filename
+	};
+  }
+function getPluginsOrPresetsFromScript(script, attributeName) {
+	var rawValue = script.getAttribute(attributeName);
+
+	if (rawValue === "") {
+	  return [];
+	}
+
+	if (!rawValue) {
+	  return null;
+	}
+
+	return rawValue.split(",").map(function (item) {
+	  return item.trim();
+	});
+  }
+
+function ES6toES5 (code) {
+	let result
+	try {
+		result = transformCode({
+			async: false,
+			error: false,
+			executed: false,
+			plugins: my("#plugins").val().trim() || null,
+			presets: my("#plugins").val().trim() || null,
+			content: code,
+			loaded: true,
+			url: my("#plugins").val().trim() || null
+		})
+	}
+	catch(e) {
+		result = e + ""
+	}
+	return result
+}
+
+let themes = "default 3024-day.css 3024-night.css abcdef.css ambiance-mobile.css ambiance.css ayu-dark.css ayu-mirage.css base16-dark.css base16-light.css bespin.css blackboard.css cobalt.css colorforth.css darcula.css dracula.css duotone-dark.css duotone-light.css eclipse.css elegant.css erlang-dark.css gruvbox-dark.css hopscotch.css icecoder.css idea.css isotope.css lesser-dark.css liquibyte.css lucario.css material-darker.css material-ocean.css material-palenight.css material.css mbo.css mdn-like.css midnight.css monokai.css moxer.css neat.css neo.css night.css nord.css oceanic-next.css panda-syntax.css paraiso-dark.css paraiso-light.css pastel-on-dark.css railscasts.css rubyblue.css seti.css shadowfox.css solarized.css ssms.css the-matrix.css tomorrow-night-bright.css tomorrow-night-eighties.css ttcn.css twilight.css vibrant-ink.css xq-dark.css xq-light.css yeti.css yonce.css zenburn.css".split(" ")
+
+window.React = {
+	createElement(el, prop, text) {
+		 if (!el) return {}
+		 el = typeof el == "string" ? document.createElement(el) : typeof el == "function" ? el() : el()
+
+		 for (let key in prop)
+		 	el[key] = prop[key]
+		 
+		 arguments.length > 2 &&
+		 [].slice.call(arguments, 3)
+		 .forEach(function (e) {
+		 	if (typeof e == "string")
+		 		e = document.createTextNode(e)
+			el.appendChild(e)
+		 })
+		 
+		 return el
+	}
+}
+
+function App() {
+	var el = document.createDocumentFragment()
+	themes.map(e => {
+		el.appendChild( localStorage["theme-editor"] == e ? (
+			<option selected> {e} </option>
+		) : (
+			<option> {e} </option>
+		) )
+	})
+
+	return el
+}
+
+
+var editor = CodeMirror.fromTextArea(code, {
+	lineNumbers: true,
+	matchBrackets: true,
+	continueComments: "Enter",
+	extraKeys: {"Ctrl-Q": "toggleComment"},
+	lineWrapping: true,
+	theme: "default",
+	mode: "jsx"
+})
+
+var result = CodeMirror.fromTextArea(result, {
+	lineNumbers: true,
+	matchBrackets: true,
+	continueComments: "Enter",
+	extraKeys: {"Ctrl-Q": "toggleComment"},
+	lineWrapping: true,
+	theme: 	"default",
+	readOnly: "nocursor"
+	
+})
+
+var timestamp
+
+editor.on("change", () => {
+	clearTimeout(timestamp)
+	setTimeout(() => {
+		result.setValue(
+			ES6toES5(
+				editor.getValue()
+			)
+		 )
+	}, 1000)
+})
+
+function saveTheme(e) {
+	try {
+		localStorage["theme-editor"] = e
+	}
+	catch (e) {
+		
+	}
+}
+
+my("select").append(App()).change(e => {
+	if (e.target.value != "default" && !my(`link[data-name="${e.target.value}"]`).get(0))
+		my(`<link rel="stylesheet" href="https://codemirror.net/theme/${e.target.value}" data-name="${e.target.value}">`)
+		.appendTo("head")
+	editor.setOption("theme", e.target.value.replace(/\.css/, ""))
+	result.setOption("theme", e.target.value.replace(/\.css/, ""))
+	saveTheme(e.target.value)
+}).change()
+
+my("#jsx").change(e => {
+	editor.setOption("mode", e.target.checked ? "jsx" : "javascript")
+})
+
+		</script>
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.CodeMirror {
+	border: 1px solid silver;
+}
+
+.CodeMirror pre.CodeMirror-placeholder {
+	color: #999;
+}
+
+		</style>
+	</body>
+</html>
