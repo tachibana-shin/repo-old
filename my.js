@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b21
+ * my.js v1.4.2 b23
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -952,7 +952,7 @@ dataUser: function ( key, value ) {
 		}
 	}
 	if ( typeof key === "object" )
-	return dataUser.set(elem, key);
+	return dataUser.set(elem, key), this;
 
 	if ( elem && value === undefined ) {
 		data = dataUser.get(elem, key)
@@ -1301,12 +1301,12 @@ map: function (arr, fn) {
 	if ( isLikeArr( arr ) ) {
 		length = arr.length
 		for (; i < length; i++) {
-			value = fn(arr[i], i, arr)
+			value = fn.call(arr[i], i, arr)
 			value != null && result.push( value )
 		}
 	} else {
 		for (i in arr) {
-			value = fn(arr[i], i, arr)
+			value = fn.call(arr[i], i, arr)
 
 			value != null && result.push( value )
 		}
@@ -1320,7 +1320,7 @@ flatMap: function (arr, fn, n) {
 	var result = []
 	if (isLikeArr(arr))
 	while (leng > i) {
-		res = [fn(arr[i], i++, arr)]
+		res = [fn.call(arr[i], i++, arr)]
 		j = 0
 		while (j < n) {
 			res = concat.apply([], res)
@@ -1330,7 +1330,7 @@ flatMap: function (arr, fn, n) {
 		push.apply(result, res)
 	}
     else for (i in arr) {
-       res = [fn(arr[i], i++, arr)]
+       res = [fn.call(arr[i], i++, arr)]
 		j = 0
 		while (j < n) {
 			res = concat.apply([], res)
