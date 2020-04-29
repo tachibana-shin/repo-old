@@ -12,6 +12,7 @@ and many other things ...
 # Libs 
 
 [skrollTop.js](https://github.com/nguyenthanh1995/skrollTop.js)
+[clipboard.js](https://github.com/nguyenthanh1995/clipboard.js)
 
    MIT License.
 </small></p>
