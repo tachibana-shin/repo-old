@@ -36,7 +36,7 @@
 			</div>
 			
 			<div class="row mt-5">
-				<form method="POST" class="col-12 col-md-6">
+				<div class="col-12 col-md-6">
 					<h4> Input Code </h4>
 					<p> Type
 					<div class="btn-group btn-group-sm type" role="group">
@@ -56,7 +56,7 @@
 						<button class="btn btn-outline-primary raw">Raw</button>
 						<button class="btn btn-outline-secondary clear">Clear</button>
 					</div>
-				</form>
+				</div>
 				
 				<div class="col mt-5">
 					<h4> Minified Output </h4>
@@ -91,14 +91,19 @@ function isHtml(a) {
 	return (/<(\w+).*?>[\s\S]+?<\/\1>/.test(a))
 }
 
-function cors (e) {
+function cors (e, fn) {
 	my.ajax({
 		url: method.cors + method[e] + "raw",
 		data: { input: my("textarea").val() },
 		type: "post",
 		success: function (result) {
-			my("#output").val(result)
-			.color("#34495e")
+			if ( typeof fn == "function" )
+				fn(result)
+			else {
+				my("#output")
+				.val(result)
+				.color("#34495e")
+			}
 			my(".status > span").text("Ready")
 		},
 		error: function () {
@@ -107,23 +112,24 @@ function cors (e) {
 	})
 }
 
-function minify() {
+function minify(callback) {
 	var a = my("textarea").val()
 	my("#output").val(null)
 	my(".status > span").text("Waiting...")
-		if (type == "css" || (isCss(a) && !isJs(a))) {
-			my(".isType > span").text("CSS")
-			cors("css")
-		} else if (type == "js" || isJs(a)) {
-			my(".isType > span").text("JS")
-			cors("js")
-		} else if (type == "html" || isHtml(a)) {
-			my(".isType > span").text("HTML")
-			cors("html")
-		} else {
-		 	my(".isType > span").text("HTML")
-			cors("html")
-		}
+
+	if (type == "css" || (isCss(a) && !isJs(a))) {
+		my(".isType > span").text("CSS")
+		cors("css", callback)
+	} else if (type == "js" || isJs(a)) {
+		my(".isType > span").text("JS")
+		cors("js", callback)
+	} else if (type == "html" || isHtml(a)) {
+		my(".isType > span").text("HTML")
+		cors("html", callback)
+	} else {
+		 my(".isType > span").text("HTML")
+		cors("html", callback)
+	}
 
 }
 
@@ -154,15 +160,45 @@ my(".clear").click(function () {
 	my(".status > span").text("Nothing")
 })
 
-my(".download").click(function () {
-	my("form").attr("action", method[type == "Auto" ? "html" : type] + "download").submit()
-})
-my(".raw").click(function () {
-	my("form").attr("action", method[type == "Auto" ? "html" : type] + "raw").submit()
-})
+function download(data, filename, type) {
+	var file = new Blob([data], {type: type});
+	if (window.navigator.msSaveOrOpenBlob) // IE10+
+		window.navigator.msSaveOrOpenBlob(file, filename);
+	else { // Others
+		var a = my("<a>").get(0)
+		var url = URL.createObjectURL(file)
+		a.href = url;
+		a.download = filename;
+		
+		my(a).appendTo("body")
+		.click()
+		
+		setTimeout(function() {
+			my(a).remove()
+			window.URL.revokeObjectURL(url);  
+		}); 
+	}
+}
 
-my("form").submit(function (e) {
-	e.preventDefault()
+my(".download, .raw").mclick(function () {
+
+	minify(function (result) {
+	    var filename
+	
+		switch (my(".isType > span").text().trim().toLowerCase()) {
+			case "html":
+				filename = "index.html"
+				break
+			case "css":
+				filename = "style.css"
+				break;
+			case "js":
+				filename = "script.js"
+				break
+		}
+	
+	    download(result, filename, "text/plain")
+	})
 })
 
 }()
