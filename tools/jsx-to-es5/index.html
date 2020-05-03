@@ -15,6 +15,7 @@
 		<link href="https://nguyenthanh1995.github.io/lib/awesome/css/all.min.css" rel="stylesheet">
 		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
 		<script src="https://nguyenthanh1995.github.io/my.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/clipboard.min.js"></script>
 		<script src="https://nguyenthanh1995.github.io/lib/babel-6.6.1.min.js"></script>
 		<!-- Code Mirror -->
 		<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
@@ -105,6 +106,7 @@
 				</div>
 				<div class="col-12 col-md-6 p-0 m-0 mt-3 mt-md-5">
 					<textarea id="result" placeholder="Output code"></textarea>
+					<button class="float-right btn btn-outline-dark copy-code"> Copy </button>
 				</div>
 			</div>
 		</div>
@@ -252,6 +254,18 @@ my("select").append(App()).change(e => {
 
 my("#jsx").change(e => {
 	editor.setOption("mode", e.target.checked ? "jsx" : "javascript")
+})
+
+new Clipboard(".copy-code", {
+	text() {
+		return result.getVal();
+	}
+})
+.on("success", () => {
+	alert("Copy success")
+})
+.on("error", e => {
+	alert(`Copy failed! ${JSON.stringify(e)}`)
 })
 
 		</script>
