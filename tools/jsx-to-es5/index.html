@@ -202,7 +202,7 @@ function App() {
 }
 
 
-var editor = CodeMirror.fromTextArea(my("#code")[0], {
+let editor = CodeMirror.fromTextArea(my("#code")[0], {
 	lineNumbers: true,
 	matchBrackets: true,
 	continueComments: "Enter",
@@ -212,7 +212,7 @@ var editor = CodeMirror.fromTextArea(my("#code")[0], {
 	mode: "jsx"
 })
 
-var result = CodeMirror.fromTextArea(my("#result")[0], {
+let result = CodeMirror.fromTextArea(my("#result")[0], {
 	lineNumbers: true,
 	matchBrackets: true,
 	continueComments: "Enter",
@@ -221,7 +221,7 @@ var result = CodeMirror.fromTextArea(my("#result")[0], {
 	theme: 	"default"
 })
 
-var timestamp
+let timestamp
 
 editor.on("change", () => {
 	clearTimeout(timestamp)
@@ -258,7 +258,7 @@ my("#jsx").change(e => {
 
 new Clipboard(".copy-code", {
 	text() {
-		return result.getVal();
+		return result.getValue();
 	}
 })
 .on("success", () => {
