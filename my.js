@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b23
+ * my.js v1.4.2 b24
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -462,15 +462,6 @@ return my.ajax({
 	},
 	error: args[4]
 }), this
-},
-transition: function (e) {
-if (e === undefined)
-	return this.css(my.prefix('transition'))
-
-this.css(my.prefix('transition'), function (val) {
-	return my.trim(val) + ', ' + my.trim(e)
-})
-	return this;
 },
 id: function(i){return this.prop('id', i)},
 class: function(g){return this.prop('className', g)},
@@ -1262,17 +1253,6 @@ return {
 		}), this
     }
 }
-},
-speed: function (fn) {
-    var last = Date.now()
-    fn()
-    console.log(Date.now() - last + 'ms')
-},
-start: function () {
-    this.timeSpeed = Date.now()
-},
-end: function () {
-    console.log(Date.now() - my.timeSpeed + 'ms')
 },
 trim: function (str) {
 return str == null ? '' : (str + '')
