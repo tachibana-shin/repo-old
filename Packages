@@ -4761,6 +4761,26 @@ Package: git.shin.icleanerpro
 Section: Utilities
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
 Architecture: iphoneos-arm
+Version: 7.8.2k
+Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro
+Depends: firmware (>= 4.0), findutils, apt | apt7
+Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro
+Filename: ./debs/icleanerpro-7.8.2.deb
+Size: 9672224
+MD5sum: 35331a03d867732fd48d974fa82cabed
+SHA1: 9e5db741dd320d24b6428cfb4625019369de39e9
+SHA256: 06066ecd549d97aafc119ff8f62e81fb80e5878436178ce396ecbbe1e3d6d1ed
+Description: The first real iOS system cleaner & optimizer
+Name: iCleaner Pro Crack
+Author: Ivano Bilenchi
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.icleanerpro
+
+Package: git.shin.icleanerpro
+Section: Utilities
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
 Version: 7.7.5
 Replaces: org.altervista.exilecom.icleaner
 Depends: firmware (>= 4.0), findutils, shell-cmds, apt | apt7
