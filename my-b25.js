@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b25
+ * my.js v1.4.2 b27
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -1330,7 +1330,7 @@ promise: function (fnPromise) {
 
     var sett = function() {
     		
-    	var callbacks = sett.callbacks, args = slice.call(arguments), tmp;
+    	var callbacks = sett.callbacks, args = slice.call(arguments), tmp, next
 		
 		while ( tmp = callbacks[sett.state++] )
 			if (tmp.isSuccess) {
@@ -1342,7 +1342,8 @@ promise: function (fnPromise) {
 				}
 				catch (e) {
 					e._ = e + " at catch " + sett.state
-					callbacks[sett.state].isSuccess || callbacks[sett.state].callback.call(this, e, sett)
+					next = callbacks[sett.state]
+					next && (next.isSuccess || typeof next.callback == "function") && next.callback.call(this, e, sett)
 					return false
 				}
 			};
@@ -1379,7 +1380,8 @@ promise: function (fnPromise) {
 camelCase: camelCase,
 nodeName: nodeName,
 isNumeric: isNumeric,
-parseJSON: parseJSON
+parseJSON: parseJSON,
+domify: domify
 })
 my.prefix = my.prefixCSS
 my.each({
