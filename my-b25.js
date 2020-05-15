@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b27
+ * my.js v1.4.2 b28
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -239,27 +239,38 @@ var wrapMap = {
 wrapMap.optgroup = wrapMap.option
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead
 wrapMap.th = wrapMap.td
+
+function cloneScript(el) {
+	var newEl = document.createElement("script"), attrs = el.attributes, length = attrs.length
+	
+	while ( length-- )
+		newEl.setAttribute(
+			attrs[length].name,
+			attrs[length].value
+		)
+	newEl.innerHTML = el.innerHTML
+	return newEl
+}
+
 function domify (html) {
 var frag = DOM.createDocumentFragment(),
-tmp, tag, wrap, scripts, all, elem;
+tmp, tag, wrap, scripts, all;
 
-	    tmp = DOM.createElement('div')
-	    tag = (rtagName.exec(html) || ['', ''])[1].toLowerCase()
+	tmp = DOM.createElement('div')
+	tag = (rtagName.exec(html) || ['', ''])[1].toLowerCase()
 	wrap = wrapMap[tag] || wrapMap._default
 
 	tmp.innerHTML = wrap[1] + htmlPrefilter(html) + wrap[2]
 
-		var j = wrap[0];
-		while (j--) tmp = tmp.lastChild;
+	var j = wrap[0];
+	while (j--) tmp = tmp.lastChild;
 
-		scripts = tmp.getElementsByTagName('script')
-	var i = 0, script, leng = scripts.length;
-	while (i < leng) {
-		elem = scripts[i++]
-		script = DOM.createElement ('script')
-    		script.innerHTML = elem.innerHTML
-		my(elem).replace(script)
-	}
+	scripts = tmp.getElementsByTagName('script')
+	var i = 0, elem
+	while ( elem = scripts[i++] )
+		my(elem)
+		.replace(cloneScript(elem))
+
 	all = tmp.childNodes;
 	while (elem = all[0])
 		frag.appendChild(elem);
