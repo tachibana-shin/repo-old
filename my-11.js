@@ -751,6 +751,7 @@ else {
 }
 return this.constructor(j)
 },
+hasEmpty: function() {return isWin(el) ? !0 : !this[0].hasChildNodes()},
 parent: function () {
 	return my(this[0].parentNode)
 },
