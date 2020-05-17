@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b28
+ * my.js v1.4.2 b29
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -240,6 +240,10 @@ wrapMap.optgroup = wrapMap.option
 wrapMap.tbody = wrapMap.tfoot = wrapMap.colgroup = wrapMap.caption = wrapMap.thead
 wrapMap.th = wrapMap.td
 
+var propFix = {
+	"for": "htmlFor",
+	"class": "className"
+}
 function cloneScript(el) {
 	var newEl = document.createElement("script"), attrs = el.attributes, length = attrs.length
 	
@@ -378,6 +382,32 @@ Data.prototype = {
 var dataPriv = new Data(1)
 var dataUser = new Data(2)
 
+function cloneCopyEvent(src, dest) {
+	var pdataOld, pdataCur, events;
+
+	if ( dest.nodeType !== 1 )
+		return;
+
+	if ( dataPriv.hasData( src ) ) {
+		pdataOld = dataPriv.access( src )
+		pdataCur = dataPriv.set( dest, pdataOld );
+		events = pdataOld.events;
+
+		dest.my || (dest = my(dest))
+		if ( events ) {
+			pdataCur.events = []
+
+			Loop(events, function (val) {
+    			dest.on(val.eType, val.callBack, val.more)
+			})
+		}
+	}
+
+	if ( dataUser.hasData( src ) )
+		dataUser.set( dest, my.extend( {}, dataUser.access( src ) ) )
+
+}
+
 function my(elem) {
 	return new my.fn.init(elem)
 }
@@ -387,13 +417,12 @@ my: true,
 init: function (elem) {
 var elems = [], i = 0, length;
 
-elem === undefined && (elem = DOM)
 if (typeof elem === 'string') {
 	elem = my.trim(elem)
 
 	elems = selector.test (elem[0]) ? DOM.querySelectorAll(elem) : slice.call(domify(elem).childNodes)
 }
-else elems = isLikeArr(elem) ? elem : [elem];
+else elems = elem === undefined ? [] : isLikeArr(elem) ? elem : [elem];
 
 length = this.length = elems.length
 
@@ -404,7 +433,9 @@ length: 0,
 getWindow: function () {
 return this[0].defaultView || this[0].ownerDocument.defaultView || window
 },
-eq: function (e) {return my(this[e < 0 ? this.length + e : e])},
+eq: function (i) {
+return my( this[e < 0 ? this.length + e : e] )
+},
 get: function (i) {
 	return i == null ? slice.call(this) : this[i < 0 ? this.length + i : i]
 },
@@ -415,8 +446,9 @@ var el = this[0].children
     return my(arguments.length ? el[i < 0 ? el.length + i : i] : el)
 },
 each: function (e) {return my.each(this, e)},
-map: function (e) {return my.map(this, e)},
-flatMap: function (e) {return my.flatMap(this, e)},
+map: function (e) {
+return my.merge( this.constructor(), my.map( this, e ) )
+},
 contents: function () {
 var el = this[0];
 if (nodeName(el, 'iframe'))
@@ -427,6 +459,8 @@ return my.merge([], el.childNodes)
 },
 prop: function (k, v) {
 var el = this[0]
+"nodeType" in el && (k = propFix[k] || k)
+
 	if(v === undefined) return el[k];
 	if (isObj(k)) return my.each(k, function (i, e) {el[i] = e}), this;
 	el[k] = v
@@ -472,8 +506,6 @@ return my.ajax({
 	error: args[4]
 }), this
 },
-id: function(i){return this.prop('id', i)},
-class: function(g){return this.prop('className', g)},
 addClass: function (val) {
 var elem = this[0];
     if (isFunc(val))
@@ -603,15 +635,7 @@ Loop(arguments, function (e) {
 })
 return this
 },
-appendTo: function (e) {
-return my(e).append(this[0]), this
-},
-prependTo: function (e) {
-return my(e).prepend(this[0]), this
-},
-tag: function(){return (( this[0] || '' ).tagName || '').toLowerCase()},
-childCount: function () {return (this[0] || '').childElementCount},
-event: function (name, fn, opt) {
+on: function (name, fn, opt) {
 var that = this, elem = this[0]
 
 isFunc(fn) && Loop(classToArray(name), function (e) {
@@ -623,7 +647,7 @@ isFunc(fn) && Loop(classToArray(name), function (e) {
 		more: opt
 	})
 })
-return my.extend(this, {
+return this.extend({
 	prevent: function (fn, opt) {
 		arguments.length < 2 && (opt = { passive: false })
 		return that.on(name, function (n) {
@@ -648,36 +672,24 @@ return my.extend(this, {
 	}
 })
 },
-unEvent: function (name, fn, opt) {
-var that = this, elem = this[0], cache;
-if(isFunc(fn))
-	Loop(classToArray(name), function (w) {
-		that._unEvent_(w, fn, opt)
-	});
-else if (isArr(cache = dataPriv.cache(elem).events)) {
-	if ( name !== undefined )
-		Loop(classToArray(name), function (e) {
-			dataPriv.cache(elem).events = cache.filter(function (f) {
-    			if (f.eType === e)
-    				that._unEvent_(
-    					f.eType,
-    					f.callBack,
-    					f.more
-    				)
-    			else return !0;
-			})
-		})
-    else {
-        Loop(cache, function (w) {
-    		that._unEvent_(
-    			w.eType,
-    			w.callBack,
-    			w.more
-    		)
+off: function (name, fn, opt) {
+var that = this, elem = this[0], cache = dataPriv.cache(elem), events = typeof name == "string" ? classToArray(name) : undefined
+
+if ( events ) {
+	if ( cache.events ) {
+    	cache.events = cache.events.filter(function(val) {
+    		if ( events.indexOf(val.eType) > 0 && (fn === undefined || fn === val.callBack) && (opt === undefined || opt == val.more) )
+    			return that._unEvent_(val.eType, val.callBack, val.more), false
+
+			return true
+    	})
+    
+	}
+	else Loop(events, function (val) {
+    	that._unEvent_(val, fn, opt)
 	})
-	delete dataPriv.cache(elem).events
-    }
 }
+
 return this
 },
 one: function (name, fn, opt) {
@@ -690,7 +702,7 @@ that.on(w, m, opt)
 		return tmp
     }
 })
-return my.extend(this, {
+return this.extend({
 	prevent: function (fn, opt) {
 		arguments.length < 2 && (opt = { passive: false })
 		return that.one(name, function (n) {
@@ -738,7 +750,25 @@ var el = this[0]
  return this
 },
 remove: function () {this[0].remove()},
-clone: function(a, b){return this[0].cloneNode(deflt(a, true), b)},
+clone: function( dataAndEvents, deepDataAndEvents ) {
+	return this.map(function (el) {
+	
+		var i, l, srcElements, destElements, clone = el.cloneNode( true ), allTag
+	
+		if ( dataAndEvents )
+			if ( deepDataAndEvents ) {
+				allTag = my("*")
+				srcElements = my.merge([el], allTag)
+				destElements = my.merge([el], allTag)
+
+				for ( i = 0, l = srcElements.length; i < l; i++ ) {
+					cloneCopyEvent( srcElements[ i ], destElements[ i ] );
+				}
+			} else cloneCopyEvent( el, clone )
+
+		return clone
+	})
+},
 replace: function(j){
 if (Element.prototype.replaceChild)
 	this.parent()[0]
@@ -750,7 +780,6 @@ else {
 }
 return this.constructor(j)
 },
-hasEmpty: function() {return isWin(el) ? !0 : !this[0].hasChildNodes()},
 parent: function () {
 	return my(this[0].parentNode)
 },
@@ -857,27 +886,6 @@ if ( !elem.getClientRects().length )
 			height: elem.offsetHeight
 		};
 },
-typing: function (t) {
-if(isObj(t)) var s = t.space, space = isset(s) && s !== false ? '<span style=font:initial>' + (typeof s === 'boolean' ? '|' : s) + '</span>' : '', t = t.delay; 
-var str = this.html(), len = str.length, that = this;
-this.empty()
-var saved = deflt(t, 200), space = deflt(space, '');
-typing(0)
-    function typing (j) {
-    	if(j > len) return that.trigger('my.typing.done');
- setTimeout(function (){
-    	var su = str.slice(0, j + 1), m = str.indexOf('>', j), l = su[su.length - 1];
-    if(l == '<') j = m + 1;
-    else if ('.!?'.indexOf(l) > -1) t = saved * 3;
-    else if(l == ',') t = saved * 2;
-    else t = saved;
-    	var su = str.slice(0, j + 1)
-    	that.html(su + (j === len - 1 ? '' : space))
-    	typing(++j)
- }, deflt(t, 200))
-    }
-  return this
-},
 select: function (fn) {
 if(isFunc(fn)) return this.on('select', fn);
 var me = this[0]
@@ -943,14 +951,10 @@ dataUser: function ( key, value ) {
 		}
 	}
 	if ( typeof key === "object" )
-	return dataUser.set(elem, key), this;
+		return dataUser.set(elem, key), this;
 
-	if ( elem && value === undefined ) {
-		data = dataUser.get(elem, key)
-		if ( data !== undefined )
-			return data;
-		return
-	}
+	if ( elem && value === undefined )
+		return dataUser.get(elem, key)
 	
 	dataUser.set(elem, key, value)
 	return this
@@ -965,6 +969,116 @@ cleanData: function () {
 	return this
 }
 }
+
+var PROMISE_ID = Math.random().toString(36).substring(2);
+function reject(sett) {
+   var state = sett[PROMISE_ID].state, callbacks = sett[PROMISE_ID].callbacks, tmp, args = slice.call(arguments, 1)
+	while ( tmp = callbacks[state++] )
+	    if ( !tmp.isSuccess )
+	    	try {
+	    	    tmp.callback.apply(this, args)
+	    	}
+	    	catch (e) {
+	    	    sett[PROMISE_ID].state++
+	    	    reject(sett, e)
+	    	}
+}
+
+function promise (fnPromise) {
+    
+    if ( !this._isPromise )
+    	throw new TypeError("calling Promise constructor without new is invalid.")
+    var sett = function() {
+    		
+    	var callbacks = sett[PROMISE_ID].callbacks, args = slice.call(arguments), tmp
+		
+		while ( tmp = callbacks[sett[PROMISE_ID].state++] )
+			if (tmp.isSuccess)
+    			try {
+					tmp.callback.apply(this, [sett, function () { reject(sett, slice.call(arguments).concat([sett, reject])) }].concat(args))
+					return true
+				}
+				catch (e) {
+					reject.apply(this, [sett, e].concat(args))
+					return false
+				}
+		return false;
+    }
+		
+    sett[PROMISE_ID] = {
+		callbacks: [],
+		state: 0,
+		called: []
+	}
+	this[PROMISE_ID] = sett
+
+    
+    this.then(fnPromise)
+    //setTimeout allow run script not async run end after callbacks added. Remove function end().
+    setTimeout(function () {
+        sett(sett)
+    })
+}
+
+promise.prototype = {
+    then: function (_fn) {
+        typeof _fn == "function" && 
+        this[PROMISE_ID][PROMISE_ID]
+		 .callbacks.push({
+            isSuccess: true,
+            callback: _fn
+        })
+        return this
+    },
+    catch: function (_fn) {
+        typeof _fn == "function" && 
+        this[PROMISE_ID][PROMISE_ID]
+		 .callbacks.push({
+            isSuccess: false,
+            callback: _fn
+        })
+        return this
+    },
+    _isPromise: true,
+    constructor: promise
+}
+
+
+function allPromiseDone(array) {
+    var result = true, i = 0, length = array.length
+    while ( i < length )
+        if ( !array[i] || !array[i].isDone ) {
+			result = false
+			break
+		 }
+	
+	return result
+}
+Loop({
+    all: false,
+    race: true
+}, function (isRace, key) {
+	promise[key] = function (array) {
+		return new promise(function (_resolve, _reject) {
+			var result = Array(array.length), isStop = false
+
+			Loop(array, function (value, index) {
+				value.then(function (resolve) {
+					result[index] = { isDone: true, result: slice.call(arguments, 2) }
+
+					if ( !isStop && (isRace || allPromiseDone(result)) )
+						_resolve(result.map(function (val) { return val.result })), isStop = true
+					resolve()
+				})
+				.catch(function (error) {
+					isStop || _reject(error)
+					isStop = true
+				})
+			})
+		})
+	}
+})
+
 function parseJSON (json) {
 	try {
 		return JSON.parse(json)
@@ -996,36 +1110,7 @@ my.fn.extend = my.extend = function () {
     	};;
 	return target
 }
-function mtDate (e) {
-    this.rb = e
-    this.tZero = new Date(0)
-}
 
-Loop('FullYear Month Date Day Hours Minutes Seconds Milliseconds'.split(' '), function (val) {
-	mtDate.prototype['get' + val] = function () {
-		return this.rb['getUTC' + val]() - this.tZero['getUTC' + val]()
-	}
-})
-my.extend(mtDate.prototype, {
-	getTime: function () {
-		return this.rb.getTime() - this.tZero.getTime()
-	},
-	to2length: function (e) {
-    	return [e < 10 ? 0 : '', e].join('')
-	},
-	toLocaleTimeString: function() {
-		return [this.to2length(this.getHours()), this.to2length(this.getMinutes()), this.to2length(this.getSeconds())].join(':')
-	},
-	toLocaleDateString: function() {
-		return [this.getMonth() + 1, this.getDate(), this.getFullYear()].join('/')
-	},
-	toLocaleString: function () {
-	    return [this.toLocaleTimeString(), this.toLocaleDateString()].join(', ')
-	}
-})
-
-my.fn.on = my.fn.event
-my.fn.off = my.fn.unEvent
 my.fn.once = my.fn.one
 my.fn.init.prototype = my.fn
 
@@ -1036,13 +1121,11 @@ for (var i in e) return false;
 return true;
 },
 merge: function (one, two) {
-        var i = one.length,
-        	 j = 0,
-       		len = two.length;
-       	for (; j < len; j++) 
-       		one [i++] = two [j];
-       	one.length = i
-       return one
+  var i = one.length, j = 0, len = two.length;
+  for (; j < len; j++) 
+     one [i++] = two [j];
+  one.length = i
+  return one
 },
 exCSS: function (r) {return DOMe.style[r]!=null},
 prefixCSS: function (r) {
@@ -1053,10 +1136,6 @@ while(i < _prefix) {if(my.exCSS(prefix[i] + r)) return prefix[i] + r; i++}
 },
 $clone: function (r) {
     return r.nodeType === 1 ? r.cloneNode(!0) : JSON.parse(JSON.stringify(r))
-},
-isEmptyObj: function (a) {
-    for(var i in a) return false;
-return true
 },
 isWindow: isWin,
 param: function (str) {
@@ -1281,44 +1360,15 @@ map: function (arr, fn) {
 	if ( isLikeArr( arr ) ) {
 		length = arr.length
 		for (; i < length; i++) {
-			value = fn.call(arr[i], i, arr)
+			value = fn(arr[i], i, arr)
 			value != null && result.push( value )
 		}
 	} else {
 		for (i in arr) {
-			value = fn.call(arr[i], i, arr)
-
+			value = fn(arr[i], i, arr)
 			value != null && result.push( value )
 		}
 	}
-	return result
-},
-flatMap: function (arr, fn, n) {
-	var i = 0, leng = arr.length;
-	var res, j, length;
-	n = n === undefined ? 1 : n
-	var result = []
-	if (isLikeArr(arr))
-	while (leng > i) {
-		res = [fn.call(arr[i], i++, arr)]
-		j = 0
-		while (j < n) {
-			res = concat.apply([], res)
-			if (my.noArrChild(res)) break;
-			j++
-		}
-		push.apply(result, res)
-	}
-    else for (i in arr) {
-       res = [fn.call(arr[i], i++, arr)]
-		j = 0
-		while (j < n) {
-			res = concat.apply([], res)
-			if (my.noArrChild(res)) break;
-			j++
-		}
-		push.apply(result, res)
-    }
 	return result
 },
 getJSON: function (url, data, fn) {
@@ -1330,64 +1380,7 @@ inArray: function (el, arr, i) {
 type: function ( e ) {
 	return e == null ? e + '' : typeof e === "object" || typeof e === "function" ? toString.call(e).replace(rtype, '$1').toLowerCase() : typeof obj
 },
-countdown: function (e, h) {
-	e = arguments.length === 1 ? (isNumeric(e) ? e : '\'' + e + '\'') : slice.call(arguments).join(',')
-   h === undefined && (h = 1)
-	e = new Date(h * (Function('return new Date(' + e + ')')() - Date.now()))
-	return new mtDate(e)
-
-},
-promise: function (fnPromise) {
-
-    var sett = function() {
-    		
-    	var callbacks = sett.callbacks, args = slice.call(arguments), tmp, next
-		
-		while ( tmp = callbacks[sett.state++] )
-			if (tmp.isSuccess) {
-			
-    			try {
-						args.unshift(sett)
-					tmp.callback.apply(this, args)
-					return true
-				}
-				catch (e) {
-					e._ = e + " at catch " + sett.state
-					next = callbacks[sett.state]
-					next && (next.isSuccess || typeof next.callback == "function") && next.callback.call(this, e, sett)
-					return false
-				}
-			};
-		return false;
-    }
-		
-    my.extend(sett, {
-		callbacks: [],
-		state: 0,
-		called: []
-	})
-	
-    this.then = function (_fn) {
-        sett.callbacks.push({
-            isSuccess: true,
-            callback: _fn
-        })
-        return this
-    }
-    this.catch = function (_fn) {
-        sett.callbacks.push({
-            isSuccess: false,
-            callback: _fn
-        })
-        return this
-    }
-    
-    this.then(fnPromise)
-    //setTimeout allow run script not async run end after callbacks added. Remove function end().
-    setTimeout(function () {
-        sett(sett)
-    })
-},
+promise: promise,
 camelCase: camelCase,
 nodeName: nodeName,
 isNumeric: isNumeric,
@@ -1410,6 +1403,25 @@ my.each({
 
 		val !== undefined && (el[prop] = val)
 		return this
+	}
+})
+my.each({
+	appendTo: "append",
+	prependTo: "prepend",
+	insertBefore: "before",
+	insertAfter: "after",
+	replaceAll: "replace"
+}, function( name, original ) {
+	my.fn[ name ] = function( selector ) {
+		var elems, ret = [], insert = my( selector ), last = insert.length - 1, i = 0;
+
+		for ( ; i <= last; i++ ) {
+			elems = i === last ? this : this.clone( true );
+			my( insert[ i ] )[ original ]( elems )
+			ret.push(elems)
+		}
+		
+		return my(elems)
 	}
 })
 my.each( {
