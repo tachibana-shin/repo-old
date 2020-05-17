@@ -104,7 +104,9 @@ function cors (e, fn) {
 				.val(result)
 				.color("#34495e")
 			}
-			my(".status > span").text("Ready")
+			var min = saved(my("textarea").val(), result)
+
+			my(".status > span").text("Ready " + ( min.min + " / " + min.src + " saved " + min.per + "% (" + min.save + ")")
 		},
 		error: function () {
 			my(".status > span").text("Error!")
@@ -133,6 +135,34 @@ function minify(callback) {
 
 }
 
+var storage = [
+    { key: "b", val: 1 },
+    { key: "k", val: 1024 },
+    { key: "m", val: 1048576 },
+    { key: "g", val: 2097152 },
+    { key: "t", val: 2147483648 }
+].reverse()
+
+function toby(byte) {
+    for (var key = 0, length = storage.length; key < length; key++)
+        if ( byte / storage[key].val >= 1 )
+			return Math.round( byte / storage[key].val ) + storage[key].key + "b"
+}
+
+function saved(src, min) {
+    src = src.length
+    min = min.length
+    
+    var save = src - min
+    
+    return {
+        src: toby(src),
+        min: toby(min),
+        per: 100 - (min * 100 / src).toFixed(2),
+		 save: toby(save)
+    }
+    
+}
 
 my(".type > button")
 .mclick(function () {
