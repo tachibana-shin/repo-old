@@ -1,5 +1,5 @@
 /*!
- * my.js v1.4.2 b29
+ * my.js v1.4.2 b30
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -982,6 +982,9 @@ function reject(sett) {
 	    	    sett[PROMISE_ID].state++
 	    	    reject(sett, e)
 	    	}
+	    	
+	if ( !tmp )
+		sett[PROMISE_ID].rejtualy = args
 }
 
 function promise (fnPromise) {
@@ -1002,12 +1005,18 @@ function promise (fnPromise) {
 					reject.apply(this, [sett, e].concat(args))
 					return false
 				}
+		
+		if ( !tmp )
+			sett[PROMISE_ID].resoltually = args
+		// * If !tmp => ending promise == then last
 		return false;
     }
 		
     sett[PROMISE_ID] = {
 		callbacks: [],
 		state: 0,
+		resoltually: null,
+		rejtualy: null,
 		called: []
 	}
 	this[PROMISE_ID] = sett
@@ -1019,55 +1028,62 @@ function promise (fnPromise) {
         sett(sett)
     })
 }
-
 promise.prototype = {
     then: function (_fn) {
-        typeof _fn == "function" && 
-        this[PROMISE_ID][PROMISE_ID]
-		 .callbacks.push({
+        let sett = this[PROMISE_ID][PROMISE_ID]
+		 if ( typeof _fn == "function" && 
+		 sett.callbacks.push({
             isSuccess: true,
             callback: _fn
-        })
+        }) && 
+        sett.state >= sett.callbacks.length - 1 && sett.resoltually !== null ) {
+			sett.state = sett.callbacks.length - 1
+			this[PROMISE_ID].apply(this, sett.resoltually)
+		}
+
         return this
     },
     catch: function (_fn) {
-        typeof _fn == "function" && 
-        this[PROMISE_ID][PROMISE_ID]
-		 .callbacks.push({
+        let sett = this[PROMISE_ID][PROMISE_ID]
+		 if ( typeof _fn == "function" && 
+		 sett.callbacks.push({
             isSuccess: false,
             callback: _fn
-        })
+        }) && 
+        sett.state >= sett.callbacks.length - 1 && sett.rejtualy !== null ) {
+    		sett.state = sett.callbacks.length - 1
+			reject(this[PROMISE_ID], sett.rejtualy)
+		}
+		
         return this
     },
     _isPromise: true,
     constructor: promise
 }
 
-
 function allPromiseDone(array) {
     var result = true, i = 0, length = array.length
-    while ( i < length )
+    while ( i < length ) {
         if ( !array[i] || !array[i].isDone ) {
 			result = false
 			break
 		 }
-	
+		 i++
+	}
 	return result
 }
-Loop({
-    all: false,
-    race: true
-}, function (isRace, key) {
+Loop(["all", "race"], function (key, isRace) {
+	isRace = !!isRace
 	promise[key] = function (array) {
 		return new promise(function (_resolve, _reject) {
 			var result = Array(array.length), isStop = false
 
 			Loop(array, function (value, index) {
-				value.then(function (resolve) {
+				value.then(function (resolve, a, b) {
 					result[index] = { isDone: true, result: slice.call(arguments, 2) }
 
 					if ( !isStop && (isRace || allPromiseDone(result)) )
-						_resolve(result.map(function (val) { return val.result })), isStop = true
+						_resolve(result.map(function (e) { return e.result })), isStop = true
 					resolve()
 				})
 				.catch(function (error) {
@@ -1078,6 +1094,7 @@ Loop({
 		})
 	}
 })
+
 
 function parseJSON (json) {
 	try {
@@ -1133,9 +1150,6 @@ r = r.replace(xprefix, '')
 var i = 0;
 while(i < _prefix) {if(my.exCSS(prefix[i] + r)) return prefix[i] + r; i++}
 	return undefined
-},
-$clone: function (r) {
-    return r.nodeType === 1 ? r.cloneNode(!0) : JSON.parse(JSON.stringify(r))
 },
 isWindow: isWin,
 param: function (str) {
@@ -1236,6 +1250,7 @@ if (rnoContent.test( type )) {
 	}
 
 	opt.url = cache + uncached
+
 } else if (opt.data && opt.processData && typeof opt.contentType === "string" && opt.contentType.indexOf("application/x-www-form-urlencoded") === 0)
 	opt.data = opt.data.replace( r20, "+" );
 
