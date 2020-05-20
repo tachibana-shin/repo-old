@@ -87,7 +87,7 @@ body {
        </style>
        <script>
 "use strict";
-onerror = e => console.log(e + "")
+onerror = console.log = console.warn = console.error = e => console.log(e + "")
 Local.$watch({
 	history: Array,
 	favorys: Array,
