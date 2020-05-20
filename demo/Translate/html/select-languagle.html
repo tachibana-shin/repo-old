@@ -1,0 +1,33 @@
+<div class="d-flex text-center select-languagle__body f-14 border-bottom bg-white">
+   <super-select v-model="$parent.from" :state="state.from" @change-state="$emit('input', state.from = $event)" :title="$locate.TRANSLATE_FROM" @click.stop.prevent>
+   </super-select>
+
+   <div class="col-5 py-2 text-truncate" @click="state.from = true">
+      {{ $parent.getName($parent.from) }}
+   </div>
+
+   <div class="col-2 py-2" @click="$parent.reverse">
+      {{ $locate.TO }}
+   </div>
+
+   <super-select v-model="$parent.to" :state="state.to" @change-state="state.to = $event" :title="$locate.TRANSLATE_TO" @click.stop.prevent>
+   </super-select>
+
+   <div class="col-5 py-2 text-truncate" @click="$emit('input', state.to = true)">
+      {{ $parent.getName($parent.to) }}
+   </div>
+</div>
+
+<script>
+_ = {
+   data: {
+      state: {
+         from: false,
+         to: false
+      }
+   },
+   components: {
+      "super-select": $import($pwd + "/panel-languagle.html")
+   }
+}
+</script>

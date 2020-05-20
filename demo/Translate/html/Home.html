@@ -1,0 +1,287 @@
+<div>
+	<header class="bg-primary py-3 fixed-top text-center text-light h6">
+		<span style="font-weight: 600"> Google </span> {{ $locate.TRANSLATE }}
+	</header>
+			
+	<div class="container p-0 m-0">
+		<select-languagle></select-languagle>
+		<!-- /input -->
+		<div class="input-text border-bottom px-3 bg-white">
+			<div class="input-text__header p-1" v-if="!!input">
+				<voice :value="input" :source="from"></voice>
+				<small class="text-uppercase"> {{ (from$ != from ? "Dịch tử " : "") + getName(from$) }} </small>
+				<span class="float-right close" @click.stop="input = output = ''">&times;</span>
+			</div>
+			<div v-else class="input-text__header--none p-1" @click="onInput">
+				<span class="h-1 text-secondary"> {{ $locate.INPUT_TEXT }} </span>
+			</div>
+					
+			<div class="input-text__body py-2 text-break" @click="onInput">
+				{{ input }}
+			</div>
+		</div>
+		<!-- //input -->
+				
+		<!-- /output -->
+		<div class="output-text bg-primary text-light py-2 px-3 mx-1" v-if="!!input && !!output">
+			<div class="output-text__header p-1">
+				<span class="h-1"> <voice :value="output" :source="to"></voice> </span>
+				<small class="text-uppercase"> {{ getName(to$) }} </small>
+				<span class="float-right close text-light" @click="$root.toggleFavory(dataNow)"><i class="fas fa-star" v-if="isFavory"></i><i class="far fa-star" v-else></i></span>
+			</div>
+					
+			<div class="output-text__body py-2">
+				{{ output }}
+			</div>
+					
+			<div class="output-text__footer py-1 text-right">
+				<i class="fas fa-share fa-lg" @click="share"></i>
+				<i class="fas fa-arrows-alt fa-lg" @click="zoomResult"></i>
+				<i class="far fa-clipboard fa-lg" @click="copyToClipboard"></i>
+			</div>
+		</div>
+		<!-- //output -->
+				
+		<!-- /if not show output: show history -->
+
+		<!-- /history -->
+		<ul class="py-2 px-3 list-group bg-white" v-else>
+			<li v-for="item in reverseHistory" class="row py-2 border-bottom" @click="printTranslate(item)">
+				<div class="col-10 col-lg-11 small">
+					<div style="font-weight: 600;" class="text-truncate"> {{ item.input }} </div>
+					<div class="text-secondary text-truncate"> {{ item.output }} </div> 
+				</div>
+				<div class="col" @click.stop="clickStar(item)"> <i class="fas fa-star text-warning" v-if="$root.isFavory(item)"></i><i class="far fa-star" v-else></i> </div>
+			</li>
+		</ul>
+		<!-- //history -->
+	</div>
+	
+	<!-- /Component -->
+	<transition name="swipe-down">
+		<panel-input @close-panel="offInput($event)" v-if="stateInputPanel"></panel-input>
+	</transition>
+	<!-- //Component -->
+</div>
+
+<style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+
+.swipe-down-enter-active,
+.swipe-down-leave-to {
+    -webkit-transition: opacity .3s;
+    -o-transition: opacity .3s;
+    transition: opacity .3s;
+}
+.swipe-down-enter,
+.swipe-down-leave-to {
+    opacity: 0;
+}
+
+.langugale-active {
+	background-color: #000;
+}
+
+
+.select-languagle__body {
+	
+}
+.select-languagle__body select,
+.select-languagle__body select:before,
+.select-languagle__body select:after {
+	-moz-appearance: none !important;
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	background: none !important;
+	text-align: center !important;
+}
+.select-languagle__body select::-ms-expand {
+	display: none !important;
+}
+
+
+.input-text__body {
+	min-height: calc(20vh - .5rem);
+	text-wrap: break;
+}
+.output-text__body {
+	min-height: calc(20vh - 2em - .5rem);
+}
+
+.output-text__footer > i {
+	margin-right: 1rem;
+}
+.output-text__footer > i:last-child {
+	margin-right: 0rem;
+}
+</style>
+
+<script src="https://nguyenthanh1995.github.io/lib/clipboard.min.js"></script>
+
+<script>
+
+"use strict";
+
+Vue.component("select-languagle", $import($pwd + "/select-languagle.html"));
+_ = {
+	name: "Home",
+	data: {
+		input: "",
+		output: "",
+		from: Local.from,
+		to: Local.to,
+		from$: Local.from,
+		to$: Local.to,
+		stateInputPanel: false
+	},
+	components: {
+		"panel-input": $import($pwd + "/input-panel.html"),
+		Voice: $import($pwd + "/Voice.html")
+	},
+	watch: {
+		from: function from(newVal, oldVal) {
+			if (newVal == this.to) this.to = oldVal;
+			this.reResult();
+			Local.from = newVal;
+		},
+		to: function to(newVal, oldVal) {
+			if (newVal == this.from) this.from = oldVal;
+			this.reResult();
+			Local.to = newVal;
+		}
+	},
+	methods: {
+		reverse: function reverse() {
+			var tmp = this.from;
+			this.from = this.to;
+			this.to = tmp;
+		},
+		getName: function getName(e) {
+			var result = void 0;
+			this.languagle.some(function (f) {
+				if (e === f.code) {
+					result = f.name;
+					return true;
+				}
+			});
+			return result;
+		},
+		onInput: function onInput() {
+			this.stateInputPanel = true;
+			this.output = "";
+		},
+		offInput: function offInput(text) {
+			var _this = this;
+
+			this.stateInputPanel = false;
+
+			if (!my.trim(text)) return;
+			this.input = text;
+			this.translate(text, function (result, from) {
+				_this.from$ = from;
+				_this.output = result;
+				if (_this.translateDone && _this.someHistory(_this.dataNow) < 0) Local.history.push(_this.dataNow);
+			});
+		},
+		translate: function translate(text, callback) {
+			my.ajax({
+				url: "https://translate.googleapis.com/translate_a/single?client=gtx&dt=t",
+				type: "get",
+				dataType: "json",
+				data: {
+					sl: this.from,
+					tl: this.to,
+					q: text
+				},
+				success: function success(e) {
+
+					var from = e[2],
+					    result = void 0;
+					try {
+						result = e[0][0][0];
+					} catch (e) {}
+
+					callback(result, from);
+				},
+
+				timeout: 3e4
+			});
+		},
+		reResult: function reResult() {
+			var _this2 = this;
+
+			if (!!this.input && !!this.output && this.someHistory(this.dataNow) == -1 && this.$root.someFavory(this.dataNow) == -1) this.translate(this.input, function (result, from) {
+				_this2.output = result;_this2.from$ = from;_this2.to$ = _this2.to;
+			});
+		},
+		clickStar: function clickStar(e) {
+			this.$root.toggleFavory(e);
+		},
+		someHistory: function someHistory(e) {
+			return this.$root.history.map(function (e) {
+				return JSON.stringify(e);
+			}).indexOf(JSON.stringify(e));
+		},
+		printTranslate: function printTranslate(e) {
+			this.from = this.from$ = e.from;
+			this.to = this.to$ = e.to;
+			this.input = e.input;
+			this.output = e.output;
+		},
+		copyToClipboard: function copyToClipboard() {
+			this.clipboard.active();
+		},
+		zoomResult: function zoomResult() {
+			this.$root.alert(this.output);
+		},
+		share: function share() {
+			var src = "data:text/html," + encodeURIComponent("<div>Translate from <b>" + this.getName(this.from$) + "</b> to <b>" + this.getName(this.to) + "</b>:</div>\"" + this.input + "\" = \"" + this.output + "\"");
+
+			my("<a>").attr("href", src).click();
+		},
+		deleteHistory: function deleteHistory() {
+			Local.$clear("history");
+		}
+	},
+	mounted: function mounted() {
+		var _this3 = this;
+
+		// create Clipboard Object
+		var self = this;
+		this.clipboard = new Clipboard(null, {
+			text: function text() {
+				return self.output;
+			}
+		}).on("success", function (e) {
+			return _this3.$root.alert(_this3.$locate.COPPY_SUCCESS, e);
+		}).on("error", function (e) {
+			return _this3.$root.alert(_this3.$locate.COPPY_FAILED, e);
+		});
+	},
+
+	computed: {
+		dataNow: function dataNow() {
+			return { from: this.from$, to: this.to$, input: this.input, output: this.output };
+		},
+		isFavory: function isFavory() {
+			return this.$root.isFavory(this.dataNow);
+		},
+		reverseHistory: function reverseHistory() {
+			return JSON.parse(JSON.stringify(this.$root.history)).reverse();
+		},
+		translateDone: function translateDone() {
+			return !!this.input && !!this.input.trim() && !!this.output && !!this.output.trim();
+		},
+		languagle: function languagle() {
+			return this.$root.languagle;
+		}
+	}
+};
+</script>
+			

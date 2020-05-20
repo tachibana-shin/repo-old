@@ -1,0 +1,34 @@
+<div class="d-flex w-100 toolbar py-2 text-center bg-light">
+
+   <div class="col-4" @click="$root.state.home = true" :class="{ 'text-primary': $root.state.home }">
+      <i class="fas fa-home"></i>
+   </div>
+   <div class="col-4" @click="$root.state.favory = true" :class="{ 'text-primary': $root.state.favory }">
+      <i class="fas fa-star"></i>
+   </div>
+   <div class="col-4" @click="$root.state.setting = true" :class="{ 'text-primary': $root.state.setting }">
+      <i class="fas fa-cog"></i>
+   </div>
+
+</div>
+<style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+.toolbar {
+   font-size: 150% !important;
+   bottom: 0;
+   position: fixed;
+   z-index: 5555;
+   height: var(--heightToolBar) !important;
+   -webkit-box-shadow: 0 -.125rem .25rem rgba(0, 0, 0, .075);
+           box-shadow: 0 -.125rem .25rem rgba(0, 0, 0, .075);
+}
+body {
+   margin-bottom: var(--heightToolBar);
+}
+</style>

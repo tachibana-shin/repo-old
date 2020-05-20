@@ -1,0 +1,99 @@
+<div class="fixed-top w-100 h-100 input-panel" style="z-index: 9999;">
+	<div class="w-100 h-100" style="position: absolute; background: rgba(0, 0, 0, .3)" @click="$emit('close-panel', input)">
+   </div>
+	<div class="bg-light" style="position: absolute">
+		<select-languagle></select-languagle>
+		<textarea class="form-control border-0 panel-input__textarea rounded-0" v-model.trim="input" @keyup.enter="$emit('close-panel', input)" @blur="$emit('close-panel', input)"></textarea>
+		<div class="panel-input--output__ajax py-2 px-3">
+          <div class="spinner-border  text-primary" v-if="!!input && !output"></div>
+			{{ output }}
+		</div>
+	</div>
+</div>
+
+<style>
+.input-panel > * {
+   width: 100%;
+}
+.panel-input__textarea,
+.panel-input--output__ajax {
+   height: 4.5rem !important;
+}
+.panel-input__textarea {
+   border-bottom: 1px solid rgba(0, 0, 0, .1) !important;
+}
+.panel-input--output__ajax {
+   background-color: #fff;
+   overflow: hidden scroll;
+}
+.panel-input__textarea:focus {
+   box-shadow: none !important;
+}
+</style>
+
+<script>
+"use strict";
+
+var timestamp = Date.now();
+_ = {
+   data: {
+      input: "",
+      output: "",
+      from: "",
+      to: "",
+      languagle: []
+   },
+   watch: {
+      input: function input(e) {
+         var _this = this;
+
+         clearTimeout(timestamp);
+         timestamp = setTimeout(function () {
+            return _this.ajax();
+         }, 1000);
+      },
+
+      "$parent.from": function $parentFrom() {
+         this.ajax();
+      },
+      "$parent.to": function $parentTo() {
+         this.ajax();
+      },
+      "$parent.languagle": function $parentLanguagle(e) {
+         this.languagle = e;
+      },
+      from: function from(e) {
+         this.$parent.from = e;
+      },
+      to: function to(e) {
+         this.$parent.to = e;
+      }
+   },
+   methods: {
+      ajax: function ajax() {
+         var _this2 = this;
+
+         this.$parent.translate(this.input, function (r) {
+            _this2.output = r;
+         });
+      },
+      reverse: function reverse() {
+         var tmp = this.from;
+         this.from = this.to;
+         this.to = tmp;
+      },
+      getName: function getName(e) {
+         return this.$parent.getName(e);
+      }
+   },
+   mounted: function mounted() {
+      this.languagle = this.$parent.languagle;
+      this.from = this.$parent.from;
+      this.to = this.$parent.to;
+   },
+   created: function created() {
+      this.input = this.$parent.input;
+      this.output = "";
+   }
+};
+</script>

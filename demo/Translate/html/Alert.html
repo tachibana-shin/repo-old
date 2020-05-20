@@ -1,0 +1,121 @@
+<transition name="Alert" appear>
+   <div class="bg-dark Alert fixed-bottom text-light py-3 px-3" v-if="!!value && state" ref="Alert">
+      {{ mess }}
+   </div>
+</transition>
+
+<style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--heightToolBar: 3.2rem;
+	--bg-root: rgb(240, 240, 240);
+}
+body {
+	font-size: 14px !important;
+	margin-top: 3.3rem;
+	background-color: var(--bg-root)
+}
+
+.fas {
+	
+}
+.fas::before {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%);
+	    -ms-transform: translate(-50%);
+	        transform: translate(-50%);
+}
+.awesome {
+	font-family: 'Font Awesome 5 Free';
+	font-weight: 900;
+}
+
+.f-14 {
+	font-size: 14px !important;
+}
+
+.langugale-active {
+	background-color: #000;
+}
+
+.swipe-up-enter-active,
+.swipe-up-leave-active {
+	-webkit-transition: top 0.3s;
+	-o-transition: top 0.3s;
+	transition: top 0.3s;
+}
+.swipe-up-enter,
+.swipe-up-leave-to {
+	top: 100%;
+}
+
+.scroll-y {
+	overflow-x: hidden !important;
+	overflow-y: scroll !important;
+	-webkit-overflow-scrolling: touch !important;
+	-moz-overflow-scrolling: touch !important;
+	-ms-overflow-scrolling: touch !important;
+	-o-overflow-scrolling: touch !important;
+	overflow-scrolling: touch !important;
+	-webkit-overflow-style: -webkit-autohiding-scrollbar !important;
+	-moz-overflow-style: -moz-autohiding-scrollbar !important;
+	-ms-overflow-style: -ms-autohiding-scrollbar !important;
+	-o-overflow-style: -o-autohiding-scrollbar !important;
+}
+</style>
+
+<script>
+
+"use strict";
+
+var timestamp = void 0;
+
+_ = {
+   props: ["value"],
+   data: {
+      state: true,
+      mess: ""
+   },
+   watch: {
+      value: function value(e, f) {
+         var _this = this;
+
+         if (!!e && !!f) {
+            this.vibrate();
+         } else this.mess = this.value;
+         clearTimeout(timestamp);
+         timestamp = setTimeout(function () {
+            return _this.$emit("input", _this.mess = "");
+         }, 5000);
+      }
+   },
+   methods: {
+      vibrate: function vibrate() {
+         var _this2 = this;
+
+         var el = my(this.$refs.Alert).addClass("vibrate");
+
+         clearTimeout(el.dataUser("timestamp-animate-end"));
+
+         el.dataUser("timestamp-animate-end", setTimeout(function () {
+            return _this2.mess = _this2.value;
+         }, parseFloat(el.css(my.prefix("animation-duration"))) * 1000 / 2));
+
+         el.one(my.fx.animationEnd).then(function () {
+            return el.removeClass("vibrate");
+         });
+      }
+   }
+};
+</script>

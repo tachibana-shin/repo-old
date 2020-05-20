@@ -1,0 +1,42 @@
+<div>
+	<header class="py-3 px-3 fixed-top bg-light h5 shadow-sm">
+		<span style="font-weight: 600"> {{ $locate.SAVED }} </span>
+	</header>
+	
+	<div class="container py-3">
+		<div class="row">
+			<div class="col-12 col-sm-6 col-lg-4 col-lg-3 py-2 d-flex bg-white border-bottom" v-for="(item, id) in $root.favorys" :key="JSON.stringify(item) + id" @click="printTranslate(item)">
+				<div class="col-10 col-lg-11 small">
+					<div style="font-weight: 600" class="text-truncate"> {{ item.input }} </div>
+					<div class="text-secondary text-truncate"> {{ item.output }} </div> 
+				</div>
+				<div class="col" @click.stop="$root.toggleFavory(item)"> <i class="fas fa-star text-warning" v-if="$root.isFavory(item)"></i><i class="far fa-star" v-else></i> </div>
+			</div>
+
+			<div class="col-12 text-secondary text-center py-5" v-if="!$root.favorys.length">
+              <h4> <i class="far fa-star"></i> </h4>
+              <h5> {{ $locate.NO_STARED }} </h5>
+          </div>
+		</div>
+	</div>
+</div>
+
+<script>
+"use strict";
+
+_ = {
+  methods: {
+    printTranslate: function printTranslate(e) {
+      var _this = this;
+
+      this.$root.$children.some(function (f) {
+        if (f.$options.name == "Home") {
+          f.printTranslate(e);
+          _this.$root.state.home = true;
+          return true;
+        }
+      });
+    }
+  }
+};
+</script>

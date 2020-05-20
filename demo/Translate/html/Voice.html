@@ -1,0 +1,28 @@
+<span class="h-1" @click="voice">
+    <div class="spinner-border spinner-border-sm" v-if="!loaded"></div>
+    <i v-else class="fas fa-volume"></i>
+    <audio src="" ref="audio" hidden></audio>
+</span>
+
+<script>
+"use strict";
+
+_ = {
+   props: ["value", "source"],
+   data: function data() {
+      return { loaded: true };
+   },
+
+   methods: {
+      voice: function voice() {
+         var _this = this;
+
+         this.loaded = false;
+         my(this.$refs.audio).attr("src", "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=" + this.source + "&q=" + encodeURIComponent(this.value)).once("loadeddata loadeddatameta error", function () {
+            return _this.loaded = true;
+         }).load();
+         this.$refs.audio.play();
+      }
+   }
+};
+</script>

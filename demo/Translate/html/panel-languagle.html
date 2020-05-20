@@ -1,0 +1,97 @@
+<transition name="swipe-up">
+	<div class="fixed-top w-100 h-100 bg-light text-left" v-if="state" style="z-index: 10000">
+		<header class="py-3 px-3 position-absolute w-100 bg-light h5 shadow-sm">
+			<span style="font-weight: 600"> {{ title }} </span>
+			<button class="close" @click="$emit('change-state', false)"> &times; </button>
+		</header>
+			
+		<div class="container scroll-y position-absolute" style="margin-top: 4rem; height: calc(100% - 4rem)">
+          <div class="input-group">
+              <div class="input-group-prepend bg-0">
+                 <span class="input-group-text bg-0"> <i class="fas fa-search"></i> </span>
+              </div>
+              <input class="form-control" v-model="search" @blur="search = ''" type="search" :placeholder="$locate.SEARCH">
+          </div>
+          <!-- //search -->
+
+          <!-- /history languagle -->
+
+          <div class="row">
+             <div class="col-12">
+
+                <h6 class="text-secondary text-uppercase small mt-3" v-show="!search"> {{ $locate.RECENT_LANGUAGLE }} </h6>
+                <ul class="list-group border-0" v-show="!search">
+                   <li class="list-group-item py-3 border-bottom" v-for="item in recentLanguagle" @click="clickLi(item)">
+                       <span> <i class="far fa-check" :style="{ color: item.code == value ? 'inherit' : '#00000000' }"></i> </span> {{ item.name }}
+                   </li>
+                </ul>
+
+                <h6 class="text-secondary text-uppercase small mt-3"> {{ $locate.ALL_LANGUAGLE }} </h6>
+                <ul class="list-group border-0">
+                   <li class="list-group-item py-3 border-bottom" v-for="item in $parent.$parent.languagle" @click="clickLi(item)" v-show="item.code.match(regExp) || item.name.match(regExp)">
+                       <span> <i class="far fa-check" :style="{ color: item.code == value ? 'inherit' : '#00000000' }"></i> </span> {{ item.name }}
+                   </li>
+                </ul>
+
+             </div>
+
+          </div>
+	   </div>
+	</div>
+</transition>
+<style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+.swipe-up-enter-active,
+.swipe-up-leave-active {
+	-webkit-transition: top .2s;
+	-o-transition: top .2s;
+	transition: top .2s;
+}
+.swipe-up-enter,
+.swipe-up-leave-to {
+	top: 100%;
+}
+</style>
+<script>
+"use strict";
+
+_ = {
+   props: ["value", "state", "title"],
+   data: {
+      search: "",
+      recentLanguagle: Local.recentLanguagle
+   },
+   methods: {
+      add: function add(item) {
+         if (this.recentLanguagle.map(function (e) {
+            return JSON.stringify(e);
+         }).indexOf(JSON.stringify(item)) < 0) {
+            Local.recentLanguagle.unshift(item);
+         }
+      },
+      clickLi: function clickLi(item) {
+         this.$emit('input', item.code);
+         this.$emit('change-state', false);
+         this.add(item);
+      }
+   },
+   computed: {
+      regExp: function regExp() {
+         return new RegExp(my.strips(this.search, "gi"));
+      }
+   },
+   created: function created() {
+      var _this = this;
+
+      Local.$on("set:recentLanguagle", function (e) {
+         return _this.recentLanguagle = e;
+      });
+   }
+};
+</script>
