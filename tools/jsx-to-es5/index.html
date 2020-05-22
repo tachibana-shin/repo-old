@@ -92,11 +92,6 @@
 						<input type="checkbox" class="custom-control-input" id="jsx" checked>
 						<label class="custom-control-label" for="jsx">JSX</label>
 					</div>
-					
-					<div class="btn-group btn-group-sm">
-						<button class="btn btn-outline-dark" id="clear-input"> Clear </button>
-						<button class="btn btn-outline-dark" id="copy-input"> Copy </button>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -107,17 +102,28 @@
 
 			<div class="row p-0 m-0">
 				<div class="col-12 col-md-6 p-0 m-0 mt-5">
-					<textarea id="code" placeholder="Input JSX, React, ES6"></textarea>
+					<textarea id="input" placeholder="Input JSX, React, ES6"></textarea>
+
+					<div class="btn-group btn-group-sm float-right">
+						<button class="btn btn-outline-dark" id="clear-input"> Clear </button>
+						<button class="btn btn-outline-dark" id="copy-input"> Copy </button>
+					</div>
+					
 				</div>
 				<div class="col-12 col-md-6 p-0 m-0 mt-3 mt-md-5">
-					<textarea id="result" placeholder="Output code"></textarea>
-					<button class="float-right btn btn-outline-dark copy-code"> Copy </button>
+					<textarea id="output" placeholder="Output code"></textarea>
+
+					<div class="btn-group btn-group-sm float-right">
+						<button class="btn btn-outline-dark" id="clear-output"> Clear </button>
+						<button class="btn btn-outline-dark" id="copy-output"> Copy </button>
+					</div>
+					
+					
 				</div>
 			</div>
 		</div>
 		
 		<script type="text/babel">
-
 function transformCode(script) {
 	return Babel.transform(script.content, buildBabelOptions(script, "compile.js")).code;
 }
@@ -207,7 +213,7 @@ function App() {
 }
 
 
-let editor = CodeMirror.fromTextArea(my("#code")[0], {
+let input = CodeMirror.fromTextArea(my("#input")[0], {
 	lineNumbers: true,
 	matchBrackets: true,
 	continueComments: "Enter",
@@ -217,7 +223,7 @@ let editor = CodeMirror.fromTextArea(my("#code")[0], {
 	mode: "jsx"
 })
 
-let result = CodeMirror.fromTextArea(my("#result")[0], {
+let output = CodeMirror.fromTextArea(my("#output")[0], {
 	lineNumbers: true,
 	matchBrackets: true,
 	continueComments: "Enter",
@@ -228,12 +234,12 @@ let result = CodeMirror.fromTextArea(my("#result")[0], {
 
 let timestamp
 
-editor.on("change", () => {
+input.on("change", () => {
 	clearTimeout(timestamp)
 	setTimeout(() => {
-		result.setValue(
+		output.setValue(
 			ES6toES5(
-				editor.getValue()
+				input.getValue()
 			)
 		 )
 	}, 1000)
@@ -252,18 +258,18 @@ my("select").append(App()).change(e => {
 	if (e.target.value != "default" && !my(`link[data-name="${e.target.value}"]`).get(0))
 		my(`<link rel="stylesheet" href="https://codemirror.net/theme/${e.target.value}" data-name="${e.target.value}">`)
 		.appendTo("head")
-	editor.setOption("theme", e.target.value.replace(/\.css/, ""))
-	result.setOption("theme", e.target.value.replace(/\.css/, ""))
+	input.setOption("theme", e.target.value.replace(/\.css/, ""))
+	output.setOption("theme", e.target.value.replace(/\.css/, ""))
 	saveTheme(e.target.value)
 }).change()
 
 my("#jsx").change(e => {
-	editor.setOption("mode", e.target.checked ? "jsx" : "javascript")
+	input.setOption("mode", e.target.checked ? "jsx" : "javascript")
 })
 
-new Clipboard(".copy-code", {
+new Clipboard("#copy-output", {
 	text() {
-		return result.getValue();
+		return output.getValue();
 	}
 })
 .on("success", () => {
@@ -273,15 +279,25 @@ new Clipboard(".copy-code", {
 	alert(`Copy failed! ${JSON.stringify(e)}`)
 })
 
-new Clipboard(".copy-input", {
+new Clipboard("#copy-input", {
 	text() {
-		return editor.getValue()
+		return input.getValue()
 	}
 })
-
-my(".clear-input").click(() => {
-	editor.setValue("")
+.on("success", () => {
+	alert("Copy success")
 })
+.on("error", e => {
+	alert(`Copy failed! ${JSON.stringify(e)}`)
+})
+
+my("#clear-input").click(() => {
+	input.setValue("")
+})
+my("#clear-output").click(() => {
+    output.setValue("")
+})
+
 		</script>
 		<style>
 * {
