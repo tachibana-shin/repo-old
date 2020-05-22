@@ -10,13 +10,13 @@
 		<meta name="description" content="Auto prefix CSS for Chrome, Firefox, IE, Opera..." /> 
 		<meta name="keywords" content="auto prefixer, css 3, auto, prefix" />
 		<meta property="article:tag" content="auto prefixer, css 3, auto, prefix" />
-		<meta property="og:type" content	="website">
+		<meta property="og:type" content="website">
 		<link href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css" rel="stylesheet">
 		<link href="https://nguyenthanh1995.github.io/lib/awesome/css/all.min.css" rel="stylesheet">
 		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
 		<script src="https://nguyenthanh1995.github.io/my-b25.js"></script>
 		<script src="https://nguyenthanh1995.github.io/lib/clipboard.min.js"></script>
-		<script src="https://www.xgllseo.com/autoprefixer/autoprefixer.min.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/autoprefixer.js"></script>
 		<!-- Code Mirror -->
 		<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
 		<script src="https://codemirror.net/lib/codemirror.js"></script>
@@ -25,7 +25,6 @@
 		<script src="https://codemirror.net/addon/comment/comment.js"></script>
 		<script src="https://codemirror.net/mode/css/css.js"></script>
 		<script src="https://codemirror.net/addon/display/placeholder.js"></script>
-<script src="/lb/view.js"></script>
 	</head>
 	<body>
 	
@@ -116,7 +115,7 @@ var themes = "default 3024-day.css 3024-night.css abcdef.css ambiance-mobile.css
 function App() {
   var el = document.createDocumentFragment();
   themes.map(function (e) {
-    el.appendChild(localStorage["theme-editor"] == e ? my("<option selected>" + e)[0] : my("<option>" + e)[0]);
+    el.appendChild(localStorage["theme-editor-prefix-css"] == e ? my("<option selected>" + e)[0] : my("<option>" + e)[0]);
   });
   return el;
 }
@@ -139,8 +138,7 @@ var output = CodeMirror.fromTextArea(my("#output")[0], {
     "Ctrl-Q": "toggleComment"
   },
   lineWrapping: true,
-  theme: "default",
-  mode: "text/x-css"
+  theme: "default"
 });
 var timestamp;
 input.on("change", function () {
@@ -152,7 +150,7 @@ input.on("change", function () {
 
 function saveTheme(e) {
   try {
-    localStorage["theme-editor"] = e;
+    localStorage["theme-editor-prefix-css"] = e;
   } catch (e) {}
 }
 
