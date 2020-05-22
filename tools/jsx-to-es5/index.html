@@ -92,6 +92,11 @@
 						<input type="checkbox" class="custom-control-input" id="jsx" checked>
 						<label class="custom-control-label" for="jsx">JSX</label>
 					</div>
+					
+					<div class="btn-group btn-group-sm">
+						<button class="btn btn-outline-dark" id="clear-input"> Clear </button>
+						<button class="btn btn-outline-dark" id="copy-input"> Copy </button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -268,6 +273,15 @@ new Clipboard(".copy-code", {
 	alert(`Copy failed! ${JSON.stringify(e)}`)
 })
 
+new Clipboard(".copy-input", {
+	text() {
+		return editor.getValue()
+	}
+})
+
+my(".clear-input").click(() => {
+	editor.setValue("")
+})
 		</script>
 		<style>
 * {
