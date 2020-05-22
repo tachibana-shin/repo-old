@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Auto Prefixer CSS [shin-chan] </title>
+		<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
+		<meta property="og:image" content="https://nguyenthanh1995.github.io/favicon.ico">
+		<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/autoprefixer">
+		<meta property="og:site_name" content="Auto Prefixer CSS [shin-chan]" />
+		<meta property="og:description" content="Auto prefix CSS for Chrome, Firefox, IE, Opera..." />
+		<meta name="description" content="Auto prefix CSS for Chrome, Firefox, IE, Opera..." /> 
+		<meta name="keywords" content="auto prefixer, css 3, auto, prefix" />
+		<meta property="article:tag" content="auto prefixer, css 3, auto, prefix" />
+		<meta property="og:type" content	="website">
+		<link href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="https://nguyenthanh1995.github.io/lib/awesome/css/all.min.css" rel="stylesheet">
+		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
+		<script src="https://nguyenthanh1995.github.io/my-b25.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/clipboard.min.js"></script>
+		<script src="https://www.xgllseo.com/autoprefixer/autoprefixer.min.js"></script>
+		<!-- Code Mirror -->
+		<link rel="stylesheet" href="https://codemirror.net/lib/codemirror.css">
+		<script src="https://codemirror.net/lib/codemirror.js"></script>
+		<script src="https://codemirror.net/addon/edit/matchbrackets.js"></script>
+		<script src="https://codemirror.net/addon/comment/continuecomment.js"></script>
+		<script src="https://codemirror.net/addon/comment/comment.js"></script>
+		<script src="https://codemirror.net/mode/css/css.js"></script>
+		<script src="https://codemirror.net/addon/display/placeholder.js"></script>
+<script src="/lb/view.js"></script>
+	</head>
+	<body>
+	
+		<div id = "header-page"></div>
+		<script>
+			my("#header-page").load("/header.template", function () {
+    			my("#tools, #jsx-to-es5").each(function () { my(this).addClass("active") })
+			})
+		</script>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-12 text-center py-3">
+					<h5>Auto Prefixer CSS</h5>
+					<small class="text-secondary"> Automatically add prefix to your css code. </small>
+				</div>
+				<div class="col-12">
+					<button class="btn btn-outline-dark" data-toggle="collapse" data-target="#settings"><i class="fas fa-cogs"></i></button>
+				</div>
+			</div>
+
+			<div class="row collapse py-3 border-bottom" id="settings">
+				<div class="col-12 col-md-6 col-lg-6 col-xl-6">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Browsers </span>
+						</div>
+						
+						<input class="form-control" placeholder="[]" id="browsers"/>
+					</div>
+				</div>
+				
+				<div class="col-12 col-md-6 mt-3 col-lg-6 col-xl-6">
+					<div class="input-group input-group-sm">
+						<div class="input-group-prepend">
+							<span class="input-group-text"> Theme </span>
+						</div>
+						<select class="form-control custom-select" id="theme"></select>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+				
+				
+				
+		<div class="container m-0 p-0">
+
+			<div class="row p-0 m-0">
+				<div class="col-12 col-md-6 p-0 m-0 mt-5">
+					<textarea id="input" placeholder="Code CSS"></textarea>
+
+					<div class="btn-group btn-group-sm float-right">
+						<button class="btn btn-outline-dark" id="clear-input"> Clear </button>
+						<button class="btn btn-outline-dark" id="copy-input"> Copy </button>
+					</div>
+					
+				</div>
+				<div class="col-12 col-md-6 p-0 m-0 mt-3 mt-md-5">
+					<textarea id="output" placeholder="Output code prefix"></textarea>
+
+					<div class="btn-group btn-group-sm float-right">
+						<button class="btn btn-outline-dark" id="clear-output"> Clear </button>
+						<button class="btn btn-outline-dark" id="copy-output"> Copy </button>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+		
+		<script>
+function autoprefix(code) {
+  var result;
+
+  try {
+    result = autoprefixer.process(code);
+    if (result.error) result = result.error;
+  } catch (e) {
+    result = e + "";
+  }
+
+  return result + "";
+}
+
+var themes = "default 3024-day.css 3024-night.css abcdef.css ambiance-mobile.css ambiance.css ayu-dark.css ayu-mirage.css base16-dark.css base16-light.css bespin.css blackboard.css cobalt.css colorforth.css darcula.css dracula.css duotone-dark.css duotone-light.css eclipse.css elegant.css erlang-dark.css gruvbox-dark.css hopscotch.css icecoder.css idea.css isotope.css lesser-dark.css liquibyte.css lucario.css material-darker.css material-ocean.css material-palenight.css material.css mbo.css mdn-like.css midnight.css monokai.css moxer.css neat.css neo.css night.css nord.css oceanic-next.css panda-syntax.css paraiso-dark.css paraiso-light.css pastel-on-dark.css railscasts.css rubyblue.css seti.css shadowfox.css solarized.css ssms.css the-matrix.css tomorrow-night-bright.css tomorrow-night-eighties.css ttcn.css twilight.css vibrant-ink.css xq-dark.css xq-light.css yeti.css yonce.css zenburn.css".split(" ");
+
+function App() {
+  var el = document.createDocumentFragment();
+  themes.map(function (e) {
+    el.appendChild(localStorage["theme-editor"] == e ? my("<option selected>" + e)[0] : my("<option>" + e)[0]);
+  });
+  return el;
+}
+
+var input = CodeMirror.fromTextArea(my("#input")[0], {
+  lineNumbers: true,
+  matchBrackets: true,
+  continueComments: "Enter",
+  extraKeys: {
+    "Ctrl-Q": "toggleComment"
+  },
+  lineWrapping: true,
+  theme: "default"
+});
+var output = CodeMirror.fromTextArea(my("#output")[0], {
+  lineNumbers: true,
+  matchBrackets: true,
+  continueComments: "Enter",
+  extraKeys: {
+    "Ctrl-Q": "toggleComment"
+  },
+  lineWrapping: true,
+  theme: "default",
+  mode: "text/x-css"
+});
+var timestamp;
+input.on("change", function () {
+  clearTimeout(timestamp);
+  setTimeout(function () {
+    output.setValue(autoprefix(input.getValue()));
+  }, 1000);
+});
+
+function saveTheme(e) {
+  try {
+    localStorage["theme-editor"] = e;
+  } catch (e) {}
+}
+
+my("select").append(App()).change(function (e) {
+  if (e.target.value != "default" && !my("link[data-name=\"".concat(e.target.value, "\"]")).get(0)) my("<link rel=\"stylesheet\" href=\"https://codemirror.net/theme/".concat(e.target.value, "\" data-name=\"").concat(e.target.value, "\">")).appendTo("head");
+  input.setOption("theme", e.target.value.replace(/\.css/, ""));
+  output.setOption("theme", e.target.value.replace(/\.css/, ""));
+  saveTheme(e.target.value);
+}).change();
+new Clipboard("#copy-output", {
+  text: function text() {
+    return output.getValue();
+  }
+}).on("success", function () {
+  alert("Copy success");
+}).on("error", function (e) {
+  alert("Copy failed! ".concat(JSON.stringify(e)));
+});
+new Clipboard("#copy-input", {
+  text: function text() {
+    return input.getValue();
+  }
+}).on("success", function () {
+  alert("Copy success");
+}).on("error", function (e) {
+  alert("Copy failed! ".concat(JSON.stringify(e)));
+});
+my("#clear-input").click(function () {
+  input.setValue("");
+});
+my("#clear-output").click(function () {
+  output.setValue("");
+});
+
+		</script>
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.CodeMirror {
+	border: 1px solid silver;
+}
+
+.CodeMirror pre.CodeMirror-placeholder {
+	color: #999;
+}
+
+		</style>
+	</body>
+</html>
