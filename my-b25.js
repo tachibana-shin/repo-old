@@ -1452,8 +1452,8 @@ my.each( {
 		my.fn[ fname ] = function( value ) {
 			var el = this[0],
 				doc, rect,
-				padName = type === 'width' ? ['left', 'right'] : ['top', 'bottom'],
-				extra = defaultExtra === 'content' ? parseFloat(this.css('padding-' + padName[0])) + parseFloat(this.css('padding-' + padName[1])) : 0;
+				padName = type === 'width' ? ['left', 'right'] : ['top', 'bottom'], extra;
+
 		if ( isWin(el) ) {
 			return fname.indexOf( "outer" ) === 0 ?
 			el[ "inner" + name ] :
@@ -1476,6 +1476,8 @@ my.each( {
 		if ( !el.getClientRects().length )
 			return value === undefined ? 0 : this;
 		rect = el.getBoundingClientRect();
+		extra = defaultExtra === 'content' ? parseFloat(this.css('padding-' + padName[0])) + parseFloat(this.css('padding-' + padName[1])) : 0;
+
 		return value === undefined ? (rect[type] - extra) : this.css(type, addPx(value))
 		}
 	})
