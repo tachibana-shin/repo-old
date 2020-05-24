@@ -112,10 +112,10 @@ function crCanvas (w, h, append) {
 		width: w === undefined ? ww : w,
 		height: h === undefined ? wh : h
 	})
-	.data('type', 'my.context2d')
+	.data('type', 'my.context2d')[0]
 	
-	if ( append )
-		canvas.appendTo('body')[0])
+	if ( !append )
+		my(canvas).appendTo('body')
 	return canvas
 }
 function noCanvas (w, h) {
