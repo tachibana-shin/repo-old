@@ -1,5 +1,5 @@
 /*!
- * myCanvas.js v1.4 b8
+ * myCanvas.js v1.4 b9
  * (c) 2020 Shinigami
  * Released under the MIT License.
  */
@@ -9,10 +9,8 @@
 		define(['myjs'], factory);
 	else if (typeof module === 'object' && module.exports)
 		module.exports = factory(require('myjs'));
-	else {
-		if (typeof my === 'function') factory(my)
-		else throw 'myCanvas.js: myJS NOT install!';
-	}
+	else if (typeof my === 'function') factory(my)
+	else throw 'myCanvas.js: myJS NOT install!'
 }(this, function (my) {
 //escape
 //unescape
@@ -106,26 +104,22 @@ my.extend(Image.prototype, {
     }
 })
 
-function crCanvas (w, h) {
-	return isCanvas(canvasPriv) ? 
-		canvasPriv :
-		(canvas = my('<canvas>')
-		.attr({
-			width: w === undefined ? ww : w,
-			height: h === undefined ? wh : h
-		})
-		.data('type', 'my.context2d')
-		.appendTo('body')[0])
+function crCanvas (w, h, append) {
+	if ( isCanvas(canvasPriv) )
+		return canvasPriv
+	
+	canvas = my('<canvas>').attr({
+		width: w === undefined ? ww : w,
+		height: h === undefined ? wh : h
+	})
+	.data('type', 'my.context2d')
+	
+	if ( append )
+		canvas.appendTo('body')[0])
+	return canvas
 }
 function noCanvas (w, h) {
-	return isCanvas(canvasPriv) ? 
-		my(canvasPriv).remove() :
-		(canvas = my('<canvas>')
-		.attr({
-			width: w === undefined ? ww : w,
-			height: h === undefined ? wh : h
-		})
-		.data('type', 'my.context2d')[0])
+	return crCanvas(w, h, true)
 }
 function isCanvas(e) {
 	return typeof e === 'object' && e + '' === '[object HTMLCanvasElement]'
