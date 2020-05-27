@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Jailbreak Tools</title>
+		<meta name="description" content="Tool Jailbreak install no PC by Nguyen Thanh." /> 
+		<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, jailbreak, h3lix, hacker" />
+		<meta property="og:title" content="Jailbreak Tools">
+		<meta property="og:image" content="https://nguyenthanh1995.github.io/icon-jb/chimera.png">
+		<meta property="og:url" content="https://nguyenthanh1995.github.io/jailbreak-tool/">
+		<meta property="og:site_name" content="Jailbreak Tools" />
+		<meta property="og:description" content="Jailbreak Tools by Nguyen Thanh (shin-chan)" />
+		<meta property="article:tag" content="Jailbreak Tools by Nguyen Thanh (shin-chan)" />
+		<meta property="og:type" content="website">
+		<link rel=stylesheet href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+		<link rel="stylesheet" href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css">
+		<script src="https://nguyenthanh1995.github.io/my.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/polyfill.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1" charset="utf-8" />
+	</head>
+	<body>
+		
+		<div id="header-page"></div>
+		<script>
+			my("#header-page").load("/header.template", function () {
+				my("#header-page #jailbreak-tool").addClass("active")
+			})
+		</script>
+		
+		<div id="app" hidden>
+			<div class="container">
+				<div class="row mb-3">
+					<div class="col-12">
+						<small class="text-secondary">Website tồng hợp các liên kết cài đặt trực tiếp các công cụ jailbreak. Bạn có thể thêm repo <a href="https://nguyenthanh1995.github.io">shin-chan</a> để nhận các tweak free.</small>
+					</div>
+				</div>
+				<!-- //container (1) > row(1) -->
+
+				<div class="row mb-3">
+					<div class="col-12">
+						<input class="form-control" placeholder="Tìm kiếm" v-model="keywordSearch" />
+					</div>
+				</div>
+				<!-- //container (1) > row(2) -->
+
+				<div class="row">
+					<tool-jb v-for="(item, name) in tools"
+						:data="item"
+						:key="name"
+						:name="name"
+						v-if="item.state !== false"
+						@click="selectedTool = $event"
+						class="col-6 col-sm-4 col-lg-3 col-xl-2">
+						Hmmm. This website not support for browser!
+					</tool-jb>
+				</div>
+				<!-- //container (1) > row(3) -->
+
+			</div>
+			<!-- //container (1) -->
+
+			<div class="fixed-top w-100 text-light sidenav h-1 px-15px"
+				:class="{'h-100': !!statePanelApp, 'h-0': !statePanelApp}">
+				<div class="row">
+					<div class="col-12">
+						<button class="close my-1 text-light" style="font-size: 2em;" @click="statePanelApp = false"> &times; </button>
+					</div>
+				</div>
+				<!-- //row (1) -->
+				
+				<div class="row" v-if="!!selectedTool">
+					<div class="col-4 col-sm-3 col-lg-3 col-xl-2">
+						<img class="img-thumbnail icon icon-tool-jb" :src="'https://nguyenthanh1995.github.io/icon-jb/' + selectedTool.data.icon" />
+					</div>
+					<div class="col text-middle">
+						<span class="h5"> {{ selectedTool.name }} </span><br>
+						<small class="text-secondary"> Phiên bản {{ selectedTool.data.version }} </small>
+					</div>
+				</div>
+				<!-- //row (2) -->
+				
+				<div class="row my-3" v-if="!!selectedTool">
+					<div class="col-12 mb-4">
+						Jailbreak hỗ trợ iOS {{ selectedTool.data.support }}
+						<div class="mt-3 py-2 px-2 bg-success text-center" v-if="isSupport(selectedTool.data.support)">
+							Phiên bản iOS được hỗ trợ
+						</div>
+						<div class="mt-3 py-2 px-2 bg-danger text-center" v-else>
+							Phiên bản iOS không được hỗ trợ
+						</div>
+						<div class="small text-secondary mt-1 text-center">
+							iOS thiết bị: {{ iOS }}
+						</div>
+					</div>
+					<div class="col-12">
+						<ul class="list-group">
+							<li class="list-group-item bg-transparent border text-light download" v-for="(item, index) in selectedTool.data.plist" @click="install(item)">
+								Liên kết {{ index + 1 }}
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+				<!-- row (3) -->
+			</div>
+			<!-- //sidenav information -->
+
+
+			<div class="fixed-top w-100 text-light sidenav px-15px" :class="{'h-100': clickedInstall, 'h-0': !clickedInstall}">
+				<div class="row">
+					<div class="col-12">
+						<button class="close my-1 text-light" style="font-size: 2em" @click="clickedInstall = false"> &times; </button>
+					</div>
+					<div class="col-12 col-sm-6 text-center">
+						<img class="img-fluid" src="https://nguyenthanh1995.github.io/img/install.jpg" />
+					</div>
+					<div class="col-12 col-sm-6 text-center text-p mt-3">
+						<span> Nhấn vào <b>Cài đặt</b> khi cửa sổ bật lên và chờ đợi Ứng dụng tải về màn hình chính. Có thể sẽ hơi lâu! </span>
+						<span> Sau khi tải về hoàn thành, bạn chỉ cần mở <b>Cài đặt ▸ Cài đặt chung ▸ Quản lý thiết bị</b> và <b>Tin cậy</b> cấu hình mới. </span>
+
+						<span> Thêm <a href="https://nguyenthanh1995.github.io" target="_blank"> kho lưu trữ của shin-chan </a> vào Cydia của bạn và liên hệ <a href="https://www.facebook.com/profile.php?id=100024588752208" target="_blank"> Nguyễn Thành </a> khi bạn cần được hỗ trợ! </span>
+
+					</div>
+				</div>
+			</div>
+
+			<div class="text-center small text-secondary"> &copy; Copyright Nguyen Thanh (2020) </div> 
+		</div>
+		<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	
+}
+.icon-tool-jb {
+	width: 5em;
+	height: 5em;
+	border-radius: 20px !important;
+}
+
+.text-p span {
+	display: block;
+	margin-bottom: 1rem;
+}
+.text-p a {
+	color: var(--primary) !important
+}
+
+body {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	/*background: linear-gradient(270deg,#1e5799,#2ce0bf,#76dd2c,#dba62b,#ff1493,#1e5799);*/
+}
+
+.bg-color-green {
+	background-color: #4cd964!important;
+}
+.bg-color-blue {
+	background-color: #34aadc!important;
+}
+
+.sidenav {
+	background-color: #1d1d27;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch !important;
+	-moz-overflow-scrolling: touch !important;
+	-ms-overflow-scrolling: touch !important;
+	-o-overflow-scrolling: touch !important;
+	overflow-scrolling: touch !important;
+	-webkit-overflow-style: -webkit-autohiding-scrollbar !important;
+	-moz-overflow-style: -moz-autohiding-scrollbar !important;
+	-ms-overflow-style: -ms-autohiding-scrollbar !important;
+	-o-overflow-style: -o-autohiding-scrollbar !important;
+	bottom: 0 !important;
+	top: auto !important;
+}
+.h-0 {
+	height: 0 !important;
+}
+.text-middle {
+	vertical-align: middle;
+	line-height: 2.5em;
+}
+.text-light * {
+	color: inherit !important;
+}
+
+.download:before {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 0;
+	width: 1em;
+	height: 1em;
+	color: #fff;
+	-webkit-transform: translate(-150%, -50%);
+		-ms-transform: translate(-150%, -50%);
+			transform: translate(-150%, -50%);
+	background-size: 100% 100%;
+	background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3C!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3C!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN' 'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'%3E%3Csvg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='512px' height='512px' viewBox='0 0 512 512' enable-background='new 0 0 512 512' xml:space='preserve' fill='%23fff' %3E%3Cg%3E%3Cpath d='M446.844,208.875C447.625,203.313,448,197.656,448,192c0-70.563-57.406-128-128-128 c-40.938,0-78.531,19.344-102.344,51.063C209.25,113.031,200.688,112,192,112c-61.75,0-112,50.25-112,112 c0,1.563,0.031,3.094,0.094,4.625C33.813,242.375,0,285.313,0,336c0,61.75,50.25,112,112,112h272c70.594,0,128-57.406,128-128 C512,273.344,486.344,231.188,446.844,208.875z M384,416H112c-44.188,0-80-35.813-80-80s35.813-80,80-80 c2.438,0,4.75,0.5,7.125,0.719c-4.5-10-7.125-21.031-7.125-32.719c0-44.188,35.813-80,80-80c14.438,0,27.813,4.125,39.5,10.813 C246,120.25,280.156,96,320,96c53.031,0,96,42.969,96,96c0,12.625-2.594,24.625-7.031,35.688C449.813,238.75,480,275.688,480,320 C480,373.031,437.031,416,384,416z'/%3E%3Cpolygon points='288,192 224,192 224,288 160,288 256,384 352,288 288,288 '/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.title {
+	text-align: center;
+	padding: 1rem;
+	background-image: -webkit-gradient(linear,right top, left top,from(#1e5799),color-stop(#2ce0bf),color-stop(#76dd2c),color-stop(#dba62b),color-stop(#ff1493),to(#1e5799));
+	background-image: -o-linear-gradient(right,#1e5799,#2ce0bf,#76dd2c,#dba62b,#ff1493,#1e5799);
+	background-image: linear-gradient(270deg,#1e5799,#2ce0bf,#76dd2c,#dba62b,#ff1493,#1e5799);
+	background-size: 100% 100%;
+	background-clip: text;
+	-webkit-background-clip: text;
+	color: #00000000;
+	background-color: #fff;
+	-webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
+			box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.25);
+}
+.px-15px {
+	padding-left: 15px !important;
+	padding-right: 15px !important;
+}
+		</style>
+		
+		<script src="https://nguyenthanh1995.github.io/lib/vue.min.js"></script>
+		<script src="solid.js"></script>
+		<script>
+
+!function () {
+if ( typeof SOLID == "undefined" )
+	return alert("Request to SOLID failed?")
+// # fixed vuejs sort object in ti
+function charCode(str) {
+	return str.toLowerCase().charCodeAt(0)
+}
+Object.keys = function (e) {
+	var arr = [], i;
+	for ( i in e )
+		arr.push(i)
+	return arr.sort(function(a, b){
+		return charCode(a) - charCode(b)
+	})
+}
+// # done
+
+var Components = {
+	"tool-jb": {
+		props: {
+			data: Object,
+			name: String
+		},
+		template: "\
+			<div class=\"text-center mb-3\" @click=\"$emit('click', { name: name, data: data })\">\
+				<div class=\"mb-1\">\
+					<img\
+						:src=\"'https://nguyenthanh1995.github.io/icon-jb/' + data.icon\"\
+						class=\"icon-tool-jb img-thumbnail lazy-loaded\"\
+						:alt=\"name\" />\
+				</div>\
+				\
+				<h6> {{ name }} </h6>\
+				<div class=\"small text-secondary\">\
+					Jailbreak iOS {{ data.support }}\
+				</div>\
+			</div>\
+		"
+	}
+}
+
+new Vue({
+	el: "#app",
+	data: {
+		iOS: iOSVersion(),
+		selectedTool: null,
+		clickedInstall: false,
+		statePanelApp: false,
+		tools: SOLID,
+		keywordSearch: ""
+	},
+	watch: {
+		selectedTool: function(e) {
+			if ( !!e )
+				this.statePanelApp = true
+		},
+		keywordSearch: function(e){
+			var rx = new RegExp(
+				my.strips(
+					e.replace(/ /g, "")
+				), "i"
+			)
+			my.each(this.tools, function (key, e) {
+				Vue.set(e, "state", !!( key.replace(/ /g, "").match(rx) || e.support.replace(/ /g, "").match(rx) ))
+			})
+		}
+	},
+	methods: {
+		install: function (e) {
+			this.clickedInstall = true
+			window.open("itms-services://?action=download-manifest&amp;url=" + e, "_self")
+		},
+		isSupport: function (e) {
+			return checkingVers(e)
+		}
+	},
+	components: Components,
+	mounted: function () {
+	    my(this.$el).unAttr("hidden")
+	}
+})
+
+function iOSVersion () {
+	var os = navigator.userAgent.match(/OS ([\d\._]*)/)
+	
+	if (!os) return "unknown"
+	
+	return os[1].replace(/_/g, ".")
+}
+function fixed (arr, $n) {
+	var tmp = [], i = 3 - arr.length
+	while (i --)  tmp.push(0)
+	return arr.length < $n ? arr.concat(tmp) : arr
+}
+function checkInVer (os, tmp) {
+	os = fixed(os.split("."), 3)
+	tmp = fixed(tmp.split("."), 3)
+	var _tmp, result
+
+	my.each(os, function(key, val){
+		if (val !== tmp[key] && val !== "x" && tmp[key] !== "x") {
+
+			if ( val - 0 < tmp[key] - 0 )
+				result = -1
+			else result = 1
+			return false
+			
+		}
+		else result = 0
+	})
+	
+	return result
+}
+
+function checkingVers (e) {
+	var os = iOSVersion()
+	e = e.replace(/(?:\s+)|(?:\((?:32|64)\ ?- ?bit\))/g, "")
+			.split("&")
+	
+	return e.some(function (f) {
+		if (f.indexOf("-") > -1) {
+			var tmp = f.split("-"),
+			$r1 = checkInVer(os, tmp[0]),
+			$r2 = checkInVer(os, tmp[1])
+//console.log($r1)
+			return ($r1 === 0 || $r1 === 1) && ($r2 === 0 || $r2 === -1)
+		}
+		
+		return !checkInVer(os, f)
+			
+	})
+	
+}
+}(void 0)
+		</script>
+	</body>
+</html>
