@@ -1,4 +1,4 @@
-var SOLID = {
+window.SOLID = {
 	"Chimera Jailbreak": {
 		icon: "chimera.png",
 		plist: [
