@@ -1,4 +1,4 @@
-var toolJailbreak = {
+var SOLID = {
 	"Chimera Jailbreak": {
 		icon: "chimera.png",
 		plist: [
