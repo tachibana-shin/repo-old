@@ -111,7 +111,9 @@
 .fa-facebook-square{color:#3b5998}.fa-github{color:#000}.fa-instagram{background:#3f729b;background:-moz-linear-gradient(45deg,#f09433 0,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);background:-webkit-linear-gradient(45deg,#f09433 0,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);background:linear-gradient(45deg,#f09433 0,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);-webkit-background-clip:text;-moz-background-clip:text;-ms-background-clip:text;-o-background-clip:text;background-clip:text;color:transparent}.fa-twitter{color:#00aced!important}.fa-envelope{color:#93a1a1!important}.social{font-size:150%;margin-right:.1em;color:initial}.fa-facebook-square:hover{text-shadow:0 0 15px #3b5998}.fa-twitter:hover{text-shadow:0 0 15px #00aced}.fa-instagram:hover{text-shadow:0 0 15px #f09433}.fa-github:hover{text-shadow:0 0 15px #000}.fa-envelope:hover{text-shadow:0 0 15px #93a1a1}.social:active{color:initial}#menu-header .social:last-child{margin-right:auto}
 </style>
 <script type="text/javascript">
-
+onerror = function ( err ) {
+   alert( err + "" )
+}
 !function ($) {
 var query = $.querySelector.bind($)
 var queryAll = $.querySelectorAll.bind($)
@@ -141,6 +143,7 @@ function applyDark(state, _switch) {
     		var link = document.createElement("link")
 			link.rel = "stylesheet"
 			link.href = item + ".css"
+			link.className = "__css-darkmode-append"
 			document.head
 			.appendChild(link)
 		})
