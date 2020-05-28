@@ -4572,10 +4572,10 @@ Architecture: iphoneos-arm
 Version: 2.16.2-1
 Depends: curl32, openssl
 Filename: ./debs/git32_2.16.2-1_iphoneos-arm.deb
-Size: 30380128
-MD5sum: 10ba70c12f003f4c4c5b362c241a2654
-SHA1: d9ded13cec5d8d5aa51b60d4c1ea71a7a6d6e13a
-SHA256: f3e6fac6b1dbbabeb53230bc259152106cf9a9b6a12697876cfecba02f75d58b
+Size: 30385140
+MD5sum: d838a8d39fa53f38c7a128ed25597158
+SHA1: 52ecddfa68f112ef08b99812e5880ed63339cf33
+SHA256: ff43a727d634cf23ca96f0a1939c67ca6b77c2e761570a3888aaacb49b2397cc
 Description: fast content-addressable filesystem
 Name: Git 32bit
 Author: shin-chan
