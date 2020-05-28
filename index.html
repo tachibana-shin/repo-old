@@ -25,7 +25,7 @@
 		<div id="header-page"></div>
 		<script>
 			window.darkMode = ["navbar-light"]
-			window.relativeDarkMode = ["theme-dark"]
+			window.relativeDarkMode = ["m-dark"]
 
 			my("#header-page").load("/header.template", function () {
     			my("#header-page #home").addClass("active")
@@ -285,16 +285,8 @@ function loadInfoPkg (e) {
 	my("#browser-pkg").html($html)
 }
 
-if (localStorage.getItem("theme") === "dark")
-	my("<link rel=stylesheet href=m-dark.css id=theme-dark></link>").appendTo("head");
-
 function themeToggle () {
-    var theme
-    if (my("#theme-dark")[0])
-		my("#theme-dark").remove(), theme = "light"
-	else my("<link rel=stylesheet href=m-dark.css id=theme-dark></link>").appendTo("head"), theme = "dark"
-    toggleThemeMenu()
-	localStorage.setItem("theme", theme)
+    applyDark(0)
 	
 }
 	</script>
