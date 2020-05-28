@@ -122,9 +122,9 @@ try {
       storage = window.localStorage
 }catch(e) {}
 
-applyDark( !!eval(storage.isDark) )
-function applyDark(state) {
-    state = query(".dark-switch > i").className.indexOf("far") > -1
+applyDark( !!eval(storage.isDark), true )
+function applyDark(state, switch) {
+    state = switch ? state : query(".dark-switch > i").className.indexOf("far") > -1
     if ( !window.darkMode )
     	return
     if ( state ) {
@@ -156,7 +156,7 @@ function applyDark(state) {
 }
 
    query(".dark-switch > i")
-	.addEventListener("click", function () { applyDark(0) })
+	.addEventListener("click", function () { applyDark() })
 
    var js
    if (!$.documentElement.classList) {
@@ -167,6 +167,7 @@ function applyDark(state) {
    js = $.createElement("script")
    js.src = "https://nguyenthanh1995.github.io/lib/bootstrap-native.min.js"
    $.head.appendChild(js)
+window.APPLY_DARKMODE = applyDark
 }(document)
 //load script file lazy
 
