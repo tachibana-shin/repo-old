@@ -1859,6 +1859,24 @@ Sponsor: nguyenthanh
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.blackie2
 Homepage: https://nguyenthanh1995.github.io/
 
+Package: git.shin.blackie3
+Section: Themes
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.1.2
+Conflicts: com.macciti.blackie2
+Filename: ./debs/blackie3_1.1.2.deb
+Size: 37504970
+MD5sum: 7e687a5644c8445ab8ef7d62319e0015
+SHA1: 8224ada96e540318a892facc4fc9566767a789ad
+SHA256: e0b2a4de7e12c7ee4f4bd2e1cf9842180c82677f591950e166269345ee8a088c
+Description: Do what you love. Love what you do
+Name: Blackie 3
+Author: AX3L_4
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.blackie3
+
 Package: git.shin.blockads
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -2957,6 +2975,44 @@ Icon: file:///Library/PreferenceBundles/CuKey.bundle/CuKey@2x.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.cukey
 Homepage: https://nguyenthanh1995.github.io/
 
+Package: curl-32bit
+Priority: standard
+Section: Networking
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 7.58.0-1
+Filename: ./debs/curl-32bit_7.58.0-1.deb
+Size: 1764546
+MD5sum: 0c4e6b9596d987dd0b5cc867403076b7
+SHA1: c60d22d76c6189a5166d07d92c777a6a37315bf8
+SHA256: 2f269e9c69d0275206780364c8e0bf098843b96543353b23b231b3d68145b027
+Description: flexible multi-protocol file transfers
+Name: cURL for 32-bit
+Author: shin-chan
+Tag: purpose::console, role::hacker
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=curl-32bit
+
+Package: curl
+Priority: standard
+Section: Networking
+Installed-Size: 2112
+Maintainer: Samuel Bingner
+Architecture: iphoneos-arm
+Version: 7.58.0-2
+Depends: firmware (>= 5.0)
+Filename: ./debs/curl_7.58.0-2.deb
+Size: 520812
+MD5sum: f34441278487aa8e69f86c64cbcc065c
+SHA1: 442330138eb97dfc35e72cbabffa2dabe995dc53
+SHA256: b1afc31ec88e5085b0e227448c62d0b7599835ef3d8e0a90f9abe5cd62a95c9d
+Description: flexible multi-protocol file transfers
+Name: cURL
+Homepage: http://curl.haxx.se/
+Author: Samuel Bingner
+Tag: purpose::console, role::hacker
+
 Package: git.shin.customdia
 Priority: optional
 Section: Cydia Custom
@@ -3563,6 +3619,25 @@ Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dlea
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 
+Package: git.shin.dlgmemor8-10
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.2.1-1
+Depends: mobilesubstrate, preferenceloader, com.spark.libsparkapplist
+Filename: ./debs/dlgmemor8-10_1.2.1-1.deb.deb
+Size: 535214
+MD5sum: ac315b6ebb30321d9cc6228ad300385a
+SHA1: 8ab18e1d91587cac56e5569b47b949709f994994
+SHA256: a967e6fdc1f08409ce8a27b3a93f791fc38fd265cc6385d546bfdaf5e6b5ff9c
+Description: Injection library that allows you to alter memory in app. Once installed go into settings go to DLGMemorInjected and select the app you want to hack the memory in. Great alternative to GamePlayer and Gamegem. Works great on iOS 8 - 10. This was uploaded by @shin-chan. Please send donations to thanhnguyennguyen1995@gmail.com. Buy me a a coffee or something if you want me to help get these goodies. Have a few screenshots in the screenshots section that should help with use of this.To get this updated first add my repo to Cydia and install from there first. Add this source https://nguyenthanh1995.github.io
+ GameGem ، شبيه
+Name: DLGMemor Injected iOS 8-10
+Author: shin-chan & iOS-dev
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dlgmemor8-10
+
 Package: git.shin.dots2
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -3642,6 +3717,60 @@ Icon: file:///Library/PreferenceBundles/DotsPrefs.bundle/Icon@3x.png
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dots
+
+Package: git.shin.dropbear
+Section: System
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0
+Depends: firmware (>= 1.0)
+Filename: ./debs/dropbear_1.0.deb
+Size: 1833090
+MD5sum: df585c63a610d05431a969340b7fd685
+SHA1: bf5f8c2b2d923506d8f7527df7bbeceb2a072b56
+SHA256: 1db952416b3ddcd8602440dd78fd962a840bdf71532e39036240d1771e831f7f
+Description: Dropbear SSH for 32 and 64 bit devices. Use with an SSH tunnel to SSH via USB (Wi-Fi SSH is not enabled by default.)
+Name: Dropbear
+Author: lcampbell0x
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dropbear
+
+Package: git.shin.dropbearalert
+Section: Addons
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0~beta2
+Depends: mobilesubstrate
+Filename: ./debs/dropbearalert_0.0~beta2.deb
+Size: 57306
+MD5sum: e91a6402a3774027e59c9f81392dfdb6
+SHA1: 1542ecbf20f98299b45638e68ae574bd8f09eea1
+SHA256: 8bfc34db776b945a7049cb1f044c3d20fff8c8a20d5ed72aa4bebe566a6e48ed
+Description: Dropbear System Login Alert for iOS 10
+Name: DropbearAlert
+Author: julioverne
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dropbearalert
+
+Package: git.shin.dropbearswith
+Section: Addons (Flipswitch)
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.3
+Depends: mobilesubstrate, com.a3tweaks.flipswitch, firmware (>= 10)
+Filename: ./debs/dropbearswith_0.3.deb
+Size: 22530
+MD5sum: f58b371851971785b2fb46d69873c13f
+SHA1: ef485bda07c29ad893933ffc32db7909898b858b
+SHA256: 71c436154e224bf0fd7298964319716fde5f99673954c6f677e92508e4625bf2
+Description: SSH Toogle for Dropbear via Flipswitch in iOS 10
+Name: DropbearSwitch
+Author: julioverne
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.dropbearswith
 
 Package: git.shin.dsm
 Section: Tweaks
@@ -3862,6 +3991,27 @@ Author: Rishanan
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.fbadblock
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: git.shin.fcum
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 2.2
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)
+Filename: ./debs/fcum_2.2.deb
+Size: 64862
+MD5sum: 632b1ae004d564f7c49b91d2ba8b22f5
+SHA1: d7f9cc83bc74ae3fdc57ecfa06fd2ea9f42a64da
+SHA256: aab1f8e3158624116f7622853b4410bfb5df30a8fa880d31c1a5e9af8ae4540d
+Description: Un-mirror the camera preview for selfies.
+Author: Sticktron <sticktron@hotmail.com>
+Name: FrontCamUnMirror
+dev: sticktron
+Tag: purpose::extension, compatible::ios7, compatible::ios8, compatible::ios9, compatible::ios10
+Icon: file:///Library/PreferenceBundles/FrontCamUnMirror.bundle/Icon@2x.png
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.fcum
 
 Package: git.shin.fdark
 Section: Tweaks
@@ -4258,6 +4408,46 @@ Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.game
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 
+Package: git-32bit-lite
+Priority: optional
+Section: Data_Storage
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 2.16.2-1
+Depends: curl-32bit, openssl
+Filename: ./debs/git-32bit-lite_2.16.2-1.deb
+Size: 30385134
+MD5sum: da62d5f0ec9d72e3af2c1b262b2cfb6a
+SHA1: 317a5a09a4989027fd7e3e069b43bdebf4075cc0
+SHA256: c00373f765e4c06bba48d1ed3764d92ff6614deb58c97641487005bcd0c807ca
+Description: fast content-addressable filesystem for 32-bit
+Name: Git for 32-bit Lite
+Author: shin-chan
+Tag: purpose::console, role::hacker
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git-32bit-lite
+
+Package: git-32bit
+Priority: optional
+Section: Data_Storage
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 2.16.2-1
+Depends: curl-32bit, openssl
+Filename: ./debs/git-32bit_2.16.2-1.deb
+Size: 30387426
+MD5sum: b6c4fb89e5ac3ea1aae7a34923519ae4
+SHA1: b930c2a9202086eccf06a1a58c1cc615bee670d7
+SHA256: 981257460ea4a80475fcf3d748d5e3d442b037719a793b33522881c905e337b5
+Description: fast content-addressable filesystem for 32-bit
+Name: Git for 32-bit
+Author: shin-chan
+Tag: purpose::console, role::hacker
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git-32bit
+
 Package: git.shin.PullOverProb
 Priority: optional
 Section: Tweaks
@@ -4413,6 +4603,26 @@ Icon: file:///Library/PreferenceBundles/TikTokConfirms.bundle/tiktok@2x.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.tiktokconfirms
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: git
+Priority: optional
+Section: Data_Storage
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 2.16.2-2
+Depends: curl
+Filename: ./debs/git_2.16.2-2.deb
+Size: 30453064
+MD5sum: bf37b7543242a5dfddb9f0eeb8b637ed
+SHA1: e25bc2fc0d867fe581010eaf8fefad27d8192dd4
+SHA256: 35310b2681f211a0db9442698f95a7137c06a865a7bcb41591f64cdccaec6593
+Description: fast content-addressable filesystem
+Name: Git
+Author: Samuel Bingner
+Tag: purpose::console, role::hacker
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git
 
 Package: git.shin.golditheme
 Priority: optional
@@ -6200,6 +6410,27 @@ Icon: file:///Library/PreferenceBundles/NCWallCustomizer.bundle/NCWallCustomizer
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.ncwallcustomizer
 Homepage: https://nguyenthanh1995.github.io/
 
+Package: net.angelxwind.appsyncunified
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 76.0
+Replaces: us.hackulo.appsync50
+Provides: appsync
+Depends: firmware (>= 5.0), firmware (<= 13.5), firmware (<< 12.0) | mobilesubstrate (>= 0.9.5100) | mobilesubstrate (<= 0.9.6301) | mobilesubstrate (= 0.9.7020) | mobilesubstrate (= 0.9.7033) | mobilesubstrate (>= 0.9.7034) | com.ex.substitute (>= 0.1.0), firmware (<< 12.0) | mobilesubstrate (<< 99.0) | com.ex.libsubstitute (>= 0.1.1)
+Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, com.ifucker.appsync, com.sexyphonetech.appsyncunified, appsyncunifiedofficial, org.digbick.asufixed, cn.mingmei.asu623517234615234813, science.xnu.substitute
+Filename: ./debs/net.angelxwind.appsyncunified_76.0.deb
+Size: 64158
+MD5sum: 9014427f7a7350f9bdf5e672d77e76e7
+SHA1: f24e37c34fcdd239e0d9827d892bf3d7ccdd6421
+SHA256: bffb17dcb9229e7c4a99e2a3023b13a5d28607cbf3174074553949fe48d10ccb
+Description: Enables the ability to install unsigned/fakesigned iOS applications.
+Name: AppSync Unified
+Author: Linus Yang, Karen/あけみ <karen@akemi.ai>
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=net.angelxwind.appsyncunified
+
 Package: git.shin.networkmanager
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -6411,6 +6642,26 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.nolowpowerautolock
 
+Package: git.shin.nonosimalert8
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.0.1
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000)
+Filename: ./debs/nonosimalert8_0.0.1.deb
+Size: 4172
+MD5sum: 4d53bcdfa5122df72e73b3c4fb228ccb
+SHA1: 26bcef89e49c503df92b3ee111dc676fe6dfeea5
+SHA256: 0831506a98b0351d0f91dc23903e6fd0006f266722c9a95c8a763abca4edd5d9
+Description: Removes "No SIM Card Installed" Alert
+Author: tushaoye <tushaoye@qq.com>
+Name: noNoSimAlert 8
+dev: tushaoye
+Tag: purpose::extension, role::enduser, ios8support::1
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.nonosimalert8
+
 Package: git.shin.notifywifi10
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -6474,6 +6725,24 @@ Icon: file:///Library/PreferenceBundles/NotifyWiFiSettings.bundle/icon@2x.png
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.notifywifix
+
+Package: git.shin.noyellowbattery
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0.0
+Depends: mobilesubstrate
+Filename: ./debs/noyellowbattery_1.0.0.deb
+Size: 7968
+MD5sum: 42b59d279ef5e1d583a50b7626ce9a53
+SHA1: 2babf42de2cd31f8c833897a4e203997f0562247
+SHA256: 8582aaa2f6f933efe5c088a2b58ac6f6a74f40cb11efcaca77d3495d8877b0c0
+Description: Hide Yellow Low Power Icon!
+Name: NoYellowBattery
+Author: CydiaGeek <lucaluca86@aol.com>
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.noyellowbattery
 
 Package: git.shin.nudekeys
 Section: Tweaks
@@ -6575,6 +6844,24 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.onlinenotify
 
+Package: openssl
+Priority: standard
+Section: Security
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 0.9.8zg-13
+Pre-Depends: dpkg (>= 1.14.25-8)
+Filename: ./debs/openssl_0.9.8zg-13.deb
+Size: 1747776
+MD5sum: f745f5eed04bf3ed21384e9926c95564
+SHA1: 2fc0e382c2bf11732072c3ddcde6c9dc745c72c4
+SHA256: c7e1bcd5b4f3f8684c88a597cd6badba634991192b78e3fef5071f47a0acf79a
+Description: SSL library and cryptographic tools
+Name: OpenSSL
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=openssl
+
 Package: git.shin.Oreo
 Section: Themes
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -6613,6 +6900,21 @@ Tag: purpose::extension, compatible::ios7, compatible::ios8, compatible::ios9, c
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.otrlocationservirce
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: p7zip
+Priority: optional
+Section: Archiving
+Installed-Size: 4328
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 4.57-3p
+Filename: ./debs/p7zip_4.57-3p_iphoneos-arm.deb
+Size: 1595788
+MD5sum: 80396bec09f94e23cd1d59fe818cbf5f
+SHA1: ee4d0b30cb5628a31830cab89df3764cdfb27015
+SHA256: 72035b550c364ca25362a7f2dbf67254950da2c5989347a40f860eb56508816e
+Description: claims to be a good compressor
+Name: 7-zip (POSIX)
 
 Package: git.shin.pagebar
 Section: Tweaks
@@ -7355,6 +7657,24 @@ Author: Vladimir
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.samsungtheme
+
+Package: git.shin.saverb
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.5.5
+Depends: mobilesubstrate
+Filename: ./debs/saverb_1.5.5.deb
+Size: 77384
+MD5sum: 06b23bf56aaf2e61e5dc8fcb4d41f57f
+SHA1: 98dcd39fd86142cb1a6975732e4ef353ede29f6f
+SHA256: 7263a4b078b37f0e469ce3229f0814d54675d2a3a0183a67cec4c6ff2194c5be
+Description: help you to save your battery life and more
+Name: Saver Battery
+Author: mostafa
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.saverb
 
 Package: git.shin.screensafe
 Section: Tweaks
@@ -8968,6 +9288,27 @@ dev: ca13ra1
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.transparentfolders
 Homepage: https://nguyenthanh1995.github.io/
 
+Package: git.shin.transparnc
+Priority: optional
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.0
+Depends: firmware (>= 10.0), mobilesubstrate
+Filename: ./debs/transparnc_1.0.deb
+Size: 7196
+MD5sum: de5492d943cbfadce70a3d7d7caea027
+SHA1: df3976afe323b841f9411f36c2e752b3ecf25853
+SHA256: fe921c62860872136a255f116807b9b803cb708674292b1d4a0d0c1087d371b8
+Description: Make your notifications transparent
+Name: TransparNC (iOS 10)
+Author: FromDerik <DerikMalcolm@gmail.com>
+Tag: purpose::extension, compatible::ios10
+dev: fromderik
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.transparnc
+
 Package: git.shin.tritium
 Section: Tweaks
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -9159,6 +9500,20 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.unalkuru
 
+Package: unrar
+Priority: optional
+Section: Archiving
+Installed-Size: 292
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 3.6.8-2p
+Filename: ./debs/unrar_3.6.8-2p_iphoneos-arm.deb
+Size: 141040
+MD5sum: 6b4047075066f85147c348639c771ac6
+SHA1: ff8461d90cfe629c920eb4a4a6d13091e29195a8
+SHA256: 9e6102512ea1208890ce33a61c76756c9d554b1867b4b08bedbd7ab855c28596
+Description: de-compresses files in rar format
+
 Package: git.shin.unsize
 Section: Tweaks
 Maintainer: nguyenthanh
@@ -9176,6 +9531,21 @@ Author: fidele007
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.unsize
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: unzip
+Priority: important
+Section: Archiving
+Installed-Size: 428
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 5.52-6
+Pre-Depends: dpkg (>= 1.14.25-8)
+Filename: ./debs/unzip_5.52-6_iphoneos-arm.deb
+Size: 95822
+MD5sum: 326830d4b5e67d6bc2fc25b6c4a71baa
+SHA1: 313cbc1e164f2816cd202dec91a9c266505db259
+SHA256: 04329d078f3394dbb72abe9f19c893a178ecc22704342efbedf0c9021a9cbdf8
+Description: de-compesses files in zip format
 
 Package: git.shin.vartaman
 Section: Tweaks
@@ -9528,6 +9898,24 @@ Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.whatcol
 
+Package: git.shin.whitedream
+Priority: optional
+Section: Themes
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.6
+Filename: ./debs/whitedream_1.6.deb
+Size: 14839758
+MD5sum: 5e8f036b3ed471e423ded23c9b594799
+SHA1: 4114ff90ef01f00406b4f64659c63db5d9df8389
+SHA256: f9012afb702f0e575a8ab1dd76c74e9b14f4790851ec05f0f6a8bc58a256dd2a
+Description: White Dream Theme
+Name: White Dream
+Author: Le0n <iphonele0n@icloud.com>
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.whitedream
+
 Package: git.shin.whitedreamfs
 Section: Widgets
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
@@ -9637,6 +10025,24 @@ Author: Plat-Ykor <plat-ykor@libero.it>
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.yobunpro
+
+Package: git.shin.youtuben
+Section: Tweaks
+Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
+Architecture: iphoneos-arm
+Version: 1.3
+Depends: mobilesubstrate
+Filename: ./debs/youtuben_1.3.deb
+Size: 17146
+MD5sum: 42e0be888b30bbbfa084786376c02376
+SHA1: 76ac9c7f0f73dc9394d4c4a8ceecffef5a4da9ce
+SHA256: 2583937e5bd729b3677d99706dd6ce5edb66545681f079bfb416552cf2f85c85
+Description: play Youtube with background and more..
+Name: Youtuben
+Author: AbdullahOmar
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.youtuben
 
 Package: git.shin.youtubepatcher
 Section: Tweaks
@@ -9753,4 +10159,19 @@ Icon: http://i.imgur.com/tvLxnB5.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.zeppelin
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+
+Package: zip
+Priority: important
+Section: Archiving
+Installed-Size: 368
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Architecture: iphoneos-arm
+Version: 2.32-6
+Pre-Depends: dpkg (>= 1.14.25-8)
+Filename: ./debs/zip_2.32-6_iphoneos-arm.deb
+Size: 58550
+MD5sum: 1eebf2ba9ab0dc7cf445bf7cba0fa49e
+SHA1: 8925200a7cbf25852f5d6d45346be7dfeba26779
+SHA256: b2fa431b03ffd2f926dc4972c684c90c8a5f63af92b2674f634252d26c717d19
+Description: standard Windows compression tool
 

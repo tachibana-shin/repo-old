@@ -496,3 +496,23 @@ git.shin.sleepizyvi 11, 12, 13
 git.shin.snooscreens 7, 8
 git.shin.time 12, 13
 git.shin.whatcol 10, 11, 12, 13
+curl-32bit all
+curl all
+git.shin.dlgmemor8-10 8, 9, 10
+git.shin.dropbear all
+git.shin.dropbearalert all
+git.shin.dropbearswith all
+git.shin.fcum 10
+git-32bit-lite all
+git-32bit all
+git all
+net.angelxwind.appsyncunified 3+
+git.shin.nonosimalert8 8+
+openssl all
+p7zip all
+git.shin.saverb 10, 11, 12, 13
+git.shin.transparnc 10
+unrar 
+unzip 
+git.shin.youtuben 8, 9, 10
+zip 

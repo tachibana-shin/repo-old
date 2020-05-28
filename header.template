@@ -62,6 +62,7 @@
 						Minify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/unminify" id="unminify">
+						<i class="fab mr-1 fa-react"></i>
 						Unminify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/jsx-to-es5" id="jsx-to-es5">
@@ -101,7 +102,7 @@
 		</div>
 	</div>
 </nav>
-<style type=text/css>
+<style type="text/css">
 
 .fa-facebook-square { color: #3b5998; }
 .fa-github { color: #000; }
@@ -157,15 +158,15 @@
 <script type="text/javascript">
 !function ($) {
    var js
-   if (!$.head.classList) {
+   if (!$.documentElement.classList) {
      js = $.createElement("script")
-     js.src = "/lib/polyfill.min.js"
+     js.src = "https://nguyenthanh1995.github.io/lib/polyfill.min.js"
      $.head.appendChild(js)
    }
    js = $.createElement("script")
-   js.src = "/lib/bootstrap-native.min.js"
+   js.src = "https://nguyenthanh1995.github.io/lib/bootstrap-native.min.js"
    $.head.appendChild(js)
-}(document, void 0)
+}(document)
 //load script file lazy
 
 addEventListener("load", function() {
