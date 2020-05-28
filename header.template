@@ -137,8 +137,7 @@ function applyDark(state) {
 			document.head
 			.appendChild(link)
 		})
-		window.relativeDarkMode
-		.forEach(function (item) {
+		window.relativeDarkMode && window.relativeDarkMode.forEach(function (item) {
     		var link = document.createElement("link")
 			link.rel = "stylesheet"
 			link.href = item + ".css"
