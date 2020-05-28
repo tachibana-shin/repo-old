@@ -2,40 +2,37 @@
 <html>
 	<head>
 		<title>Nguyen Thanh Repo</title>
-<meta property="og:title" content="Nguyen Thanh Repo">
-<meta property="og:image" content="https://nguyenthanh1995.github.io/CydiaIcon.png">
-<meta property="og:url" content="https://nguyenthanh1995.github.io">
-<meta property="og:site_name" content="Nguyen Thanh Repo" />
-<meta property="og:description" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools." />
-<meta property="description" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools." /> 
-<meta name="description" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools." /> 
-<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker" />
-<meta property="article:tag" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools." />
-<meta property="og:type" content="website">
-<meta name="google-site-verification" content="Z7kUu6LzKOt6CKFCyPWLakCIkqY2JDchbYFSzYVKIYo" />
-<meta name="yandex-verification" content="21c5325de57dfbbd" /> 
-	<script src=./my.js></script>
-	<script src=/lib/polyfill.min.js></script>
-	<link rel=stylesheet href=/lib/bootstrap.min.css></link>
-	<link rel=stylesheet href=main.css></link>
-	<link rel=stylesheet href=/lib/awesome/css/all.min.css>
-	<meta name=viewport content='width=device-width, initial-scale=1.0, user-scalable=no' charset="utf-8"/>
+			<meta property="og:title" content="Nguyen Thanh Repo">
+			<meta property="og:image" content="https://nguyenthanh1995.github.io/CydiaIcon.png">
+			<meta property="og:url" content="https://nguyenthanh1995.github.io">
+			<meta property="og:site_name" content="Nguyen Thanh Repo">
+			<meta property="og:description" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools.">
+			<meta name="description" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools."> 
+			<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker">
+			<meta property="article:tag" content="Repo Cydia by Nguyen Thanh (shin-dev). It also contains many useful jailbreak and programming tools.">
+			<meta property="og:type" content="website">
+			<meta name="google-site-verification" content="Z7kUu6LzKOt6CKFCyPWLakCIkqY2JDchbYFSzYVKIYo">
+			<meta name="yandex-verification" content="21c5325de57dfbbd"> 
+			<script src="./my.js"></script>
+			<script src="/lib/polyfill.min.js"></script>
+			<link rel="stylesheet" href="/lib/bootstrap.min.css">
+			<link rel="stylesheet" href="main.css">
+			<link rel="stylesheet" href="/lib/awesome/css/all.min.css">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" charset="utf-8">
 	</head>
 	<body class="mt-0">
-<div id=header-page></div>
-<script>
-my("#header-page").load("/header.template", function () {
-    my("#header-page #home").addClass("active")
-    if (localStorage.getItem("theme") === "dark")
-	my("#header-page > *")
-	.removeClass("navbar-light bg-light")
-	.addClass("navbar-dark bg-dark")
-})
-function toggleThemeMenu () {
-	my("#header-page > *")
-	.toggleClass("navbar-light bg-light navbar-dark bg-dark")
-}
-</script>
+
+		<div id="header-page"></div>
+		<script>
+			window.darkMode = ["navbar-light"]
+			window.relativeDarkMode = ["theme-dark"]
+
+			my("#header-page").load("/header.template", function () {
+    			my("#header-page #home").addClass("active")
+			})
+
+		</script>
+
 		<div class=container>
 			<div id="open-cydia" class="row mt-3">
 				<div class=col>

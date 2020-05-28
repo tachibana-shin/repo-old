@@ -19,8 +19,10 @@
 		<script src="https://nguyenthanh1995.github.io/lib/clip.js"></script>
 	</head>
 	<body>
-		<div id = "header-page"></div>
+		<div id="header-page"></div>
 		<script>
+			window.darkMode = ["btn-outline-dark", "input-light", "main", "navbar-light"]
+
 			my("#header-page").load("/header.template", function () {
     			my("#tools, #encoder-svg").maddClass("active")
 			})

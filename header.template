@@ -87,12 +87,17 @@
 				</a>
 			</li>
 		</ul>
-		<form class="form-inline my-2 my-lg-0 mr-lg-2" method="GET" action="/search.html">
+		<form class="form-inline my-2 my-lg-0" method="GET" action="/search.html">
 			<input class="form-control mr-sm-2" label="Search" name="q" placeholder="Nhập từ khóa để tìm kiếm">
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
+		
+		<div class="d-inline my-2 my-lg-0 dark-switch" style="font-size: 150%">
+			<i class="far fa-moon"></i>
+		</div>
+		
 		<hr class="my-1 d-lg-none d-xl-none">
-		<div class="my-2 my-lg-0">
+		<div class="my-2 my-lg-0 mr-lg-2">
 			<a target=_blank href="https://www.facebook.com/profile.php?id=100024588752208" class="social"><i class="fab fa-facebook-square"></i></a>
 			<a target=_blank href="https://twitter.com/NguyenThanhDev" class="social"><i class="fab fa-twitter"></i></a>
 			<a target=_blank href="https://www.instagram.com/thanh6454nguyen/" class="social"><i class="fab fa-instagram"></i></a>
@@ -156,7 +161,44 @@
 */
 </style>
 <script type="text/javascript">
+
 !function ($) {
+var query = $.querySelector.bind($)
+var queryAll = $.querySelectorAll.bind($)
+function applyDark(state) {
+    state = query(".dark-switch > i").className.indexOf("far") > -1
+    if ( !window.darkMode )
+    	return
+    if ( state ) {
+        window.darkMode
+		.forEach(function (item) {
+    		var link = document.createElement("link")
+			link.rel = "stylesheet"
+			link.href = "https://nguyenthanh1995.github.io/dark/" + item + ".css"
+			link.className = "__css-darkmode-append"
+			document.head
+			.appendChild(link)
+		})
+		window.relativeDarkMode
+		.forEach(function (item) {
+    		var link = document.createElement("link")
+			link.rel = "stylesheet"
+			link.href = item + ".css"
+			document.head
+			.appendChild(link)
+		})
+		query(".dark-switch > i").className = "fas fa-moon"
+    } else {
+        var el = queryAll(".__css-darkmode-append"), tmp
+		while ( tmp = el[0] )
+			tmp.remove()
+		query(".dark-switch > i").className = "far fa-moon"
+    }
+}
+
+   query(".dark-switch > i")
+	.addEventListener("click", function () { applyDark(0) })
+
    var js
    if (!$.documentElement.classList) {
      js = $.createElement("script")

@@ -30,6 +30,8 @@
 	
 		<div id = "header-page"></div>
 		<script>
+			window.darkMode = ["btn-outline-dark", "input-light", "main", "navbar-light"]
+
 			my("#header-page").load("/header.template", function () {
     			my("#tools, #auto-prefixer-css").each(function () { my(this).addClass("active") })
 			})

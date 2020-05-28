@@ -3,32 +3,33 @@
 	<head>
 		<title>MTermial Theme Manager</title>
 
-<meta property="og:title" content="MTerminal Theme Manager ">
-<meta property="og:image" content="https://nguyenthanh1995.github.io/icons/terminal-noise.png">
-<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/mterminal-theme/">
-<meta property="og:site_name" content="MTerminal Theme Manager" />
-<meta property="og:description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) " />
-<meta property="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) " /> 
-<meta name="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev)" /> 
-<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker, mterminal theme manager" />
-<meta property="article:tag" content="MTerminal Theme Manager by Nguyen Thanh (shin-dev)" />
-<meta property="og:type" content="website">
-	<script src=https://nguyenthanh1995.github.io/lib/vue.min.js></script>
-	<script src=/my.js></script> 
-	<script src=/lib/polyfill.min.js></script>
-	<link rel=stylesheet href=https://nguyenthanh1995.github.io/lib/bootstrap.min.css>
-   <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css >
-	<meta charset=utf-8 name=viewport content='width=device-width, user-scalable=no, initial-scale=1.0'/>
-<script src="https://nguyenthanh1995.github.io/lib/jscolor.js"></script>
+			<meta property="og:title" content="MTerminal Theme Manager ">
+			<meta property="og:image" content="https://nguyenthanh1995.github.io/icons/terminal-noise.png">
+			<meta property="og:url" content="https://nguyenthanh1995.github.io/tools/mterminal-theme/">
+			<meta property="og:site_name" content="MTerminal Theme Manager">
+			<meta property="og:description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev) ">
+			<meta name="description" content="Theme Manager Custom for MTerminal iOS by Nguyen Thanh (shin-dev)"> 
+			<meta name="keywords" content="Jailbreak, nguyenthanh, repo, tools, hacker, mterminal theme manager">
+			<meta property="article:tag" content="MTerminal Theme Manager by Nguyen Thanh (shin-dev)">
+			<meta property="og:type" content="website">
+			<script src="https://nguyenthanh1995.github.io/lib/vue.min.js"></script>
+			<script src="/my.js"></script> 
+			<script src="/lib/polyfill.min.js"></script>
+			<link rel="stylesheet" href="https://nguyenthanh1995.github.io/lib/bootstrap.min.css">
+   			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+			<meta charset="utf-8" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+			<script src="https://nguyenthanh1995.github.io/lib/jscolor.js"></script>
 	</head>
 	<body>
-<div id=header-page></div>
-<script>
-my("#header-page").load("/header.template", function () {
-    my("#header-page #tools").addClass("active")
-    my("#header-page #mterminal-theme-manager").addClass("active") 
-})
-</script>
+		<div id=header-page></div>
+		<script>
+			window.darkMode = ["btn-outline-dark", "input-light", "main", "navbar-light"]
+
+			my("#header-page").load("/header.template", function () {
+    			my("#header-page #tools").addClass("active")
+    			my("#header-page #mterminal-theme-manager").addClass("active") 
+			})
+		</script>
 		<section class=header>
 			<img class="img-thumbnail icon-terminal mx-3">
 			<span class="text-header h6 over-x-auto">MTermial Theme Manager</span>
@@ -51,11 +52,11 @@ my("#header-page").load("/header.template", function () {
 					<div class=opt>
 						<label>Palette Color</label>
 						<div class="input-group input-group-sm d-xl-block d-none">
-							<input class="form-control jscolor" v-for="i in 16" v-model="palette[i - 1] "/>
+							<input class="form-control disable-dark jscolor" v-for="i in 16" v-model="palette[i - 1] "/>
 						</div>
 						<div class="d-xl-none d-block">
 							<div class="input-group input-group-sm" v-for="j in 4">
-								<input class="form-control jscolor" v-for="i in 4" v-model="palette[i - 1 + (j - 1) * 4]" />
+								<input class="form-control disable-dark jscolor" v-for="i in 4" v-model="palette[i - 1 + (j - 1) * 4]" />
 							</div>
 						</div>
 						<small>palette (array[16]): color palette</small>
@@ -98,7 +99,7 @@ my("#header-page").load("/header.template", function () {
 					<div class=opt>
 						<label>Font Family</label>
 						<div class="input-group input-group-sm" style=width:6em;>
-							<input class=form-control v-model=fontName />
+							<input class="form-control" v-model=fontName />
 						</div>
 						<small>fontName (string): font name (all fonts supported)
 </small>
@@ -106,7 +107,7 @@ my("#header-page").load("/header.template", function () {
 					<div class=opt>
 						<label>Font Size</label>
 						<div class="input-group input-group-sm" style=width:6em;>
-							<input class=form-control v-model=fontSize />
+							<input class="form-control disable-dark" v-model=fontSize />
 							<select class="form-control custom-select" v-model=fontSize>
 								<option  v-for="val in 98" :value='val + 2 + ".0"' label="">{{ val + 2 }}</option>
 							</select>
@@ -189,7 +190,7 @@ Vue.component("color", {
 			<div class="input-group-prepend">\
 				<span class="input-group-text">#</span>\
 			</div>\
-			<input class="form-control jscolor" @change="$emit(\'input-color\', $event.target.value)" :value=value />\
+			<input class="form-control  disable-dark jscolor" @change="$emit(\'input-color\', $event.target.value)" :value=value />\
 		</div>\
 	',
 	props: ["value"]
