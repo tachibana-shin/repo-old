@@ -2975,24 +2975,24 @@ Icon: file:///Library/PreferenceBundles/CuKey.bundle/CuKey@2x.png
 Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.cukey
 Homepage: https://nguyenthanh1995.github.io/
 
-Package: curl-32bit
+Package: curl32
 Priority: standard
 Section: Networking
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
 Architecture: iphoneos-arm
 Version: 7.58.0-1
-Filename: ./debs/curl-32bit_7.58.0-1.deb
+Filename: ./debs/curl32_7.58.0-1.deb
 Size: 1764546
-MD5sum: 0c4e6b9596d987dd0b5cc867403076b7
-SHA1: c60d22d76c6189a5166d07d92c777a6a37315bf8
-SHA256: 2f269e9c69d0275206780364c8e0bf098843b96543353b23b231b3d68145b027
+MD5sum: f2a571b55fef48c101720114c4539205
+SHA1: 0146f2877c4c7f90ad23c6fe72e62dc109553a7b
+SHA256: a1a070d5ff3f8a434770eaea00b1fe4b7dc0035ea6dc906a4b575739ffb321ee
 Description: flexible multi-protocol file transfers
-Name: cURL for 32-bit
+Name: cURL 32bit
 Author: shin-chan
 Tag: purpose::console, role::hacker
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
-Depiction: https://nguyenthanh1995.github.io/description.html?goto=curl-32bit
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=curl32
 
 Package: curl
 Priority: standard
@@ -3002,7 +3002,7 @@ Maintainer: Samuel Bingner
 Architecture: iphoneos-arm
 Version: 7.58.0-2
 Depends: firmware (>= 5.0)
-Filename: ./debs/curl_7.58.0-2.deb
+Filename: ./debs/curl_7.58.0-2_iphoneos-arm.deb
 Size: 520812
 MD5sum: f34441278487aa8e69f86c64cbcc065c
 SHA1: 442330138eb97dfc35e72cbabffa2dabe995dc53
@@ -4408,46 +4408,6 @@ Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.game
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 
-Package: git-32bit-lite
-Priority: optional
-Section: Data_Storage
-Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
-Architecture: iphoneos-arm
-Version: 2.16.2-1
-Depends: curl-32bit, openssl
-Filename: ./debs/git-32bit-lite_2.16.2-1.deb
-Size: 30385134
-MD5sum: da62d5f0ec9d72e3af2c1b262b2cfb6a
-SHA1: 317a5a09a4989027fd7e3e069b43bdebf4075cc0
-SHA256: c00373f765e4c06bba48d1ed3764d92ff6614deb58c97641487005bcd0c807ca
-Description: fast content-addressable filesystem for 32-bit
-Name: Git for 32-bit Lite
-Author: shin-chan
-Tag: purpose::console, role::hacker
-Homepage: https://nguyenthanh1995.github.io/
-Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
-Depiction: https://nguyenthanh1995.github.io/description.html?goto=git-32bit-lite
-
-Package: git-32bit
-Priority: optional
-Section: Data_Storage
-Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
-Architecture: iphoneos-arm
-Version: 2.16.2-1
-Depends: curl-32bit, openssl
-Filename: ./debs/git-32bit_2.16.2-1.deb
-Size: 30387426
-MD5sum: b6c4fb89e5ac3ea1aae7a34923519ae4
-SHA1: b930c2a9202086eccf06a1a58c1cc615bee670d7
-SHA256: 981257460ea4a80475fcf3d748d5e3d442b037719a793b33522881c905e337b5
-Description: fast content-addressable filesystem for 32-bit
-Name: Git for 32-bit
-Author: shin-chan
-Tag: purpose::console, role::hacker
-Homepage: https://nguyenthanh1995.github.io/
-Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
-Depiction: https://nguyenthanh1995.github.io/description.html?goto=git-32bit
-
 Package: git.shin.PullOverProb
 Priority: optional
 Section: Tweaks
@@ -4604,25 +4564,43 @@ Depiction: https://nguyenthanh1995.github.io/description.html?goto=git.shin.tikt
 Homepage: https://nguyenthanh1995.github.io/
 Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
 
-Package: git
+Package: git32
 Priority: optional
 Section: Data_Storage
 Maintainer: nguyenthanh1995 <thanhnguyennguyen1995@gmail.com>
 Architecture: iphoneos-arm
+Version: 2.16.2-1
+Depends: curl32, openssl
+Filename: ./debs/git32_2.16.2-1_iphoneos-arm.deb
+Size: 30380128
+MD5sum: 10ba70c12f003f4c4c5b362c241a2654
+SHA1: d9ded13cec5d8d5aa51b60d4c1ea71a7a6d6e13a
+SHA256: f3e6fac6b1dbbabeb53230bc259152106cf9a9b6a12697876cfecba02f75d58b
+Description: fast content-addressable filesystem
+Name: Git 32bit
+Author: shin-chan
+Tag: purpose::console, role::hacker
+Homepage: https://nguyenthanh1995.github.io/
+Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
+Depiction: https://nguyenthanh1995.github.io/description.html?goto=git32
+
+Package: git
+Priority: optional
+Section: Data_Storage
+Installed-Size: 76852
+Maintainer: Samuel Bingner
+Architecture: iphoneos-arm
 Version: 2.16.2-2
 Depends: curl
-Filename: ./debs/git_2.16.2-2.deb
-Size: 30453064
-MD5sum: bf37b7543242a5dfddb9f0eeb8b637ed
-SHA1: e25bc2fc0d867fe581010eaf8fefad27d8192dd4
-SHA256: 35310b2681f211a0db9442698f95a7137c06a865a7bcb41591f64cdccaec6593
+Filename: ./debs/git_2.16.2-2_iphoneos-arm.deb
+Size: 7508624
+MD5sum: 55f544f23bad9bfa72cd0879d1aedde8
+SHA1: 0b8f9bb408f9c270a4e4439864e00233472d8c55
+SHA256: 5feffe36576bb2375c5c5f9e19f034665c822c0e622cff3cc8d1edee6ee15ed4
 Description: fast content-addressable filesystem
 Name: Git
 Author: Samuel Bingner
 Tag: purpose::console, role::hacker
-Homepage: https://nguyenthanh1995.github.io/
-Sponsor: nguyenthanh1995 <https://nguyenthanh1995.github.io>
-Depiction: https://nguyenthanh1995.github.io/description.html?goto=git
 
 Package: git.shin.golditheme
 Priority: optional

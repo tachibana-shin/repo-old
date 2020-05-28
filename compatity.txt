@@ -516,3 +516,5 @@ unrar
 unzip 
 git.shin.youtuben 8, 9, 10
 zip 
+curl32 all
+git32 all
