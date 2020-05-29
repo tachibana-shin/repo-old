@@ -1,6 +1,9 @@
 :root {
 	--height-toolbar: 38px;
 }
+html {
+	background-color: #161616;
+}
 .bg-1, body {
 	background-color: #161616;
 	color: var(--light);
