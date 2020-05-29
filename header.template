@@ -118,7 +118,7 @@ onerror = function ( err ) {
 var query = $.querySelector.bind($)
 var queryAll = $.querySelectorAll.bind($)
 
-window.APPLY_DARKMODE = function () ,{ }
+window.APPLY_DARKMODE = function () { }
     if ( !window.darkMode )
     	return query(".__dark-switch").remove()
 
