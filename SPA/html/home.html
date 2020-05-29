@@ -1,0 +1,207 @@
+<div class="container">
+   <header class="header py-2 row">
+      <div class="col-10 col-md-11">
+         <span class="text-secondary d-block">
+             {{ date("Thứ %d, %dd Tháng %mm") }}
+         </span>
+         <h3> Trang chủ </h3>
+      </div>
+
+      <div class="col text-center">
+         <i class="fas fa-reload h5"></i>
+      </div>
+   </header>
+
+   <main class="main">
+      <div class="row">
+
+         <div class="col-12 col-md-6">
+            <div class="card bg-2 rounded-20 card__welcome text-center">
+               <div class="card-body">
+                   <img class="img-fluid img-100x100 img-thumbnail card__welcome--img" src="https://nguyenthanh1995.github.io/favicon.ico"> <br>
+                   ShinBox cung cấp cho bạn trải nghiệm Cydia hoàn chỉnh trên iPhone / iPad mà không cần phải bẻ khóa. điều hướng qua ứng dụng bằng các tab bên dưới.
+               </div>
+
+               <div class="card-footer text-center border-top" @click="helperShow = true">
+                   Trình trợ giúp cài đặt
+               </div>
+            </div>
+         </div>
+
+         <div class="col-12 col-md-6 mt-md-7 mt-5">
+            <span class="d-block f-600"> Thông tin thiết bị </span>
+            <ul class="list-group border-light info-device">
+               <li class="list-group-item bg-0 border-top"
+                   v-for="(item, index) in infoDevice"
+                   :class="{ 'border-top-0': !index }"> <i :class="item.icon"></i> <span v-html="item.text"></span> </li>
+            </ul>
+
+         </div>
+         <!-- //col-12 -->
+
+         <div class="col-12 mt-5">
+            <span class="d-block f-600"> Một vài thứ thú vị </span>
+            <div class="bg-2 rounded-20 d-flex mt-3 py-2 px-3" v-for="item in interesting" @click="open(item.href)">
+               <div class="col-3 col-md-2 col-xl-1 text-center vertial-middle img-bg" :style="{ 'background-image': 'url(' + item.icon + ')' }">
+                  <!--img class="img-thumbnail card__custom--img img-40x40" src="https://www.iphonecake.com/app/icon.png">-->
+               </div>
+               <div class="col">
+                  <span class="d-block f-600 limit-line-1"> {{ item.name }} </span>
+                  <small class="text-secondary d-block limit-line-2"> {{ item.description }} </small>
+               </div>
+
+            <div>
+         </div>
+
+      </div>
+   </main>
+
+   <!-- /install helper -->
+   <transition name="swipe-page">
+      <div class="text-light bg-1 fixed-child px-15px scrollpy" v-if="helperShow">
+	      <div class="row">
+			  <div class="col-12">
+				  <button class="btn bg-0 border-0 my-1 text-light" @click="helperShow = false"> <i class="fas fa-arrow-left"></i> Quay lại </button>
+			  </div>
+		   </div>
+		   <!-- //row (1) -->
+				
+	      <div class="row">
+            <div class="col-12 install-help">
+               <span class="d-block text-uppercase small py-2"> Trình trợ giúp cài đặt </span>
+
+               <div>
+                  Đầu tiên, nhấn vào <span class="f-600">Hủy</span> để ẩn cảnh báo,
+                  <img class="rounded-10px border img-fluid d-block" src="png/help-1.jpg">
+               </div>
+
+               <div>
+                  Tiếp theo, chọn <span class="f-600">Cài đặt &gt; Cài đặt chung </span>,
+                  <img class="rounded-10px border img-fluid" src="png/help-2.jpg">
+               </div>
+
+               <div>
+                  Sau đó chọn <span class="f-600">Quản lý cấu hình &amp; thiết bị</span>,
+                  <img class="rounded-10px border img-fluid" src="png/help-3.jpg">
+               </div>
+
+               <div>
+                  Bây giờ chọn vào cấu hình mới
+                  <img class="rounded-10px border img-fluid" src="png/help-4.jpg">
+               </div>
+
+               <div>
+                  Cuối cùng, chọn <span class="f-600"> Tin cậy "***" </span> và chọn <span class="f-600"> Tin cậy </span> trong thông báo để hoàn thành 
+                  <img class="rounded-10px border img-fluid" src="png/help-5.jpg">
+                  <img class="rounded-10px border img-fluid" src="png/help-6.jpg">
+
+               </div>
+
+            </div>
+         </div>
+      </div>
+   </transition>
+</div>
+
+<style>
+
+.bg-0 {
+   background-color: #00000000 !important
+}
+.info-device > li > i {
+   margin-right: 1rem !important;
+}
+.card__welcome {
+   margin-top: 20%;
+}
+.card__custom--img {
+   border-radius: 25%;
+   -webkit-box-shadow: 1px 1px 20px -2px rgba(0, 0, 0, 0.38);
+           box-shadow: 1px 1px 20px -2px rgba(0, 0, 0, 0.38);
+}
+.card__welcome .card__welcome--img {
+   margin-top: -20%;
+   border-radius: 25%;
+   -webkit-box-shadow: 1px 1px 20px -2px rgba(0, 0, 0, 0.38);
+           box-shadow: 1px 1px 20px -2px rgba(0, 0, 0, 0.38);
+   margin-bottom: 10px;
+}
+
+.install-help > div {
+   margin-top: 3rem;
+}
+.install-help img {
+   margin-top: .5rem;
+}
+
+</style>
+
+<script>
+exports = {
+  methods: {
+    date: function date(e) {
+      var n = new Date();
+      return e.replace(/%dd/g, n.getDate()).replace(/%d/g, n.getDay() + 1).replace(/%mm/, n.getMonth() + 1);
+    },
+    open: function open(e) {
+      window.open(e, "_self");
+    }
+  },
+  data: {
+    infoDevice: [],
+    helperShow: false,
+    interesting: [{
+      name: "AppCake",
+      icon: "https://www.iphonecake.com/app/icon.png",
+      description: "Free app store apps and tweaks.",
+      href: "https://www.iphonecake.com/app/"
+    }, {
+      name: "iOS Ninja",
+      icon: "https://iosninja.io/img/logo-50.png",
+      description: "Browse and download iOS iPA files, tweaks and ++ apps for iPhone, iPad and iPod Touch.",
+      href: "https://iosninja.io/ipa-library"
+    }, {
+      name: "IWPS",
+      icon: "https://ipsw.me/assets/brand/penguin.png",
+      description: "Download iOS Firmware for iPhone, iPad, iPod Touch, Apple Watch, Apple TV and HomePoI / IPSW Downloads",
+      href: "https://ipsw.me/"
+    }, {
+      name: "iPA Store",
+      icon: "https://ipastore.me/wp-content/uploads/2015/03/icon_85.png",
+      description: "Donwload free iPA Game, Apps...",
+      href: "https://ipastore.me/"
+    }]
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.infoDevice = [{
+      icon: "fab fa-apple",
+      text: this.$root.iOS
+    }, {
+      icon: "fas fa-mobile-alt",
+      text: this.$root.iDevice.name
+    }, {
+      icon: "fas fa-microchip",
+      text: "Apple ".concat(this.$root.iDevice.CPU, " (arm ").concat(this.$root.iDevice.ARM, "-bit)")
+    }, {
+      icon: "fas fa-desktop",
+      text: screen.availWidth + " x " + screen.availHeight + " dpmi"
+    }, {
+      icon: "fas fa-inventory",
+      text: navigator.vendor
+    }, {
+      icon: "fas fa-sim-card",
+      text: "<div class='spinner-border spinner-border-sm text-light'></div>"
+    }, {
+      icon: "fas fa-globe-americas",
+      text: "<div class='spinner-grow spinner-grow-sm text-light'></div>"
+    }];
+    my.getJSON("http://ip-api.com/json", function (json) {
+      _this.$set(_this.infoDevice[5], "text", json.org);
+
+      _this.$set(_this.infoDevice[6], "text", json.query);
+    });
+  }
+};
+</script>

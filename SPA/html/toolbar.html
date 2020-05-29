@@ -1,0 +1,33 @@
+<div class="toolbar d-flex text-center bg-1 text-secondary fixed-bottom py-2">
+   <div class="col-4"
+      :class="{ 'text-primary': $root.state.Home }"
+      @click="$root.state.Home = true">
+      <i class="fas fa-home"></i>
+       Home
+   </div>
+   <div class="col-4"
+      :class="{ 'text-primary': $root.state.App }"
+      @click="$root.state.App = true">
+      <i class="fas fa-layer-group"></i>
+      Apps
+   </div>
+   <div class="col-4"
+      :class="{ 'text-primary': $root.state.Info }"
+      @click="$root.state.Info = true">
+      <i class="fas fa-info"></i>
+      Info
+   </div>
+</div>
+<style>
+.toolbar i {
+	font-size: 140%;
+	display: block;
+}
+.toolbar {
+	font-size: 80%;
+}
+.toolbar {
+   -webkit-box-shadow: 0 -.125rem .25rem rgba(177, 177, 177, .075);
+           box-shadow: 0 -.125rem .25rem rgba(177, 177, 177, .075);
+}
+</style>

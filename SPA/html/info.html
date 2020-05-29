@@ -1,0 +1,96 @@
+<div class="container">
+   <header class="py-2 row">
+      <div class="col-10 col-md-11">
+          <span class="text-secondary d-block">
+          <h3> Giới thiệu </h3>
+      </div>
+
+      <div class="col text-center">
+         <i class="fas fa-reload h5"></i>
+      </div>
+   </header>
+
+   <main class="main">
+      <div class="row">
+         <div class="col-12 col-md-6">
+             <span class="d-block text-uppercase small py-2"> Thông tin ứng dụng </span>
+             <div class="bg-2 rounded-20px">
+                <div class="d-flex py-2">
+                    <div class="col-3 col-md-2 col-xl-1 text-center vertial-middle">
+                       <img class="rounded-10px img-40x40" src="https://nguyenthanh1995.github.io/favicon.ico">
+                   </div>
+
+                   <div class="col">
+                      <span class="d-block f-600 limit-line-1"> Phiên bản ứng dụng </span>
+                      <small class="text-secondary d-block limit-line-2"> 2.0 </small>
+                   </div>
+
+                </div>
+                <!-- // version -->
+
+                <div class="d-flex py-2 border-top">
+                   <div class="col-3 col-md-2 col-xl-1 text-center vertial-middle">
+                       <img class="rounded-10px img-40x40" src="https://nguyenthanh1995.github.io/icons/twitter.png">
+                   </div>
+
+                   <div class="col">
+                      <span class="d-block f-600 limit-line-1"> Theo dõi tôi </span>
+                      <small class="text-secondary d-block limit-line-2"> @NguyenThanhDev </small>
+                   </div>
+
+                </div>
+                <!-- //twitter -->
+             </div>
+         </div>
+         <!-- //col-12 -->
+
+         <div class="col-12 col-md-6 mt-3 mt-md-0">
+             <span class="d-block text-uppercase small py-2"> Credits </span>
+             <div class="bg-2 rounded-20px py-2">
+                <div class="d-flex">
+                   <div class="col">
+                      <span class="d-block f-600 limit-line-1"> Theo dõi tôi </span>
+                      <small class="text-secondary d-block limit-line-2"> @NguyenThanhDev </small>
+                   </div>
+
+                </div>
+                <!-- //credits -->
+             </div>
+         </div>
+         <!-- //col-12 -->
+
+         <div class="col-12 col-md-6 mt-3 mt-md-0">
+             <span class="d-block text-uppercase small py-2"> Credits </span>
+             <div class="bg-2 rounded-20px py-2">
+                <div class="d-flex">
+                   <div class="col-3 col-md-2 col-xl-1 text-center vertial-middle">
+                       <img class="rounded-10px img-40x40" src="https://nguyenthanh1995.github.io/icons/email.png">
+                   </div>
+
+                   <div class="col">
+                      <span class="d-block f-600 limit-line-1"> Liên hệ </span>
+                      <small class="text-secondary d-block limit-line-2"> quynhnhu2004@gmail.com </small>
+                   </div>
+
+                </div>
+                <!-- //contact -->
+             </div>
+         </div>
+         <!-- //col-12 -->
+
+         <div class="col-12 mt-3">
+             <span class="d-block text-uppercase small py-2"> Animation </span>
+             <select class="custom-select" v-model="$root.typeAnime">
+                 <option v-for="item in ['page-3d', 'page-fade']" :value="item"> {{ item }} </option>
+             </select>
+         </div>
+      </div>
+      <!-- //row -->
+
+      <div class="row my-3 text-center text-secondary small">
+         <div class="col-12">
+             &copy; Copyright 2020 Nguyen Thanh
+         </div>
+      </div>
+   </main>
+</div>

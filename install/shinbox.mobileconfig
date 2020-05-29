@@ -33,7 +33,7 @@ iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAA/FBMVEX///8AAABmZmbZ2dmjd0GZmZmY
 			<key>IsRemovable</key>
 			<true/>
 			<key>Label</key>
-			<string>Shin Box</string>
+			<string>Shin Jailbreak</string>
 			<key>PayloadDescription</key>
 			<string>Định cấu hình cài đặt cho một clip web.</string>
 			<key>PayloadDisplayName</key>
@@ -55,11 +55,11 @@ iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAA/FBMVEX///8AAABmZmbZ2dmjd0GZmZmY
 	<key>PayloadDescription</key>
 	<string>Hồ sơ cho ứng dụng Shin Box. Cửa hàng ứng dụng bên thứ ba tốt nhất để cài đặt các công cụ Jailbreak tuyệt vời trên thiết bị iOS của bạn.</string>
 	<key>PayloadDisplayName</key>
-	<string>Shin Box</string>
+	<string>Shin Jailbreak</string>
 	<key>PayloadIdentifier</key>
 	<string>git.shin.mobileconfig</string>
 	<key>PayloadOrganization</key>
-	<string>Shin Box</string>
+	<string>Shin Jailbreak</string>
 	<key>PayloadRemovalDisallowed</key>
 	<false/>
 	<key>PayloadType</key>
