@@ -117,6 +117,10 @@ onerror = function ( err ) {
 !function ($) {
 var query = $.querySelector.bind($)
 var queryAll = $.querySelectorAll.bind($)
+
+    if ( !window.darkMode )
+    	return query("#menu-open .dark-switch").remove()
+
 var storage = {}
 
 try {
@@ -160,7 +164,8 @@ function applyDark(state, _switch) {
 
    query(".dark-switch > i")
 	.addEventListener("click", function () { applyDark() })
-
+}(document)
+!function($) {
    var js
    if (!$.documentElement.classList) {
      js = $.createElement("script")

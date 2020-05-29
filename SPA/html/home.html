@@ -198,9 +198,11 @@ exports = {
       text: "<div class='spinner-grow spinner-grow-sm text-light'></div>"
     }];
     my.getJSON("http://ip-api.com/json", function (json) {
-      _this.$set(_this.infoDevice[5], "text", json.org);
+      setTimeout(function () {
+        _this.$set(_this.infoDevice[5], "text", json.org);
 
-      _this.$set(_this.infoDevice[6], "text", json.query);
+        _this.$set(_this.infoDevice[6], "text", json.query);
+      })
     });
   }
 };
