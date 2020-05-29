@@ -6,6 +6,7 @@ window.SOLID = {
 			"https://iosninja.io/plist/in/a115/chimera.plist",
 			"https://ammaripa.com/files/Chimera.plist",
 			"https://dzmohaipa.com/Jb2017/chimera.plist",
+			"https://ipa-install.com/plist.php?ipa=https://ipa-install.com/ipa/Chimera.ipa&title=Chimera",
 			"https://ipa.kenhtao.net/plists/chimera.plist",
 			"https://ignition.fun/install.php%3Fapp%3D1356",
 			"https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tu5bmRkZm0rJSjpMWp18SRVau8mceelMXynbeYj6Sqpsdhm8bb%2Ftitle%2FChimera%2520Jailbreak",
@@ -28,6 +29,7 @@ window.SOLID = {
 			"https://dzmohaipa.com/Jb2017/unc0ver.plist",
 			"https://dzmohaipa.com/Jb2017/Undecimus-v3.plist",
 			"https://ammaripa.com/files/unc0verOld.plist",
+			"https://ipa-install.com/plist.php?ipa=https://ipa-install.com/ipa/unc0ver.ipa&title=unc0ver",
 			"https://app.app-valley.vip/plists/1574/install.plist",
 			"https://corejb.com/app/1.plist",
 			"https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tu5bmRkZm0rJSjpMWp18SRVau8mceelMXyncmeiaa7mdhhm8bb%2Ftitle%2Func0ver%2520Jailbreak",
@@ -60,6 +62,7 @@ window.SOLID = {
 		icon: "unc0ver.png",
 		plist: [
 			"https://dzmohaipa.com/Jb2017/unc0verV5.plist",
+			"https://ipa-install.com/plist.php?ipa=https://ipa-install.com/ipa/unc0ver-v5.0.0.ipa&title=unc0ver",
 			"https://ammaripa.com/files/unc0ver.plist",
 			"https://ipa.kenhtao.net/plists/unc0ver.plist",
 			"https://achlhi.com/app/Jailbreak/plist/Achlhi/unc0ver.plist",
@@ -92,6 +95,7 @@ window.SOLID = {
 			"https://iosninja.io/plist/in/a1178/electra.plist",
 			"https://iosninja.io/plist/in/a115/electra.plist",
 			"https://ammaripa.com/files/Electra.plist",
+			"https://ipa-install.com/plist.php?ipa=https://ipa-install.com/ipa/Electra.ipa&title=Electra1141",
 			"https%3A%2F%2Fapi.tweakboxapp.com%2Fdownload%2Fmsru3sdqVWaqotCiq4Tu5bmRkZm0rJSjpMWp18SRVau8mceelMXynbmci5q5psdkY4qrnL2ghw,,%2Ftitle%2FElectra%2520iOS%252011.4.1%2520Jailbreak",
 			"https://ignition.fun/install.php%3Fapp%3D1356",
 			"https://app.app-valley.vip/plists/460/install.plist",
@@ -189,6 +193,7 @@ window.SOLID = {
 	"Yalu Jailbreak": {
 		icon: "yalu.png",
 		plist: [
+			"https://ipa-install.com/plist.php?ipa=https://ipa-install.com/ipa/Yalu102.ipa&title=Yalu102",
 			"https://iosninja.io/plist/in/a1178/yalu.plist",
 			"https://iosninja.io/plist/in/a115/yalu.plist", 
 			"https://ammaripa.com/files/Yalu102.plist",
