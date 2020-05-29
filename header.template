@@ -92,7 +92,7 @@
 			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 		</form>
 		
-		<div class="d-inline my-2 my-lg-0 dark-switch" style="font-size: 150%">
+		<div class="d-inline my-2 my-lg-0 __dark-switch" style="font-size: 150%">
 			<i class="far fa-moon"></i>
 		</div>
 		
@@ -118,8 +118,9 @@ onerror = function ( err ) {
 var query = $.querySelector.bind($)
 var queryAll = $.querySelectorAll.bind($)
 
+window.APPLY_DARKMODE = function () ,{ }
     if ( !window.darkMode )
-    	return query("#menu-open .dark-switch").remove()
+    	return query(".__dark-switch").remove()
 
 var storage = {}
 
@@ -164,6 +165,7 @@ function applyDark(state, _switch) {
 
    query(".dark-switch > i")
 	.addEventListener("click", function () { applyDark() })
+	 window.APPLY_DARKMODE = applyDark
 }(document)
 !function($) {
    var js
@@ -175,7 +177,6 @@ function applyDark(state, _switch) {
    js = $.createElement("script")
    js.src = "https://nguyenthanh1995.github.io/lib/bootstrap-native.min.js"
    $.head.appendChild(js)
-window.APPLY_DARKMODE = applyDark
 }(document)
 //load script file lazy
 
