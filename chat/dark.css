@@ -1,0 +1,4 @@
+.bg-light, .bg-white {
+    background-color: var(--dark) !important;
+	color: var(--light) !important
+}

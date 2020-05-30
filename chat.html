@@ -45,17 +45,17 @@
   
   <!-- App Styling -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&lang=en">
-  <script src="/my.js"></script>
-  <script src=/lib/polyfill.min.js></script>
+  <script src="my.js"></script>
+  <script src=lib/polyfill.min.js></script>
   <link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css></link>
-  <link rel="stylesheet" href=/lib/bootstrap.min.css>
+  <link rel="stylesheet" href=lib/bootstrap.min.css>
  
 </head>
 <body>
 
 <div id=header-page></div>
 <script>
-my("#header-page").load("/header.template", function () {
+my("#header-page").load("header.template", function () {
     my("#header-page #chat-online").addClass("active")
 })
 </script> 
@@ -63,7 +63,7 @@ my("#header-page").load("/header.template", function () {
 <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
   <!-- Header section containing logo -->
-  <header class="mdl-layout__header mdl-color-text--white">
+  <header class="mdl-layout__header mdl-color-text--white py-2">
 	<div class="mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-grid">
 	  <div id="user-container">
 		<div hidden id="user-pic"></div>
