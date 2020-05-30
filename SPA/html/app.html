@@ -270,7 +270,7 @@ exports = {
       return checkingVers(str, arm, this.$root.iOS);
     },
     install: function install(uri) {
-      window.open(uri, "_self");
+      window.open("itms-services://?action=download-manifest&amp;url=" + uri, "_self");
     }
   }
 };
