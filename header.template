@@ -131,7 +131,7 @@ try {
 
 applyDark( !!eval(storage.isDark), true )
 function applyDark(state, _switch) {
-    state = _switch ? state : query(".dark-switch > i").className.indexOf("far") > -1
+    state = _switch ? state : query(".__dark-switch > i").className.indexOf("far") > -1
     if ( !window.darkMode )
     	return
     if ( state ) {
@@ -152,18 +152,18 @@ function applyDark(state, _switch) {
 			document.head
 			.appendChild(link)
 		})
-		query(".dark-switch > i").className = "fas fa-moon"
+		query(".__dark-switch > i").className = "fas fa-moon"
 		storage.isDark = 1
     } else {
         var el = queryAll(".__css-darkmode-append"), tmp, index = 0;
 		while ( tmp = el[index++] )
 			tmp.remove()
-		query(".dark-switch > i").className = "far fa-moon"
+		query(".__dark-switch > i").className = "far fa-moon"
 		storage.isDark = 0
     }
 }
 
-   query(".dark-switch > i")
+   query(".__dark-switch > i")
 	.addEventListener("click", function () { applyDark() })
 	 window.APPLY_DARKMODE = applyDark
 }(document)
