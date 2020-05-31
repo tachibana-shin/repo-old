@@ -1,0 +1,15 @@
+{
+   "name": "Shin Chat",
+   "short_name": "Shin Chat",
+   "start_url": "./?source=shorcut",
+   "display": "standalone",
+   "background_color": "#00000000",
+   "description"": "A simply Chat by Shin-chan.",
+   "icons": [
+      {
+         "src": "/favicon.ico",
+         "type": "image/png",
+         "sizes": "192x192"
+      }
+   ]
+}
