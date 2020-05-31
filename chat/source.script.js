@@ -109,6 +109,9 @@ const methods = {
 		auth.signOut().then(() => {
 			this.alertMess = "Sign out!"
 		})
+	},
+	fixModel(e) {
+		this.textareaInput = e.target.value
 	}
 }
 

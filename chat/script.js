@@ -112,6 +112,9 @@ var methods = {
 		auth.signOut().then(function () {
 			this.alertMess = "Sign out!"
 		}.bind(this))
+	},
+	fixModel: function (e) {
+		this.textareaInput = e.target.value
 	}
 }
 
