@@ -121,7 +121,7 @@ new Vue({
   methods: methods,
   computed: computed,
   components: {
-    Alert: $import("/lb/Alert.html")
+    Alert: $import("html/Alert.html")
   },
   mounted: function mounted() {
     var _this5 = this;
