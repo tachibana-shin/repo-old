@@ -82,7 +82,7 @@
 			<div class="container fixed-bottom bg-white chat__framework py-2">
 				<div class="row is-table-row">
 					<div class="col-7">
-						<textarea class="form-control" placeholder="Tin nhắn..." rows="1" v-model="textareaInput"></textarea>
+						<textarea class="form-control" placeholder="Tin nhắn..." rows="1" v-model="textareaInput" ref="textareaInput"></textarea>
 					</div>
 					
 					<div class="col justify-content-center">
@@ -233,12 +233,12 @@
 }
 
 .loading__center {
-    
+	
 }
 .loading__center > * {
-    top: 0; left: 0;
-    right: 0; bottom: 0;
-    margin: auto;
+	top: 0; left: 0;
+	right: 0; bottom: 0;
+	margin: auto;
 }
 	</style>
 	<script src="script.js">
