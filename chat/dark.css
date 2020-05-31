@@ -1,4 +1,4 @@
 .bg-light, .bg-white {
-    background-color: var(--dark) !important;
-	color: var(--light) !important
+    background-color: #343a40 !important;
+	color: #f8f9fa !important
 }
