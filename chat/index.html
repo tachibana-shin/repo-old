@@ -2,25 +2,37 @@
 <html>
 	<head>
 		<title>Page Title</title>
-		<script src="/lb/my.js"></script>
-		<script src="/lb/libmy.js"></script>
+		<script src="https://nguyenthanh1995.github.io/my-b25.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/libmy.js"></script>
 		<script src="/lb/console.js"></script>
-		<script src="/lb/vue.min.js"></script>
-		<link rel="stylesheet" href="/lb/awesome/css/all.css">
-		<link rel="stylesheet" href="/lb/bootstrap.min.css">
+		<script src="https://nguyenthanh1995.github.io/lib/vue.min.js"></script>
+		<link rel="stylesheet" href="https://nguyenthanh1995.github.io/lib/awesome pro/css/all.min.css">
+		<link rel="stylesheet" href="https://nguyenthanh1995.github.io/lib/bootstrap-4.4.1-fix.min.css">
+		<link rel="stylesheet" href="https://nguyenthanh1995.github.io/lib/bootstrap-no-disable-animate.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" charset="utf-8"/>
 		<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-storage.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
 		<script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
-		<script src="/lb/load-vue.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/load-vue_1.1.4.js"></script>
 		<script src="https://nguyenthanh1995.github.io/lib/v-img.min.js"></script>
 		<script src="https://nguyenthanh1995.github.io/lib/vue-lazyload.min.js"></script>
+		<script src="https://nguyenthanh1995.github.io/lib/my-sticky.js"></script>
 	</head>
 	<body>
-	
+		
+		<div id="header-page"></div>
+		<script>
+			window.darkMode = ["main", "input-light", "navbar-light"]
+			window.relativeDarkMode = ["dark"]
+
+			my("#header-page").load("https://nguyenthanh1995.github.io/header.template", function () {
+				my("#header-page #chat-online").addClass("active")
+			})
+		</script>
+		
 		<div id="app">
-			<div class="container fixed-top bg-primary py-1 text-light">
+			<div class="container bg-primary py-1 text-light panel">
 				<div class="row login__false" v-if="!user">
 					<div class="col-6" @click="signInWithGoogle">
 						<i class="fab fa-google img-40x40"></i> Login
@@ -45,6 +57,11 @@
 			
 			<div class="container main" ref="main">
 				<div class="row">
+					<div class="d-flex fixed-top w-100 h-100 loading__center" v-if="state.preLoading">
+						<div class="spinner-border"></div>
+					</div>
+					<!-- //loading -->
+					
 					<div class="col-12">
 						<div v-for="(item, uid) in messages" class="d-flex py-2 border-bottom-custom message" :id="uid" :key="uid">
 							<div class="col-2">
@@ -71,8 +88,8 @@
 					<div class="col justify-content-center">
 						<button class="btn btn-light f-600" @click="sendMessage" :disabled="!textareaInput"> Gửi </button>
 
-						<label for="inputFile" class="btn btn-light"> <i class="fas fa-camera"></i> </label>
-						<input type="file" hidden id="inputFile" @change="sendImage($event)">
+						<button @click="$refs.inputFile.click()" class="btn btn-light"> <i class="fas fa-camera" v-if="!state.uploading"></i> <div class="spinner-border spinner-border-sm" v-else></div> </button>
+						<input type="file" hidden ref="inputFile" @change="sendImage($event)" accept="image/*">
 					</div>
 				</div>
 				
@@ -125,31 +142,32 @@
 }
 
 .login__true, .login__false {
-    height: 35px;
-    line-height: 35px;
+	height: 35px;
+	line-height: 35px;
 }
 .img-40x40 {
-    font-size: 35px;
+	font-size: 35px;
 }
 
 .message__image {
-    border-radius: 5px;
+	border-radius: 5px;
 }
+
+
 
 .img-40x40 {
 	width: 35px;
 	height: 35px;
 }
 
-
 :root {
-    --heightToolBar: 0;
+	--heightToolBar: 0;
 }
 .f-13 {
 	font-size: 13px;
 }
 .f-14 {
-    font-size: 14px;
+	font-size: 14px;
 }
 
 .message__author {
@@ -187,159 +205,44 @@
 }
 
 .login__true, .login__false {
-    height: 35px;
-    line-height: 35px;
+	height: 35px;
+	line-height: 35px;
 }
 .img-40x40 {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .message:last-child {
-    border: 0
+	border: 0
+}
+
+
+.main {
+	width: 100%;
+	height: 100vh;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch !important;
+	-moz-overflow-scrolling: touch !important;
+	-ms-overflow-scrolling: touch !important;
+	-o-overflow-scrolling: touch !important;
+	overflow-scrolling: touch !important;
+	-webkit-overflow-style: -webkit-autohiding-scrollbar !important;
+	-moz-overflow-style: -moz-autohiding-scrollbar !important;
+	-ms-overflow-style: -ms-autohiding-scrollbar !important;
+	-o-overflow-style: -o-autohiding-scrollbar !important;
+}
+
+.loading__center {
+    
+}
+.loading__center > * {
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    margin: auto;
 }
 	</style>
-	<script>
-firebase.initializeApp({
-  apiKey: "AIzaSyAIm343O_cNAsHATMVGqZnZMJnRDMcc7hg",
-  authDomain: "quantum-chemist-237712.firebaseapp.com",
-  databaseURL: "https://quantum-chemist-237712.firebaseio.com",
-  projectId: "quantum-chemist-237712",
-  storageBucket: "quantum-chemist-237712.appspot.com",
-  messagingSenderId: "583878542854",
-  appId: "1:583878542854:web:b674a829037f595d4c6587"
-});
+	<script src="script.js">
 
-const auth = firebase.auth()
-const db = firebase.database()
-const storage = firebase.storage()
-
-class App {
-	static signInWithGoogle() {
-		
-	}
-	static signInWithFacebook() {
-		
-	}
-}
-const computed = {
-	
-}
-
-const methods = {
-	loadMessage() {
-		db.ref("messages/")
-		.limitToLast(50)
-		.on("child_added", e => {
-			Vue.set(this.messages, e.key, e.val())
-			this.scrollPy()
-		 })
-		 
-		 db.ref("messages")
-		 .limitToLast(50)
-		 .on("child_changed", e => {
-			Vue.set(this.messages, e.key, e.val())
-			this.scrollPy()
-		 })
-		 auth.onAuthStateChanged(user => {
-				this.user = user
-		 })
-	},
-	scrollPy() {
-		setTimeout(() => window.scrollTo(0, document.body.offsetHeight))
-	},
-	signInWithGoogle() {
-		auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-	},
-	signInWithFacebook() {
-		let e = new firebase.auth.FacebookAuthProvider()
-		e.setCustomParameters({
-			display: "popup"
-		})
-		auth.signInWithRedirect(e)
-		auth.signInWithPopup(e)
-	},
-	checkSign() {
-		if ( auth.currentUser ) {
-			return true
-		}
-		this.alertMess = ("You must login.")
-		 return false
-	},
-	sendMessage() {
-		if ( this.textareaInput && this.checkSign() ) {
-			db.ref("messages")
-			.push({
-				text: this.textareaInput,
-				  name: this.user.displayName,
-				  photoUrl: this.user.photoURL || "https://nguyenthanh1995.github.io/img/profile_placeholder.png"
-			})
-		}
-	},
-	sendImage(e) {
-		let file = e.target.files
-
-		if ( !file.length || !this.checkSign() )
-			return
-		file = file[0]
-
-		let ref = storage.ref("messenger/" + Date.now()  + Math.random().toString(32))
-		.put(file, { contentType: file.type })
-
-		ref.on("state_changed", () => {
-
-		}, () => {
-			
-		}, () => {
-
-			ref.snapshot.ref
-			.getDownloadURL()
-			.then(URL => {
-		 		db.ref("messages")
-				.push({
-					name: this.user.displayName,
-					photoUrl: this.user.photoURL || "https://nguyenthanh1995.github.io/img/profile_placeholder.png",
-					imageUrl: URL,
-					text: this.textareaInput
-				})
-				.then(() => {
-					this.alertMess("Send image done.")
-				})
-				.catch(error => {
-				this.alertMess('Error writing new message to Firebase Database', error);
-				})
-			})
-		})
-	},
-	signOut() {
-	    auth.signOut().then(() => {
-	    	this.alertMess = "Sign out!"
-	    })
-	}
-}
-
-Vue.use(window["vue-img"], {
-    openOn: "click"
-})
-Vue.use(VueLazyload)
-
-
-new Vue({
-	el: "#app",
-	data: {
-		messages: {},
-		user: null,
-		textareaInput: "",
-		alertMess: ""
-	},
-	methods,
-	computed,
-	components: {
-	    Alert: $import("/lb/Alert.html")
-	},
-	mounted() {
-		this.loadMessage()
-	}
-})
 
 	</script>
 	</body>

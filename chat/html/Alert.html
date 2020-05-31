@@ -1,0 +1,89 @@
+<transition name="Alert" appear>
+   <div class="bg-dark Alert fixed-bottom text-light py-3 f-14 px-3" v-if="!!value && state" ref="Alert">
+      {{ mess }}
+   </div>
+</transition>
+
+<style>
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
+.Alert-enter-active,
+.Alert-leave-active {
+   -webkit-transition: transform .5s;
+   -o-transition: transform .5s;
+   transition: transform .5s;
+}
+.Alert-enter, .Alert-leave-to {
+   transform: translateY(100%)
+}
+.vibrate {
+   -webkit-animation: vib 1s;
+           animation: vib 1s;
+}
+@-webkit-keyframes vib {
+   0%, 100% {
+      transform: translateY(0%)
+   }
+   50% {
+      transform: translateY(100%)
+   }
+}
+@keyframes vib {
+   0%, 100% {
+      transform: translateY(0%)
+   }
+   50% {
+      transform: translateY(100%)
+   }
+}
+</style>
+
+<script>
+
+"use strict";
+
+var timestamp = void 0;
+
+exports = {
+   props: ["value"],
+   data: {
+      state: true,
+      mess: ""
+   },
+   watch: {
+      value: function value(e, f) {
+         var _this = this;
+
+         if (!!e && !!f) {
+            this.vibrate();
+         } else this.mess = this.value;
+         clearTimeout(timestamp);
+         timestamp = setTimeout(function () {
+            return _this.$emit("input", _this.mess = "");
+         }, 5000);
+      }
+   },
+   methods: {
+      vibrate: function vibrate() {
+         var _this2 = this;
+
+         var el = my(this.$refs.Alert).addClass("vibrate");
+
+         clearTimeout(el.dataUser("timestamp-animate-end"));
+
+         el.dataUser("timestamp-animate-end", setTimeout(function () {
+            return _this2.mess = _this2.value;
+         }, parseFloat(el.css(my.prefix("animation-duration"))) * 1000 / 2));
+
+         el.one(my.fx.animationEnd).then(function () {
+            return el.removeClass("vibrate");
+         });
+      }
+   }
+};
+</script>
