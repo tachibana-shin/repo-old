@@ -133,7 +133,7 @@ new Vue({
 	methods,
 	computed,
 	components: {
-		Alert: $import("/lb/Alert.html")
+		Alert: $import("html/Alert.html")
 	},
 	mounted() {
 		this.loadMessage()
