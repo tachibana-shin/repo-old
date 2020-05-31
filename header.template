@@ -62,7 +62,7 @@
 						Minify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/unminify" id="unminify">
-						<i class="fab mr-1 fa-react"></i>
+						<i class="fas mr-1 fa-file-archive"></i>
 						Unminify Code
 		  			</a>
 		  			<a class="dropdown-item" href="/tools/jsx-to-es5" id="jsx-to-es5">
