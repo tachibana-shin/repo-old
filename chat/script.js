@@ -63,6 +63,8 @@ var methods = {
         name: this.user.displayName,
         photoUrl: this.user.photoURL || "https://nguyenthanh1995.github.io/img/profile_placeholder.png"
       });
+      this.textareaInput = "";
+      this.$refs.textareaInput.focus();
     }
   },
   sendImage: function sendImage(e) {
@@ -93,6 +95,7 @@ var methods = {
         });
       });
     });
+    this.textareaInput = "";
   },
   signOut: function signOut() {
     var _this4 = this;
@@ -121,7 +124,7 @@ new Vue({
   methods: methods,
   computed: computed,
   components: {
-    Alert: $import("html/Alert.html")
+    Alert: $import("/lb/Alert.html")
   },
   mounted: function mounted() {
     var _this5 = this;

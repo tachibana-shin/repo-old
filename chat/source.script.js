@@ -64,6 +64,8 @@ const methods = {
 				  name: this.user.displayName,
 				  photoUrl: this.user.photoURL || "https://nguyenthanh1995.github.io/img/profile_placeholder.png"
 			})
+			this.textareaInput = ""
+			this.$refs.textareaInput.focus()
 		}
 	},
 	sendImage(e) {
@@ -101,6 +103,7 @@ const methods = {
 				})
 			})
 		})
+		this.textareaInput = ""
 	},
 	signOut() {
 		auth.signOut().then(() => {
@@ -123,8 +126,8 @@ new Vue({
 		textareaInput: "",
 		alertMess: "",
 		state: {
-		    uploading: false,
-		    preLoading: true
+			uploading: false,
+			preLoading: true
 		}
 	},
 	methods,
