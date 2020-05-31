@@ -22,7 +22,7 @@
 				</a>
 			</li>
 			<li class="nav-item" id=chat-online>
-				<a class="nav-link" href="/chat.html">
+				<a class="nav-link" href="/chat">
 					<i class="fas mr-1 fa-comments"></i>
 					Chat Online
 				</a>
