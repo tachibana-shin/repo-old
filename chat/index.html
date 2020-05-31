@@ -102,7 +102,7 @@
 			<div class="container fixed-bottom bg-white chat__framework py-2">
 				<div class="row is-table-row">
 					<div class="col-7">
-						<textarea class="form-control" placeholder="Tin nhắn..." rows="1" v-model="textareaInput" ref="textareaInput"></textarea>
+						<textarea class="form-control" placeholder="Tin nhắn..." rows="1" v-model="textareaInput" ref="textareaInput" @keydown="$emit($event)"></textarea>
 					</div>
 					
 					<div class="col justify-content-center">
