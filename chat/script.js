@@ -135,13 +135,24 @@ new Vue({
     });
   }
 });
-var y;
-my(".panel").sticky({
-  topSpacing: 0,
-  zIndex: 5000
-}).touchstart(function (e) {
-  y = e.touches[0].clientY;
-}).touchmove(function (e) {
-  if (y - e.touches[0].clientY < 0) return;
-  window.scrollTo(0, y - e.touches[0].clientY);
-});
+!function () {
+  var y;
+  my(".panel").sticky({
+    topSpacing: 0,
+    zIndex: 5000
+  }).touchstart(function (e) {
+    y = e.touches[0].clientY;
+  }).on("touchmove").prevent(function (e) {
+    if (y - e.touches[0].clientY < 0) return;
+    window.scrollTo(0, y - e.touches[0].clientY);
+  });
+}();
+!function () {
+  var y;
+  my(".chat__framework").touchstart(function (e) {
+    y = e.touches[0].clientY;
+  }).on("touchmove").prevent(function (e) {
+    if (y - e.touches[0].clientY < 0) return;
+    window.scrollTo(0, y - e.touches[0].clientY);
+  });
+}();

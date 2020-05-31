@@ -143,12 +143,28 @@ new Vue({
 	}
 })
 
-let y
-my(".panel").sticky({ topSpacing: 0, zIndex: 5000 })
-.touchstart(e => {
-	y = e.touches[0].clientY
-})
-.touchmove(e => {
-	if ( y - e.touches[0].clientY < 0 ) return
-	window.scrollTo(0, y - e.touches[0].clientY)
-})
+!function () {
+	let y
+	my(".panel").sticky({
+		topSpacing: 0,
+		zIndex: 5000
+	})
+	.touchstart(e => {
+		y = e.touches[0].clientY
+	})
+	.on("touchmove").prevent(e => {
+		if ( y - e.touches[0].clientY < 0 ) return
+		window.scrollTo(0, y - e.touches[0].clientY)
+	})
+}()
+!function() {
+	let y
+	my(".chat__framework")
+	.touchstart(e => {
+		y = e.touches[0].clientY
+	})
+	.on("touchmove").prevent(e => {
+		if ( y - e.touches[0].clientY < 0 ) return
+		window.scrollTo(0, y - e.touches[0].clientY)
+	})
+}()
