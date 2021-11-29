@@ -1,0 +1,15 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/semver": "^7.3.9",
+    "chalk": "^5.0.0",
+    "md5": "^2.3.0",
+    "md5-file": "^5.0.0",
+    "semver": "^7.3.5"
+  }
+}
